@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
-from django.db import models
 from django.conf.urls import url
 
+from . import views
 
-# Create your models here.
+app_name = 'HealthApp'
+urlpatterns = [
+    url(r'login/', views.LoginFormView.as_view(), name='login'),
+]

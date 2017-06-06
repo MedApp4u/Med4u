@@ -5,9 +5,9 @@
 Before pushing any code remember to make a new branch and create a pull request and ask a review from ANY two members (preferably one backend and one frontend member) and then merge it into the master just to maintain code quality.
 
 Follow these Steps :
-1) Copy files from the `virtual env files` folder into your local Virtual Environment.
+1) Clone this repository into your local machine.
 
-2) Clone this repository into your local machine.
+2) There is a `virtualenvi` folder in the repo and this includes all required libraries for this project and thus it is highly recommended to use this instead of your local one.
 
 3) Create a branch separate from your master branch using :
     `git checkout -b <branch-name>`

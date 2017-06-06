@@ -1,6 +1,6 @@
 # DjangoApp
 
-Hello wor!
+Hello worl!
 
 ## Instructions
 

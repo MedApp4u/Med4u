@@ -17,7 +17,7 @@ Follow these Steps :
 
 5) After changes has been made type these three commands :
     `git add *`
-    `git commit -m "<whatever> you want to did"`
+    `git commit -m "some comment on whatever you did"`
     `git push -u origin <branch-name>`
 
 

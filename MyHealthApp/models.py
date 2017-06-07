@@ -11,6 +11,7 @@ class Insurance(models.Model):
     expiry date = models.DateField
     start_date= models.DateField
     # User_id
+    user = models.ManyToManyField(User)
 
 
 class Bodypart(models.Model):
@@ -18,4 +19,4 @@ class Bodypart(models.Model):
                 'head':'head',
                 'middle':'neck, chest or stomach'
                 'down': 'thighs and legs'
-    }
+            }

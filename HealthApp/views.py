@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
 from django.shortcuts import render
 from .forms import LoginForm
+from django.template import loader
 
 # Create your views here.
 
@@ -40,3 +41,7 @@ class LoginFormView(View):
 			context = "Incorrect username or password"
 
 		return render(request, 'HealthApp/login.html', {'form': form, 'context': context})
+
+def tnc(request):
+    template = loader.get_template('HealthApp/tnc.html')
+    return HttpResponse(template.render(request))

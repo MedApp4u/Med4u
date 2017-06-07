@@ -9,7 +9,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Doctor(models.Model):
     SPECIALITY_CHOICE=(
-            
+
     ('ADDICTION PSYCHIATRIST',"Addiction psychiatrist"),
     ('ADOLESCENT MEDICINE SPECIALIST',"Adolescent medicine specialist"),
     ('ALLERGIST (IMMUNOLOGIST)',"Allergist (immunologist)"),
@@ -72,7 +72,7 @@ class Doctor(models.Model):
     ('UROLOGIST',"Urologist"),
     ('VASCULAR SURGEON',"Vascular surgeon"),
             )
-    
+
     name = models.CharField(max_length=100)
     mobile = models.PositiveIntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     description = models.TextField()
@@ -94,11 +94,11 @@ class Medicine (models.Model):
     notes = models.TextField()
     doctors = models.ManyToManyField(Doctor)
     # remove the comment after "Disease" model is made
-   
+
 
     def __str__(self):
-        return self.name    
-    
+        return self.name
+
 
 
 class Appointment(models.Model):
@@ -113,7 +113,7 @@ FRONTEND look at this for exit change
     [[[https://stackoverflow.com/questions/34841008/django-timefield-format]]]
 """
     reason = models.TextField()
-    
+
 class Disease(models.Model):
     disease_name=models.CharField(max_length=20)
     disease_id=models.AutoField(primary_key=True)

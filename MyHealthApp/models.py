@@ -4,6 +4,7 @@ from GeneralApp.models import User
 
 # Create your models here.
 
+
 class Measurement(models.Model):
     blood_pressure = models.CharField(max_length=30)
     blood_sugar = models.CharField(max_length=30)
@@ -27,4 +28,14 @@ class Procedure(models.Model):
         return self.name
 
 
+class Disease(models.Model):
+    disease_name = models.CharField(max_length=20)
+    disease_id = models.AutoField(primary_key=True)
+    user = models.ManyToManyField(User)
+    bodypart = models.ManyToManyField(Bodypart)
+    symptom = models.ManyToManyField(Symptom)
+    procedure = models.ManyToManyField(Procedure)
+    medicine = models.ManyToManyField(Medicine)
 
+    def __str__(self):
+        return self.disease_name

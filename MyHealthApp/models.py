@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.auth.models import User
 from django.db import models
 import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -9,7 +10,6 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Doctor(models.Model):
     SPECIALITY_CHOICE=(
-
     ('ADDICTION PSYCHIATRIST',"Addiction psychiatrist"),
     ('ADOLESCENT MEDICINE SPECIALIST',"Adolescent medicine specialist"),
     ('ALLERGIST (IMMUNOLOGIST)',"Allergist (immunologist)"),

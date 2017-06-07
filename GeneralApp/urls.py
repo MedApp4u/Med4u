@@ -6,4 +6,5 @@ app_name = 'GeneralApp'
 urlpatterns = [
     url(r'login/', views.LoginFormView.as_view(), name='login'),
     url(r'tnc/', views.tnc, name='tnc'),    
+    url(r'about/',views.IndexView.as_view(),name='about'),
 ]

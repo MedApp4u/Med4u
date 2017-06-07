@@ -7,6 +7,7 @@ from django.views.generic import View
 from django.shortcuts import render
 from .forms import LoginForm
 from django.template import loader
+from django.views import generic
 
 # Create your views here.
 
@@ -45,3 +46,7 @@ class LoginFormView(View):
 def tnc(request):
     template = loader.get_template('GeneralApp/tnc.html')
     return HttpResponse(template.render(request))
+
+
+class IndexView(generic.TemplateView):
+    template_name = 'GeneralApp/about.html'

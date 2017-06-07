@@ -1,0 +1,53 @@
+{% extends "GeneralApp/base.html" %}
+{% block title %}GeneralApp | Sign In{% endblock %}	
+
+
+{% block navbar %}
+	<li><a href="#intro">Home</a></li>
+	<li><a href="#service">Service</a></li>
+	<li><a href="#doctor">Doctors</a></li>
+	<li><a href="#facilities">Facilities</a></li>
+	<li><a href="#pricing">Pricing</a></li>
+	<li class="active"><a id="active" href="{% url 'GeneralApp:login' %}">Sign In</a></li>
+	<li><a href="#">Sign Up</a></li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
+		<ul class="dropdown-menu">
+			<li><a href="index.html">Home CTA</a></li>
+			<li><a href="index-form.html">Home Form</a></li>
+			<li><a href="index-video.html">Home video</a></li>
+		</ul>
+	</li>
+{% endblock %}
+
+{% block content %}
+
+	<!-- Section: intro -->
+	
+	    <section id="intro" class="intro">
+			<div class="intro-content">
+				<div class="wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.2s">
+					<div class="container">
+						<div class="row">
+							<div class="well well-box-top col-lg-12 col-md-12 col-sm-12", id="form-head">
+								<!-- <div class="rect" id="left-r"></div> -->
+								<strong>About us</strong>
+								<!-- <div class="rect" id="right-r"></div> -->
+							</div>
+							<div class="well well-trans col-lg-12 col-md-12 col-sm-12" id="form-details">
+								<h6>Today, Apollo Hospitals Group has touched the lives of over 45 million patients from 121 countries. The group, which started out as a 150-bed hospital, is now recognized as a pioneer of private healthcare in India, with 64 hospitals in operation. Apollo Hospitals is known not only as a medical institution but has emerged as an integrated healthcare provider in Asia, specializing also in consultancy, clinics, pharmacy, insurance and holistic therapy.
+								<br><br>
+								The very first Apollo Hospital was established in Chennai, in 1983 by Founder Chairman, Dr. Prathap C Reddy, with the mission to bring world-class healthcare to India at a price point that Indians could afford. Before Apollo Hospitals, only certain individuals had the privilege for quality medical treatment as they could afford to travel abroad. The establishment that Apollo Hospitals offer patients, the same level of quality treatment at only a fraction of the global prices, led to a revolution in medical treatment in India. Until today, this cost consciousness approach continues to be a building block of the hospital’s healthcare strategy.
+								<br><br>
+								In addition, the company is built on lasting value systems that focuses on excellence, expertise, empathy and innovation. The Apollo Group was the first to invest in pre-requisites for international quality accreditations such as the JCI and to develop centres of excellence Cardiac Sciences, Orthopaedics, Neurosciences, Emergency Care, Cancer and Organ Transplantation. Stringent internal processes and scoring systems ensures the group achieves the very best qualities. Apollo Hospitals took initiatives including the ACE@25 and TASSC, conveying a commitment to global benchmarks and clinical excellence.
+								<br>
+								</h6>
+							
+							</div>
+						</div>		
+					</div>		
+				</div>	
+			</div>	
+	    </section>
+
+{% endblock %}

@@ -9,21 +9,21 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700,800|Roboto:400,500,700,900');
 /* --- pe-icon-7-stroke --- */
 
-html {
-    width: 100%;
-    height: 100%;
-}
 
 body {
-	overflow: auto;
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
     font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
     color: #666;
     background-color: #ddd;
 	font-size: 16px;
     line-height: 1.6em;
+}
+
+html {
+    width: 100%;
+    height: 100%;
 }
 
 label,
@@ -39,73 +39,6 @@ textarea {
 /* ===========
 layout
 ============= */
-
-/*.h-ultra, .h-light {
-	visibility: hidden;
-}*/
-
-.test {
-	border: 1px solid black;
-	position: relative;
-	top: 100%;
-}
-
-/* Form Fields ------------*/
-
-#id_username, #id_password {
-	position: absolute;
-	left: 50%;
-	height: 8%;
-	width: 45%;
-	margin: -4% 0 0 -22.5%;
-	z-index: 2;
-	font-size: 13px;
-	padding: 8px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
-}
-
-.form-label {
-	position: absolute;
-	left: 37%;
-	width: 20%;
-	height: 10%;
-	margin: -5% 0 0 -10%;
-	color: #666;
-	font-weight: 700;
-}
-
-#error {
-	/*border: 1px solid black;*/
-	position: absolute;
-	height: 8%;
-	width: 60%;
-	left: 50%;
-	top: 90%;
-	margin: -4% 0 0 -30%;
-	font-weight: 600;
-}
-
-#id_username {
-	top: 40%;
-}
-
-#id_password {
-	top: 60%;
-}
-
-#username {
-	top: 35%;
-}
-
-#password {
-	top: 55%;
-}
-
-/*-------------------------*/
-
 #wrapper.boxed {
 	margin: 0 auto;
 	background-color: #fff;
@@ -359,6 +292,7 @@ Navigation
 
 
 .navbar {
+    margin-bottom: 0;
     border-bottom: 1px solid rgba(255,255,255,.3);	
 	
 }
@@ -822,13 +756,11 @@ hr.bold {
 
 .intro {
 	width:100%;
-	height: 100%;
 	position:relative;
 }
 
 .intro-content {
-	background: url("img/dummy/bg1.jpg") no-repeat top center;
-	height: 100%;
+	background: url(../img/dummy/bg1.jpg) no-repeat top center;
 	padding:200px 0 60px;
 }
 .intro-content.intro-nobg {
@@ -859,21 +791,13 @@ ul.lead-list {
 	list-style: none;
 	margin-left: 0;
 	padding-left: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 50%;
-	height: 50%;
-	margin: -25% 0 0 -25%;
-	border: 1px solid black;
-	/*margin-bottom: 20px;*/
+	margin-bottom: 20px;
 }
 
 
 ul.lead-list li {
-	/*margin: 0 0 20px 0;*/
+	margin: 0 0 20px 0;
 	line-height: 1.6em;
-	text-align: left;
 }
 
 ul.lead-list li span.fa {
@@ -883,7 +807,7 @@ ul.lead-list li span.fa {
 
 ul.lead-list li span.list {
 	display: inline-block;
-	/*margin: 0 0 0 10px;*/
+	margin: 0 0 0 10px;
 }
 
 p.lead-footer {
@@ -950,60 +874,12 @@ form.lead label,form.lead input {
 
 /* ---- CTA 1  --- */
 .well.well-trans {
-	background-color: rgba(255,255,255,1);
+	background-color: rgba(255,255,255,.8);
   -webkit-box-shadow: none;
           box-shadow: none;
 	border: none;
-	border-radius: 25px;
-	position: absolute;
-	/*top: 95%;
-	left: 50%;
-	width: 34%;
-	height: 90%;
-	margin: -30% 0 0 -17%;*/
-	text-align: center;
-	z-index: 1;
 }
 
-.well.well-box-top {
-	background-color: #444;
-	border: none;
-	border-radius: 25px 25px 0 0;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	position: absolute;
-	/*top: 95%;
-	left: 50%;
-	height: 14%;*/
-	/*width: 40%;*/
-	/*margin: auto;*/
-	z-index: 2;
-	text-align: center;
-	font-size: 24px;
-	color: white;
-}
-
-.rect {
-	position: absolute;
-	top: 60%;
-	height: 2.5%;
-	width: 24%;
-	margin: -1.25% 0 0 -12%;
-	border: 1px solid white;
-	background-color: white;
-	z-index: 3;
-}
-
-#left-r {
-	left: 21%;
-	border-radius: 1px 0 0 1px;
-}
-
-#right-r {
-	left: 79%;
-	border-radius: 0 1px 1px 0;
-}
 
 /* --- slider ---- */
 
@@ -1234,7 +1110,7 @@ Testimonial
 =========================== */
 
 #testimonial {
-	background-image: url("/img/parallax/1.jpg");
+	background-image: url(../img/parallax/1.jpg);
 }
 
 .carousel-control.left,.carousel-control.right  {background:none;width:25px; z-index: 999;}
@@ -1761,17 +1637,9 @@ a.scrollup i:hover {
 
 
 /* --- button --- */
-
 .btn {
-	position: absolute;
-	top: 76%;
-	left: 50%;
-	width: 26%;
-	height: 9%;
-	margin: -4.5% 0 0 -13%;
-	/*display: flex;
-	justify-content: center;
-    flex-direction: column;*/
+	position: relative;
+	display: inline-block;
 	outline: none;
 	color: #fff;
 	text-decoration: none;
@@ -1780,6 +1648,7 @@ a.scrollup i:hover {
 	font-weight: 400;	
 	text-shadow: 0 0 1px rgba(255,255,255,0.3);
 	font-size: 14px;
+
 	font-weight: 700;
 }
 
@@ -2036,34 +1905,34 @@ a.btn:focus{
 }
 
 .bgr .bg.bg1 {
-	background: url("img/bodybg/bg1.png") repeat left top;
+	background: url(../img/bodybg/bg1.png) repeat left top;
 }	
 .bgr .bg.bg2 {
-	background: url("img/bodybg/bg2.png") repeat left top;
+	background: url(../img/bodybg/bg2.png) repeat left top;
 }	
 .bgr .bg.bg3 {
-	background: url("img/bodybg/bg3.jpg") repeat left top;
+	background: url(../img/bodybg/bg3.jpg) repeat left top;
 }	
 .bgr .bg.bg4 {
-	background: url("img/bodybg/bg4.png") repeat left top;
+	background: url(../img/bodybg/bg4.png) repeat left top;
 }	
 .bgr .bg.bg5 {
-	background: url("img/bodybg/bg5.png") repeat left top;
+	background: url(../img/bodybg/bg5.png) repeat left top;
 }	
 .bgr .bg.bg6 {
-	background: url("img/bodybg/bg6.png") repeat left top;
+	background: url(../img/bodybg/bg6.png) repeat left top;
 }	
 .bgr .bg.bg7 {
-	background: url("img/bodybg/bg7.png") repeat left top;
+	background: url(../img/bodybg/bg7.png) repeat left top;
 }	
 .bgr .bg.bg8 {
-	background: url("img/bodybg/bg8.jpg") repeat left top;
+	background: url(../img/bodybg/bg8.jpg) repeat left top;
 }	
 .bgr .bg.bg9 {
-	background: url("img/bodybg/bg9.png") repeat left top;
+	background: url(../img/bodybg/bg9.png) repeat left top;
 }	
 .bgr .bg.bg10 {
-	background: url("img/bodybg/bg10.png") repeat left top;
+	background: url(../img/bodybg/bg10.png) repeat left top;
 }	
 
 #accent_color{
@@ -2216,47 +2085,5 @@ a.btn:focus{
 	
 	.intro-content {
 		padding:250px 0 0;
-	}
-}
-
-@media(min-width: 1200px){
-	.col-lg-12 {
-		top: 17px;
-		left: 50%;
-		width: 36%;
-		margin-left: -18%;
-		margin-top: -37.5px;
-	}
-
-	#form-head {
-		height: 75px;
-	}
-
-	#form-details {
-		height: 480px;
-	}
-}
-
-@media(min-width: 992px) {
-	.col-md-12 {
-		top: 17px;
-		left: 50%;
-		width: 36%;
-		margin-left: -18%;
-		margin-top: -37.5px;
-	}
-
-	#form-head {
-		height: 75px;
-	}
-
-	#form-details {
-		height: 480px;
-	}
-}
-
-@media(min-width: 767px) and (max-width: 991px) {
-	.col-sm-12 {
-		width: 100%;
 	}
 }

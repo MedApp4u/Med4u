@@ -125,3 +125,4 @@ class Disease(models.Model):
 
     def __str__(self):
     	return self.disease_name
+

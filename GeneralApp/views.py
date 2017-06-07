@@ -17,7 +17,7 @@ class LoginFormView(View):
 	def get(self, request):
 		form = self.form_class(None)
 		context = ""
-		return render(request, 'HealthApp/login.html', {'form' : form, 'context': context})
+		return render(request, 'GeneralApp/login.html', {'form' : form, 'context': context})
 
 	def post(self, request):
 		form = self.form_class(None)
@@ -40,8 +40,8 @@ class LoginFormView(View):
 		else:
 			context = "Incorrect username or password"
 
-		return render(request, 'HealthApp/login.html', {'form': form, 'context': context})
+		return render(request, 'GeneralApp/login.html', {'form': form, 'context': context})
 
 def tnc(request):
-    template = loader.get_template('HealthApp/tnc.html')
+    template = loader.get_template('GeneralApp/tnc.html')
     return HttpResponse(template.render(request))

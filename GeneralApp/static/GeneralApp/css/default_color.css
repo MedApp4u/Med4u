@@ -43,16 +43,12 @@ a:focus {
 
 /* menu */
 
-#active {
-    color: #3fbbc0;
-}
-
 .navbar-custom ul.nav ul.dropdown-menu li a:hover {
 	color: #3fbbc0;
 }
 .navbar-custom.top-nav-collapse .nav li a:hover,
 .navbar-custom .nav li a:hover,
-.navbar-custom .nav ,.navbar-custom.top-nav-collapse .nav {
+.navbar-custom .nav li.active a,.navbar-custom.top-nav-collapse .nav li.active a  {
     color: #3fbbc0;
 }
 

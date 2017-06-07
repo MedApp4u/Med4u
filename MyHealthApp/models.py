@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
 from django.db import models
 import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -99,8 +98,6 @@ class Medicine (models.Model):
     def __str__(self):
         return self.name
 
-
-
 class Appointment(models.Model):
     doctor=models.ForeignKey(Doctor, on_delete=models.CASCADE)
     #mobile = user.(pk=pk).mobile
@@ -113,16 +110,3 @@ FRONTEND look at this for exit change
     [[[https://stackoverflow.com/questions/34841008/django-timefield-format]]]
 """
     reason = models.TextField()
-
-class Disease(models.Model):
-    disease_name=models.CharField(max_length=20)
-    disease_id=models.AutoField(primary_key=True)
-    user=models.ManyToManyField(User)
-    bodypart=models.ManyToManyField(Bodypart)
-    symptom=models.ManyToManyField(Symptom)
-    procedure=models.ManyToManyField(Procedure)
-    medicine=models.ManyToManyField(Medicine)
-
-    def __str__(self):
-    	return self.disease_name
-

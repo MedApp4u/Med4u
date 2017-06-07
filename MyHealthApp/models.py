@@ -24,8 +24,8 @@ class Bodypart(models.Model):
                 'middle':'neck, chest or stomach'
                 'down': 'thighs and legs'
             }
-     medicines = models.ManyToManyField(Medicine)
+    medicines = models.ManyToManyField(Medicine)
 
 
-def __str__(self):
-    return self.bodypart
+    def __str__(self):
+        return self.bodypart

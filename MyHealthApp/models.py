@@ -7,7 +7,6 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 
-
 class Doctor(models.Model):
     SPECIALITY_CHOICE=(
             
@@ -115,7 +114,14 @@ FRONTEND look at this for exit change
 """
     reason = models.TextField()
     
+class Disease(models.Model):
+    disease_name=models.CharField(max_length=20)
+    disease_id=models.AutoField(primary_key=True)
+    user=models.ManyToManyField(User)
+    bodypart=models.ManyToManyField(Bodypart)
+    symptom=models.ManyToManyField(Symptom)
+    procedure=models.ManyToManyField(Procedure)
+    medicine=models.ManyToManyField(Medicine)
 
-
-
-        
+    def __str__(self):
+    	return self.disease_name

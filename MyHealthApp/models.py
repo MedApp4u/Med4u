@@ -2,15 +2,15 @@ from django.db import models
 
 class Symptom(models.Model):
     symptom_name = models.CharField(max_length=1000)
-    body_parts = models.ManyToManyField(Bodypart)
-    medicines = models.ManyToManyField(Medicine)
+    bodypart = models.ManyToManyField(Bodypart)
+    medicine = models.ManyToManyField(Medicine)
     # Disease
     def __str__(self):
         return self.symptom_name
 
 class Insurance(models.Model):
     insurance_plan= models.CharField(max_length=500)
-    expiry date = models.DateField
+    expiry_date = models.DateField
     start_date= models.DateField
     # User_id
     user = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -24,7 +24,7 @@ class Bodypart(models.Model):
                 'middle':'neck, chest or stomach'
                 'down': 'thighs and legs'
             }
-    medicines = models.ManyToManyField(Medicine)
+    medicine = models.ManyToManyField(Medicine)
 
 
     def __str__(self):

@@ -1,0 +1,57 @@
+{% extends "HealthApp/base.html" %}
+{% block title %}HealthApp | Sign In{% endblock %}	
+
+
+{% block navbar %}
+	<li><a href="#intro">Home</a></li>
+	<li><a href="#service">Service</a></li>
+	<li><a href="#doctor">Doctors</a></li>
+	<li><a href="#facilities">Facilities</a></li>
+	<li><a href="#pricing">Pricing</a></li>
+	<li class="active"><a id="active" href="{% url 'HealthApp:login' %}">Sign In</a></li>
+	<li><a href="#">Sign Up</a></li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
+		<ul class="dropdown-menu">
+			<li><a href="index.html">Home CTA</a></li>
+			<li><a href="index-form.html">Home Form</a></li>
+			<li><a href="index-video.html">Home video</a></li>
+		</ul>
+	</li>
+{% endblock %}
+
+{% block content %}
+
+	<!-- Section: intro -->
+	
+	    <section id="intro" class="intro">
+			<div class="intro-content">
+				<div class="wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.2s">
+					<div class="container">
+						<div class="row">
+							<div class="well well-box-top">
+								<!-- <div class="rect" id="left-r"></div> -->
+								<strong>Login Form</strong>
+								<!-- <div class="rect" id="right-r"></div> -->
+							</div>
+							<div class="well well-trans">
+								
+									<form action="" method="post">
+									{% csrf_token %}
+										<p class="form-label" id="username">Username :</p>
+										{{ form.username }}
+										<p class="form-label" id="password">Password :</p>  
+										{{ form.password }}
+										<!-- <p class="text-right wow bounceIn" data-wow-delay="0.4s"> -->
+										<input type="submit" class="btn btn-skin" value="Sign In" />
+										<!-- </p> -->
+									</form>
+									<p class="form-label" id="error">{{ context }}</p>
+							</div>
+						</div>		
+					</div>		
+				</div>	
+			</div>	
+	    </section>
+
+{% endblock %}

@@ -17,9 +17,6 @@ class Measurement(models.Model):
     weight = models.FloatField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-
-
-
 class Doctor(models.Model):
     SPECIALITY_CHOICE=(
     ('ADDICTION PSYCHIATRIST',"Addiction psychiatrist"),
@@ -154,8 +151,6 @@ class Insurance(models.Model):
     def __str__(self):
         return self.insurance_plan
     
-
-
 class Procedure(models.Model):
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=300)

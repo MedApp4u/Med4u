@@ -7,6 +7,18 @@ import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
+class Bodypart(models.Model):
+    bodypart= {
+                'head':'head',
+                'middle':'neck, chest or stomach',
+                'down':'thighs and legs',
+              }
+    medicines = models.ManyToManyField(Medicine)
+
+
+    def __str__(self):
+        return self.bodypart
+
 class Measurement(models.Model):
     blood_pressure = models.CharField(max_length=30)
     blood_sugar = models.CharField(max_length=30)
@@ -153,14 +165,4 @@ class Insurance(models.Model):
     def __str__(self):
         return self.insurance_plan
 
-class Bodypart(models.Model):
-    bodypart= {
-                'head':'head',
-                'middle':'neck, chest or stomach',
-                'down':'thighs and legs',
-            }
-    medicines = models.ManyToManyField(Medicine)
 
-
-    def __str__(self):
-        return self.bodypart

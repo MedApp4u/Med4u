@@ -26,7 +26,7 @@ Follow these Steps :
 7) You can start with more changes but make sure you are on the branch other than the master. You can checnk which branchyou are on by :
     `git branch`
 To change branch type: 
-    `git checkout <branch_you_want_to_change_to>`
+    `git checkout <branch_you_want_to_change_into>`
 
 8) To update your master branch do these :
     `git checkout master`

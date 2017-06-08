@@ -6,7 +6,6 @@ from django.db import models
 import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-"""
 # Create your models here.
 class Measurement(models.Model):
     blood_pressure = models.CharField(max_length=30)
@@ -30,8 +29,8 @@ class Procedure(models.Model):
     def __str__(self):
         return self.name
 
-"""
-"""
+
+
 class Doctor(models.Model):
     SPECIALITY_CHOICE=(
     ('ADDICTION PSYCHIATRIST',"Addiction psychiatrist"),
@@ -129,11 +128,11 @@ class Appointment(models.Model):
     #user=models.ForeignKey(User,on_delete=models.CASCADE)
     date = models.DateField(default =datetime.timedelta(days=3))
     time=models.TimeField()
-    #time_start = models.TimeField(blank=True, null=True)
-    #time_end = models.TimeField(blank=True, null=True)
+    """time_start = models.TimeField(blank=True, null=True)
+    time_end = models.TimeField(blank=True, null=True)
 FRONTEND look at this for exit change
-    #[[[https://stackoverflow.com/questions/34841008/django-timefield-format]]]
-
+    [[[https://stackoverflow.com/questions/34841008/django-timefield-format]]]
+"""
     reason = models.TextField()
 
 class Symptom(models.Model):
@@ -165,4 +164,3 @@ class Bodypart(models.Model):
 
     def __str__(self):
         return self.bodypart
-"""

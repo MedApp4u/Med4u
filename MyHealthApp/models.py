@@ -167,7 +167,7 @@ class Symptom(models.Model):
 
 class Insurance(models.Model):
     insurance_plan= models.CharField(max_length=500)
-    expiry date = models.DateField
+    expiry_date = models.DateField
     start_date= models.DateField
     # User_id
     user = models.ForeignKey(User,on_delete=models.CASCADE)

@@ -7,6 +7,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 
+"""
 class Doctor(models.Model):
     SPECIALITY_CHOICE=(
     ('ADDICTION PSYCHIATRIST',"Addiction psychiatrist"),
@@ -104,16 +105,16 @@ class Appointment(models.Model):
     #user=models.ForeignKey(User,on_delete=models.CASCADE)
     date = models.DateField(default =datetime.timedelta(days=3))
     time=models.TimeField()
-    """ time_start = models.TimeField(blank=True, null=True)
-    time_end = models.TimeField(blank=True, null=True)
+    #time_start = models.TimeField(blank=True, null=True)
+    #time_end = models.TimeField(blank=True, null=True)
 FRONTEND look at this for exit change
-    [[[https://stackoverflow.com/questions/34841008/django-timefield-format]]]
-"""
+    #[[[https://stackoverflow.com/questions/34841008/django-timefield-format]]]
+
     reason = models.TextField()
 
 class Symptom(models.Model):
     symptom_name = models.CharField(max_length=1000)
-    bodyparts = models.ManyToManyField(Bodypart)
+    bodypart = models.ManyToManyField(Bodypart)
     medicines = models.ManyToManyField(Medicine)
     # Disease
     def __str__(self):
@@ -121,7 +122,7 @@ class Symptom(models.Model):
 
 class Insurance(models.Model):
     insurance_plan= models.CharField(max_length=500)
-    expiry date = models.DateField
+    expiry_date = models.DateField
     start_date= models.DateField
     # User_id
     user = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -132,11 +133,12 @@ class Insurance(models.Model):
 class Bodypart(models.Model):
     bodypart= {
                 'head':'head',
-                'middle':'neck, chest or stomach'
-                'down': 'thighs and legs'
+                'middle':'neck, chest or stomach',
+                'down':'thighs and legs',
             }
     medicines = models.ManyToManyField(Medicine)
 
 
     def __str__(self):
         return self.bodypart
+"""

@@ -768,6 +768,14 @@ hr.bold {
 	padding:200px 0 60px;
 }
 
+.sign-up-intro-content {
+	height: 100%;
+	background: url(img/dummy/img-5.jpg);
+	background-size: 1795px 770px;
+	background-position: 45% -800%;
+	background-repeat: repeat-x;
+}
+
 .login-intro-content {
 	height: 100%;
 }
@@ -892,6 +900,23 @@ form.lead label,form.lead input {
 
 /* --- slider ---- */
 
+/* ---- Sign-up Image ---- */
+
+.sign-up-img {
+	position: absolute;
+	z-index: 3;
+	/*width: 100%;
+	height: 100%;*/
+
+}
+
+#ladki {
+	width: 615px;
+	height: 500px;
+}
+
+/* ----------------------- */
+
 /* ------- Form ------- */
 
 .form-head, .form-body {
@@ -903,32 +928,54 @@ form.lead label,form.lead input {
 
 .form-head {
 	position: absolute;
-	top: 10px;
-	left: 50%;
-	width: 28%;
 	height: 70px;
 	line-height: 70px;
-	margin-left: -14%;
 	text-align: center;
 	background-color: #4ACCD1;
 	color: white;
 	font-weight: 300;
-	font-size: 23px;
-	letter-spacing: 0.7px;
+	letter-spacing: 0.8px;
 	z-index: 2;
 	border-radius: 20px 20px 0 0;
 }
 
-.form-body {
-	position: absolute;
+.login-form-head {
 	top: 10px;
 	left: 50%;
 	width: 28%;
-	height: 375px;
 	margin-left: -14%;
+	font-size: 23px;
+}
+
+.sign-up-form-head {
+	top: -40px;
+	left: 68%;
+	width: 32%;
+	margin-left: -16%;
+	font-size: 23px;
+}
+
+.form-body {
+	position: absolute;
 	text-align: center;
 	z-index: 1;
 	border-radius: 20px;
+}
+
+.login-form-body {
+	top: 10px;
+	left: 50%;
+	height: 375px;
+	width: 28%;
+	margin-left: -14%;
+}
+
+.sign-up-form-body {
+	top: -40px;
+	left: 68%;
+	height: 520px;
+	width: 32%;
+	margin-left: -16%;
 }
 
 .form-label {
@@ -939,7 +986,7 @@ form.lead label,form.lead input {
 	font-size: 14px;
 }
 
-#id_username, #id_password {
+#id_username, #id_username1, #id_password, #id_password1, #id_password2, #id_email {
 	position: absolute;
 	left: 50%;
 	height: 34px;
@@ -957,7 +1004,15 @@ form.lead label,form.lead input {
 	top: 110px;
 }
 
+#username1 {
+	top: 110px;
+}
+
 #id_username {
+	top: 154px;
+}
+
+#id_username1 {
 	top: 154px;
 }
 
@@ -965,20 +1020,43 @@ form.lead label,form.lead input {
 	top: 200px;
 }
 
+#password1 {
+	top: 190px;
+}
+
 #forgot-password {
 	top: 200px;
-	left: 55%;
+	left: 54%;
 	font-size: 12px;
 	color: #3fbbc0;
 }
 
 #id_password {
-	top: 245px;
+	top: 244px;
 }
 
-#error {
+#id_password1 {
+	top: 234px;
+}
+
+#password2 {
+	top: 270px;
+}
+
+#id_password2 {
+	top: 314px;
+}
+
+#email {
+	top: 350px;
+}
+
+#id_email {
+	top: 394px;
+}
+
+#login-error, #sign-up-error, #tnc {
 	left: 50%;
-	top: 370px;
 	width: 100%;
 	height: 50px;
 	line-height: 50px;
@@ -987,7 +1065,25 @@ form.lead label,form.lead input {
 	border-radius: 8px;
 	z-index: 2;*/
 	font-size: 14px;
+	font-weight: 600;
+}
+
+#login-error {
+	top: 348px;
+}
+
+#sign-up-error {
+	top: 495px;
+}
+
+#tnc {
+	top: 495px;
+	font-size: 11.5px;
 	font-weight: 300;
+}
+
+#tnc a {
+	color: #3fbbc0;
 }
 
 /* Active link */
@@ -1764,7 +1860,7 @@ a.scrollup i:hover {
 
 .login-btn {
 	position: absolute;
-	top: 306px;
+	top: 300px;
 	left: 50%;
 	height: 40px;
 	width: 36%;
@@ -1779,6 +1875,10 @@ a.scrollup i:hover {
 	font-weight: 600;
 	border-style: solid;
 	border-radius: 4px;
+}
+
+.sign-up-btn {
+	top: 450px;
 }
 
 .login-btn:hover {

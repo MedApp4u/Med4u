@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.auth.models import User
 from django.db import models
 import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+"""
 # Create your models here.
 class Measurement(models.Model):
     blood_pressure = models.CharField(max_length=30)
@@ -28,7 +30,7 @@ class Procedure(models.Model):
     def __str__(self):
         return self.name
 
-
+"""
 """
 class Doctor(models.Model):
     SPECIALITY_CHOICE=(
@@ -163,11 +165,4 @@ class Bodypart(models.Model):
 
     def __str__(self):
         return self.bodypart
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 """
->>>>>>> 9dab446f4cad5e532320f29dad1fd35affbe2ec2
-=======
-
->>>>>>> eb1f7c4d1035662f2e216a145d255e405d3a161b

@@ -35,6 +35,7 @@ class Procedure(models.Model):
 
 
 class Doctor(models.Model):
+
     SPECIALITY_CHOICE = (
 
         ('ADDICTION PSYCHIATRIST', "Addiction psychiatrist"),
@@ -122,8 +123,11 @@ class Medicine(models.Model):
     notes = models.TextField()
     doctors = models.ManyToManyField(Doctor)
 
+
     def __str__(self):
         return self.name
+    # remove the comment after "Disease" model is made
+
 
 
 class Appointment(models.Model):
@@ -140,6 +144,7 @@ FRONTEND look at this for exit change
     reason = models.TextField()
 
 
+
 class Disease(models.Model):
     disease_name = models.CharField(max_length=20)
     disease_id = models.AutoField(primary_key=True)
@@ -151,3 +156,34 @@ class Disease(models.Model):
 
     def __str__(self):
         return self.disease_name
+
+class Symptom(models.Model):
+    symptom_name = models.CharField(max_length=1000)
+    bodyparts = models.ManyToManyField(Bodypart)
+    medicines = models.ManyToManyField(Medicine)
+    # Disease
+    def __str__(self):
+        return self.symptom_name
+
+class Insurance(models.Model):
+    insurance_plan= models.CharField(max_length=500)
+    expiry date = models.DateField
+    start_date= models.DateField
+    # User_id
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.insurance_plan
+
+class Bodypart(models.Model):
+    bodypart= {
+                'head':'head',
+                'middle':'neck, chest or stomach'
+                'down': 'thighs and legs'
+            }
+    medicines = models.ManyToManyField(Medicine)
+
+
+    def __str__(self):
+        return self.bodypart
+

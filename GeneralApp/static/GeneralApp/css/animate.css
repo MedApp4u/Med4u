@@ -1120,8 +1120,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 .fadeInRight {
-  height: 100%;
-  width: 100%;
   -webkit-animation-name: fadeInRight;
   animation-name: fadeInRight;
 }

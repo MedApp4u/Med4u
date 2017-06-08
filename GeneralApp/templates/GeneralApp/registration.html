@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Registration Page
+		</title>
+		<link href="{% static 'polls/registration.css' %}" type="text/css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div class="main">
+			<div class="form-top">
+				<h2>Registration Form</h2>
+			</div>
+			<form action="" method="post">
+			{% csrf_token %} 
+				<p class="form-label" id="username">Username :</p>
+				{{ form.username }}
+				<p class="form-label" id="password1">Password :</p>  
+				{{ form.password1 }}
+				<p class="form-label" id="password2">Confirm password :</p>  
+				{{ form.password2 }}
+				<p class="form-label" id="email">Email :</p>  
+				{{ form.email }}
+				<input type="submit" class="form-btn" value="Sign Up" />
+			</form>
+			<p class="form-label" id="error">{{ context }}</p>
+		</div>
+
+	</body>
+</html>

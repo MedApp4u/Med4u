@@ -48,5 +48,5 @@ def tnc(request):
     return HttpResponse(template.render(request))
 
 
-class IndexView(generic.TemplateView):
+class AboutUs(generic.TemplateView):
     template_name = 'GeneralApp/about.html'

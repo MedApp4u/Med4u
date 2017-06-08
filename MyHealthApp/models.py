@@ -6,6 +6,28 @@ import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
+class Measurement(models.Model):
+    blood_pressure = models.CharField(max_length=30)
+    blood_sugar = models.CharField(max_length=30)
+    cholesterol = models.CharField(max_length=30)
+    height = models.FloatField()
+    weight = models.FloatField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+class Procedure(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=300)
+    possible_complication = models.CharField(max_length=300)
+    image = models.FileField()
+    video = models.FileField()
+    bodypart = models.ManyToManyField(Bodypart)
+    symptom = models.ManyToManyField(Symptom)
+    medicine = models.ManyToManyField(Medicine)
+
+    def __str__(self):
+        return self.name
+
 
 """
 class Doctor(models.Model):
@@ -142,6 +164,10 @@ class Bodypart(models.Model):
     def __str__(self):
         return self.bodypart
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 """
 >>>>>>> 9dab446f4cad5e532320f29dad1fd35affbe2ec2
+=======
+
+>>>>>>> eb1f7c4d1035662f2e216a145d255e405d3a161b

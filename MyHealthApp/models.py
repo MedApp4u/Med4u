@@ -7,17 +7,7 @@ import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
-class Bodypart(models.Model):
-    bodypart= {
-                'head':'head',
-                'middle':'neck, chest or stomach',
-                'down':'thighs and legs',
-              }
-    medicines = models.ManyToManyField(Medicine)
 
-
-    def __str__(self):
-        return self.bodypart
 
 class Measurement(models.Model):
     blood_pressure = models.CharField(max_length=30)
@@ -27,19 +17,6 @@ class Measurement(models.Model):
     weight = models.FloatField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-
-class Procedure(models.Model):
-    name = models.CharField(max_length=30)
-    description = models.CharField(max_length=300)
-    possible_complication = models.CharField(max_length=300)
-    image = models.FileField()
-    video = models.FileField()
-    bodypart = models.ManyToManyField(Bodypart)
-    symptom = models.ManyToManyField(Symptom)
-    medicine = models.ManyToManyField(Medicine)
-
-    def __str__(self):
-        return self.name
 
 
 
@@ -133,6 +110,18 @@ class Medicine (models.Model):
 
     def __str__(self):
         return self.name
+    
+class Bodypart(models.Model):
+    bodypart= {
+                'head':'head',
+                'middle':'neck, chest or stomach',
+                'down':'thighs and legs',
+              }
+    medicines = models.ManyToManyField(Medicine)
+
+
+    def __str__(self):
+        return self.bodypart
 
 class Appointment(models.Model):
     doctor=models.ForeignKey(Doctor, on_delete=models.CASCADE)
@@ -164,5 +153,19 @@ class Insurance(models.Model):
 
     def __str__(self):
         return self.insurance_plan
+    
 
+
+class Procedure(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=300)
+    possible_complication = models.CharField(max_length=300)
+    image = models.FileField()
+    video = models.FileField()
+    bodypart = models.ManyToManyField(Bodypart)
+    symptom = models.ManyToManyField(Symptom)
+    medicine = models.ManyToManyField(Medicine)
+
+    def __str__(self):
+        return self.name
 

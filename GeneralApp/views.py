@@ -8,39 +8,41 @@ from django.shortcuts import render
 from .forms import LoginForm
 from django.template import loader
 
+
 # Create your views here.
 
 class LoginFormView(View):
-	form_class = LoginForm
-	context = ""
+    form_class = LoginForm
+    context = ""
 
-	def get(self, request):
-		form = self.form_class(None)
-		context = ""
-		return render(request, 'GeneralApp/login.html', {'form' : form, 'context': context})
+    def get(self, request):
+        form = self.form_class(None)
+        context = ""
+        return render(request, 'GeneralApp/login.html', {'form': form, 'context': context})
 
-	def post(self, request):
-		form = self.form_class(None)
-		#cleaned (normalized) data
+    def post(self, request):
+        form = self.form_class(None)
+        # cleaned (normalized) data
 
-		context = ""
-		username = request.POST['username']
-		password = request.POST['password']
+        context = ""
+        username = request.POST['username']
+        password = request.POST['password']
 
-		#returns User objects if credentials are correct
-		user = authenticate(username=username, password=password)
+        # returns User objects if credentials are correct
+        user = authenticate(username=username, password=password)
 
-		if user is not None:
+        if user is not None:
 
-			if user.is_active:
-				login(request, user)
-				return HttpResponse("Congrats! You are logged in!")
-			else:
-				context = "User is banned"
-		else:
-			context = "Incorrect username or password"
+            if user.is_active:
+                login(request, user)
+                return HttpResponse("Congrats! You are logged in!")
+            else:
+                context = "User is banned"
+        else:
+            context = "Incorrect username or password"
 
-		return render(request, 'GeneralApp/login.html', {'form': form, 'context': context})
+        return render(request, 'GeneralApp/login.html', {'form': form, 'context': context})
+
 
 def tnc(request):
     template = loader.get_template('GeneralApp/tnc.html')

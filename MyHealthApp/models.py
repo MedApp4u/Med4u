@@ -88,7 +88,7 @@ class Doctor(models.Model):
     name = models.CharField(max_length=100)
     mobile = models.BigIntegerField(validators=[MaxValueValidator(9999999999), MinValueValidator(1000000000)])
     description = models.TextField()
-    address = models.TextField()
+    address = models.CharField(max_length=1000, default=False)
     speciality = models.CharField(max_length=300, choices=SPECIALITY_CHOICE, default="SURGEON")
     timings = models.CharField(max_length=12, default="06AM to 06PM")
 
@@ -139,7 +139,7 @@ FRONTEND look at this for exit change
 """
     reason = models.TextField()
 
-
+#
 class Symptom(models.Model):
     symptom_name = models.CharField(max_length=1000)
     bodypart = models.ManyToManyField(Bodypart)

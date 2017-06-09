@@ -48,16 +48,5 @@ class ProcedureSerializer(serializers.ModelSerializer):
         
 class AppointmentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Appointmnet
+        model = Appointment
         fields=('doctor','user','date','time',)
-
-
-
-
-
-
-
-       
-
-
-

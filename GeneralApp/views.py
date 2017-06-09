@@ -88,11 +88,6 @@ class UserFormView(View):
         return render(request, 'GeneralApp/registration.html', {'form': form, 'context': context})
 
 
-'''def tnc(request):
-    template = loader.get_template('GeneralApp/tnc.html')
-    return HttpResponse(template.render(request))'''
-
-
 class Tnc(generic.TemplateView):
     template_name = 'GeneralApp/tnc.html'
 

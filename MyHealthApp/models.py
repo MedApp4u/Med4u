@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from ProfileApp.models import User
 import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
 

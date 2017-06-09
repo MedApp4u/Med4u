@@ -63,9 +63,10 @@ class UserFormView(View):
             user = form.save(commit=False)
 
             # cleaned (normalized) data
-            username1 = form.cleaned_data['username1']
+            username = form.cleaned_data['username']
             password1 = form.cleaned_data['password1']
             password2 = form.cleaned_data['password2']
+            email = form.cleaned_data['email']
             if password1 != password2:
                 context = "Passwords do not match."
                 return render(request, 'GeneralApp/registration.html', {'form': form, 'context': context})
@@ -73,7 +74,7 @@ class UserFormView(View):
             user.save()
 
             # returns User objects if credentials are correct
-            user = authenticate(username=username1, password=password1)
+            user = authenticate(username=username, password=password1)
 
             if user is not None:
                 if user.is_active:

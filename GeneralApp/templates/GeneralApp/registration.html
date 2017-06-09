@@ -1,0 +1,64 @@
+{% extends "GeneralApp/base.html" %}
+{% block title %}GeneralApp | Sign Up{% endblock %}	
+{% load static %}
+
+
+{% block navbar %}
+	<li><a href="#intro">Home</a></li>
+	<li><a href="#service">Service</a></li>
+	<li><a href="#doctor">Doctors</a></li>
+	<li><a href="#facilities">Facilities</a></li>
+	<li><a href="#pricing">Pricing</a></li>
+	<li><a href="{% url 'GeneralApp:login' %}">Sign In</a></li>
+	<li><a href="{% url 'GeneralApp:register' %}" id="active">Sign Up</a></li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
+		<ul class="dropdown-menu">
+			<li><a href="index.html">Home CTA</a></li>
+			<li><a href="index-form.html">Home Form</a></li>
+			<li><a href="index-video.html">Home video</a></li>
+		</ul>
+	</li>
+{% endblock %}
+
+{% block content %}
+
+	<!-- Section: intro -->
+	
+	    <section id="intro" class="intro login-intro">
+			<div class="intro-content sign-up-intro-content">
+				<div class="wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.2s">
+					<div class="container">
+						<div class="row">
+							<!-- <div class="sign-up-img">
+								<img src="{% static 'GeneralApp/css/img/dummy/img-1.png' %}" id="ladki">
+							</div> -->
+							<div class="form-head sign-up-form-head">
+								Sign up for Medicio
+							</div>
+							<div class="form-body sign-up-form-body">
+									<form action="" method="post">
+									{% csrf_token %}
+										<p class="form-label" id="username1">Username</p>
+										{{ form.username1 }}
+										<p class="form-label" id="password1">Password</p>
+										{{ form.password1 }}
+										<p class="form-label" id="password2">Confirm password</p>
+										{{ form.password2 }}
+										<p class="form-label" id="email">Email</p>
+										{{ form.email }}
+										<input type="submit" class="sign-up-btn login-btn btn-skin" value="Sign up" />
+									</form>
+									{% if context != "" %}
+										<p class="form-label" id="sign-up-error">{{ context }}</p>
+									{% else %}
+										<p class="form-label" id="tnc">By clicking on 'Sign Up', you agree to our <a href="{% url 'GeneralApp:tnc' %}">Terms and Conditions</a></p>
+									{% endif %}
+							</div>
+						</div>		
+					</div>		
+				</div>	
+			</div>	
+	    </section>
+
+{% endblock %}

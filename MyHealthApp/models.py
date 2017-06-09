@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.auth.models import User
 from django.db import models
 from ProfileApp.models import User
 import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
+
+
 class Measurement(models.Model):
     blood_pressure = models.CharField(max_length=30)
     blood_sugar = models.CharField(max_length=30)
@@ -14,21 +17,6 @@ class Measurement(models.Model):
     height = models.FloatField()
     weight = models.FloatField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-
-class Procedure(models.Model):
-    name = models.CharField(max_length=30)
-    description = models.CharField(max_length=300)
-    possible_complication = models.CharField(max_length=300)
-    image = models.FileField()
-    video = models.FileField()
-    bodypart = models.ManyToManyField(Bodypart)
-    symptom = models.ManyToManyField(Symptom)
-    medicine = models.ManyToManyField(Medicine)
-
-    def __str__(self):
-        return self.name
-
 
 class Doctor(models.Model):
     SPECIALITY_CHOICE=(
@@ -120,6 +108,18 @@ class Medicine (models.Model):
 
     def __str__(self):
         return self.name
+    
+class Bodypart(models.Model):
+    bodypart= {
+                'head':'head',
+                'middle':'neck, chest or stomach',
+                'down':'thighs and legs',
+              }
+    medicines = models.ManyToManyField(Medicine)
+
+
+    def __str__(self):
+        return self.bodypart
 
 class Appointment(models.Model):
     doctor=models.ForeignKey(Doctor, on_delete=models.CASCADE)
@@ -127,11 +127,11 @@ class Appointment(models.Model):
     #user=models.ForeignKey(User,on_delete=models.CASCADE)
     date = models.DateField(default =datetime.timedelta(days=3))
     time=models.TimeField()
-    #time_start = models.TimeField(blank=True, null=True)
-    #time_end = models.TimeField(blank=True, null=True)
+    """time_start = models.TimeField(blank=True, null=True)
+    time_end = models.TimeField(blank=True, null=True)
 FRONTEND look at this for exit change
-    #[[[https://stackoverflow.com/questions/34841008/django-timefield-format]]]
-
+    [[[https://stackoverflow.com/questions/34841008/django-timefield-format]]]
+"""
     reason = models.TextField()
 
 class Symptom(models.Model):
@@ -151,16 +151,17 @@ class Insurance(models.Model):
 
     def __str__(self):
         return self.insurance_plan
-
-class Bodypart(models.Model):
-    bodypart= {
-                'head':'head',
-                'middle':'neck, chest or stomach',
-                'down':'thighs and legs',
-            }
-    medicines = models.ManyToManyField(Medicine)
-
+    
+class Procedure(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=300)
+    possible_complication = models.CharField(max_length=300)
+    image = models.FileField()
+    video = models.FileField()
+    bodypart = models.ManyToManyField(Bodypart)
+    symptom = models.ManyToManyField(Symptom)
+    medicine = models.ManyToManyField(Medicine)
 
     def __str__(self):
-        return self.bodypart
+        return self.name
 

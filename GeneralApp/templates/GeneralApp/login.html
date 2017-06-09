@@ -24,29 +24,29 @@
 
 	<!-- Section: intro -->
 	
-	    <section id="intro" class="intro">
-			<div class="intro-content">
+	    <section id="intro" class="intro login-intro">
+			<div class="intro-content login-intro-content">
 				<div class="wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.2s">
 					<div class="container">
 						<div class="row">
-							<div class="well well-box-top col-lg-12 col-md-12 col-sm-12", id="form-head">
-								<!-- <div class="rect" id="left-r"></div> -->
-								<strong>Login Form</strong>
-								<!-- <div class="rect" id="right-r"></div> -->
+							<div class="form-head">
+								Sign in to Medicio
 							</div>
-							<div class="well well-trans col-lg-12 col-md-12 col-sm-12" id="form-details">
-								
+							<div class="form-body">
 									<form action="" method="post">
 									{% csrf_token %}
-										<p class="form-label" id="username">Username :</p>
+										<p class="form-label" id="username">Username</p>
 										{{ form.username }}
-										<p class="form-label" id="password">Password :</p>  
+										<p class="form-label" id="password">Password</p>
+										<a href="#">
+											<p class="form-label" id="forgot-password">Forgot password?</p>  
+										</a>
 										{{ form.password }}
-										<!-- <p class="text-right wow bounceIn" data-wow-delay="0.4s"> -->
-										<input type="submit" class="btn btn-skin" value="Sign In" />
-										<!-- </p> -->
+										<input type="submit" class="login-btn btn-skin" value="Sign in" />
 									</form>
-									<p class="form-label" id="error">{{ context }}</p>
+									{% if context != "" %}
+										<p class="form-label" id="error">{{ context }}</p>
+									{% endif %}
 							</div>
 						</div>		
 					</div>		

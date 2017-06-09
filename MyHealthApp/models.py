@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db import models
-from ProfileApp.models import Profile
 from django.conf import settings
 import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -87,7 +86,7 @@ class Doctor(models.Model):
     )
 
     name = models.CharField(max_length=100)
-    mobile = models.PositiveIntegerField(validators=[MaxValueValidator(9999999999), MinValueValidator(1000000000)])
+    mobile = models.BigIntegerField(validators=[MaxValueValidator(9999999999), MinValueValidator(1000000000)])
     description = models.TextField()
     address = models.TextField()
     speciality = models.CharField(max_length=300, choices=SPECIALITY_CHOICE, default="SURGEON")
@@ -130,7 +129,7 @@ class Bodypart(models.Model):
 class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     # mobile = user.(pk=pk).mobile
-    # user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     date = models.DateField(default=datetime.timedelta(days=3))
     time = models.TimeField()
     """time_start = models.TimeField(blank=True, null=True)
@@ -166,7 +165,7 @@ class Procedure(models.Model):
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=300)
     possible_complication = models.CharField(max_length=300)
-    image = models.FileField()
+    image = models.ImageField()
     video = models.FileField()
     bodypart = models.ManyToManyField(Bodypart)
     symptom = models.ManyToManyField(Symptom)

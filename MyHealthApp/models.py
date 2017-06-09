@@ -18,7 +18,7 @@ class Measurement(models.Model):
     cholesterol = models.CharField(max_length=30)
     height = models.FloatField()
     weight = models.FloatField()
-    user = models.ForeignKey(ettings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
 class Doctor(models.Model):
@@ -130,7 +130,7 @@ class Bodypart(models.Model):
 class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     # mobile = user.(pk=pk).mobile
-    # user=models.ForeignKey(ettings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    # user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     date = models.DateField(default=datetime.timedelta(days=3))
     time = models.TimeField()
     """time_start = models.TimeField(blank=True, null=True)

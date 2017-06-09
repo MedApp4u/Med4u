@@ -104,7 +104,7 @@ class Medicine(models.Model):
                               default='s')
     frequency = models.IntegerField()
     # Frontend please write number per day on the side of the frequency field
-    date = models.DateField(default=datetime.date.today())
+    date = models.DateField()
     notes = models.TextField()
     doctors = models.ManyToManyField(Doctor)
 

@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db import models
-from ProfileApp.models import User
+from ProfileApp.models import Profile
+from django.conf import settings
 import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
 
@@ -17,7 +18,7 @@ class Measurement(models.Model):
     cholesterol = models.CharField(max_length=30)
     height = models.FloatField()
     weight = models.FloatField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(ettings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
 class Doctor(models.Model):
@@ -129,7 +130,7 @@ class Bodypart(models.Model):
 class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     # mobile = user.(pk=pk).mobile
-    # user=models.ForeignKey(User,on_delete=models.CASCADE)
+    # user=models.ForeignKey(ettings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     date = models.DateField(default=datetime.timedelta(days=3))
     time = models.TimeField()
     """time_start = models.TimeField(blank=True, null=True)
@@ -155,7 +156,7 @@ class Insurance(models.Model):
     expiry_date = models.DateField
     start_date = models.DateField
     # User_id
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.insurance_plan

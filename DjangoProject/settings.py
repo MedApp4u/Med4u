@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+MEDIA_ROOT = "D:\My Python Programs\Infibeam\DoctorsWebApp\iMAGES"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -85,8 +86,13 @@ DATABASES = {
         'PASSWORD': '123456',
         'HOST': '',
         'PORT': '',
+
+
     }
 }
+
+
+
 
 
 # Password validation

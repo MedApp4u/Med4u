@@ -91,6 +91,8 @@ class Doctor(models.Model):
     address = models.CharField(max_length=1000, default=False)
     speciality = models.CharField(max_length=300, choices=SPECIALITY_CHOICE, default="SURGEON")
     timings = models.CharField(max_length=12, default="06AM to 06PM")
+    image_doc = models.ImageField(upload_to='doctors', null=True)
+
 
     def __str__(self):
         return self.name
@@ -173,3 +175,8 @@ class Procedure(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+
+

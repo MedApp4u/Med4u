@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from rest_framework import serializers
-import .models
+from .models import *
 
 
 
@@ -48,7 +48,7 @@ class ProcedureSerializer(serializers.ModelSerializer):
         
 class AppointmentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Appointmnet
+        model = Appointment
         fields=('doctor','user','date','time',)
 
 

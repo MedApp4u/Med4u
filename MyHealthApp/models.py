@@ -173,3 +173,8 @@ class Procedure(models.Model):
 
     def __str__(self):
         return self.name
+
+class Document(models.Model):
+    doc = models.FileField()
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+

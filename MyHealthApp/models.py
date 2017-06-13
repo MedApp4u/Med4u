@@ -116,12 +116,22 @@ class Medicine_Note(models.Model):
 
 
 class Bodypart(models.Model):
-    bodypart = {
-        'head': 'head',
-        'middle': 'neck, chest or stomach',
-        'down': 'thighs and legs',
-    }
+    BODYPART = (
+        ('head', 'Head'),
+        ('abdomen', 'Abdomen'),
+        ('arms', 'Arms'),
+        ('chest', 'Chest'),
+        ('feet', 'Feet'),
+        ('hands', 'Hands'),
+        ('hips', 'Hips'),
+        ('legs', 'Legs'),
+        ('neck', 'Neck'),
+        ('pelvis', 'Pelvis'),
+        ('shoulder', 'Shoulder'),
+
+    )
     medicine = models.ManyToManyField(Medicine)
+    bodypart = models.CharField(max_length=15, choices=BODYPART, default="head")
 
     def __str__(self):
         return self.bodypart
@@ -150,7 +160,6 @@ class Procedure(models.Model):
     symptom = models.ManyToManyField(Symptom)
     medicine = models.ManyToManyField(Medicine)
     doctor = models.ManyToManyField(Doctor)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.procedure_name
@@ -179,7 +188,7 @@ class Disease(models.Model):
     symptom = models.ManyToManyField(Symptom)
     medicine = models.ManyToManyField(Medicine)
     procedure = models.ManyToManyField(Procedure)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
     def __str__(self):
         return self.disease_name

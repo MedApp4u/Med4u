@@ -5,8 +5,6 @@ from django.contrib import admin
 from ProfileApp.models import Profile
 from MyHealthApp.models import *
 
-# Appointment, Procedure, Insurance, Symptom, 
-
 # Register your models here.
 # class ProfileAdmin(admin.ModelAdmin):
 # 	list_display = ('username', 'email')

@@ -81,7 +81,7 @@ class Doctor(models.Model):
     doctor_address = models.TextField(max_length=1000)
     doctor_speciality = models.CharField(max_length=60, choices=SPECIALITY_CHOICE, default="FAMILY MEDICINE PHYSICIAN")
     doctor_timings = models.CharField(max_length=30, default="06 AM to 06 PM")
-    doctor_pic= models.ImageField() #Insert upload_to
+    doctor_pic= models.ImageField(upload_to="doctors", null=True) #Insert upload_to
 
     def __str__(self):
         return self.doctor_name
@@ -157,7 +157,7 @@ class Procedure(models.Model):
 
 class Procedure_Images(models.Model): #Multi valued attribute
     proc = models.ForeignKey(Procedure, on_delete=models.CASCADE)
-    procedure_image=models.ImageField()
+    procedure_image=models.ImageField(upload_to="procedures", null=True)
 
 class Procedure_Videos(models.Model): #Multi valued attribute
     proc = models.ForeignKey(Procedure, on_delete=models.CASCADE)
@@ -239,6 +239,6 @@ class Insurance(models.Model):
 
 
 class Document(models.Model):
-    doc = models.FileField()
+    doc = models.FileField(upload_to="documents", null=True)
     notes = models.TextField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

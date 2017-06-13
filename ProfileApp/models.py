@@ -10,6 +10,6 @@ class Profile(AbstractUser):
   mobile_no=models.BigIntegerField(validators=[MaxValueValidator(9999999999)])
   blood_group=models.CharField(max_length=5)
   gender=models.CharField(max_length=1)
-  profile_pic=models.ImageField()
+  profile_pic=models.ImageField(upload_to="profile", null=True)
   def __str__(self):
     return self.username

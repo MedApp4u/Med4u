@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-MEDIA_ROOT = "D:\My Python Programs\Infibeam\DoctorsWebApp\iMAGES"
+MEDIA_ROOT = "C:\Users\ab32tx\Desktop\Bits 3-1\Python\DoctorsWebApp\Images"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

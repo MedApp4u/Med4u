@@ -36,6 +36,10 @@ textarea {
   line-height: inherit;
 }
 
+textarea, input {
+	outline: none;
+}
+
 /* ===========
 layout
 ============= */
@@ -1000,8 +1004,8 @@ form.lead label,form.lead input {
 	font-size: 14px;
 }
 
-#id_username1:hover {
-	border: 1px solid red;
+#id_username:focus, #id_username1:focus, #id_password:focus, #id_password1:focus, #id_password2:focus, #id_email:focus {
+	border: 1px solid #3fbbc0;
 }
 
 #username {

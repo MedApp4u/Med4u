@@ -2,10 +2,10 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Measurement,Doctor, Medicine, Bodypart, Appointment, Symptom, Insurance,Procedure   
-from .serializers import DoctorSerializer,MedicineSerializer,MeasurementSerializer, BodypartSerializer, SymptomSerializer , InsuranceSerializer, ProcedureSerializer, AppointmentSerializer
-# Create your views here.
+from .models import Measurement,Doctor,Doctor_Note,Medicine_Note, Medicine, Bodypart, Appointment, Symptom, Insurance,Procedure   
+from .serializers import DoctorSerializer,Doctor_NoteSerializer,Medicine_NoteSerializer,MedicineSerializer,MeasurementSerializer, BodypartSerializer, SymptomSerializer , InsuranceSerializer, ProcedureSerializer, AppointmentSerializer
 
+#Create your views here
 @api_view(['GET','POST'])
 def Doctor_list(request):
     if request.method == 'GET':
@@ -124,4 +124,33 @@ def Procedure_list(request):
             serializer.save()
             return Response (serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
     
+@api_view(['GET','POST'])
+def DoctorNote_list(request):
+    if request.method == 'GET':
+        doctornotes = Doctor_Note.objects.all()
+        serializer = Doctor_NoteSerializer(doctornotes,many=True)
+        return Response(serializer.data)
+
+    elif request.method =='POST':
+        serializer = Doctor_NoteSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response (serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@api_view(['GET','POST'])
+def MedicineNote_list(request):
+    if request.method == 'GET':
+        medicines = Medicine_Note.objects.all()
+        serializer = Medicine_NoteSerializer(medicines,many=True)
+        return Response(serializer.data)
+
+    elif request.method =='POST':
+        serializer = Medicine_NoteSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response (serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -75,16 +75,6 @@ class Doctor(models.Model):
         ('VASCULAR SURGEON', "Vascular surgeon"),
     )
 
-<<<<<<< HEAD
-    name = models.CharField(max_length=100)
-    mobile = models.BigIntegerField(validators=[MaxValueValidator(9999999999), MinValueValidator(1000000000)])
-    description = models.TextField()
-    address = models.CharField(max_length=1000, default=False)
-    speciality = models.CharField(max_length=300, choices=SPECIALITY_CHOICE, default="SURGEON")
-    timings = models.CharField(max_length=12, default="06AM to 06PM")
-    image_doc = models.ImageField(upload_to='doctors', null=True)
-
-=======
     doctor_name = models.CharField(max_length=100)
     doctor_mobile = models.BigIntegerField(validators=[MaxValueValidator(9999999999)])
     doctor_description = models.TextField()
@@ -92,7 +82,6 @@ class Doctor(models.Model):
     doctor_speciality = models.CharField(max_length=60, choices=SPECIALITY_CHOICE, default="FAMILY MEDICINE PHYSICIAN")
     doctor_timings = models.CharField(max_length=30, default="06 AM to 06 PM")
     doctor_pic= models.ImageField() #Insert upload_to
->>>>>>> 6619c1250719b2a0c522746fc3f1a1a8c6381a23
 
     def __str__(self):
         return self.doctor_name
@@ -249,33 +238,7 @@ class Insurance(models.Model):
         return self.insurance_plan
 
 
-<<<<<<< HEAD
-class Procedure(models.Model):
-    name = models.CharField(max_length=30)
-    description = models.CharField(max_length=300)
-    possible_complication = models.CharField(max_length=300)
-    image = models.ImageField()
-    video = models.FileField()
-    bodypart = models.ManyToManyField(Bodypart)
-    symptom = models.ManyToManyField(Symptom)
-    medicine = models.ManyToManyField(Medicine)
-
-    def __str__(self):
-        return self.name
-
-<<<<<<< HEAD
-
-
-
-=======
-class Document(models.Model):
-    doc = models.FileField()
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
->>>>>>> f5ca06b1a97d744630550c5cc4b77bbf3958f4df
-
-=======
 class Document(models.Model):
     doc = models.FileField()
     notes = models.TextField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
->>>>>>> 6619c1250719b2a0c522746fc3f1a1a8c6381a23

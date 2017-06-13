@@ -223,16 +223,7 @@ FRONTEND look at this for exit change
 """
     reason = models.TextField()
     notes = models.TextField()
-
-
-class Measurement(models.Model):
-    blood_pressure = models.CharField(max_length=30)
-    blood_sugar = models.CharField(max_length=30)
-    cholesterol = models.CharField(max_length=30)
-    height = models.FloatField()
-    weight = models.FloatField()
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-
+    
 
 class Insurance(models.Model):
     insurance_plan = models.CharField(max_length=500)

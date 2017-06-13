@@ -82,6 +82,7 @@ class Doctor(models.Model):
     doctor_speciality = models.CharField(max_length=60, choices=SPECIALITY_CHOICE, default="FAMILY MEDICINE PHYSICIAN")
     doctor_timings = models.CharField(max_length=30, default="06 AM to 06 PM")
     doctor_pic= models.ImageField(upload_to="doctors", null=True) #Insert upload_to
+    user = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
     def __str__(self):
         return self.doctor_name
@@ -105,6 +106,8 @@ class Medicine(models.Model):
     overdose_instructions = models.TextField()
     possible_sideeffects = models.TextField()
     brand_names = models.TextField()
+    user = models.ManyToManyField(settings.AUTH_USER_MODEL)
+
 
     def __str__(self):
         return self.medicine_name
@@ -205,8 +208,8 @@ class Measurement(models.Model):
     cholesterol = models.CharField(max_length=30)
     height = models.FloatField(null=True)
     weight = models.FloatField(null=True)
-    date = models.DateField(auto_now_add=True)
-    notes = models.TextField()
+    date = models.DateField(default=datetime.date.today)
+    notes = models.TextField(null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 

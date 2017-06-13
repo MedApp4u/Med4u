@@ -145,7 +145,6 @@ class Symptom(models.Model):
     symptom_description = models.TextField()
     tests = models.TextField()
     bodypart = models.ManyToManyField(Bodypart)
-    medicine = models.ManyToManyField(Medicine)
     
     def __str__(self):
         return self.symptom_name

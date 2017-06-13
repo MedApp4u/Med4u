@@ -1000,6 +1000,10 @@ form.lead label,form.lead input {
 	font-size: 14px;
 }
 
+#id_username1:hover {
+	border: 1px solid red;
+}
+
 #username {
 	top: 110px;
 }

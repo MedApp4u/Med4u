@@ -26,7 +26,7 @@ SECRET_KEY = 'j23onn0g#5+d761e%&sq^h@t-14hr+hjmu3+7-ov@ji)z!r-fa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [u'192.168.10.15',u'127.0.0.1',u'192.168.1.104',u'192.168.10.16', u'192.168.10.20',u'192.168.10.25']
 
 
 # Application definition
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'ProfileApp',    
     'GeneralApp',
     'MyHealthApp',
-    
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

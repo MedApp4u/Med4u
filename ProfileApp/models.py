@@ -12,4 +12,4 @@ class Profile(AbstractUser):
   blood_group=models.CharField(max_length=5, null=True)
   gender=models.CharField(max_length=1, null=True)
   def __str__(self):
-    return self.name
+    return self.username

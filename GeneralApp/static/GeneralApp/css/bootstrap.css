@@ -1,0 +1,12 @@
+.container {
+	margin-left: 40px;
+	margin-right: -400px;
+}
+
+.container > .navbar-collapse {
+	margin-right: -29%;
+}
+
+.link-item {
+	padding: 0px;
+}

@@ -1,6 +1,6 @@
 {% extends "GeneralApp/base.html" %}
-{% block title %}GeneralApp | Sign In{% endblock %}	
-
+{% block title %}GeneralApp | Dashboard{% endblock %}	
+{% load static %}
 
 {% block navbar %}
 	<li><a href="#intro">Home</a></li>
@@ -16,6 +16,25 @@
 			<li><a href="index.html">Home CTA</a></li>
 			<li><a href="index-form.html">Home Form</a></li>
 			<li><a href="index-video.html">Home video</a></li>
+		</ul>
+	</li>
+	<li class="user_icon_item">
+		<img src="{% static 'GeneralApp/css/img/icons/user.png' %}" class="user_icon" />
+	</li>
+	<li class="dropdown">
+		<a href="#" id="user_icon_name" class="dropdown-toggle" data-toggle="dropdown">{{ current_user }} <b class="caret"></b></a>
+		<ul class="dropdown-menu profile-slider-body">
+			<li class="list-item">
+				<div class="profile-slider-top">
+					<div class="profile-slider-circle">
+						<img src="{% static 'GeneralApp/css/img/icons/test.png' %}" class="profile-slider-image" />
+					</div>
+				</div>
+				<div class="profile-slider-bottom">
+					<p class="profile-slider-username">Welcome, {{ current_user}}</p>
+					<!-- <a href="{% url 'logout' %}">Logout</a> -->
+				</div>
+			</li>
 		</ul>
 	</li>
 {% endblock %}

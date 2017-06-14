@@ -8,8 +8,6 @@
 	<li><a href="#doctor">Doctors</a></li>
 	<li><a href="#facilities">Facilities</a></li>
 	<li><a href="#pricing">Pricing</a></li>
-	<li><a id="active" href="{% url 'GeneralApp:login' %}">Sign In</a></li>
-	<li><a href="{% url 'GeneralApp:register' %}">Sign Up</a></li>
 	<li class="dropdown">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
 		<ul class="dropdown-menu">
@@ -27,12 +25,42 @@
 			<li class="list-item">
 				<div class="profile-slider-top">
 					<div class="profile-slider-circle">
-						<img src="{% static 'GeneralApp/css/img/icons/test.png' %}" class="profile-slider-image" />
+						<img src="{% static 'GeneralApp/css/img/icons/pikachu.png' %}" class="profile-slider-image" />
 					</div>
 				</div>
 				<div class="profile-slider-bottom">
 					<p class="profile-slider-username">Welcome, {{ current_user}}</p>
-					<a href="{% url 'ProfileApp:logout' %}">Logout</a>
+					<div class="profile-slider-rectangle" id="long"></div>
+					<div class="profile-slider-rectangle" id="short"></div>
+					<a href="#"" class="profile-slider-link">
+						<div class="profile-slider-icon" id="change_password">
+							<img src="{% static 'GeneralApp/css/img/icons/padlock.png' %}" id="padlock" />
+							<div class="profile-slider-icon-separator"></div>
+							<p class="profile-slider-icon-text">Change password</p>
+						</div>
+					</a>
+					<a href="#"" class="profile-slider-link">
+						<div class="profile-slider-icon" id="view_profile">
+							<img src="{% static 'GeneralApp/css/img/icons/document.png' %}" id="padlock" />
+							<div class="profile-slider-icon-separator"></div>
+							<p class="profile-slider-icon-text">View Profile</p>
+						</div>
+					</a>
+					<a href="#"" class="profile-slider-link">
+						<div class="profile-slider-icon" id="edit_profile">
+							<img src="{% static 'GeneralApp/css/img/icons/pen.png' %}" id="padlock" />
+							<div class="profile-slider-icon-separator"></div>
+							<p class="profile-slider-icon-text">Edit Profile</p>
+						</div>
+					</a>
+					<a href="{% url 'ProfileApp:logout' %}" class="profile-slider-link">
+						<div class="profile-slider-icon" id="logout">
+							<img src="{% static 'GeneralApp/css/img/icons/logout.png' %}" id="padlock" />
+							<div class="profile-slider-icon-separator"></div>
+							<p class="profile-slider-icon-text">Logout</p>
+						</div>
+					</a>
+					<!-- <a href="{% url 'ProfileApp:logout' %}">Logout</a> -->
 				</div>
 			</li>
 		</ul>
@@ -48,12 +76,7 @@
 				<div class="wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.2s">
 					<div class="container">
 						<div class="row">
-							<div class="form-head login-form-head">
-								Sign in to Medicio
-							</div>
-							<div class="form-body login-form-body">
-								
-							</div>
+							
 						</div>		
 					</div>		
 				</div>	

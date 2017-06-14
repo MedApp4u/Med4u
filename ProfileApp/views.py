@@ -7,6 +7,7 @@ from django.shortcuts import render
 from .forms import *
 from django.template import loader
 from django.views import generic
+from django.contrib.auth.decorators import login_required 
 # Create your views here.
 
 

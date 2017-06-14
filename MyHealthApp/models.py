@@ -87,6 +87,12 @@ class Doctor(models.Model):
     def __str__(self):
         return self.doctor_name
 
+    def __iter__(self):
+        return self
+
+    def next(self):
+        raise StopIteration
+
 
 class Doctor_Note(models.Model):
     doctor_note = models.TextField()

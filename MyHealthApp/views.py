@@ -54,7 +54,7 @@ def Appointment_list(request):
 @api_view(['GET','POST'])
 def Symptom_list(request):
     if request.method == 'GET':
-        symptoms = Symptoms.objects.all()
+        symptoms = Symptom.objects.all()
         serializer = SymptomSerializer(symptoms,many=True)
         return Response(serializer.data)
 

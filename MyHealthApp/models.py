@@ -87,6 +87,10 @@ class Doctor(models.Model):
     def __str__(self):
         return self.doctor_name
 
+    def __iter__(self): 
+        return [field.value_to_string(self) for field in Doctor._meta.fields]
+
+
 class Doctor_Note(models.Model):
     doctor_note = models.TextField()
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
@@ -210,6 +214,8 @@ class Measurement(models.Model):
     date = models.DateField(default=datetime.date.today)
     notes = models.TextField(null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    def __iter__(self): 
+        return [ self.blood_pressure, self.blood_sugar, self.cholesterol, self.height, self.weight, self.date, self.notes, self.user ]
 
 
 class Appointment(models.Model):

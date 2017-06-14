@@ -99,3 +99,7 @@ class Tnc(generic.TemplateView):
 
 class AboutUs(generic.TemplateView):
     template_name = 'GeneralApp/about.html'
+
+def dashboard(request):
+    current_user = request.user
+    return render(request, 'GeneralApp/dashboard.html', {'current_user': current_user})

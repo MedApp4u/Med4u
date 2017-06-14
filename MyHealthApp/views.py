@@ -84,7 +84,7 @@ def Bodypart_list(request):
 @api_view(['GET','POST'])
 def Measurement_list(request):
     if request.method == 'GET':
-        measurements = Measurment.objects.all()
+        measurements = Measurement.objects.all()
         serializer = MeasurementSerializer(measurements,many=True)
         return Response(serializer.data)
 

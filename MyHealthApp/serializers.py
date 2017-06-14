@@ -32,7 +32,7 @@ class MedicineSerializer(serializers.ModelSerializer):
     doctor =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
     class Meta:
         model = Medicine
-        fields=('medicine_name','dosage_amt','method','frequency','medicine_date','doctor','usage_instructions','overdose_instructions','possible_sideeffects','brand_names')
+        fields=('medicine_name','dosage_amt','method','frequency','medicine_date','doctor','usage_instructions','overdose_instructions','possible_sideeffects','brand_names','user')
 
 class Medicine_NoteSerializer(serializers.ModelSerializer):
     user =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
@@ -49,11 +49,11 @@ class BodypartSerializer(serializers.ModelSerializer):
 
         
 class SymptomSerializer(serializers.ModelSerializer):
-    medicine = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    # medicine = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     bodypart = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Symptom
-        fields=('symptom_name','bodypart','medicine','symptom_description','tests')
+        fields=('symptom_name','bodypart','symptom_description','tests')
 
 
 

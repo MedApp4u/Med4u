@@ -20,7 +20,7 @@ class Doctor_NoteSerializer(serializers.ModelSerializer):
 class MedicineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Medicine
-        fields=('medicine_name','dossage_amt','method','frequency','medicine_date','doctor','usage_instructions','overdose_instructions','possible_sideeffects','brand_names')
+        fields=('medicine_name','dosage_amt','method','frequency','medicine_date','doctor','usage_instructions','overdose_instructions','possible_sideeffects','brand_names')
 
 class Medicine_NoteSerializer(serializers.ModelSerializer):
     class Meta:

@@ -64,7 +64,7 @@ class Symptom_VideosSerializer(serializers.ModelSerializer):
         fields=('symptom','symptom_video')
 
 class InsuranceSerializer(serializers.ModelSerializer):
-    user =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
+    user =  serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Insurance
         fields=('insurance_plan','expiry_date','start_date','user')
@@ -135,8 +135,8 @@ class MeasurementSerializer(serializers.ModelSerializer):
                 
                 
 class AppointmentSerializer(serializers.ModelSerializer):
-    doctor =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
-    user =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
+    doctor =  serializers.PrimaryKeyRelatedField(many =False,read_only=True)
+    user =  serializers.PrimaryKeyRelatedField(many =False,read_only=True)
     class Meta:
         model = Appointment
         fields=('doctor','user','date','time','reason','notes')

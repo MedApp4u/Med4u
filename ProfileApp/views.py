@@ -52,5 +52,11 @@ class ViewProfile(View):
         # else:
         #     context = "Please select a unique username."
 
-        # return render(request, 'GeneralApp/registration.html', {'form': form, 'context': context})
+        # return render(request, 'GeneralApp/registration.html', {'form': form, 'context': context})git 
 
+@login_required
+def LogoutProfile(request):
+    # Since we know the user is logged in, we can now just log them out.
+    logout(request)
+    # Take the user back to the homepage.
+    return HttpResponseRedirect('/')

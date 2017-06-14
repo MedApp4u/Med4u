@@ -11,5 +11,9 @@ class Profile(AbstractUser):
   blood_group=models.CharField(max_length=5, null=True)
   gender=models.CharField(max_length=1, null=True)
   profile_pic=models.ImageField(upload_to="profile", null=True)
+
   def __str__(self):
     return self.username
+
+  def __iter__(self): 
+    return [field.value_to_string(self) for field in Profile._meta.fields]

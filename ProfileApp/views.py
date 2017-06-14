@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -18,12 +17,12 @@ class ViewProfile(View):
     def get(self, request):
         form = self.form_class(None)
         context = ""
-        return render(request, 'ProfileApp/view_profile.html', {'form': form, 'context': context})
+        return render(request, 'view_profile.html', {'form': form, 'context': context})
 
     def post(self, request):
         form = self.form_class(request.POST)
         context = ""
-        return render(request, 'ProfileApp/view_profile.html', {'form': form, 'context': context})
+        return render(request, 'view_profile.html', {'form': form, 'context': context})
 
 
         # if form.is_valid():

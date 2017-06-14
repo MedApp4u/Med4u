@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('GeneralApp.urls', namespace="GeneralApp")), 
     url(r'^', include('MyHealthApp.urls', namespace="MyHealthApp")), 
+    url(r'^', include('ProfileApp.urls', namespace="ProfileApp")), 
+
 ]

@@ -37,7 +37,7 @@ class LoginFormView(View):
 
             if user.is_active:
                 login(request, user)
-                return HttpResponse("Congrats! You are logged in!")
+                return redirect('/dashboard')
             else:
                 context = "User is banned"
         else:

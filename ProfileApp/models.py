@@ -15,5 +15,8 @@ class Profile(AbstractUser):
   def __str__(self):
     return self.username
 
-  def __iter__(self): 
-    return [field.value_to_string(self) for field in Profile._meta.fields]
+  def __iter__(self):
+    return self
+
+  def next(self):
+    raise StopIteration

@@ -154,3 +154,13 @@ def MedicineNote_list(request):
             serializer.save()
             return Response (serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# def get(self, request, *args, **kwargs):
+# return self.retrieve(request, *args, **kwargs)
+
+# def put(self, request, *args, **kwargs):
+#     return self.update(request, *args, **kwargs)
+
+# def delete(self, request, *args, **kwargs):
+#     return self.destroy(request, *args, **kwargs)

@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
 from django.shortcuts import render
 from .forms import LoginForm, UserForm
 from django.template import loader
 from django.views import generic
+from ProfileApp.views import LogoutProfile
 
 
 # Create your views here.
@@ -102,4 +103,10 @@ class AboutUs(generic.TemplateView):
 
 def dashboard(request):
     current_user = request.user
+    if not request.user.is_authenticated:
+        return redirect('/')
+    if request.user.get_username() == '':
+        context = "Please log in first."
+        return render(request, 'login.html', {'context': context})
+        # Context is not showing up, see if need to import views/urls in ProfileApp
     return render(request, 'GeneralApp/dashboard.html', {'current_user': current_user})

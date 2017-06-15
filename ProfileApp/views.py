@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.views.generic import View
 from django.template import loader
 from django.views import generic
@@ -86,9 +86,9 @@ def change_password(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request,form.user)
-            return redirect('view_profile')
+            return HttpResponseRedirect('/view_profile/')
         else:
-            return redirect('change_password')
+            return HttpResponseRedirect('/change_password/')
     else:
         form=PasswordChangeForm(user=request.user)
         context={'form':form}

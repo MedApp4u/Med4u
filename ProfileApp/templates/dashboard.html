@@ -1,5 +1,5 @@
-{% extends "GeneralApp/base.html" %}
-{% block title %}GeneralApp | Dashboard{% endblock %}	
+{% extends "base.html" %}
+{% block title %}ProfileApp | Dashboard{% endblock %}	
 {% load static %}
 
 {% block navbar %}
@@ -17,7 +17,7 @@
 		</ul>
 	</li>
 	<li class="user_icon_item">
-		<img src="{% static 'GeneralApp/css/img/icons/user.png' %}" class="user_icon" />
+		<img src="{% static 'ProfileApp/css/img/icons/user.png' %}" class="user_icon" />
 	</li>
 	<li class="dropdown">
 		<a href="#" id="user_icon_name" class="dropdown-toggle" data-toggle="dropdown">{{ current_user }} <b class="caret"></b></a>
@@ -26,10 +26,10 @@
 				<div class="profile-slider-top">
 					<div class="profile-slider-circle" id="circle">
 						<div class="profile-slider-image-cover">
-							<img src="{% static 'GeneralApp/css/img/icons/upload-light.png' %}"></img>
+							<img src="{% static 'ProfileApp/css/img/icons/upload-light.png' %}"></img>
 							<p>Upload image</p>
 						</div>
-						<img src="{% static 'GeneralApp/css/img/icons/pikachu.png' %}" class="profile-slider-image" />
+						<img src="{% static 'ProfileApp/css/img/icons/pikachu.png' %}" class="profile-slider-image" />
 					</div>
 				</div>
 				<div class="profile-slider-bottom">
@@ -38,28 +38,28 @@
 					<div class="profile-slider-rectangle" id="short"></div>
 					<a href="#"" class="profile-slider-link">
 						<div class="profile-slider-icon" id="change_password">
-							<img src="{% static 'GeneralApp/css/img/icons/padlock.png' %}" id="padlock" />
+							<img src="{% static 'ProfileApp/css/img/icons/padlock.png' %}" id="padlock" />
 							<div class="profile-slider-icon-separator"></div>
 							<p class="profile-slider-icon-text">Change password</p>
 						</div>
 					</a>
 					<a href="#"" class="profile-slider-link">
 						<div class="profile-slider-icon" id="view_profile">
-							<img src="{% static 'GeneralApp/css/img/icons/document.png' %}" id="padlock" />
+							<img src="{% static 'ProfileApp/css/img/icons/document.png' %}" id="padlock" />
 							<div class="profile-slider-icon-separator"></div>
 							<p class="profile-slider-icon-text">View Profile</p>
 						</div>
 					</a>
 					<a href="#"" class="profile-slider-link">
 						<div class="profile-slider-icon" id="edit_profile">
-							<img src="{% static 'GeneralApp/css/img/icons/pen.png' %}" id="padlock" />
+							<img src="{% static 'ProfileApp/css/img/icons/pen.png' %}" id="padlock" />
 							<div class="profile-slider-icon-separator"></div>
 							<p class="profile-slider-icon-text">Edit Profile</p>
 						</div>
 					</a>
 					<a href="{% url 'ProfileApp:logout' %}" class="profile-slider-link">
 						<div class="profile-slider-icon" id="logout">
-							<img src="{% static 'GeneralApp/css/img/icons/logout.png' %}" id="padlock" />
+							<img src="{% static 'ProfileApp/css/img/icons/logout.png' %}" id="padlock" />
 							<div class="profile-slider-icon-separator"></div>
 							<p class="profile-slider-icon-text">Logout</p>
 						</div>

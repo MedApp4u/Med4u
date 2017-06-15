@@ -102,11 +102,16 @@ class AboutUs(generic.TemplateView):
     template_name = 'GeneralApp/about.html'
 
 def dashboard(request):
+    form_class = LoginForm
+    form = form_class(None)
+    
     current_user = request.user
     if not request.user.is_authenticated:
-        return redirect('/')
+        context = "Please log in first."
+        return render(request, 'GeneralApp/login.html', {'form': form, 'context': context})
+        # return redirect('/')
     if request.user.get_username() == '':
         context = "Please log in first."
-        return render(request, 'login.html', {'context': context})
+        return render(request, 'GeneralApp/login.html', {'context': context})
         # Context is not showing up, see if need to import views/urls in ProfileApp
     return render(request, 'GeneralApp/dashboard.html', {'current_user': current_user})

@@ -94,6 +94,7 @@ class UserFormView(View):
     return HttpResponse(template.render(request))'''
 
 
+
 class Tnc(generic.TemplateView):
     template_name = 'GeneralApp/tnc.html'
 

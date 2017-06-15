@@ -3,11 +3,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
-from django.shortcuts import render
 from .forms import *
 from django.template import loader
 from django.views import generic
 from django.contrib.auth.decorators import login_required 
+from GeneralApp.forms import LoginForm
 # Create your views here.
 
 
@@ -61,3 +61,18 @@ def LogoutProfile(request):
     logout(request)
     # Take the user back to the homepage.
     return HttpResponseRedirect('/')
+
+def dashboard(request):
+    form_class = LoginForm
+    form = form_class(None)
+    
+    current_user = request.user
+    if not request.user.is_authenticated:
+        context = "Please log in first."
+        return render(request, 'GeneralApp/login.html', {'form': form, 'context': context})
+        # return redirect('/')
+    if request.user.get_username() == '':
+        context = "Please log in first."
+        return render(request, 'GeneralApp/login.html', {'context': context})
+        # Context is not showing up, see if need to import views/urls in ProfileApp
+    return render(request, 'dashboard.html', {'current_user': current_user})

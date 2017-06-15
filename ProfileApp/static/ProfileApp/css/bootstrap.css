@@ -1,0 +1,9 @@
+.container {
+	margin-left: 40px;
+	margin-right: -400px;
+}
+
+.container > .navbar-collapse {
+	margin-right: -25%;
+}
+

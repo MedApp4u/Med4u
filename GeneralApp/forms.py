@@ -32,3 +32,4 @@ class UserForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['username', 'password1', 'password2', 'email']
+

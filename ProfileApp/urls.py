@@ -22,5 +22,6 @@ urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^view_profile/$',views.ViewProfile.as_view(),name='view_profile'),
     url(r'dashboard/', views.dashboard, name='dashboard'),
+    url(r'^change_password/$',views.change_password,name='change_password'),
     url(r'^logout/$',views.LogoutProfile,name='logout'),
 ]

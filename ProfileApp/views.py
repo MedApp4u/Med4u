@@ -3,11 +3,13 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
-from .forms import *
 from django.template import loader
 from django.views import generic
 from django.contrib.auth.decorators import login_required 
 from GeneralApp.forms import LoginForm
+from .forms import *
+from django.contrib.auth.forms import PasswordChangeForm
+
 # Create your views here.
 
 
@@ -76,3 +78,18 @@ def dashboard(request):
         return render(request, 'GeneralApp/login.html', {'context': context})
         # Context is not showing up, see if need to import views/urls in ProfileApp
     return render(request, 'dashboard.html', {'current_user': current_user})
+
+def change_password(request):
+    if request.method=='POST':
+        form=PasswordChangeForm(data=request.POST,user=request.user)
+
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request,form.user)
+            return redirect('view_profile')
+        else:
+            return redirect('change_password')
+    else:
+        form=PasswordChangeForm(user=request.user)
+        context={'form':form}
+        return render(request,'change_password.html',context)

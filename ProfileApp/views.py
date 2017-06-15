@@ -64,6 +64,7 @@ def LogoutProfile(request):
     # Take the user back to the homepage.
     return HttpResponseRedirect('/')
 
+@login_required
 def dashboard(request):
     form_class = LoginForm
     form = form_class(None)

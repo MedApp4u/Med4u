@@ -681,7 +681,7 @@ hr.bold {
 
 
 .profile-slider-body {
-	display: inline-block;
+	/*display: inline-block;*/
 	width: 400px;
 	height: 800px;
 	padding: 0px;

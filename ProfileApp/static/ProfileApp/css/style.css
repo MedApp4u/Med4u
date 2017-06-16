@@ -1012,6 +1012,91 @@ hr.bold {
 	background-size: 1366px 768px;
 }
 
+/* ---- View Profile ----- */
+
+.vp-intro-content {
+	height: 100%;
+	background: white;
+	padding: 0px;	
+}
+
+.vp-form-head {
+	background: #3fbbc0;
+	position: absolute;
+	top: 81px;
+	width: 100%;
+	height: 100px;
+	margin-left: -40px;
+}
+
+.vp-form-icon, .vp-form-icon-separator, .vp-form-icon-text {
+	float: left;
+}
+
+.vp-form-icon {
+	position: relative;
+	top: 50%;
+	left: 5%;
+	width: 50px;
+	height: 50px;
+	margin: -25px 0 0 -25px;
+}
+
+.vp-form-icon-separator {
+	position: relative;
+	bottom: -50%;
+	right: -6.5%;
+	width: 2.5px;
+	height: 64px;
+	margin: -32px 0 0 -1.25px;
+	background-color: #222;
+}
+
+.vp-form-icon-text {
+	position: relative;
+	top: 50%;
+	left: 16%;
+	width: 250px;
+	height: 50px;
+	line-height: 50px;
+	margin: -25px 0 0 -125px;
+	color: white;
+	font-size: 28px;
+	text-transform: uppercase;
+	font-weight: 800;
+	text-align: center;
+	font-variant: small-caps;
+	letter-spacing: 1px;
+}
+
+.vp-form-body {
+	background: white;
+	position: absolute;
+	top: 181px;
+	width: 100%;
+	height: 580px;
+	margin-left: -40px;
+}
+
+.vp-form-body-label {
+	position: relative;
+	top: 9%;
+	left: 6%;
+	margin: 0;
+	font-weight: 700;
+	color: #222;
+}
+
+.vp-form-field {
+	position: absolute;
+	top: 15%;
+	left: 6%;
+	margin: 0;
+	padding: 0;
+}
+
+/* ----------------------- */
+
 .intro-content.intro-nobg {
 	background:#fff;
 	position:relative;

@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.views.generic import View
@@ -22,17 +22,11 @@ from .models import Profile
 #     user = User.objects.get(username=username)
 #     return render(request, '<app_name>/user_profile.html', {"user":user})
 
-@login_required
-def ViewProfile(request):
-    context = ""
 
-    if request.method == 'GET':
-        profile = Profile.objects.get(username=request.user.username)
-        return render(request, 'view_profile.html', {'profile': profile, 'context': context, 'current_user': request.user})
-
-    if request.method == 'POST':
-        return render(request, 'view_profile.html', {'profile': profile, 'context': context})
-
+# def bound_form(request, id):
+#     item = get_object_or_404(Item, id=id)
+#     form = ItemForm(instance=item)
+#     return render_to_response('bounded_form.html', {'form': form})
 
 
 # class ViewProfile(View):
@@ -64,20 +58,30 @@ def ViewProfile(request):
 #     return render(request, 'howdidu/register_profile.html', {'form': form})
 
 @login_required
-def EditProfile(request):
-    profile=Profile.objects.get(username=request.user.username)
-    form = ProfileForm(request.POST)
+def ViewProfile(request):
     context = ""
-    if request.method=='POST':
+
+    if request.method == 'GET':
+        profile = Profile.objects.get(username=request.user.username)
+        form = ProfileForm(instance=profile)
+        return render_to_response('view_profile.html', {'form': form, 'context': context, 'current_user': request.user})
+
+    if request.method == 'POST':
+        profile=Profile.objects.get(username=request.user.username)
+        form = ProfileForm(request.POST)
+        context = ""
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/view_profile/')
         else:
             print form.errors
-            return render(request, 'edit_profile.html', {'form': form, 'context': context})
-    else:
-        context='get request'
-        return render(request, 'edit_profile.html', {'form': form, 'context': context})
+            return render(request, 'view_profile.html', {'form': form, 'context': context, 'current_user': request.user})
+
+
+
+# @login_required
+# def EditProfile(request):
+   
 # class EditProfile(View):
 #     context = ""
 #     form_class = ProfileForm

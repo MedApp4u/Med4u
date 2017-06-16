@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'measurements_api/', views.Measurement_list, name='measurements_api'),
     url(r'insurances_api/', views.Insurance_list, name='insurances_api'),
     url(r'procedures_api/', views.Procedure_list, name='procedures_api'),
+    url(r'view_insurance/', views.ViewInsurance, name='view_insurance'),
     url(r'^profile/(?P<pk>[0-9]+)/$',views.Profile_show.as_view()),
   
 ]

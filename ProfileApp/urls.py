@@ -21,7 +21,7 @@ urlpatterns = [
     # url(r'^reset_password/complete$',password_reset_complete,name='password_reset_complete'),
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^view_profile/$',views.ViewProfile,name='view_profile'),
-    url(r'^edit_profile/$',views.EditProfile,name='edit_profile'),
+    # url(r'^edit_profile/$',views.EditProfile,name='edit_profile'),
     url(r'dashboard/', views.dashboard, name='dashboard'),
     url(r'^change_password/$',views.change_password,name='change_password'),
     url(r'^logout/$',views.LogoutProfile,name='logout'),

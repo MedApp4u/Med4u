@@ -45,7 +45,7 @@ def Medicine_list(request):
 '''
 
 class Medicine_list(generics.ListCreateAPIView):
-    permission_classes(IsAuthenticated,)
+    # permission_classes(IsAuthenticated,)
     queryset = Medicine.objects.all()
     serializer_class=MedicineSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)

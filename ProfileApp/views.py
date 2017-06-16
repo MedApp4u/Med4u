@@ -28,7 +28,7 @@ def ViewProfile(request):
 
     if request.method == 'GET':
         profile = Profile.objects.get(username=request.user.username)
-        return render(request, 'view_profile.html', {'profile': profile, 'context': context})
+        return render(request, 'view_profile.html', {'profile': profile, 'context': context, 'current_user': request.user})
 
     if request.method == 'POST':
         return render(request, 'view_profile.html', {'profile': profile, 'context': context})

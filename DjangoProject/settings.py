@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'MyHealthApp',
     'rest_framework',
     'django_cleanup',
+    'django_filters'
 ]
 
 MIDDLEWARE = [

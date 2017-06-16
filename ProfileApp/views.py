@@ -81,8 +81,9 @@ def dashboard(request):
     return render(request, 'dashboard.html', {'current_user': current_user})
 
 def change_password(request):
+    current_user = request.user
     if request.method=='POST':
-        form=PasswordChangeForm(data=request.POST,user=request.user)
+        form = PasswordChangeForm(data=request.POST, user=request.user)
 
         if form.is_valid():
             form.save()
@@ -92,5 +93,5 @@ def change_password(request):
             return HttpResponseRedirect('/change_password/')
     else:
         form=PasswordChangeForm(user=request.user)
-        context={'form':form}
-        return render(request,'change_password.html',context)
+        context={'form': form, 'current_user': current_user}
+        return render(request,'change-password.html',context)

@@ -681,7 +681,7 @@ hr.bold {
 
 
 .profile-slider-body {
-	display: inline-block;
+	/*display: inline-block;*/
 	width: 400px;
 	height: 800px;
 	padding: 0px;
@@ -1006,6 +1006,12 @@ hr.bold {
 	height: 100%;
 }
 
+.change-password-intro-content {
+	background: url(img/dummy/bg3.jpg);
+	height: 100%;
+	background-size: 1366px 768px;
+}
+
 .intro-content.intro-nobg {
 	background:#fff;
 	position:relative;
@@ -1173,6 +1179,16 @@ form.lead label,form.lead input {
 	font-size: 23px;
 }
 
+
+.cp-form-head {
+	top: -10px;
+	left: 37%;
+	width: 30%;
+	margin-left: -15%;
+	font-size: 23px;
+}
+
+
 .sign-up-form-head {
 	top: -40px;
 	left: 68%;
@@ -1196,6 +1212,14 @@ form.lead label,form.lead input {
 	margin-left: -14%;
 }
 
+.cp-form-body {
+	top: -10px;
+	left: 37%;
+	height: 475px;
+	width: 30%;
+	margin-left: -15%;
+}
+
 .sign-up-form-body {
 	top: -40px;
 	left: 68%;
@@ -1212,7 +1236,7 @@ form.lead label,form.lead input {
 	font-size: 14px;
 }
 
-#id_username, #id_username1, #id_password, #id_password1, #id_password2, #id_email {
+#id_username, #id_username1, #id_password, #id_password1, #id_password2, #id_email, #id_old_password, #id_new_password1, #id_new_password2 {
 	position: absolute;
 	left: 50%;
 	height: 34px;
@@ -1226,7 +1250,7 @@ form.lead label,form.lead input {
 	font-size: 14px;
 }
 
-#id_username:focus, #id_username1:focus, #id_password:focus, #id_password1:focus, #id_password2:focus, #id_email:focus {
+#id_username:focus, #id_username1:focus, #id_password:focus, #id_password1:focus, #id_password2:focus, #id_email:focus, #id_old_password:focus, #id_new_password1:focus, #id_new_password2:focus {
 	border: 1px solid #3fbbc0;
 }
 
@@ -1238,6 +1262,11 @@ form.lead label,form.lead input {
 	top: 110px;
 }
 
+#old_password {
+	top: 110px;
+	left: 23%;
+}
+
 #id_username {
 	top: 154px;
 }
@@ -1246,12 +1275,23 @@ form.lead label,form.lead input {
 	top: 154px;
 }
 
+#id_old_password {
+	top: 154px;
+	width: 54%;
+	margin-left: -27%;
+}
+
 #password {
 	top: 200px;
 }
 
 #password1 {
 	top: 190px;
+}
+
+#new_password1 {
+	top: 200px;
+	left: 23%;
 }
 
 #forgot-password {
@@ -1265,6 +1305,12 @@ form.lead label,form.lead input {
 	top: 244px;
 }
 
+#id_new_password1 {
+	top: 244px;
+	width: 54%;
+	margin-left: -27%;
+}
+
 #id_password1 {
 	top: 234px;
 }
@@ -1273,8 +1319,19 @@ form.lead label,form.lead input {
 	top: 270px;
 }
 
+#new_password2 {
+	top: 290px;
+	left: 23%;
+}
+
 #id_password2 {
 	top: 314px;
+}
+
+#id_new_password2 {
+	top: 334px;
+	width: 54%;
+	margin-left: -27%;
 }
 
 #email {
@@ -1285,7 +1342,7 @@ form.lead label,form.lead input {
 	top: 394px;
 }
 
-#login-error, #sign-up-error, #tnc {
+#login-error, #sign-up-error, #cp-error, #tnc {
 	left: 50%;
 	width: 100%;
 	height: 50px;
@@ -1304,6 +1361,10 @@ form.lead label,form.lead input {
 
 #sign-up-error {
 	top: 495px;
+}
+
+#cp-error {
+	top: 448px;
 }
 
 #tnc {
@@ -2105,6 +2166,10 @@ a.scrollup i:hover {
 	font-weight: 600;
 	border-style: solid;
 	border-radius: 4px;
+}
+
+.cp-btn {
+	top: 395px;
 }
 
 .sign-up-btn {

@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from GeneralApp.forms import LoginForm
 from .forms import *
 from django.contrib.auth.forms import PasswordChangeForm
-from .models import
+from .models import Profile
 
 # Create your views here.
 
@@ -23,17 +23,29 @@ from .models import
 #     return render(request, '<app_name>/user_profile.html', {"user":user})
 
 @login_required
-class ViewProfile(View):
+def ViewProfile(request):
     context = ""
-    user = Profile.objects.get(user=request.user)
 
-    def get(self, request):
-        context = ""
-        return render(request, 'view_profile.html', {'user': user, 'context': context})
+    if request.method == 'GET':
+        profile = Profile.objects.get(username=request.user.username)
+        return render(request, 'view_profile.html', {'profile': profile, 'context': context})
 
-    def post(self, request):
-        context = ""
-        return render(request, 'view_profile.html', {'user': user, 'context': context})
+    if request.method == 'POST':
+        return render(request, 'view_profile.html', {'profile': profile, 'context': context})
+
+
+
+# class ViewProfile(View):
+#     context = ""
+    
+#     def get(self, request):
+#         user = Profile.objects.get(user=request.user)
+#         context = ""
+#         return render(request, 'view_profile.html', {'user': user, 'context': context})
+
+#     def post(self, request):
+#         context = ""
+#         return render(request, 'view_profile.html', {'user': user, 'context': context})
 
 
 # #user profile form
@@ -52,24 +64,40 @@ class ViewProfile(View):
 #     return render(request, 'howdidu/register_profile.html', {'form': form})
 
 @login_required
-class EditProfile(View):
-    profile=Profile.objects.get(user=request.user)
+def EditProfile(request):
+    profile=Profile.objects.get(username=request.user.username)
+    form = ProfileForm(request.POST)
     context = ""
-
-    def get(self, request):
-        form = self.form_class(None)
-        context = ""
-        return render(request, 'edit_profile.html', {'form': form, 'context': context})
-
-    def post(self, request):
-        form = ProfileForm(request.POST)
-        context = ""
+    if request.method=='POST':
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/view_profile/')
         else:
             print form.errors
+            return render(request, 'edit_profile.html', {'form': form, 'context': context})
+    else:
+        context='get request'
         return render(request, 'edit_profile.html', {'form': form, 'context': context})
+# class EditProfile(View):
+#     context = ""
+#     form_class = ProfileForm
+
+#     def get(self, request):
+#         profile=Profile.objects.get(user=request.user)
+#         form = self.form_class(None)
+#         context = ""
+#         return render(request, 'edit_profile.html', {'form': form, 'context': context})
+
+#     def post(self, request):
+#         profile=Profile.objects.get(user=request.user)
+#         form = self.form_class(request.POST)
+#         context = ""
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponseRedirect('/view_profile/')
+#         else:
+#             print form.errors
+#         return render(request, 'edit_profile.html', {'form': form, 'context': context})
 
 @login_required
 def LogoutProfile(request):

@@ -52,7 +52,7 @@ class Medicine_list(generics.ListCreateAPIView):
 class Appointment_list(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Appointment.objects.all()
-    serializer_class=AppointmnetSerializer
+    serializer_class=AppointmentSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
     filter_fields=('date',)
     

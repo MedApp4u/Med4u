@@ -4,8 +4,7 @@ from django import forms
 from .models import Profile
 
 class ProfileForm(forms.ModelForm):
-	profile_pic=forms.ImageField(required=False)
-	username=forms.CharField(max_length=30,required=True)
+	username=forms.CharField(max_length=30,required=True, widget=forms.TextInput(attrs={'class' : 'vp-form-field', 'id': ''}))
 	first_name = forms.CharField(max_length=30, required=True)
 	last_name = forms.CharField(max_length=30, required=True)
 	email = forms.EmailField(max_length=254, help_text='Enter a valid email address only.')
@@ -17,5 +16,5 @@ class ProfileForm(forms.ModelForm):
 
 	class Meta:
 		model=Profile
-		fields=('profile_pic','username','first_name','last_name','gender','email','dob','address','mobile_no','blood_group',)
+		fields=('username','first_name','last_name','gender','email','dob','address','mobile_no','blood_group',)
 

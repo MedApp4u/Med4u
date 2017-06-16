@@ -1,3 +1,99 @@
-View Profile
+{% extends "base.html" %}
+{% block title %}ProfileApp | View Profile{% endblock %}	
+{% load static %}
 
-{{ profile.username }}
+{% block navbar %}
+	<li><a href="#intro">Home</a></li>
+	<li><a href="#service">Service</a></li>
+	<li><a href="#doctor">Doctors</a></li>
+	<li><a href="#facilities">Facilities</a></li>
+	<li><a href="#pricing">Pricing</a></li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
+		<ul class="dropdown-menu">
+			<li><a href="index.html">Home CTA</a></li>
+			<li><a href="index-form.html">Home Form</a></li>
+			<li><a href="index-video.html">Home video</a></li>
+		</ul>
+	</li>
+	<li class="user_icon_item">
+		<img src="{% static 'ProfileApp/css/img/icons/user.png' %}" class="user_icon" />
+	</li>
+	<li class="dropdown">
+		<a href="#" id="user_icon_name" class="dropdown-toggle" data-toggle="dropdown">{{ current_user }} <b class="caret"></b></a>
+		<ul class="dropdown-menu profile-slider-body" style="display: inline-block;">
+			<li class="list-item">
+				<div class="profile-slider-top">
+					<div class="profile-slider-circle" id="circle">
+						<div class="profile-slider-image-cover">
+							<img src="{% static 'ProfileApp/css/img/icons/upload-light.png' %}"></img>
+							<p>Upload image</p>
+						</div>
+						<img src="{% static 'ProfileApp/css/img/icons/pikachu.png' %}" class="profile-slider-image" />
+					</div>
+				</div>
+				<div class="profile-slider-bottom">
+					<p class="profile-slider-username">Welcome, {{ current_user}}</p>
+					<div class="profile-slider-rectangle" id="long"></div>
+					<div class="profile-slider-rectangle" id="short"></div>
+					<a href="{% url 'ProfileApp:change_password' %}" class="profile-slider-link">
+						<div class="profile-slider-icon" id="change_password">
+							<img src="{% static 'ProfileApp/css/img/icons/padlock.png' %}" id="padlock" />
+							<div class="profile-slider-icon-separator"></div>
+							<p class="profile-slider-icon-text">Change password</p>
+						</div>
+					</a>
+					<a href="#" class="profile-slider-link">
+						<div class="profile-slider-icon" id="view_profile">
+							<img src="{% static 'ProfileApp/css/img/icons/document.png' %}" id="padlock" />
+							<div class="profile-slider-icon-separator"></div>
+							<p class="profile-slider-icon-text">View Profile</p>
+						</div>
+					</a>
+					<a href="#" class="profile-slider-link">
+						<div class="profile-slider-icon" id="edit_profile">
+							<img src="{% static 'ProfileApp/css/img/icons/pen.png' %}" id="padlock" />
+							<div class="profile-slider-icon-separator"></div>
+							<p class="profile-slider-icon-text">Edit Profile</p>
+						</div>
+					</a>
+					<a href="{% url 'ProfileApp:logout' %}" class="profile-slider-link">
+						<div class="profile-slider-icon" id="logout">
+							<img src="{% static 'ProfileApp/css/img/icons/logout.png' %}" id="padlock" />
+							<div class="profile-slider-icon-separator"></div>
+							<p class="profile-slider-icon-text">Logout</p>
+						</div>
+					</a>
+				</div>
+			</li>
+		</ul>
+	</li>
+{% endblock %}
+
+{% block content %}
+
+	<!-- Section: intro -->
+	
+	    <section id="intro" class="intro login-intro">
+			<div class="intro-content vp-intro-content ">
+				<!-- <div class="wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.2s"> -->
+					<div class="container">
+						<div class="row">
+							<div class="vp-form-head">
+								<img src="{% static 'ProfileApp/css/img/icons/document.png' %}" class="vp-form-icon"/>
+								<div class="vp-form-icon-separator"></div>
+								<p class="vp-form-icon-text">
+									View Profile
+								</p>
+							</div>
+							<div class="vp-form-body">
+								<p class="vp-form-body-label">Username</p>
+								{{ form.username }}
+							</div>
+						</div>		
+					</div>		
+				<!-- </div> -->	
+			</div>	
+	    </section>
+
+{% endblock %}

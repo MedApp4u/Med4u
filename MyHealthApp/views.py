@@ -166,6 +166,11 @@ class Procedure_Note_list(generics.ListCreateAPIView):
 
 
     
+def ViewInsurance(request): 
+    current_user = request.user 
+    #all_insurances = current_user.insurance_set.all() 
+    return render(request, 'view_insurance.html', {'all_insurances': current_user.insurance_set.all().first()})
+
 
 # def get(self, request, *args, **kwargs):
 # return self.retrieve(request, *args, **kwargs)

@@ -52,7 +52,7 @@ class Medicine_list(generics.ListCreateAPIView):
 class Appointment_list(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Appointment.objects.all()
-    serializer_class=AppointmnetSerializer
+    serializer_class=AppointmentSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
     filter_fields=('date',)
     
@@ -100,17 +100,17 @@ class Procedure_list(generics.ListCreateAPIView):
     search_fields=('procedure_name',)
 
         
-class DoctorNote_list(generics.ListCreateAPIView):
+class Doctor_Note_list(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
-    queryset = DoctorNote.objects.all()
-    serializer_class=DoctorNoteSerializer
+    queryset = Doctor_Note.objects.all()
+    serializer_class=Doctor_NoteSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
    
     
-class MedicineNote_list(generics.ListCreateAPIView):
+class Medicine_Note_list(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
-    queryset = MedicineNote.objects.all()
-    serializer_class=MedicineNoteSerializer
+    queryset = Medicine_Note.objects.all()
+    serializer_class=Medicine_NoteSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
     
 

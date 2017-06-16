@@ -77,7 +77,7 @@ class ProcedureSerializer(serializers.ModelSerializer):
     bodypart =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
     class Meta:
         model = Procedure
-        fields=('procedure_name','procedure_description','possible_complication','doctor','user','bodypart','symptom','medicine')
+        fields=('procedure_name','procedure_description','possible_complication','doctor','bodypart','symptom','medicine')
 
 class Procedure_ImagesSerializer(serializers.ModelSerializer):
     proc =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)

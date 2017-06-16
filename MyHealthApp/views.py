@@ -3,7 +3,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Measurement,Doctor,Doctor_Note,Medicine_Note, Medicine, Bodypart, Appointment, Symptom, Insurance,Procedure   
-from .serializers import DoctorSerializer,Doctor_NoteSerializer,Medicine_NoteSerializer,MedicineSerializer,MeasurementSerializer, BodypartSerializer, SymptomSerializer , InsuranceSerializer, ProcedureSerializer, AppointmentSerializer
+#from .serializers import DoctorSerializer,Doctor_NoteSerializer,Medicine_NoteSerializer,MedicineSerializer,MeasurementSerializer, BodypartSerializer, SymptomSerializer , InsuranceSerializer, ProcedureSerializer, AppointmentSerializer
+from .serializers import *
 from rest_framework.views import APIView
 from ProfileApp.models import Profile
 from ProfileApp.serializers import ProfileSerializer
@@ -14,20 +15,16 @@ from rest_framework import generics
 
 
 #Create your views here
-@api_view(['GET','POST'])
-def Doctor_list(request):
-    if request.method == 'GET':
-        doctors = Doctor.objects.all()
-        serializer = DoctorSerializer(doctors,many=True)
-        return Response(serializer.data)
 
-    elif request.method =='POST':
-        serializer = DoctorSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response (serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+class Doctor_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Doctor.objects.all()
+    serializer_class=DoctorSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
+    filter_fields=('doctor_speciality',)
+    search_fields=('doctor_name',)
+
+        
 '''
 @api_view(['GET','POST'])
 def Medicine_list(request):
@@ -45,133 +42,77 @@ def Medicine_list(request):
 '''
 
 class Medicine_list(generics.ListCreateAPIView):
-    # permission_classes(IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     queryset = Medicine.objects.all()
     serializer_class=MedicineSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
     filter_fields=('method',)
     search_fields=('medicine_name',)
+
+class Appointment_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Appointment.objects.all()
+    serializer_class=AppointmnetSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
+    filter_fields=('date',)
+    
+
+
+class Symptom_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Symptom.objects.all()
+    serializer_class=SymptomSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
+    filter_fields=('date',)
+    
+
+
+class Bodypart_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Bodypart.objects.all()
+    serializer_class=BodypartSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
+    filter_fields=('bodypart',)
+    search_fields=('bodypart',)
+
+class Measurement_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Measurement.objects.all()
+    serializer_class=MeasurementSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
+    filter_fields=('weight',)
+    
+class Insurance_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Insurance.objects.all()
+    serializer_class=InsuranceSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
+    filter_fields=('expiry_date',)
+    search_fields=('insurance_plan',)
+
+
+class Procedure_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Procedure.objects.all()
+    serializer_class=ProcedureSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
+    filter_fields=('bodypart',)
+    search_fields=('procedure_name',)
+
         
-@api_view(['GET','POST'])
-def Appointment_list(request):
-    if request.method == 'GET':
-        appointments = Appointment.objects.all()
-        serializer = AppointmentSerializer(appointments,many=True)
-        return Response(serializer.data)
-
-    elif request.method =='POST':
-        serializer = AppointmentsSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response (serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['GET','POST'])
-def Symptom_list(request):
-    if request.method == 'GET':
-        symptoms = Symptom.objects.all()
-        serializer = SymptomSerializer(symptoms,many=True)
-        return Response(serializer.data)
-
-    elif request.method =='POST':
-        serializer = SymptomSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response (serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['GET','POST'])
-def Bodypart_list(request):
-    if request.method == 'GET':
-        bodyparts = Bodypart.objects.all()
-        serializer = BodypartSerializer(bodyparts,many=True)
-        return Response(serializer.data)
-
-    elif request.method =='POST':
-        serializer = BodypartSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response (serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['GET','POST'])
-def Measurement_list(request):
-    if request.method == 'GET':
-        measurements = Measurement.objects.all()
-        serializer = MeasurementSerializer(measurements,many=True)
-        return Response(serializer.data)
-
-    elif request.method =='POST':
-        serializer = MeasurementSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response (serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['GET','POST'])
-def Insurance_list(request):
-    if request.method == 'GET':
-        insurances= Insurance.objects.all()
-        serializer = InsuranceSerializer(insurances,many=True)
-        return Response(serializer.data)
-
-    elif request.method =='POST':
-        serializer = InsuranceSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response (serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+class DoctorNote_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = DoctorNote.objects.all()
+    serializer_class=DoctorNoteSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
+   
     
-@api_view(['GET','POST'])
-def Procedure_list(request):
-    if request.method == 'GET':
-        procedures = Procedure.objects.all()
-        serializer = ProcedureSerializer(procedures,many=True)
-        return Response(serializer.data)
-
-    elif request.method =='POST':
-        serializer = ProcedureSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response (serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+class MedicineNote_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = MedicineNote.objects.all()
+    serializer_class=MedicineNoteSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
     
-@api_view(['GET','POST'])
-def DoctorNote_list(request):
-    if request.method == 'GET':
-        doctornotes = Doctor_Note.objects.all()
-        serializer = Doctor_NoteSerializer(doctornotes,many=True)
-        return Response(serializer.data)
-
-    elif request.method =='POST':
-        serializer = Doctor_NoteSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response (serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-
-@api_view(['GET','POST'])
-def MedicineNote_list(request):
-    if request.method == 'GET':
-        medicines = Medicine_Note.objects.all()
-        serializer = Medicine_NoteSerializer(medicines,many=True)
-        return Response(serializer.data)
-
-    elif request.method =='POST':
-        serializer = Medicine_NoteSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response (serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
 
 class Profile_show(APIView):
     def get_object(self, pk):
@@ -197,6 +138,32 @@ class Profile_show(APIView):
         profile=profile.get_object(pk)
         profile.delete()
         return Response (status = status.HTTP_204_NO_CONTENT)
+
+
+class Procedure_Images_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Procedure_Images.objects.all()
+    serializer_class=Procedure_ImagesSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
+
+class Procedure_Videos_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Procedure_Videos.objects.all()
+    serializer_class=Procedure_VideosSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
+    
+class Procedure_Helpline_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Procedure_Helpline.objects.all()
+    serializer_class=Procedure_HelplineSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
+
+class Procedure_Note_list(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Procedure_Note.objects.all()
+    serializer_class=Procedure_NoteSerializer
+    filter_backends=(DjangoFilterBackend,SearchFilter)
+
 
     
 

@@ -149,14 +149,38 @@ class InsuranceSerializer(serializers.ModelSerializer):
         model = Insurance
         fields=('insurance_plan','expiry_date','start_date','premium','notes','user')
 
-
-
-
 class DocumentSerializer(serializers.ModelSerializer):
     user =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
     class Meta:
         model = Document
         fields=('doc','notes','user')
+
+class Procedure_ImagesSerializer(serializers.ModelSerializer):
+    proc = serializers.PrimaryKeyRelatedField(many=True, read_only = True)
+    class Meta:
+        model = Procedure_Images
+        fields=('proc','procedure_image')
+
+class Procedure_VideosSerializer(serializers.ModelSerializer):
+    proc = serializers.PrimaryKeyRelatedField(many=True, read_only = True)
+    class Meta:
+        model = Procedure_Images
+        fields=('proc','procedure_videos')
+
+class Procedure_HelplineSerializer(serializers.ModelSerializer):
+    proc = serializers.PrimaryKeyRelatedField(many=True, read_only = True)
+    class Meta:
+        model = Procedure_Helpline
+        fields=('proc','procedure_help_no')
+
+class Procedure_NoteSerializer(serializers.ModelSerializer):
+    proc = serializers.PrimaryKeyRelatedField(many=True, read_only = True)
+    class Meta:
+        model = Procedure_Note
+        fields=('proc','procedure_note')
+
+
+
 
 
 

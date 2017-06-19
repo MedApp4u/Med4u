@@ -33,3 +33,4 @@ class UserForm(forms.ModelForm):
 		model = Profile
 		fields = ['username', 'password1', 'password2', 'email']
 
+

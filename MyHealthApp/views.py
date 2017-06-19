@@ -172,6 +172,162 @@ def ViewInsurance(request):
     return render(request, 'view_insurance.html', {'all_insurances': current_user.insurance_set.all().first()})
 
 
+
+class Doctor_show(APIView):
+    def get_object(self, pk):
+        try:
+            return Doctor.objects.get(pk=pk)
+
+        except Doctor.DoesNotExist:
+            raise Http404
+
+    def get(self,request,pk,format=None):
+        doctor = Doctor.objects.get(pk=pk)
+        serializer=DoctorSerializer(doctor)
+        return Response (serializer.data)
+    def post(self,request,pk,format=None):
+        doctor = self.get_object(pk)
+        serializer =DoctorSerializer(doctor,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializers.errors, status = status.HTTP_400_BAD_REQUEST)
+
+    def delete(self,request,pk):
+        doctor=Doctor.get_object(pk)
+        doctor.delete()
+        return Response (status = status.HTTP_204_NO_CONTENT)
+
+
+class Medicine_show(APIView):
+    def get_object(self, pk):
+        try:
+            return Medicine.objects.get(pk=pk)
+
+        except Medicine.DoesNotExist:
+            raise Http404
+
+    def get(self,request,pk,format=None):
+        medicine = Medicine.objects.get(pk=pk)
+        serializer=MedicineSerializer(medicine)
+        return Response (serializer.data)
+    def post(self,request,pk,format=None):
+        doctor = self.get_object(pk)
+        serializer =MedicineSerializer(medicine,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializers.errors, status = status.HTTP_400_BAD_REQUEST)
+
+    def delete(self,request,pk):
+        medicine=Medicine.get_object(pk)
+        medicine.delete()
+        return Response (status = status.HTTP_204_NO_CONTENT)
+
+
+class Disease_show(APIView):
+    def get_object(self, pk):
+        try:
+            return Disease.objects.get(pk=pk)
+
+        except Disease.DoesNotExist:
+            raise Http404
+
+    def get(self,request,pk,format=None):
+        disease= Disease.objects.get(pk=pk)
+        serializer=DiseaseSerializer(disease)
+        return Response (serializer.data)
+    def post(self,request,pk,format=None):
+        disease = self.get_object(pk)
+        serializer =DiseaseSerializer(disease,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializers.errors, status = status.HTTP_400_BAD_REQUEST)
+
+    def delete(self,request,pk):
+        disease=Disease.get_object(pk)
+        disease.delete()
+        return Response (status = status.HTTP_204_NO_CONTENT)
+
+class Procedure_show(APIView):
+    def get_object(self, pk):
+        try:
+            return Procedure.objects.get(pk=pk)
+
+        except Procedure.DoesNotExist:
+            raise Http404
+
+    def get(self,request,pk,format=None):
+        procedure = Procedure.objects.get(pk=pk)
+        serializer=ProcedureSerializer(procedure)
+        return Response (serializer.data)
+    def post(self,request,pk,format=None):
+        procedure = self.get_object(pk)
+        serializer =ProcedureSerializer(Procedure,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializers.errors, status = status.HTTP_400_BAD_REQUEST)
+
+    def delete(self,request,pk):
+        procedure=Procedure.get_object(pk)
+        procedure.delete()
+        return Response (status = status.HTTP_204_NO_CONTENT)
+
+class Bodypart_show(APIView):
+    def get_object(self, pk):
+        try:
+            return Bodypart.objects.get(pk=pk)
+
+        except Bodypart.DoesNotExist:
+            raise Http404
+
+    def get(self,request,pk,format=None):
+        bodypart = Bodypart.objects.get(pk=pk)
+        serializer=BodypartSerializer(bodypart)
+        return Response (serializer.data)
+    def post(self,request,pk,format=None):
+        bodypart = self.get_object(pk)
+        serializer =BodypartSerializer(Bodypart,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializers.errors, status = status.HTTP_400_BAD_REQUEST)
+
+    def delete(self,request,pk):
+        bodypart=Bodypart.get_object(pk)
+        bodypart.delete()
+        return Response (status = status.HTTP_204_NO_CONTENT)
+
+
+class Symptom_show(APIView):
+    def get_object(self, pk):
+        try:
+            return Symptom.objects.get(pk=pk)
+
+        except Symptom.DoesNotExist:
+            raise Http404
+
+    def get(self,request,pk,format=None):
+        symptom = Symptom.objects.get(pk=pk)
+        serializer=SymptomSerializer(bodypart)
+        return Response (serializer.data)
+    def post(self,request,pk,format=None):
+        symptom = self.get_object(pk)
+        serializer =SymptomSerializer(Symptom,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializers.errors, status = status.HTTP_400_BAD_REQUEST)
+
+    def delete(self,request,pk):
+        symptom=Symptom.get_object(pk)
+        symptom.delete()
+        return Response (status = status.HTTP_204_NO_CONTENT)
+
+
+
 # def get(self, request, *args, **kwargs):
 # return self.retrieve(request, *args, **kwargs)
 

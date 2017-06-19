@@ -818,19 +818,15 @@ hr.bold {
 }
 
 #change_password{
-	top: 38px;
+	top: 58px;
 }
 
 #view_profile {
-	top: 46px;
-}
-
-#edit_profile {
-	top: 54px;
+	top: 78px;
 }
 
 #logout {
-	top: 62px;
+	top: 98px;
 }
 
 .profile-slider-icon:hover {
@@ -1121,7 +1117,7 @@ hr.bold {
 	top: 43%;
 }
 
-#vp-form-field-last_name, #vp-form-field-blood_group, .vp-form-body-select {
+#vp-form-field-last_name, #vp-form-field-blood_group, .vp-form-body-select, #vp-form-field-blood_group {
 	top: 48%;
 }
 
@@ -1129,7 +1125,7 @@ hr.bold {
 	top: 60%;
 }
 
-#vp-form-field-email {
+#vp-form-field-email, #vp-form-field-gender {
 	top: 65%;
 }
 
@@ -1155,7 +1151,7 @@ hr.bold {
 	background-color: #222;
 }
 
-#vp-form-label-address, #vp-form-field-address, #vp-form-label-mobile_no, #vp-form-field-mobile_no, #vp-form-label-blood_group, #vp-form-field-blood_group, .vp-form-body-select, #vp-form-label-gender, .vp-btn {
+#vp-form-label-address, #vp-form-field-address, #vp-form-label-mobile_no, #vp-form-field-mobile_no, #vp-form-label-blood_group, #vp-form-field-blood_group, .vp-form-body-select, #vp-form-label-gender, .vp-btn, #vp-form-field-gender {
 	left: 38%;
 }
 

@@ -60,23 +60,17 @@ from .models import Profile
 @login_required
 def ViewProfile(request):
     context = ""
+    profile=Profile.objects.get(username=request.user.username)
 
     if request.method == 'GET':
-        profile = Profile.objects.get(username=request.user.username)
         form = ProfileForm(instance=profile)
-        return render_to_response('view_profile.html', {'form': form, 'context': context, 'current_user': request.user})
+        return render(request, 'view_profile.html', {'form': form, 'context': context, 'current_user': request.user})
 
     if request.method == 'POST':
-        profile=Profile.objects.get(username=request.user.username)
-        form = ProfileForm(request.POST)
+        form = ProfileForm(request.POST, instance=profile)
         context = ""
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/view_profile/')
-        else:
-            print form.errors
-            return render(request, 'view_profile.html', {'form': form, 'context': context, 'current_user': request.user})
-
+        form.save()
+        return HttpResponseRedirect('/view_profile/')
 
 
 # @login_required
@@ -126,6 +120,7 @@ def dashboard(request):
         # Context is not showing up, see if need to import views/urls in ProfileApp
     return render(request, 'dashboard.html', {'current_user': current_user})
 
+@login_required
 def change_password(request):
     current_user = request.user
     if request.method=='POST':

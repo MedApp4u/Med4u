@@ -86,10 +86,41 @@
 									View Profile
 								</p>
 							</div>
-							<div class="vp-form-body">
-								<p class="vp-form-body-label">Username</p>
+							<form class="vp-form-body">
+								<p class="vp-form-body-label" id="vp-form-label-username">Username</p>
 								{{ form.username }}
-							</div>
+								<p class="vp-form-body-label" id="vp-form-label-first_name">First name</p>
+								{{ form.first_name }}
+								<p class="vp-form-body-label" id="vp-form-label-last_name">Last name</p>
+								{{ form.last_name }}
+								<p class="vp-form-body-label" id="vp-form-label-email">Email</p>
+								{{ form.email }}
+								<p class="vp-form-body-label" id="vp-form-label-dob">Date of Birth</p>
+								{{ form.dob }}
+								<div class="vp-form-body-separator"></div>
+								<p class="vp-form-body-label" id="vp-form-label-address">Address</p>
+								{{ form.address }}
+								<p class="vp-form-body-label" id="vp-form-label-mobile_no">Mobile number</p>
+								{{ form.mobile_no }}
+								<p class="vp-form-body-label" id="vp-form-label-blood_group">Blood group</p>
+								<select class="vp-form-body-select">
+									<option value="A+">A+</option>
+									<option value="A-">A-</option>
+									<option value="B+">B+</option>
+									<option value="B-">B-</option>
+									<option value="AB+">AB+</option>
+									<option value="AB-">AB-</option>
+									<option value="O+">O+</option>
+									<option value="O-">O-</option>
+								</select>
+								<!-- {{ form.blood_group }} -->
+								<p class="vp-form-body-label" id="vp-form-label-gender">Sex</p>
+								<input type="radio" name="gender" value="M" class="vp-form-body-radio" id="button1" style="cursor:pointer" checked />
+								<p class="vp-form-body-radio" id="vp-form-body-male">Male</p>
+								<input type="radio" name="gender" value="F" class="vp-form-body-radio" id="button2" style="cursor:pointer" />
+								<p class="vp-form-body-radio" id="vp-form-body-female">Female</p>
+								<input type="submit" class="login-btn vp-btn btn-skin" value="Save changes" />
+							</form>
 						</div>		
 					</div>		
 				<!-- </div> -->	

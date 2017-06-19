@@ -6,7 +6,7 @@
 */
 
 /* ==== Google font ==== */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700,800|Roboto:400,500,700,900');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700,800,900|Roboto:400,500,700,900');
 /* --- pe-icon-7-stroke --- */
 
 
@@ -24,7 +24,8 @@ body {
 html {
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 label,
@@ -37,7 +38,7 @@ textarea {
   line-height: inherit;
 }
 
-textarea, input {
+textarea, input, select {
 	outline: none;
 }
 
@@ -1055,18 +1056,18 @@ hr.bold {
 .vp-form-icon-text {
 	position: relative;
 	top: 50%;
-	left: 16%;
+	left: 15.5%;
 	width: 250px;
 	height: 50px;
 	line-height: 50px;
 	margin: -25px 0 0 -125px;
 	color: white;
-	font-size: 28px;
-	text-transform: uppercase;
+	font-size: 35px;
+	/*text-transform: uppercase;*/
 	font-weight: 800;
 	text-align: center;
 	font-variant: small-caps;
-	letter-spacing: 1px;
+	letter-spacing: 1.5px;
 }
 
 .vp-form-body {
@@ -1079,21 +1080,120 @@ hr.bold {
 }
 
 .vp-form-body-label {
-	position: relative;
-	top: 9%;
+	position: absolute;
 	left: 6%;
 	margin: 0;
-	font-weight: 700;
-	color: #222;
+	font-weight: 600;
+	color: #555;
 }
 
-.vp-form-field {
+.vp-form-field, .vp-form-body-select {
 	position: absolute;
-	top: 15%;
 	left: 6%;
+	height: 34px;
+	width: 15%;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	padding: 6px 12px;
+	font-size: 14px;
 	margin: 0;
-	padding: 0;
 }
+
+#vp-form-label-username, #vp-form-label-address {
+	top: 9%;
+}
+
+#vp-form-field-username, #vp-form-field-address {
+	top: 14%;
+}
+
+#vp-form-label-first_name, #vp-form-label-mobile_no {
+	top: 26%;
+}
+
+#vp-form-field-first_name, #vp-form-field-mobile_no  {
+	top: 31%;
+}
+
+#vp-form-label-last_name, #vp-form-label-blood_group {
+	top: 43%;
+}
+
+#vp-form-field-last_name, #vp-form-field-blood_group, .vp-form-body-select {
+	top: 48%;
+}
+
+#vp-form-label-email, #vp-form-label-gender {
+	top: 60%;
+}
+
+#vp-form-field-email {
+	top: 65%;
+}
+
+#vp-form-label-dob, .vp-btn {
+	top: 77%;
+}
+
+#vp-form-field-dob {
+	top: 82%;
+}
+
+.vp-form-field:focus, .vp-form-body-select:focus {
+	border: 1px solid #3fbbc0;
+}
+
+.vp-form-body-separator {
+	position: absolute;
+	top: 50%;
+	left: 29%;
+	width: 1.8px;
+	height: 500px;
+	margin: -250px 0 0 -0.9px;
+	background-color: #222;
+}
+
+#vp-form-label-address, #vp-form-field-address, #vp-form-label-mobile_no, #vp-form-field-mobile_no, #vp-form-label-blood_group, #vp-form-field-blood_group, .vp-form-body-select, #vp-form-label-gender, .vp-btn {
+	left: 38%;
+}
+
+#vp-form-field-address {
+	width: 20%;
+}
+
+.vp-form-body-select {
+	width: 4.8%;
+}
+
+.vp-form-body-radio {
+	position: absolute;
+	top: 66%;
+	font-size: 16px;
+	color: #444;
+}
+
+#button1, #button2 {
+	top: 66.5%;
+}
+
+#button1 {
+	left: 39%;
+}
+
+#button2 {
+	left: 47%;
+}
+
+#vp-form-body-male {
+	left: 40.6%;
+}
+
+#vp-form-body-female {
+	left: 48.6%;
+}
+
 
 /* ----------------------- */
 
@@ -2259,6 +2359,15 @@ a.scrollup i:hover {
 
 .sign-up-btn {
 	top: 450px;
+}
+
+.vp-btn {
+	top: 82%;
+	left: 38%;
+	width: 12%;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin: 0;
 }
 
 .login-btn:hover {

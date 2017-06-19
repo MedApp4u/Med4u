@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.conf import settings
 from ProfileApp.models import Profile
+from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 
 FIELD_NAME_MAPPING = {
 	'username': 'username1',
@@ -32,4 +33,9 @@ class UserForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['username', 'password1', 'password2', 'email']
+
+class PasswordResetEmail(PasswordResetForm):
+
+	class Meta:
+		fields = ['email']
 

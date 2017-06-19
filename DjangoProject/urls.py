@@ -18,8 +18,10 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^', include('GeneralApp.urls', namespace="GeneralApp")), 
     url(r'^', include('MyHealthApp.urls', namespace="MyHealthApp")), 
     url(r'^', include('ProfileApp.urls', namespace="ProfileApp")), 
-
+    # url(r'^settings/$', core_views.settings, name='settings'),
+    # url(r'^settings/password/$', core_views.password, name='password'),
 ]

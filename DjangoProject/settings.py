@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'MyHealthApp',
     'rest_framework',
     'django_cleanup',
-    'django_filters'
+    'django_filters',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'DjangoProject.urls'
@@ -69,12 +71,39 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'DjangoProject.wsgi.application'
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# LOGIN_URL = 'login'
+# LOGOUT_URL = 'logout'
+# LOGIN_REDIRECT_URL = 'dashboard'
+
+SOCIAL_AUTH_TWITTER_KEY = 'V7bDYh8qyUOulwn2XaT859wC4'
+SOCIAL_AUTH_TWITTER_SECRET = 'z8iSzJoEOkA4c3GxBdWcN7inuLlkIzftzWgr9ajn8VPudg1iw8'
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = '125359351382105'
+SOCIAL_AUTH_FACEBOOK_SECRET = '3fd7cedb92b1434216c927c14b0efe2b'
+
+# SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
+# SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/settings/'
+# SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 
 # Database

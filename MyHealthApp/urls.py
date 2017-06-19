@@ -4,7 +4,7 @@ from . import views
 
 app_name = 'MyHealthApp'
 urlpatterns = [
-    url(r'doctors_api/', views.Doctor_list, name='doctors_api'),
+    url(r'doctors_api/', views.Doctor_list.as_view(), name='doctors_api'),
     url(r'medicines_api/', views.Medicine_list.as_view(), name='medicines_api'),
     url(r'medicinenotes_api/', views.Medicine_Note_list, name='medicinenotes_api'),
     url(r'doctornotes_api/', views.Doctor_Note_list, name='doctornotes_api'),

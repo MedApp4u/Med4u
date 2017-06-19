@@ -36,7 +36,7 @@ class LoginFormView(View):
 
             if user.is_active:
                 login(request, user)
-                return redirect('/dashboard')
+                return HttpResponseRedirect('/dashboard')
             else:
                 context = "User is banned"
         else:
@@ -78,7 +78,7 @@ class UserFormView(View):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponse("User signed up succesfully!")
+                    return HttpResponseRedirect('/dashboard')
                 else:
                     context = "Existing user is banned."
 

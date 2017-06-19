@@ -47,6 +47,9 @@
 									{% if context != "" %}
 										<p class="form-label" id="login-error">{{ context }}</p>
 									{% endif %}
+									<!-- <a href="{% url 'social:begin' 'twitter' %}" class="form-label" id="login-error">Login with Twitter</a> -->
+									<a href="{% url 'social:begin' 'facebook' %}" class="form-label" id="login-error">Login with Facebook</a>
+
 							</div>
 						</div>		
 					</div>		

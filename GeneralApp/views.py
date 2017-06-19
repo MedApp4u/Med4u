@@ -100,3 +100,7 @@ class Tnc(generic.TemplateView):
 
 class AboutUs(generic.TemplateView):
     template_name = 'GeneralApp/about.html'
+
+
+def redirect_to_dashboard(request):
+    return HttpResponseRedirect('/dashboard/')

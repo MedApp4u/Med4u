@@ -22,6 +22,11 @@ urlpatterns = [
 	url(r'^procedureapi/(?P<pk>[0-9]+)/$',views.Procedure_show.as_view(), name='Procedure_show'),
 	url(r'^bodypartapi/(?P<pk>[0-9]+)/$',views.Bodypart_show.as_view(), name='Bodypart_show'),
 	url(r'^Symptomapi/(?P<pk>[0-9]+)/$',views.Symptom_show.as_view(), name='Symptom_show'),
+    url(r'home/', views.HomeView.as_view(), name='home'),
+    url(r'symptoms/', views.SymptomsView.as_view(), name='symptoms'),
+    url(r'MyHealth/', views.MyHealthView.as_view(), name='MyHealth'),
+    # url(r'base/', views.baseView.as_view(), name='base'),
+    url(r'sidebar/', views.sidebarView.as_view(), name='sidebar'),
 	
   
   

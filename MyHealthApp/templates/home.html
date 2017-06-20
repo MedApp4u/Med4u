@@ -1,7 +1,7 @@
 
-{% extends "HealthApp/base.html" %}
+{% extends "MyHealthApp/base.html" %}
 {% load static %}
-{% block title %} HealthApp {% endblock %}
+{% block title %} MyHealthApp {% endblock %}
 
 
 {% block navbar %}
@@ -10,7 +10,7 @@
 	<li><a href="#doctor">Doctors</a></li>
 	<li><a href="#facilities">Facilities</a></li>
 	<li><a href="#pricing">Pricing</a></li>
-	<li class="active"><a id="active" href="{% url 'HealthApp:login' %}">Sign In</a></li>
+	<li class="active"><a id="active" href="{% url 'MyHealthApp:login' %}">Sign In</a></li>
 	<li><a href="#">Sign Up</a></li>
 	<li class="dropdown">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
@@ -53,7 +53,7 @@
 					</div>
 					<div class="col-lg-6">
 						<div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
-						<img src="{% static 'HealthApp/css/img/dummy/img-1.png' %}" class="img-responsive" alt="" />
+						<img src="{% static 'MyHealthApp/css/img/dummy/img-1.png' %}" class="img-responsive" alt="" />
 						</div>
 					</div>					
 				</div>		
@@ -159,7 +159,7 @@
         <div class="row">
 			<div class="col-sm-6 col-md-6">
 				<div class="wow fadeInUp" data-wow-delay="0.2s">
-				<img src="{% static 'HealthApp/css/img/dummy/img-1.jpg' %}" class="img-responsive" alt="" />
+				<img src="{% static 'MyHealthApp/css/img/dummy/img-1.jpg' %}" class="img-responsive" alt="" />
 				</div>
             </div>
 			<div class="col-sm-3 col-md-3">
@@ -378,7 +378,7 @@
                     <li class="cbp-item psychiatrist">
                         <a href="doctors/member1.html" class="cbp-caption cbp-singlePage">
                             <div class="cbp-caption-defaultWrap">
-                                <img src="{% static 'HealthApp/img/team/1.jpg' %}" alt="" width="100%">
+                                <img src="{% static 'MyHealthApp/img/team/1.jpg' %}" alt="" width="100%">
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-alignCenter">
@@ -394,7 +394,7 @@
                     <li class="cbp-item cardiologist">
                         <a href="doctors/member2.html" class="cbp-caption cbp-singlePage">
                             <div class="cbp-caption-defaultWrap">
-                                <img src="{% static 'HealthApp/img/team/2.jpg' %}" alt="" width="100%">
+                                <img src="{% static 'MyHealthApp/img/team/2.jpg' %}" alt="" width="100%">
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-alignCenter">
@@ -410,7 +410,7 @@
                     <li class="cbp-item cardiologist">
                         <a href="doctors/member3.html" class="cbp-caption cbp-singlePage">
                             <div class="cbp-caption-defaultWrap">
-                                <img src="{% static 'HealthApp/img/team/3.jpg' %}" alt="" width="100%">
+                                <img src="{% static 'MyHealthApp/img/team/3.jpg' %}" alt="" width="100%">
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-alignCenter">
@@ -426,7 +426,7 @@
                     <li class="cbp-item neurologist">
                         <a href="doctors/member4.html" class="cbp-caption cbp-singlePage">
                             <div class="cbp-caption-defaultWrap">
-                                <img src="{% static 'HealthApp/img/team/4.jpg' %}" alt="" width="100%">
+                                <img src="{% static 'MyHealthApp/img/team/4.jpg' %}" alt="" width="100%">
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-alignCenter">
@@ -453,7 +453,7 @@
 	<!-- Random section -->
 
 <!-- 	<section>
-		<img src="{% static 'HealthApp/img/team/1.jpg' %}">
+		<img src="{% static 'MyHealthApp/img/team/1.jpg' %}">
 	</section>
  -->
 		
@@ -478,12 +478,12 @@
                 <div class="col-sm-12 col-md-12 col-lg-12" >
 					<div class="wow bounceInUp" data-wow-delay="0.2s">
                     <div id="owl-works" class="owl-carousel">
-                        <div class="item"><a href="img/photo/1.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"><img src="{% static 'HealthApp/css/img/photo/1.jpg' %}" class="img-responsive" alt="img"></a></div>
-                        <div class="item"><a href="img/photo/2.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/2@2x.jpg"><img src="{% static 'HealthApp/css/img/photo/2.jpg' %}" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="img/photo/3.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/3@2x.jpg"><img src="{% static 'HealthApp/css/img/photo/3.jpg' %}" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="img/photo/4.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/4@2x.jpg"><img src="{% static 'HealthApp/css/img/photo/4.jpg' %}" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="img/photo/5.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/5@2x.jpg"><img src="{% static 'HealthApp/css/img/photo/5.jpg' %}" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="img/photo/6.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/6@2x.jpg"><img src="{% static 'HealthApp/css/img/photo/6.jpg' %}" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="img/photo/1.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"><img src="{% static 'MyHealthApp/css/img/photo/1.jpg' %}" class="img-responsive" alt="img"></a></div>
+                        <div class="item"><a href="img/photo/2.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/2@2x.jpg"><img src="{% static 'MyHealthApp/css/img/photo/2.jpg' %}" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="img/photo/3.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/3@2x.jpg"><img src="{% static 'MyHealthApp/css/img/photo/3.jpg' %}" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="img/photo/4.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/4@2x.jpg"><img src="{% static 'MyHealthApp/css/img/photo/4.jpg' %}" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="img/photo/5.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/5@2x.jpg"><img src="{% static 'MyHealthApp/css/img/photo/5.jpg' %}" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="img/photo/6.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/6@2x.jpg"><img src="{% static 'MyHealthApp/css/img/photo/6.jpg' %}" class="img-responsive " alt="img"></a></div>
                     </div>
 					</div>
                 </div>
@@ -511,7 +511,7 @@
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 					        </div>
 							<div class="person-text rel text-light">					
-								<img src="{% static 'HealthApp/css/img/testimonials/1.jpg' %}" alt="" class="person img-circle" />
+								<img src="{% static 'MyHealthApp/css/img/testimonials/1.jpg' %}" alt="" class="person img-circle" />
 								<a title="" href="#">Anna</a>
 								<span>Chicago, Illinois</span>
 							</div>
@@ -524,7 +524,7 @@
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 				            </div>
 							<div class="person-text rel text-light">
-				                <img src="{% static 'HealthApp/css/img/testimonials/2.jpg' %}" alt="" class="person img-circle" />
+				                <img src="{% static 'MyHealthApp/css/img/testimonials/2.jpg' %}" alt="" class="person img-circle" />
 								<a title="" href="#">Matthew G</a>
 								<span>San Antonio, Texas</span>
 							</div>
@@ -537,7 +537,7 @@
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 							</div>
 							<div class="person-text rel text-light">
-								<img src="{% static 'HealthApp/css/img/testimonials/3.jpg' %}" alt="" class="person img-circle" />
+								<img src="{% static 'MyHealthApp/css/img/testimonials/3.jpg' %}" alt="" class="person img-circle" />
 								<a title="" href="#">Scarlet Smith</a>
 								<span>Dallas, Texas</span>
 							</div>
@@ -552,7 +552,7 @@
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 					        </div>
 							<div class="person-text rel text-light">
-								<img src="{% static 'HealthApp/css/img/testimonials/4.jpg' %}" alt="" class="person img-circle" />
+								<img src="{% static 'MyHealthApp/css/img/testimonials/4.jpg' %}" alt="" class="person img-circle" />
 								<a title="" href="#">Lucas Thompson</a>
 								<span>Austin, Texas</span>
 							</div>
@@ -565,7 +565,7 @@
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 				            </div>
 							<div class="person-text rel text-light">
-								<img src="{% static 'HealthApp/css/img/testimonials/5.jpg' %}" alt="" class="person img-circle" />
+								<img src="{% static 'MyHealthApp/css/img/testimonials/5.jpg' %}" alt="" class="person img-circle" />
 						        <a title="" href="#">Ella Mentree</a>
 								<span>Fort Worth, Texas</span>
 							</div>
@@ -578,7 +578,7 @@
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 							</div>
 							<div class="person-text rel text-light">
-								<img src="{% static 'HealthApp/css/img/testimonials/6.jpg' %}" alt="" class="person img-circle" />
+								<img src="{% static 'MyHealthApp/css/img/testimonials/6.jpg' %}" alt="" class="person img-circle" />
 								<a title="" href="#">Suzanne Adam</a>
 								<span>Detroit, Michigan</span>
 							</div>
@@ -705,22 +705,22 @@
 				<div class="row">
 					<div class="col-sm-6 col-md-3">
 						<div class="partner">
-						<a href="#"><img src="{% static 'HealthApp/css/img/dummy/partner-1.jpg' %}" alt="" /></a>
+						<a href="#"><img src="{% static 'MyHealthApp/css/img/dummy/partner-1.jpg' %}" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-6 col-md-3">
 						<div class="partner">
-						<a href="#"><img src="{% static 'HealthApp/css/img/dummy/partner-2.jpg' %}" alt="" /></a>
+						<a href="#"><img src="{% static 'MyHealthApp/css/img/dummy/partner-2.jpg' %}" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-6 col-md-3">
 						<div class="partner">
-						<a href="#"><img src="{% static 'HealthApp/css/img/dummy/partner-3.jpg' %}" alt="" /></a>
+						<a href="#"><img src="{% static 'MyHealthApp/css/img/dummy/partner-3.jpg' %}" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-6 col-md-3">
 						<div class="partner">
-						<a href="#"><img src="{% static 'HealthApp/css/img/dummy/partner-4.jpg' %}" alt="" /></a>
+						<a href="#"><img src="{% static 'MyHealthApp/css/img/dummy/partner-4.jpg' %}" alt="" /></a>
 						</div>
 					</div>
 				</div>

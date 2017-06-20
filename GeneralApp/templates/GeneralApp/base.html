@@ -12,22 +12,28 @@
     <title>
     	{% block title %}Page Title{% endblock %}
     </title>
-    <link href="{% static 'GeneralApp/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'GeneralApp/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'GeneralApp/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
-	<link href="{% static 'GeneralApp/css/cubeportfolio.min.css' %}" rel="stylesheet" type="text/css" >
-	<link href="{% static 'GeneralApp/css/nivo-lightbox.css' %}" rel="stylesheet" />
-	<link href="{% static 'GeneralApp/css/default_nivolightbox.css' %}" rel="stylesheet" type="text/css" />
-	<link href="{% static 'GeneralApp/css/owl.carousel.css' %}" rel="stylesheet" media="screen" />
-    <link href="{% static 'GeneralApp/css/owl.theme.css' %}" rel="stylesheet" media="screen" />
-	<link href="{% static 'GeneralApp/css/animate.css' %}" rel="stylesheet" />
-    <link href="{% static 'GeneralApp/css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'favicon1.ico' %}" rel="icon" type="image/x-icon" />
+    <!-- css -->
+    <link href="{% static 'HealthApp/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'HealthApp/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'HealthApp/plugins/cubeportfolio/css/cubeportfolio.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'HealthApp/css/nivo-lightbox.css' %}" rel="stylesheet" />
+	<link href="{% static 'HealthApp/css/nivo-lightbox-theme/default/default.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'HealthApp/css/owl.carousel.css' %}" rel="stylesheet" media="screen" />
+    <link href="{% static 'HealthApp/css/owl.theme.css' %}" rel="stylesheet" media="screen" />
+	<link href="{% static 'HealthApp/css/animate.css' %}" rel="stylesheet" />
+    <link href="{% static 'HealthApp/css/style.css' %}" rel="stylesheet" />
+
+	<!-- boxed bg -->
+	<link id="bodybg" href="{% static 'HealthApp/bodybg/bg1.css' %}" rel="stylesheet" type="text/css" />
+	<!-- template skin -->
+	<link id="t-colors" href="{% static 'HealthApp/color/default.css' %}" rel="stylesheet" />
+    
+
 
     <!-- boxed bg -->
-	<!-- <link id="bodybg" href="{% static 'GeneralApp/bg1.css' %}" rel="stylesheet" type="text/css" /> -->
+	<!-- <link id="bodybg" href="{% static 'HealthApp/bg1.css' %}" rel="stylesheet" type="text/css" /> -->
 	<!-- template skin -->
-	<link id="t-colors" href="{% static 'GeneralApp/css/default_color.css' %}" rel="stylesheet">
+	<!-- <link id="t-colors" href="{% static 'HealthApp/css/default_color.css' %}" rel="stylesheet"> -->
 
 </head>
 
@@ -36,6 +42,18 @@
 <div id="wrapper">
 	
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<!-- <div class="top-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-md-6">
+					<p class="bold text-left">Monday - Saturday, 8am to 10pm </p>
+					</div>
+					<div class="col-sm-6 col-md-6">
+					<p class="bold text-right">Call us now +62 008 65 001</p>
+					</div>
+				</div>
+			</div>
+		</div> -->
         <div class="container navigation">
 		
             <div class="navbar-header page-scroll">
@@ -43,7 +61,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="index.html">
-                    <img src="{% static 'GeneralApp/css/img/logo.png' %}" alt="" width="150" height="40" />
+                    <img src="{% static 'HealthApp/css/img/logo.png' %}" alt="" width="150" height="40" />
                 </a>
             </div>
 
@@ -60,15 +78,23 @@
         <!-- /.container -->
     </nav>
 
+    <div>
+    {% block sidebar %}
+    Body Content
+    {% endblock %}
+    </div>
+    
+
+    <div>
     {% block content %}
     	Body Content
     {% endblock %}
-
+    </div>
     <footer>
 	
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-6 col-md-4">
+				<div class="col-sm-6 col-md-4 index">
 					<div class="wow fadeInDown" data-wow-delay="0.1s">
 					<div class="widget">
 						<h5>About Medicio</h5>
@@ -81,7 +107,7 @@
 					<div class="widget">
 						<h5>Information</h5>
 						<ul>
-							<li><a href="#">Home</a></li>
+							<li><a href="#">HealthApp</a></li>
 							<li><a href="#">Laboratory</a></li>
 							<li><a href="#">Medical treatment</a></li>
 							<li><a href="#">Terms & conditions</a></li>
@@ -89,7 +115,7 @@
 					</div>
 					</div>
 				</div>
-				<div class="col-sm-6 col-md-4">
+				<div class="col-sm-6 col-md-4 index">
 					<div class="wow fadeInDown" data-wow-delay="0.1s">
 					<div class="widget">
 						<h5>Medicio center</h5>
@@ -120,7 +146,7 @@
 					</div>
 					</div>
 				</div>
-				<div class="col-sm-6 col-md-4">
+				<div class="col-sm-6 col-md-4 index">
 					<div class="wow fadeInDown" data-wow-delay="0.1s">
 					<div class="widget">
 						<h5>Our location</h5>
@@ -176,17 +202,19 @@
 </div>
 
 <!-- Core JavaScript Files -->
-    <script src="{% static 'GeneralApp/js/jquery.min.js' %}"></script>	 
-    <script src="{% static 'GeneralApp/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'GeneralApp/js/jquery.easing.min.js' %}"></script>
-	<script src="{% static 'GeneralApp/js/wow.min.js' %}"></script>
-	<script src="{% static 'GeneralApp/js/jquery.scrollTo.js' %}"></script>
-	<script src="{% static 'GeneralApp/js/jquery.appear.js' %}"></script>
-	<script src="{% static 'GeneralApp/js/stellar.js' %}"></script>
-	<script src="{% static 'GeneralApp/js/jquery.cubeportfolio.min.js"></script>
-	<script src="{% static 'GeneralApp/js/owl.carousel.min.js' %}"></script>
-	<script src="{% static 'GeneralApp/js/nivo-lightbox.min.js' %}"></script>
-    <script src="{% static 'GeneralApp/js/custom.js' %}"></script>
+    <script src="{% static 'HealthApp/js/jquery.min.js' %}"></script>	 
+    <script src="{% static 'HealthApp/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'HealthApp/js/jquery.easing.min.js' %}"></script>
+	<script src="{% static 'HealthApp/js/wow.min.js' %}"></script>
+	<script src="{% static 'HealthApp/js/jquery.scrollTo.js' %}"></script>
+	<script src="{% static 'HealthApp/js/jquery.appear.js' %}"></script>
+	<script src="{% static 'HealthApp/js/stellar.js' %}"></script>
+	<script src="{% static 'HealthApp/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js' %}"></script>
+	<script src="{% static 'HealthApp/plugins/cubeportfolio/js/jquery.cubeportfolio.js' %}"></script>
+	<script src="{% static 'HealthApp/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'HealthApp/js/nivo-lightbox.min.js' %}"></script>
+    <script src="{% static 'HealthApp/js/custom.js' %}"></script>
+    <script src="{% static 'HealthApp/js/maphilight.js' %}"></script>
  	
 
 </body>

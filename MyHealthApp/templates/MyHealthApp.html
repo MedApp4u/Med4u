@@ -1,0 +1,93 @@
+{% extends "HealthApp/base.html" %}
+{% load static %}
+
+{% block content %}
+
+	<div id="div_head">
+		<a href="#"><img id="head" src="{% static 'HealthApp/img/logos/healthapp.png' %}">
+		<img id="health_account" src="{% static 'HealthApp/img/MyHealth/health_account.png' %}"></a>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-md-6 hidden-xs">
+					<div class="wow fadeInUp">
+						<img id="dummy" class="img-responsive" src="{% static 'HealthApp/img/dummy/img-1.jpg' %}">
+					</div>
+				</div>	
+				<div class="col-md-6 col-sm-6 padding">
+				<div class="col-md-6 col-sm-6 padding">
+					<div class="wow fadeInRight border">
+						<div>
+
+							<a href="{% url 'HealthApp:sidebar' %}"><img id="pill" src="{% static 'HealthApp/img/MyHealth/pill.png' %}"></a>
+						</div>
+						<div>
+							<a href="#"><h5 id="med_desc">My Medicine</h5></a>
+						</div>
+					</div>
+				</div>		
+				<div class="col-md-6 col-sm-6 padding">
+					<div class="wow fadeInRight border">
+						<div>
+							<a href="#"><img id="diseases" src="{% static 'HealthApp/img/MyHealth/diseases.png' %}"></a>
+						</div>
+						<div>
+							<a href="#"><h5 id="dis_desc">My Diseases</h5></a>
+						</div>
+					</div>
+				</div>		
+				<div class="col-md-6 col-sm-6 padding">
+					<div class="wow fadeInRight border">
+						<div>
+							<a href="#"><img id="insurance" src="{% static 'HealthApp/img/MyHealth/insurance.png' %}"></a>
+						</div>
+						<div>
+							<a href="#"><h5 id="ins_desc">My Insurance</h5></a>
+						</div>
+					</div>
+				</div>		
+				<div class="col-md-6 col-sm-6 padding">
+					<div class="wow fadeInRight border">
+						<div>
+							<a href="#"><img id="measurements" src="{% static 'HealthApp/img/MyHealth/measurements.png' %}"></a>
+						</div>
+						<div>
+							<a href="#"><h5 id="meas_desc">My Measurements</h5></a>
+						</div>
+					</div>
+				</div>		
+				<div class="col-md-6 col-sm-6 padding">
+					<div class="wow fadeInRight border">
+						<div>
+							<a href="#"><img id="appointments" src="{% static 'HealthApp/img/MyHealth/appointments.png' %}"></a>
+						</div>
+						<div>
+							<a href="#"><h5 id="app_desc">My Appointments</h5></a>
+						</div>
+					</div>
+				</div>		
+				<div class="col-md-6 col-sm-6 padding">
+					<div class="wow fadeInRight border">
+						<div>
+							<a href="#"><img id="documents" src="{% static 'HealthApp/img/MyHealth/documents.png' %}"></a>
+						</div>
+						<div>
+							<a href="#"><h5 id="doc_desc">My Documents</h5></a>
+						</div>
+					</div>
+				</div>		
+				<div class="col-md-12 col-sm-12 padding">
+					<div class="wow fadeInRight">
+						<div>
+							<a href="#"><img id="doctors" src="{% static 'HealthApp/img/MyHealth/doctors.png' %}"></a>
+						</div>
+						<div>
+							<a href="#"><h5 id="my_doctors">My Doctors</h5></a>
+						</div>
+					</div>
+				</div>	
+				</div>	
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

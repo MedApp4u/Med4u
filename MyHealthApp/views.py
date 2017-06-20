@@ -338,17 +338,17 @@ class Symptom_show(APIView):
 #     return self.destroy(request, *args, **kwargs)
 
 class HomeView(generic.TemplateView):
-    template_name = 'HealthApp/home.html'
+    template_name = 'MyHealthApp/home.html'
 
 class SymptomsView(generic.TemplateView):
-    template_name = 'HealthApp/symptoms.html'
+    template_name = 'MyHealthApp/symptoms.html'
 
 class MyHealthView(generic.TemplateView):
-    template_name = 'HealthApp/MyHealthApp.html'
+    template_name = 'MyHealthApp/MyHealthApp.html'
 
 # class baseView(generic.TemplateView):
 #   template_name = 'HealthApp/MyHealthBase.html'
 
 class sidebarView(generic.TemplateView):
-    template_name = 'HealthApp/sidebar.html'
+    template_name = 'MyHealthApp/sidebar.html'
 

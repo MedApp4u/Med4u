@@ -1126,6 +1126,69 @@ form.lead label,form.lead input {
 
 /* --- slider ---- */
 
+/* ---- About Us ---- */
+
+.about-us {
+	position: absolute;
+	left: 50%;
+	height: 380px;
+	width: 90%;
+	margin-left: -45%;
+	vertical-align: middle;
+	/*margin-top: -200px;*/
+}
+
+#form-details {
+	top: 80px;
+}
+
+#about-us-form-head {
+	height: 65px;
+	/*line-height: 70px;*/
+	top: 0px;
+	font-size: 20px;
+	text-align: center;
+}
+
+/* ------------------ */
+
+/* ---- T & C ------- */
+
+.termsncond {   
+	overflow-y: scroll;
+	height: 400px;
+	width: 80%;
+	border: 1px solid #DDD;
+	padding: 20px;
+	position: absolute;
+	top: 260px;
+	left: 50%;
+	margin-left: -40%;
+	margin-top: -200px;
+	background-color: white;  
+	color:black;
+}
+
+.tnc-title {
+	height: 40px;
+	width: 400px;
+	line-height: 40px;
+	margin: auto;
+	margin-bottom: 0px;
+	text-align: center;
+	color:brown;
+	font-size: 26px;
+	font-weight: 700;
+}
+
+.tnc-container {
+	margin: 0;
+	height: 40px;
+	margin: auto;
+}
+
+/* ----------------- */
+
 /* ---- Sign-up Image ---- */
 
 .sign-up-img {

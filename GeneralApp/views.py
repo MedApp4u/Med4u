@@ -229,7 +229,8 @@ def password_reset_confirm(request, uidb64=None, token=None,
 
     return TemplateResponse(request, template_name, context)
 
-
+def redirect_to_dashboard(request):
+    return HttpResponseRedirect('/dashboard/')
 
 
 class Tnc(generic.TemplateView):
@@ -238,8 +239,3 @@ class Tnc(generic.TemplateView):
 
 class AboutUs(generic.TemplateView):
     template_name = 'GeneralApp/about.html'
-
-
-def redirect_to_dashboard(request):
-    return HttpResponseRedirect('/dashboard/')
-

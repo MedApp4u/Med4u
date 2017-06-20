@@ -336,3 +336,19 @@ class Symptom_show(APIView):
 
 # def delete(self, request, *args, **kwargs):
 #     return self.destroy(request, *args, **kwargs)
+
+class HomeView(generic.TemplateView):
+    template_name = 'MyHealthApp/home.html'
+
+class SymptomsView(generic.TemplateView):
+    template_name = 'MyHealthApp/symptoms.html'
+
+class MyHealthView(generic.TemplateView):
+    template_name = 'MyHealthApp/MyHealthApp.html'
+
+# class baseView(generic.TemplateView):
+#   template_name = 'HealthApp/MyHealthBase.html'
+
+class sidebarView(generic.TemplateView):
+    template_name = 'MyHealthApp/sidebar.html'
+

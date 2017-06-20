@@ -18,7 +18,7 @@ from django.utils.http import is_safe_url, urlsafe_base64_decode
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.tokens import default_token_generator
 from django.shortcuts import render, redirect
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
 from django.shortcuts import render
@@ -60,7 +60,7 @@ class LoginFormView(View):
 
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/dashboard')
+                return HttpResponse("Congrats! You are logged in!")
             else:
                 context = "User is banned"
         else:
@@ -102,7 +102,7 @@ class UserFormView(View):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponseRedirect('/dashboard')
+                    return HttpResponse("User signed up succesfully!")
                 else:
                     context = "Existing user is banned."
 
@@ -238,8 +238,3 @@ class Tnc(generic.TemplateView):
 
 class AboutUs(generic.TemplateView):
     template_name = 'GeneralApp/about.html'
-
-
-def redirect_to_dashboard(request):
-    return HttpResponseRedirect('/dashboard/')
-

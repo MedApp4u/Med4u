@@ -169,3 +169,6 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'ProfileApp.Profile'
 
+EMAIL_HOST = 'localhost'
+
+EMAIL_PORT = 1025

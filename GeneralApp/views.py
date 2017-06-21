@@ -1,36 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-import warnings
 
-from django.contrib.auth import (
-    REDIRECT_FIELD_NAME, get_user_model, login as auth_login,
-    logout as auth_logout, update_session_auth_hash,
-)
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import (
     AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm,
 )
-from django.template.response import TemplateResponse
-from django.urls import reverse, reverse_lazy
-from django.utils.decorators import method_decorator
-from django.utils.deprecation import RemovedInDjango21Warning
-from django.utils.http import is_safe_url, urlsafe_base64_decode
-from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.tokens import default_token_generator
+from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
-from django.shortcuts import render
 from .forms import LoginForm, UserForm
-from django.template import loader
 from django.views import generic
-from django.views.decorators.csrf import csrf_protect
-from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
-from django.shortcuts import resolve_url
-from django.views.decorators.cache import never_cache
 from ProfileApp.models import Profile
 
 
@@ -111,10 +93,6 @@ class UserFormView(View):
 
         return render(request, 'GeneralApp/registration.html', {'form': form, 'context': context})
 
-
-'''def tnc(request):
-    template = loader.get_template('GeneralApp/tnc.html')
-    return HttpResponse(template.render(request))'''
 
 def redirect_to_dashboard(request):
     return HttpResponseRedirect('/dashboard/')

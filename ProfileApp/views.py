@@ -136,3 +136,17 @@ def change_password(request):
         form=PasswordChangeForm(user=request.user)
         context={'form': form, 'current_user': current_user}
         return render(request,'change-password.html',context)
+
+# def get_auth_token(request):
+    
+#     username = request.POST.get('username')
+#     password = request.POST.get('password')
+    
+#     user = authenticate(username=username, password=password)
+#     if user is not None:
+#         # the password verified for the user
+#         if user.is_active:
+#             token, created = Token.objects.get_or_create(user=user)
+#             request.session['auth'] = token.key
+#             return redirect('/polls/', request)
+#     return redirect(settings.LOGIN_URL, request)

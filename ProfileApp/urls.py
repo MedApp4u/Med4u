@@ -25,4 +25,6 @@ urlpatterns = [
     url(r'dashboard/', views.dashboard, name='dashboard'),
     url(r'^change_password/$',views.change_password,name='change_password'),
     url(r'^logout/$',views.LogoutProfile,name='logout'),
+    # url(r'^api-token-auth/', views.obtain_auth_token),
+
 ]

@@ -1314,6 +1314,10 @@ form.lead label,form.lead input {
 	background-color: #ebebeb;
 }
 
+.rp-complete-form-separator {
+	top: 200px;
+}
+
 #p2 {
 	position: absolute;
 	top: 255px;
@@ -1335,7 +1339,7 @@ form.lead label,form.lead input {
 	font-size: 14px;
 }
 
-#id_username, #id_username1, #id_password, #id_password1, #id_password2, #id_email, #rp-form-field-email, #id_new_password1 {
+#id_username, #id_username1, #id_password, #id_password1, #id_password2, #id_email, #rp-form-field-email, #id_new_password1, #id_new_password2 {
 	position: absolute;
 	left: 50%;
 	height: 34px;
@@ -1349,7 +1353,7 @@ form.lead label,form.lead input {
 	font-size: 14px;
 }
 
-#id_username:focus, #id_username1:focus, #id_password:focus, #id_password1:focus, #id_password2:focus, #id_email:focus, #rp-form-field-email:focus, #id_new_password1 {
+#id_username:focus, #id_username1:focus, #id_password:focus, #id_password1:focus, #id_password2:focus, #id_email:focus, #rp-form-field-email:focus, #id_new_password1:focus, #id_new_password2:focus {
 	border: 1px solid #3fbbc0;
 }
 
@@ -1361,12 +1365,20 @@ form.lead label,form.lead input {
 	top: 150px;
 }
 
+#rp-form-label-np1 {
+	top: 100px;
+}
+
 #username1 {
 	top: 110px;
 }
 
 #rp-form-field-email {
 	top: 194px;
+}
+
+#id_new_password1 {
+	top: 144px;
 }
 
 #id_username {
@@ -1379,6 +1391,10 @@ form.lead label,form.lead input {
 
 #password {
 	top: 200px;
+}
+
+#rp-form-label-np2 {
+	top: 190px;
 }
 
 #password1 {
@@ -1397,6 +1413,10 @@ form.lead label,form.lead input {
 }
 
 #id_password1 {
+	top: 234px;
+}
+
+#id_new_password2 {
 	top: 234px;
 }
 
@@ -2241,6 +2261,17 @@ a.scrollup i:hover {
 .rp-btn {
 	top: 270px;
 	width: 32%;
+	margin-left: -16%;
+}
+
+.rp-done-btn, .rp-complete-btn {
+	top: 295px;
+	width: 32%;
+	margin-left: -16%;
+}
+
+.rp-complete-btn {
+	top: 265px;
 }
 
 .sign-up-btn {

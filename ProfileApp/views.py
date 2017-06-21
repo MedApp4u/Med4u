@@ -102,7 +102,7 @@ def LogoutProfile(request):
     # Since we know the user is logged in, we can now just log them out.
     logout(request)
     # Take the user back to the homepage.
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/home')
 
 @login_required
 def dashboard(request):

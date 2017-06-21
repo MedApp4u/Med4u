@@ -27,9 +27,9 @@ urlpatterns = [
     url(r'^', include('ProfileApp.urls', namespace="ProfileApp")), 
     # url(r'^settings/$', core_views.settings, name='settings'),
     # url(r'^settings/password/$', core_views.password, name='password'),
-    url(r'^reset_password/$',password_reset,name='reset_password'),
-    url(r'^reset_password/done/$',password_reset_done,name='password_reset_done'),
-    url(r'^reset_password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',password_reset_confirm,name='password_reset_confirm'),
-    url(r'^reset_password/complete$',password_reset_complete,name='password_reset_complete'),
+    url(r'^reset_password/$',password_reset, {'template_name': 'GeneralApp/password_reset.html'}, name='reset_password'),
+    url(r'^reset_password/done/$',password_reset_done, {'template_name': 'GeneralApp/password_reset_done.html'}, name='password_reset_done'),
+    url(r'^reset_password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',password_reset_confirm, {'template_name': 'GeneralApp/password_reset_confirm.html'}, name='password_reset_confirm'),
+    url(r'^reset_password/complete$',password_reset_complete,  {'template_name': 'GeneralApp/password_reset_complete.html'}, name='password_reset_complete'),
     url(r'^home/$', views.HomeView, name='home'),
 ]

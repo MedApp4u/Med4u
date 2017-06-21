@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_cleanup',
     'django_filters',
-    'social_django'
+    'social_django',
+    # 'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [

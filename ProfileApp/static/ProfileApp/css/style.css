@@ -1167,16 +1167,30 @@ hr.bold {
 }
 
 #vp-form-gender label {
-	top: 70%;
+	font-weight: 400;
 }
 
-#vp-form-gender_0, #vp-form-gender_1 {
+label[for="vp-form-gender_0"] {
 	position: absolute;
 	top: 70%;
+	left: 45%;
 }
 
 #vp-form-gender_0 {
-	left: 50%;
+	display: inline-block;
+}
+
+/*label {
+	display: none;
+}*/
+
+#vp-form-gender_0, #vp-form-gender_1 {
+	position: absolute;
+	top: 10%;
+}
+
+#vp-form-gender_0 {
+	left: 120%;
 }
 
 #vp-form-gender_1 {

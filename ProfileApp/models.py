@@ -10,11 +10,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 #Create your models here.
 
 class Profile(AbstractUser):
-  dob=models.DateField(null=True)
-  address=models.TextField(max_length=300, null=True)
-  phone_number=PhoneNumberField(null=True)
-  blood_group=models.CharField(max_length=5,choices=BLOOD_GROUP_CHOICES, null=True)
-  gender=models.CharField(max_length=1, choices=SEX_CHOICES, null=True)
+  dob=models.DateField(null=True, blank=True)
+  address=models.TextField(max_length=300, null=True, blank=True)
+  phone_number=PhoneNumberField(null=True, blank=True)
+  blood_group=models.CharField(max_length=5,choices=BLOOD_GROUP_CHOICES, null=True, blank=True)
+  gender=models.CharField(max_length=1, choices=SEX_CHOICES, null=True, blank=True)
   profile_pic=models.ImageField(upload_to="profile", null=True, blank=True)
 
   def __str__(self):

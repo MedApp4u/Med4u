@@ -1105,19 +1105,44 @@ hr.bold {
 	top: 14%;
 }
 
-#vp-form-label-first_name, #vp-form-label-mobile_no {
+#vp-form-field-address {
+	resize: none;
+	height: 85px;
+}
+
+#vp-form-label-first_name {
 	top: 26%;
 }
 
-#vp-form-field-first_name, #vp-form-field-mobile_no  {
+#vp-form-label-phone_number {
+	top: 36%;
+}
+
+#vp-form-field-phone_number_0 {
+	left: 38%;
+	top: 41%;
+	width: 11.5%;
+}
+
+#vp-form-field-phone_number_1 {
+	left: 50%;
+	top: 41%;
+	width: 8%;
+}
+
+#vp-form-field-first_name {
 	top: 31%;
 }
 
-#vp-form-label-last_name, #vp-form-label-blood_group {
+#vp-form-label-last_name {
 	top: 43%;
 }
 
-#vp-form-field-last_name, #vp-form-field-blood_group, .vp-form-body-select, #vp-form-field-blood_group {
+#vp-form-label-blood_group {
+	top: 53%;
+}
+
+#vp-form-field-last_name, .vp-form-body-select, {
 	top: 48%;
 }
 
@@ -1151,7 +1176,7 @@ hr.bold {
 	background-color: #222;
 }
 
-#vp-form-label-address, #vp-form-field-address, #vp-form-label-mobile_no, #vp-form-field-mobile_no, #vp-form-label-blood_group, #vp-form-field-blood_group, .vp-form-body-select, #vp-form-label-gender, .vp-btn, #vp-form-field-gender {
+#vp-form-label-address, #vp-form-field-address, #vp-form-label-phone_number, #vp-form-label-blood_group, #vp-form-field-blood_group, .vp-form-body-select, #vp-form-label-gender, .vp-btn, #vp-form-field-gender {
 	left: 38%;
 }
 

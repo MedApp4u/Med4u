@@ -8,6 +8,7 @@ from ProfileApp.models import Profile
 import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
 from .choices import *
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 # Create your models here.

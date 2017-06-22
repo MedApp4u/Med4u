@@ -70,7 +70,7 @@ MEDICINE_CHOICES=(
     ('o',"Other")
 )
 
-    BODYPART = (
+BODYPART = (
         ('head', 'Head'),
         ('abdomen', 'Abdomen'),
         ('arms', 'Arms'),

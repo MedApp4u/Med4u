@@ -6,12 +6,7 @@ from ProfileApp.models import Profile
 from MyHealthApp.models import *
 
 # Register your models here.
-# class ProfileAdmin(admin.ModelAdmin):
-# 	list_display = ('username', 'email')
-
-
 admin.site.register(Profile)
-#admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Appointment)
 admin.site.register(Procedure)
 admin.site.register(Insurance)

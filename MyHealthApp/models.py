@@ -7,76 +7,14 @@ from django.db import models
 from ProfileApp.models import Profile
 import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
+from .choices import *
 
 
 # Create your models here.
 class Doctor(models.Model):
-    SPECIALITY_CHOICE = (
-        ('ADDICTION PSYCHIATRIST', "Addiction psychiatrist"),
-        ('ADOLESCENT MEDICINE SPECIALIST', "Adolescent medicine specialist"),
-        ('ALLERGIST (IMMUNOLOGIST)', "Allergist (immunologist)"),
-        ('ANESTHESIOLOGIST', "Anesthesiologist"),
-        ('CARDIAC ELECTROPHYSIOLOGIST', "Cardiac electrophysiologist"),
-        ('CARDIOLOGIST', "Cardiologist"),
-        ('CARDIOVASCULAR SURGEON', "Cardiovascular surgeon"),
-        ('COLON ', "Colon "),
-        ('CRITICAL CARE MEDICINE SPECIALIST', "Critical care medicine specialist"),
-        ('DERMATOLOGIST', "Dermatologist"),
-        ('DEVELOPMENTAL PEDIATRICIAN', "Developmental pediatrician"),
-        ('EMERGENCY MEDICINE SPECIALIST', "Emergency medicine specialist"),
-        ('ENDOCRINOLOGIST', "Endocrinologist"),
-        ('FAMILY MEDICINE PHYSICIAN', "Family medicine physician"),
-        ('FORENSIC PATHOLOGIST', "Forensic pathologist"),
-        ('GASTROENTEROLOGIST', "Gastroenterologist"),
-        ('GERIATRIC MEDICINE SPECIALIST', "Geriatric medicine specialist"),
-        ('GYNECOLOGIST', "Gynecologist"),
-        ('GYNECOLOGIC ONCOLOGIST', "Gynecologic oncologist"),
-        ('HAND SURGEON', "Hand surgeon"),
-        ('HEMATOLOGIST', "Hematologist"),
-        ('HEPATOLOGIST', "Hepatologist"),
-        ('HOSPITALIST', "Hospitalist"),
-        ('HOSPICE ', "Hospice "),
-        ('HYPERBARIC PHYSICIAN', "Hyperbaric physician"),
-        ('INFECTIOUS DISEASE SPECIALIST', "Infectious disease specialist"),
-        ('INTERNIST', "Internist"),
-        ('INTERVENTIONAL CARDIOLOGIST', "Interventional cardiologist"),
-        ('MEDICAL EXAMINER', "Medical examiner"),
-        ('MEDICAL GENETICIST', "Medical geneticist"),
-        ('NEONATOLOGIST', "Neonatologist"),
-        ('NEPHROLOGIST', "Nephrologist"),
-        ('NEUROLOGICAL SURGEON', "Neurological surgeon"),
-        ('NEUROLOGIST', "Neurologist"),
-        ('NUCLEAR MEDICINE SPECIALIST', "Nuclear medicine specialist"),
-        ('OBSTETRICIAN', "Obstetrician"),
-        ('OCCUPATIONAL MEDICINE SPECIALIST', "Occupational medicine specialist"),
-        ('ONCOLOGIST', "Oncologist"),
-        ('OPHTHALMOLOGIST', "Ophthalmologist"),
-        ('ORAL SURGEON ', "Oral surgeon "),
-        ('ORTHOPEDIC SURGEON', "Orthopedic surgeon"),
-        ('OTOLARYNGOLOGIST', "Otolaryngologist"),
-        ('PAIN MANAGEMENT SPECIALIST', "Pain management specialist"),
-        ('PATHOLOGIST', "Pathologist"),
-        ('PEDIATRICIAN', "Pediatrician"),
-        ('PERINATOLOGIST', "Perinatologist"),
-        ('PHYSIATRIST', "Physiatrist"),
-        ('PLASTIC SURGEON', "Plastic surgeon"),
-        ('PSYCHIATRIST', "Psychiatrist"),
-        ('PULMONOLOGIST', "Pulmonologist"),
-        ('RADIATION ONCOLOGIST', "Radiation oncologist"),
-        ('RADIOLOGIST', "Radiologist"),
-        ('REPRODUCTIVE ENDOCRINOLOGIST', "Reproductive endocrinologist"),
-        ('RHEUMATOLOGIST', "Rheumatologist"),
-        ('SLEEP DISORDERS SPECIALIST', "Sleep disorders specialist"),
-        ('SPINAL CORD INJURY SPECIALIST', "Spinal cord injury specialist"),
-        ('SPORTS MEDICINE SPECIALIST', "Sports medicine specialist"),
-        ('SURGEON', "Surgeon"),
-        ('THORACIC SURGEON', "Thoracic surgeon"),
-        ('UROLOGIST', "Urologist"),
-        ('VASCULAR SURGEON', "Vascular surgeon"),
-    )
 
     doctor_name = models.CharField(max_length=100)
-    doctor_mobile = models.BigIntegerField(validators=[MaxValueValidator(9999999999)])
+    doctor_phone_number = PhoneNumberField(blank=True)
     doctor_description = models.TextField()
     doctor_address = models.TextField(max_length=1000)
     doctor_speciality = models.CharField(max_length=60, choices=SPECIALITY_CHOICE, default="FAMILY MEDICINE PHYSICIAN")
@@ -103,8 +41,7 @@ class Doctor_Note(models.Model):
 class Medicine(models.Model):
     medicine_name = models.CharField(max_length=100)
     dosage_amt = models.CharField(max_length=30)
-    method = models.CharField(max_length=2, choices=(('s', "tablet"), ('p', "powder"), ('ml', 'liquid ml'),),
-                              default='s')
+    method = models.CharField(max_length=1, choices=MEDICINE_CHOICES)
     frequency = models.IntegerField(help_text='No of times a day')
     # Frontend please write number per day on the side of the frequency field
     medicine_date = models.DateField(help_text='Start date of the prescription')
@@ -126,21 +63,6 @@ class Medicine_Note(models.Model):
 
 
 class Bodypart(models.Model):
-    BODYPART = (
-        ('head', 'Head'),
-        ('abdomen', 'Abdomen'),
-        ('arms', 'Arms'),
-        ('chest', 'Chest'),
-        ('feet', 'Feet'),
-        ('hands', 'Hands'),
-        ('hips', 'Hips'),
-        ('legs', 'Legs'),
-        ('neck', 'Neck'),
-        ('pelvis', 'Pelvis'),
-        ('shoulder', 'Shoulder'),
-
-    )
-    medicine = models.ManyToManyField(Medicine)
     bodypart = models.CharField(max_length=15, choices=BODYPART, default="head")
 
     def __str__(self):
@@ -148,7 +70,7 @@ class Bodypart(models.Model):
 
 
 class Symptom(models.Model):
-    symptom_name = models.CharField(max_length=300)
+    symptom_name = models.CharField(max_length=60)
     symptom_description = models.TextField()
     tests = models.TextField()
     bodypart = models.ManyToManyField(Bodypart)
@@ -183,7 +105,7 @@ class Procedure_Videos(models.Model): #Multi valued attribute
 
 class Procedure_Helpline(models.Model): #Multi valued attribute
     proc = models.ForeignKey(Procedure, on_delete=models.CASCADE)
-    procedure_help_no = models.BigIntegerField(validators=[MaxValueValidator(9999999999)])
+    procedure_phone_number = PhoneNumberField(blank=True)
 
 class Procedure_Note(models.Model):
     procedure_note = models.TextField()
@@ -225,7 +147,7 @@ class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     # mobile = user.(pk=pk).mobile
     user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
-    date = models.DateField(default=datetime.timedelta(days=3))
+    date = models.DateField()
     time = models.TimeField()
     """time_start = models.TimeField(blank=True, null=True)
     time_end = models.TimeField(blank=True, null=True)
@@ -242,7 +164,6 @@ class Insurance(models.Model):
     start_date = models.DateField()
     premium = models.IntegerField()
     notes = models.TextField()
-    # User_id
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):

@@ -25,7 +25,6 @@ The total list of requirements is [here](https://github.com/MedicalAppInfibeam/D
 ## Built With
 
 * [Django](https://docs.djangoproject.com/en/1.11/) - The web framework used
-* Add more here
 
 ## Contributing
 

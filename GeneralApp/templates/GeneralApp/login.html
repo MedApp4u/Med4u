@@ -38,7 +38,7 @@
 										<p class="form-label" id="username">Username</p>
 										{{ form.username }}
 										<p class="form-label" id="password">Password</p>
-										<a href="#">
+										<a href="{% url 'reset_password' %}">
 											<p class="form-label" id="forgot-password">Forgot password?</p>  
 										</a>
 										{{ form.password }}
@@ -46,10 +46,10 @@
 									</form>
 									{% if context != "" %}
 										<p class="form-label" id="login-error">{{ context }}</p>
+									{% else %}
+										<!-- <a href="{% url 'social:begin' 'twitter' %}" class="form-label" id="login-error">Login with Twitter</a> -->
+										<a href="{% url 'social:begin' 'facebook' %}" class="form-label" id="login-error">Login with Facebook</a>
 									{% endif %}
-									<!-- <a href="{% url 'social:begin' 'twitter' %}" class="form-label" id="login-error">Login with Twitter</a> -->
-									<a href="{% url 'social:begin' 'facebook' %}" class="form-label" id="login-error">Login with Facebook</a>
-
 							</div>
 						</div>		
 					</div>		

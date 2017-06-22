@@ -13,50 +13,6 @@ from .models import Profile
 
 # Create your views here.
 
-# #profile page using user name as url
-# @login_required
-# def profile_page(request, username):
-#     user = get_object_or_404(User, username=username)
-#     return render(request, 'howdidu/profile.html', {'profile_user': user})
-# def get_user_profile(request, username):
-#     user = User.objects.get(username=username)
-#     return render(request, '<app_name>/user_profile.html', {"user":user})
-
-
-# def bound_form(request, id):
-#     item = get_object_or_404(Item, id=id)
-#     form = ItemForm(instance=item)
-#     return render_to_response('bounded_form.html', {'form': form})
-
-
-# class ViewProfile(View):
-#     context = ""
-    
-#     def get(self, request):
-#         user = Profile.objects.get(user=request.user)
-#         context = ""
-#         return render(request, 'view_profile.html', {'user': user, 'context': context})
-
-#     def post(self, request):
-#         context = ""
-#         return render(request, 'view_profile.html', {'user': user, 'context': context})
-
-
-# #user profile form
-# @login_required
-# def register_profile(request):
-#     profile = UserProfile.objects.get(user=request.user)
-#     if request.method == 'POST':
-#         form = UserProfileForm(request.POST, request.FILES, instance=profile)
-#         if form.is_valid():
-#             form.save()
-#             return index(request)
-#         else:
-#             print form.errors
-#     else:
-#         form = UserProfileForm()
-#     return render(request, 'howdidu/register_profile.html', {'form': form})
-
 @login_required
 def ViewProfile(request):
     context = ""
@@ -72,30 +28,6 @@ def ViewProfile(request):
         form.save()
         return HttpResponseRedirect('/view_profile/')
 
-
-# @login_required
-# def EditProfile(request):
-   
-# class EditProfile(View):
-#     context = ""
-#     form_class = ProfileForm
-
-#     def get(self, request):
-#         profile=Profile.objects.get(user=request.user)
-#         form = self.form_class(None)
-#         context = ""
-#         return render(request, 'edit_profile.html', {'form': form, 'context': context})
-
-#     def post(self, request):
-#         profile=Profile.objects.get(user=request.user)
-#         form = self.form_class(request.POST)
-#         context = ""
-#         if form.is_valid():
-#             form.save()
-#             return HttpResponseRedirect('/view_profile/')
-#         else:
-#             print form.errors
-#         return render(request, 'edit_profile.html', {'form': form, 'context': context})
 
 @login_required
 def LogoutProfile(request):

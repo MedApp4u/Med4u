@@ -1162,11 +1162,28 @@ hr.bold {
 	top: 70%;
 }
 
-#vp-form-field-gender_0 {
-	left: 42%;
+#vp-form-gender {
+	list-style: none;
 }
 
-#vp-form-field-email, #vp-form-field-gender {
+#vp-form-gender label {
+	top: 70%;
+}
+
+#vp-form-gender_0, #vp-form-gender_1 {
+	position: absolute;
+	top: 70%;
+}
+
+#vp-form-gender_0 {
+	left: 50%;
+}
+
+#vp-form-gender_1 {
+	left: 70%;
+}
+
+#vp-form-field-email {
 	top: 65%;
 }
 

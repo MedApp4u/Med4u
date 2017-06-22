@@ -1142,12 +1142,28 @@ hr.bold {
 	top: 53%;
 }
 
-#vp-form-field-last_name, .vp-form-body-select, {
+#vp-form-field-blood_group {
+	top: 58%;
+}
+
+.vp-form-body-select {
 	top: 48%;
 }
 
-#vp-form-label-email, #vp-form-label-gender {
+#vp-form-field-last_name {
+	top: 48%;
+}
+
+#vp-form-label-email {
 	top: 60%;
+}
+
+#vp-form-label-gender {
+	top: 70%;
+}
+
+#vp-form-field-gender_0 {
+	left: 42%;
 }
 
 #vp-form-field-email, #vp-form-field-gender {

@@ -41,7 +41,7 @@ class Medicine_NoteSerializer(serializers.ModelSerializer):
 class BodypartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bodypart
-        fields=('bodypart')
+        fields=('bodypart',)
 
         
 class SymptomSerializer(serializers.ModelSerializer):

@@ -38,10 +38,10 @@
 										<p class="form-label" id="username">Username</p>
 										{{ form.username }}
 										<p class="form-label" id="password">Password</p>
+										{{ form.password }}
 										<a href="{% url 'reset_password' %}">
 											<p class="form-label" id="forgot-password">Forgot password?</p>  
 										</a>
-										{{ form.password }}
 										<input type="submit" class="login-btn btn-skin" value="Sign in" />
 									</form>
 									{% if context != "" %}

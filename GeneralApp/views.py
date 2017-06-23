@@ -104,3 +104,64 @@ class Tnc(generic.TemplateView):
 
 class AboutUs(generic.TemplateView):
     template_name = 'GeneralApp/about.html'
+    
+
+def SymptomHead(request):
+    if request.method == 'GET':
+        a = Symptom.objects.filter(bodypart__bodypart='head')
+        return  render(request,'GeneralApp/symptomhead.html',{'x': a})
+
+def SymptomAbdomen(request):
+    if request.method == 'GET':
+        a = Symptom.objects.filter(bodypart__bodypart='abdomen')
+        return  render(request,'GeneralApp/symptomabdomen.html',{'x': a})
+
+def SymptomArms(request):
+    if request.method == 'GET':
+        a = Symptom.objects.filter(bodypart__bodypart='arms')
+        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+
+
+def SymptomChest(request):
+    if request.method == 'GET':
+        a = Symptom.objects.filter(bodypart__bodypart='chest')
+        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+
+def SymptomFeet(request):
+    if request.method == 'GET':
+        a = Symptom.objects.filter(bodypart__bodypart='feet')
+        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+
+
+def SymptomHands(request):
+    if request.method == 'GET':
+        a = Symptom.objects.filter(bodypart__bodypart='hands')
+        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+
+def SymptomHips(request):
+    if request.method == 'GET':
+        a = Symptom.objects.filter(bodypart__bodypart='hips')
+        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+
+def SymptomLegs(request):
+    if request.method == 'GET':
+        a = Symptom.objects.filter(bodypart__bodypart='legs')
+        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+
+def SymptomNeck(request):
+    if request.method == 'GET':
+        a = Symptom.objects.filter(bodypart__bodypart='neck')
+        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+
+def SymptomPelvis(request):
+    if request.method == 'GET':
+        a = Symptom.objects.filter(bodypart__bodypart='pelvis')
+        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+
+
+
+def SymptomShoulder(request):
+    if request.method == 'GET':
+        a = Symptom.objects.filter(bodypart__bodypart='shoulder')
+        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+

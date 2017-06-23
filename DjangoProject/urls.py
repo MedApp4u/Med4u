@@ -34,4 +34,4 @@ urlpatterns = [
     url(r'^reset_password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',password_reset_confirm, {'template_name': 'GeneralApp/password_reset_confirm.html'}, name='password_reset_confirm'),
     url(r'^reset_password/complete$',password_reset_complete,  {'template_name': 'GeneralApp/password_reset_complete.html'}, name='password_reset_complete'),
     url(r'^home/$', views.HomeView, name='home'),
-] +static(settings.MEDIA_URL , document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

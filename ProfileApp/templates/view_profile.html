@@ -29,7 +29,7 @@
 							<img src="{% static 'ProfileApp/css/img/icons/upload-light.png' %}"></img>
 							<p>Upload image</p>
 						</div>
-						<img src="{% static 'ProfileApp/css/img/icons/pikachu.png' %}" class="profile-slider-image" />
+						<img src="{{current_user.profile_pic.url}}" class="profile-slider-image" />
 					</div>
 				</div>
 				<div class="profile-slider-bottom">

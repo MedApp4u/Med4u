@@ -9,4 +9,8 @@ urlpatterns = [
     url(r'tnc/', views.Tnc.as_view(), name='tnc'),
     url(r'about/', views.AboutUs.as_view(), name='about'),
     url(r'^accounts/profile/$', views.redirect_to_dashboard, name='redirect_to_dashboard'),
+    url(r'^symptom/head/$', views.SymptomHead,name='head-symptom'),
+	url(r'^symptom/abdomen/$', views.SymptomAbdomen,name='abdomen-symptom'),
+	url(r'^symptom/shoulder/$', views.SymptomShoulder,name='shoulder-symptom'),
+		
 ]

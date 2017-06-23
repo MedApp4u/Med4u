@@ -15,7 +15,7 @@ class Profile(AbstractUser):
   phone_number=PhoneNumberField(null=True)
   blood_group=models.CharField(max_length=5,choices=BLOOD_GROUP_CHOICES, null=True)
   gender=models.CharField(max_length=1, choices=SEX_CHOICES, null=True)
-  profile_pic=models.ImageField(upload_to="profile", null=True)
+  profile_pic=models.ImageField(upload_to="profile",blank=True, null=True)
 
   def __str__(self):
     return self.username

@@ -11,6 +11,14 @@ urlpatterns = [
     url(r'^accounts/profile/$', views.redirect_to_dashboard, name='redirect_to_dashboard'),
     url(r'^symptom/head/$', views.SymptomHead,name='head-symptom'),
 	url(r'^symptom/abdomen/$', views.SymptomAbdomen,name='abdomen-symptom'),
+	url(r'^symptom/arms/$', views.SymptomArms,name='arms-symptom'),
+	url(r'^symptom/chest/$', views.SymptomHead,name='chest-symptom'),
+	url(r'^symptom/feet/$', views.SymptomHead,name='feet-symptom'),
+	url(r'^symptom/hands/$', views.SymptomHead,name='hands-symptom'),
+	url(r'^symptom/hips/$', views.SymptomHead,name='hips-symptom'),
+	url(r'^symptom/legs/$', views.SymptomHead,name='legs-symptom'),
+	url(r'^symptom/neck/$', views.SymptomHead,name='neck-symptom'),
+	url(r'^symptom/pelvis/$', views.SymptomHead,name='pelvis-symptom'),
 	url(r'^symptom/shoulder/$', views.SymptomShoulder,name='shoulder-symptom'),
 		
 ]

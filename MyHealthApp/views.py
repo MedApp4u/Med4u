@@ -42,7 +42,7 @@ def Medicine_list(request):
 '''
 
 class Medicine_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Medicine.objects.all()
     serializer_class=MedicineSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
@@ -50,7 +50,7 @@ class Medicine_list(generics.ListCreateAPIView):
     search_fields=('medicine_name',)
 
 class Appointment_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Appointment.objects.all()
     serializer_class=AppointmentSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
@@ -59,7 +59,7 @@ class Appointment_list(generics.ListCreateAPIView):
 
 
 class Symptom_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Symptom.objects.all()
     serializer_class=SymptomSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
@@ -68,7 +68,7 @@ class Symptom_list(generics.ListCreateAPIView):
 
 
 class Bodypart_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Bodypart.objects.all()
     serializer_class=BodypartSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
@@ -76,14 +76,14 @@ class Bodypart_list(generics.ListCreateAPIView):
     search_fields=('bodypart',)
 
 class Measurement_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Measurement.objects.all()
     serializer_class=MeasurementSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
     filter_fields=('weight',)
     
 class Insurance_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Insurance.objects.all()
     serializer_class=InsuranceSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
@@ -92,7 +92,7 @@ class Insurance_list(generics.ListCreateAPIView):
 
 
 class Procedure_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Procedure.objects.all()
     serializer_class=ProcedureSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
@@ -101,14 +101,14 @@ class Procedure_list(generics.ListCreateAPIView):
 
         
 class Doctor_Note_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Doctor_Note.objects.all()
     serializer_class=Doctor_NoteSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
    
     
 class Medicine_Note_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Medicine_Note.objects.all()
     serializer_class=Medicine_NoteSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
@@ -141,25 +141,25 @@ class Profile_show(APIView):
 
 
 class Procedure_Images_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Procedure_Images.objects.all()
     serializer_class=Procedure_ImagesSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
 
 class Procedure_Videos_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Procedure_Videos.objects.all()
     serializer_class=Procedure_VideosSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
     
 class Procedure_Helpline_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Procedure_Helpline.objects.all()
     serializer_class=Procedure_HelplineSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
 
 class Procedure_Note_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,) 
     queryset = Procedure_Note.objects.all()
     serializer_class=Procedure_NoteSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)

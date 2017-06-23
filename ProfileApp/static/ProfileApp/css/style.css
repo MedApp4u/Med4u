@@ -1170,31 +1170,24 @@ hr.bold {
 	font-weight: 400;
 }
 
-label[for="vp-form-gender_0"] {
+label[for="vp-form-gender_0"], label[for="vp-form-gender_1"] {
 	position: absolute;
 	top: 70%;
 	left: 45%;
+	font-weight: 300;
 }
 
-#vp-form-gender_0 {
-	display: inline-block;
+label[for="vp-form-gender_0"] {
+	left: 43%;
 }
 
-/*label {
-	display: none;
-}*/
+label[for="vp-form-gender_1"] {
+	left: 50%;
+}
 
 #vp-form-gender_0, #vp-form-gender_1 {
-	position: absolute;
-	top: 10%;
-}
-
-#vp-form-gender_0 {
-	left: 120%;
-}
-
-#vp-form-gender_1 {
-	left: 70%;
+	position: relative;
+	top: 1px;
 }
 
 #vp-form-field-email {
@@ -1205,8 +1198,9 @@ label[for="vp-form-gender_0"] {
 	top: 77%;
 }
 
-#vp-form-field-dob {
+#datepicker {
 	top: 82%;
+	margin: 0px;
 }
 
 .vp-form-field:focus, .vp-form-body-select:focus {

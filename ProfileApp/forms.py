@@ -13,7 +13,7 @@ class ProfileForm(forms.ModelForm):
 	email = forms.EmailField(max_length=254, help_text='Enter a valid email address only.',  widget=forms.EmailInput(attrs={'class' : 'vp-form-field', 'id': 'vp-form-field-email'}))
 #	gender = forms.ChoiceField(choices=SEX_CHOICES, help_text='Enter M for Male and F for Female', required=True, widget=forms.RadioSelect(attrs={'class' : 'vp-form-field', 'id': 'vp-form-field-gender'}))
 	gender = forms.ChoiceField(choices=SEX_CHOICES, help_text='Enter M for Male and F for Female', required=True, widget=forms.RadioSelect(attrs={'id': 'vp-form-gender'}))
-	dob=forms.DateField(required=True, label='Date of Birth', widget=forms.DateInput(attrs={'class' : 'vp-form-field', 'id': 'vp-form-field-dob'}))
+	dob=forms.DateField(required=True, label='Date of Birth', widget=forms.DateInput(attrs={'class' : 'vp-form-field', 'id': 'datepicker'}))
 	address=forms.CharField(required=False, label='Address', widget=forms.Textarea(attrs={'class' : 'vp-form-field', 'id': 'vp-form-field-address'}))
 	phone_number=PhoneNumberField(required=False, label='Mobile No.', widget=PhoneNumberPrefixWidget(attrs={'class' : 'vp-form-field', 'id': 'vp-form-field-phone_number'}))
 	blood_group=forms.ChoiceField(choices=BLOOD_GROUP_CHOICES,required=False, label='Blood Group',initial='Select', widget=forms.Select(attrs={'class' : 'vp-form-field', 'id': 'vp-form-field-blood_group'}))

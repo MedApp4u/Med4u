@@ -1,37 +1,42 @@
 # DoctorsWebApp
 
-## Instructions
+An Easy-to-Use but useful Web Application where end-users can register to free of charge and have thier Medical Records sorted. Other functionalites include Finding Doctors by Location, Speciality and booking appointments without having to make a ring!
 
-Before pushing any code remember to make a new branch and create a pull request and ask a review from ANY two members (preferably one backend and one frontend member) and then merge it into the master just to maintain the code quality.
+## Getting Started
 
-Follow these Steps :
-1) Clone this repository into your local machine using :
-    `git clone https://github.com/MedicalAppInfibeam/DjangoApp.git`
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-2) Create a branch separate from your master branch using :
-    `git checkout -b <branch-name>`
+### Prerequisites
 
-3) Once this is done and ONLY when you write this command, then make changes to your cloned repo.
+The total list of requirements is [here](https://github.com/MedicalAppInfibeam/DoctorsWebApp/blob/master/requirements.txt). Make sure you have all of these within your virtual envrionment.
 
-4) After changes has been made type these three commands :
-    `git add *`
-    `git commit -m "some comment on whatever you did"`
-    `git push -u origin <branch-name>`
+### Installing
 
+* Install all the requirements within your virtual envrionment.
+* Clone this repository from [here](https://github.com/MedicalAppInfibeam/DoctorsWebApp.git).
 
-5) Remember whenever you want to make a change ALWAYS be in your own branch and not the master one.
+## Deployment
 
-6) Once you have pushed the code open your github account and go the go to our org home page where you'll see an option `Compare and pull request`. Press this and make a pull request. On the right now you'll see an option called reviewers where assign any two reviewers. Wait till they review. 
+* Activate your Virtual Environment
+* Move to your project directory
+* Within your terminal type `python manage.py runserver`
+* The server will be hosted on `http://127.0.0.1:8000/`
 
-7) You can start with more changes but make sure you are on the branch other than the master. You can checnk which branchyou are on by :
-    `git branch`
-To change branch type: 
-    `git checkout <branch_you_want_to_change_into>`
+## Built With
 
-8) To update your master branch do these :
-    `git checkout master`
-    `git fetch origin`
-    `git merge origin/master`
-    `git checkout -b <branch-name>`
+* [Django](https://docs.djangoproject.com/en/1.11/) - The web framework used
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://github.com/MedicalAppInfibeam/DoctorsWebApp/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/MedicalAppInfibeam/DoctorsWebApp/blob/master/LICENSE) file for details.
+
+## Acknowledgments
+
+* Chintan Joshi, DRC Systems Pvt. Ltd, Ahmedabad
+* See also the list of [contributors](https://github.com/MedicalAppInfibeam/DoctorsWebApp/graphs/contributors) who participated in this project.
     
-    
+     

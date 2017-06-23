@@ -1236,6 +1236,20 @@ form.lead label,form.lead input {
 	font-size: 23px;
 }
 
+.rp-form-head {
+	top: 10px;
+	left: 50%;
+	width: 28%;
+	margin-left: -14%;
+	font-size: 23px;
+}
+
+.rp-sent-form-head {
+	top: 30px;
+	width: 60%;
+	margin-left: -30%;
+}
+
 .sign-up-form-head {
 	top: -40px;
 	left: 68%;
@@ -1259,6 +1273,56 @@ form.lead label,form.lead input {
 	margin-left: -14%;
 }
 
+.rp-form-body {
+	top: 30px;
+	left: 50%;
+	height: 375px;
+	width: 28%;
+	margin-left: -14%;
+	padding: 25px;
+}
+
+.rp-sent-form-body {
+	height: 350px;
+	width: 60%;
+	margin-left: -30%;
+}
+
+.rp-confirm-p {
+	font-weight: 500;
+	font-size: 13px;
+	margin: 0px;
+	text-align: center;
+	left: 50%;
+	width: 800px;
+	margin-left: -400px;
+	height: 52px;
+}
+
+#p1 {
+	position: absolute;
+	top: 129px;
+}
+
+.rp-sent-form-separator {
+	position: absolute;
+	top: 220px;
+	left: 50%;
+	height: 1.5px;
+	width: 100px;
+	margin: -0.25px 0 0 -50px;
+	background-color: #ebebeb;
+}
+
+.rp-complete-form-separator {
+	top: 200px;
+}
+
+#p2 {
+	position: absolute;
+	top: 255px;
+}
+
 .sign-up-form-body {
 	top: -40px;
 	left: 68%;
@@ -1275,7 +1339,7 @@ form.lead label,form.lead input {
 	font-size: 14px;
 }
 
-#id_username, #id_username1, #id_password, #id_password1, #id_password2, #id_email {
+#id_username, #id_username1, #id_password, #id_password1, #id_password2, #id_email, #rp-form-field-email, #id_new_password1, #id_new_password2 {
 	position: absolute;
 	left: 50%;
 	height: 34px;
@@ -1289,7 +1353,7 @@ form.lead label,form.lead input {
 	font-size: 14px;
 }
 
-#id_username:focus, #id_username1:focus, #id_password:focus, #id_password1:focus, #id_password2:focus, #id_email:focus {
+#id_username:focus, #id_username1:focus, #id_password:focus, #id_password1:focus, #id_password2:focus, #id_email:focus, #rp-form-field-email:focus, #id_new_password1:focus, #id_new_password2:focus {
 	border: 1px solid #3fbbc0;
 }
 
@@ -1297,8 +1361,24 @@ form.lead label,form.lead input {
 	top: 110px;
 }
 
+#rp-form-label-email {
+	top: 150px;
+}
+
+#rp-form-label-np1 {
+	top: 100px;
+}
+
 #username1 {
 	top: 110px;
+}
+
+#rp-form-field-email {
+	top: 194px;
+}
+
+#id_new_password1 {
+	top: 144px;
 }
 
 #id_username {
@@ -1311,6 +1391,10 @@ form.lead label,form.lead input {
 
 #password {
 	top: 200px;
+}
+
+#rp-form-label-np2 {
+	top: 190px;
 }
 
 #password1 {
@@ -1329,6 +1413,10 @@ form.lead label,form.lead input {
 }
 
 #id_password1 {
+	top: 234px;
+}
+
+#id_new_password2 {
 	top: 234px;
 }
 
@@ -2168,6 +2256,22 @@ a.scrollup i:hover {
 	font-weight: 600;
 	border-style: solid;
 	border-radius: 4px;
+}
+
+.rp-btn {
+	top: 270px;
+	width: 32%;
+	margin-left: -16%;
+}
+
+.rp-done-btn, .rp-complete-btn {
+	top: 295px;
+	width: 32%;
+	margin-left: -16%;
+}
+
+.rp-complete-btn {
+	top: 265px;
 }
 
 .sign-up-btn {

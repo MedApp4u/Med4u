@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_cleanup',
     'django_filters',
-    'social_django'
+    'social_django',
+    # 'django-phonenumber-field'
+    # 'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -157,7 +159,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
@@ -172,3 +174,7 @@ AUTH_USER_MODEL = 'ProfileApp.Profile'
 EMAIL_HOST = 'localhost'
 
 EMAIL_PORT = 1025
+
+PHONENUMBER_DB_FORMAT = 'E164'
+
+DATE_FORMAT = ['%d/%m/%y']

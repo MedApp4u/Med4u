@@ -10,7 +10,7 @@ class DoctorSerializer(serializers.ModelSerializer):
     #user = serializers.HyperlinkedRelatedField(many=True,read_only=True,view_name='Profile-detail')
     class Meta:
         model = Doctor
-        fields=('doctor_name','doctor_mobile','doctor_description','doctor_address','doctor_speciality','doctor_timings','doctor_pic','user')
+        fields=('doctor_name','doctor_phone_number','doctor_description','doctor_address','doctor_speciality','doctor_timings','doctor_pic','user')
 
 class Doctor_NoteSerializer(serializers.ModelSerializer):
     user =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
@@ -39,11 +39,9 @@ class Medicine_NoteSerializer(serializers.ModelSerializer):
        
  
 class BodypartSerializer(serializers.ModelSerializer):
-    medicine =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
-    #medicine = serializers.HyperlinkedRelatedField(many=True, read-only=True,view_name=Bodypart-detail)
     class Meta:
         model = Bodypart
-        fields=('medicine','bodypart')
+        fields=('bodypart',)
 
         
 class SymptomSerializer(serializers.ModelSerializer):
@@ -103,7 +101,7 @@ class Procedure_HelplineSerializer(serializers.ModelSerializer):
     #proc = serializers.HyperlinkedRelatedField(many=True, read-only=True,view_name=Procedure-detail)
     class Meta:
         model = Procedure_Helpline
-        fields=('procedure_help_no','proc')
+        fields=('procedure_phone_number','proc')
 
 
 class Procedure_NoteSerializer(serializers.ModelSerializer):
@@ -196,7 +194,7 @@ class Procedure_HelplineSerializer(serializers.ModelSerializer):
     #proc= serializers.HyperlinkedRelatedField(many=True,read_only=True,view_name='Procedure-detail')
     class Meta:
         model = Procedure_Helpline
-        fields=('proc','procedure_help_no')
+        fields=('proc','procedure_phone_number')
 
 class Procedure_NoteSerializer(serializers.ModelSerializer):
     proc = serializers.PrimaryKeyRelatedField(many=True, read_only = True)
@@ -204,18 +202,3 @@ class Procedure_NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Procedure_Note
         fields=('proc','procedure_note')
-
-
-
-
-
-
-
-
-
-
-
-       
-
-
-

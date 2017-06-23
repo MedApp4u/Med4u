@@ -20,8 +20,13 @@ class Doctor(models.Model):
     doctor_address = models.TextField(max_length=1000, blank=True)
     doctor_speciality = models.CharField(max_length=60, choices=SPECIALITY_CHOICE, default="FAMILY MEDICINE PHYSICIAN", blank=True)
     doctor_timings = models.CharField(max_length=30, default="06 AM to 06 PM")
+<<<<<<< HEAD
+    doctor_pic= models.ImageField(upload_to="doctors", blank=True, null=True) #Insert upload_to
+    user = models.ManyToManyField(settings.AUTH_USER_MODEL)
+=======
     doctor_pic= models.ImageField(upload_to="doctors", null=True, blank=True) #Insert upload_to
     user = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
+>>>>>>> 4843b9b792ea00c37cd2d3b55d404eea84e224bd
 
     def __str__(self):
         return self.doctor_name

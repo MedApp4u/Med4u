@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'MyHealth/', views.MyHealthView.as_view(), name='MyHealth'),
     # url(r'base/', views.baseView.as_view(), name='base'),
     url(r'sidebar/', views.sidebarView.as_view(), name='sidebar'),
+    url(r'^symptom/head/$', views.SymptomFilter,name='head-symptom'),
 	
   
   

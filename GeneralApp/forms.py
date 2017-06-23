@@ -1,6 +1,7 @@
 from django import forms
 from django.conf import settings
 from ProfileApp.models import Profile
+from MyHealthApp.models import Procedure
 from django.contrib.auth.forms import PasswordResetForm
 
 FIELD_NAME_MAPPING = {
@@ -35,3 +36,9 @@ class UserForm(forms.ModelForm):
 
 class MyPasswordResetForm(PasswordResetForm):
 	email = forms.EmailField(widget=forms.TextInput(attrs={'class' : 'rp-form-field', 'id': 'rp-form-field-email'}))
+
+class ProcedureForm(forms.ModelForm):
+
+	class Meta:
+		model = Procedure
+		fields = ['procedure_name', 'procedure_description', 'possible_complication', 'bodypart', 'symptom', 'medicine', 'doctor']

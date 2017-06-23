@@ -1002,6 +1002,11 @@ hr.bold {
 	background-repeat: repeat-x;
 }
 
+.procedures-intro-content {
+	height: 100%;
+	background: url(img/dummy/bg6.jpg);
+}
+
 .login-intro-content {
 	height: 100%;
 }
@@ -1229,7 +1234,7 @@ form.lead label,form.lead input {
 }
 
 .login-form-head {
-	top: 10px;
+	top: 20px;
 	left: 50%;
 	width: 28%;
 	margin-left: -14%;
@@ -1266,7 +1271,7 @@ form.lead label,form.lead input {
 }
 
 .login-form-body {
-	top: 10px;
+	top: 20px;
 	left: 50%;
 	height: 375px;
 	width: 28%;

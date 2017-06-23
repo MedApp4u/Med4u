@@ -8,6 +8,7 @@ from .models import *
 class DoctorSerializer(serializers.ModelSerializer):
     user =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
     #user = serializers.HyperlinkedRelatedField(many=True,read_only=True,view_name='Profile-detail')
+    doctor_pic = serializers.ImageField(max_length = None, use_url=True)
     class Meta:
         model = Doctor
         fields=('doctor_name','doctor_phone_number','doctor_description','doctor_address','doctor_speciality','doctor_timings','doctor_pic','user')
@@ -84,6 +85,8 @@ class ProcedureSerializer(serializers.ModelSerializer):
 class Procedure_ImagesSerializer(serializers.ModelSerializer):
     proc =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
     #proc = serializers.HyperlinkedRelatedField(many=True, read-only=True,view_name=Procedure-detail)
+    procedure_image = serializers.ImageField(max_length = None, use_url=True)
+    
     class Meta:
         model = Procedure_Images
         fields=('procedure_image','proc')
@@ -178,6 +181,8 @@ class DocumentSerializer(serializers.ModelSerializer):
 class Procedure_ImagesSerializer(serializers.ModelSerializer):
     proc = serializers.PrimaryKeyRelatedField(many=True, read_only = True)
     #proc = serializers.HyperlinkedRelatedField(many=True,read_only=True,view_name='Procedure_show')
+    procedure_image = serializers.ImageField(max_length = None, use_url=True)
+    
     class Meta:
         model = Procedure_Images
         fields=('proc','procedure_image')

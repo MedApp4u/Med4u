@@ -14,7 +14,7 @@ from django.views import generic
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 from ProfileApp.models import Profile
-
+from MyHealthApp.models import Symptom, Bodypart
 
 # Create your views here.
 

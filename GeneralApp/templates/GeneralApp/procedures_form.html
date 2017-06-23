@@ -29,28 +29,22 @@
 				<div class="wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.2s">
 					<div class="container">
 						<div class="row">
-							<!-- <div class="form-head login-form-head">
+							<div class="form-head login-form-head">
 								Sign in to Medicio
 							</div>
 							<div class="form-body login-form-body">
 									<form action="" method="post">
 									{% csrf_token %}
-										<p class="form-label" id="username">Username</p>
+										<p class="form-label" id="username">Body part</p>
 										{{ form.username }}
-										<p class="form-label" id="password">Password</p>
-										<a href="{% url 'reset_password' %}">
-											<p class="form-label" id="forgot-password">Forgot password?</p>  
-										</a>
+										<p class="form-label" id="password">Symptom</p>
 										{{ form.password }}
-										<input type="submit" class="login-btn btn-skin" value="Sign in" />
+										<input type="submit" class="login-btn btn-skin" value="Search" />
 									</form>
 									{% if context != "" %}
 										<p class="form-label" id="login-error">{{ context }}</p>
-									{% else %}
-										<a href="{% url 'social:begin' 'twitter' %}" class="form-label" id="login-error">Login with Twitter</a>
-										<a href="{% url 'social:begin' 'facebook' %}" class="form-label" id="login-error">Login with Facebook</a>
 									{% endif %}
-							</div> -->
+							</div>
 						</div>		
 					</div>		
 				</div>	

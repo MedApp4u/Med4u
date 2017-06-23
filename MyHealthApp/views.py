@@ -17,7 +17,7 @@ from django.views import generic
 #Create your views here
 
 class Doctor_list(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
     queryset = Doctor.objects.all()
     serializer_class=DoctorSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)

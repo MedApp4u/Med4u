@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Measurement,Doctor,Doctor_Note,Medicine_Note, Medicine, Bodypart, Appointment, Symptom, Insurance,Procedure   
+from .models import *
 #from .serializers import DoctorSerializer,Doctor_NoteSerializer,Medicine_NoteSerializer,MedicineSerializer,MeasurementSerializer, BodypartSerializer, SymptomSerializer , InsuranceSerializer, ProcedureSerializer, AppointmentSerializer
 from .serializers import *
 from rest_framework.views import APIView
@@ -13,6 +13,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 from rest_framework import generics
 from django.views import generic
+from django.views.generic.list import ListView 
 
 #Create your views here
 
@@ -352,3 +353,9 @@ class MyHealthView(generic.TemplateView):
 class sidebarView(generic.TemplateView):
     template_name = 'MyHealthApp/sidebar.html'
 
+
+def SymptomFilter(request):
+    if request.method == 'GET':
+        a = Symptom.objects.filter(bodypart__bodypart='head')
+        return  render(request,'MyHealthApp/symptomlist.html',{'x': a})
+       

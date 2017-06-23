@@ -1,4 +1,4 @@
-SPECIALITY_CHOICE = (
+SPECIALITY_CHOICE =[
         ('ADDICTION PSYCHIATRIST', "Addiction psychiatrist"),
         ('ADOLESCENT MEDICINE SPECIALIST', "Adolescent medicine specialist"),
         ('ALLERGIST (IMMUNOLOGIST)', "Allergist (immunologist)"),
@@ -60,17 +60,17 @@ SPECIALITY_CHOICE = (
         ('THORACIC SURGEON', "Thoracic surgeon"),
         ('UROLOGIST', "Urologist"),
         ('VASCULAR SURGEON', "Vascular surgeon"),
-    )
+    ]
 
-MEDICINE_CHOICES=(
+MEDICINE_CHOICES=[
     ('t', "Tablet"), 
     ('p', "Powder"), 
     ('l', "Liquid"),
     ('i',"Inhaler"),
     ('o',"Other")
-)
+]
 
-BODYPART = (
+BODYPART = [
         ('head', 'Head'),
         ('abdomen', 'Abdomen'),
         ('arms', 'Arms'),
@@ -83,4 +83,4 @@ BODYPART = (
         ('pelvis', 'Pelvis'),
         ('shoulder', 'Shoulder'),
 
-    )
+    ]

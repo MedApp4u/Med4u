@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
-from .forms import LoginForm, UserForm
+from .forms import LoginForm, UserForm, ProcedureForm
 from django.views import generic
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
@@ -104,3 +104,17 @@ class Tnc(generic.TemplateView):
 
 class AboutUs(generic.TemplateView):
     template_name = 'GeneralApp/about.html'
+
+def procedures(request):
+    context = ""
+    # profile=Profile.objects.get(username=request.user.username)
+
+    if request.method == 'GET':
+        form = ProcedureForm()
+        return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+
+    # if request.method == 'POST':
+    #     form = ProfileForm(request.POST, instance=profile)
+    #     context = ""
+    #     form.save()
+    #     return HttpResponseRedirect('/view_profile/')

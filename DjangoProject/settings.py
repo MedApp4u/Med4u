@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-MEDIA_ROOT = "C:\Users\\ab32tx\Desktop\Bits 3-1\Python\DoctorsWebApp\Images"
-#MEDIA_ROOT = os.path.join(BASE_DIR,'images')
+#MEDIA_ROOT = "C:\Users\\ab32tx\Desktop\Bits 3-1\Python\DoctorsWebApp\Images"
+MEDIA_ROOT = os.path.join(BASE_DIR,'images')
 MEDIA_URL = '/images/'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)

@@ -8,6 +8,7 @@ from .models import *
 class DoctorSerializer(serializers.ModelSerializer):
     user =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
     #user = serializers.HyperlinkedRelatedField(many=True,read_only=True,view_name='Profile-detail')
+    doctor_pic = serializers.ImageField(max_length = None, use_url=True)
     class Meta:
         model = Doctor
         fields=('doctor_name','doctor_phone_number','doctor_description','doctor_address','doctor_speciality','doctor_timings','doctor_pic','user')

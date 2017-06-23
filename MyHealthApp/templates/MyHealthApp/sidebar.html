@@ -106,25 +106,33 @@
 	</a>
 	<p class="menu-desc"> My Health Account</p>
 		
-
+	<div id="tabs">
 		<ul class="sidebar-nav">
 
-			<li class="start2 start1"><a href="#"><img id="pill-side1" src="{% static 'MyHealthApp/img/MyHealth/pill.png' %}"><p class="li-desc">My Medicines</p></a></li>
-			<li class="start2"><a href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/diseases.png' %}"><p class="li-desc">My Diseases</p></a></li>
-			<li class="start2"><a href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/insurance.png' %}"><p class="li-desc">My Insurance</p></a></li>
-			<li class="start2"><a href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/measurements.png' %}"><p class="li-desc">My Measurements</p></a></li>
-			<li class="start2"><a href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/appointments.png' %}"><p class="li-desc">My Appointments</p></a></li>
-			<li class="start2"><a href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/documents.png' %}"><p class="li-desc">My Documents</p></a></li>
-			<li class="start2"><a href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/doctors.png' %}"><p class="li-desc">My Doctors</p></a></li>
-			<li class="start"><a class="down" href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/pill.png' %}"><p class="li-desc">My Medicines</p></a></li>
+			<li class="start2 start1"><a href="{% url 'MyHealthApp:medicines' %}" ><div class="bla"><img id="pill-side1" src="{% static 'MyHealthApp/img/MyHealth/pill.png' %}"><p class="li-desc">My Medicines</p></div></a></li>
 
-			<li class="start"><a  href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/diseases.png' %}"><p class="li-desc">My Diseases</p></a></li>
-			<li class="start"><a href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/insurance.png' %}"><p class="li-desc">My Insurance</p></a></li>
-			<li class="start"><a href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/measurements.png' %}"><p class="li-desc">My Measurements</p></a></li>
-			<li class="start"><a href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/appointments.png' %}"><p class="li-desc">My Appointments</p></a></li>
-			<li class="start"><a href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/documents.png' %}"><p class="li-desc">My Documents</p></a></li>
-			<li class="start"><a href="#"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/doctors.png' %}"><p class="li-desc">My Doctors</p></a></li>
+			<li class="start2"><a href="{% url 'MyHealthApp:diseases' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/diseases.png' %}"><p class="li-desc">My Diseases</p></div></a></li>
+
+			<li class="start2"><a href="{% url 'MyHealthApp:insurance' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/insurance.png' %}"><p class="li-desc">My Insurance</p></div></a></li>
+
+			<li class="start2"><a href="{% url 'MyHealthApp:measurements' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/measurements.png' %}"><p class="li-desc">My Measurements</p></div></a></li>
+
+			<li class="start2"><a href="{% url 'MyHealthApp:appointments' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/appointments.png' %}"><p class="li-desc">My Appointments</p></div></a></li>
+
+			<li class="start2"><a href="{% url 'MyHealthApp:documents' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/documents.png' %}"><p class="li-desc">My Documents</p></div></a></li>
+
+			<li class="start2"><a href="{% url 'MyHealthApp:doctors' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/doctors.png' %}"><p class="li-desc">My Doctors</p></div></a></li>
+
+			<li class="start"><a class="down" href="{% url 'MyHealthApp:medicines' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/pill.png' %}"><p class="li-desc">My Medicines</p></div></a></li>
+
+			<li class="start"><a  href="{% url 'MyHealthApp:diseases' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/diseases.png' %}"><p class="li-desc">My Diseases</p></div></a></li>
+			<li class="start"><a href="{% url 'MyHealthApp:insurance' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/insurance.png' %}"><p class="li-desc">My Insurance</p></div></a></li>
+			<li class="start"><a href="{% url 'MyHealthApp:measurements' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/measurements.png' %}"><p class="li-desc">My Measurements</p></div></a></li>
+			<li class="start"><a href="{% url 'MyHealthApp:appointments' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/appointments.png' %}"><p class="li-desc">My Appointments</p></div></a></li>
+			<li class="start"><a href="{% url 'MyHealthApp:documents' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/documents.png' %}"><p class="li-desc">My Documents</p></div></a></li>
+			<li class="start"><a href="{% url 'MyHealthApp:doctors' %}"><div class="bla"><img id="pill-side" src="{% static 'MyHealthApp/img/MyHealth/doctors.png' %}"><p class="li-desc">My Doctors</p></div></a></li>
 		</ul>
+		</div>
 		
 	</div>
 

@@ -2347,8 +2347,43 @@ h5{
 }
 
 
-.sidebar-nav li a:hover{
+/*.sidebar-nav a:hover{
+	background-color: rgba(63,187,192,.25);
+}*/
+
+/*.start2:hover{
+	background-color: rgba(63,187,192,.25);
+}*/
+
+/*#wrapper.menuDisplayed .sidebar-nav li a:active{
+
 	background: rgba(63,187,192,.25);
+}
+*/
+/*.sidebar-nav li a:hover{
+	background: rgba(63,187,192,.25);
+}*/
+
+/*#pill-side1:hover{
+	background-color: rgba(63,187,192,.25);
+}*/
+
+.bla:hover{
+	
+	background: rgba(63,187,192,.25);	
+}
+
+.bla{
+	width: 50px;
+	height: 45px;
+	margin-bottom: 10px;
+
+}
+
+#wrapper.menuDisplayed .bla{
+	width: 230px;
+	height: 40px;
+
 }
 
 .sidebar-nav .li-desc a:hover{
@@ -2356,7 +2391,7 @@ h5{
 }
 
 .down{
-	margin-top: 400px;
+	margin-top: 25px;
 
 }
 
@@ -2383,7 +2418,7 @@ h5{
 	height: 24px;
 	float: left;
 	margin-left: 10px;
-	margin-top: 25px;
+	margin-top: 10px;
 
 }
 
@@ -2501,3 +2536,20 @@ h5{
 /*#toggle-menu{
 	position: fixed;
 }*/
+
+/*************** My medicines *********/
+
+.head-med{
+	font-family: 'Open Sans', sans-serif;
+	color: #3fbbc0;
+}
+
+#content-wrapper{
+	background: white;
+}
+
+.active{
+
+	background : rgba(63,187,192,.25);
+}
+

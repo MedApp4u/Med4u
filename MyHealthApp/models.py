@@ -158,11 +158,6 @@ class Appointment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
-    """time_start = models.TimeField(blank=True, null=True)
-    time_end = models.TimeField(blank=True, null=True)
-FRONTEND look at this for exit change
-    [[[https://stackoverflow.com/questions/34841008/django-timefield-format]]]
-"""
     reason = models.TextField(blank=True)
     notes = models.TextField(blank=True)
 

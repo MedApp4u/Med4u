@@ -372,3 +372,20 @@ def ViewMeasurement(request):
     current_user = request.user
     queryset = Measurement.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-measurements.html', {'measurement_list': queryset})
+
+
+def ViewDisease(request):
+    current_user = request.user
+    queryset = current_user.disease_set.all()
+    return render(request, 'MyHealthApp/my-diseases.html', {'disease_list': queryset})
+
+
+def ViewDocument(request):
+    current_user = request.user
+    queryset = Document.objects.filter(user_id=current_user.id)
+    return render(request, 'MyHealthApp/my-documents.html', {'documnet_list': queryset})
+
+
+
+
+

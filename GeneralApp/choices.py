@@ -1,0 +1,1 @@
+SYMPTOMS = (('Spots', 'Spots'), ('Hand Pain', 'Hand Pain'), )

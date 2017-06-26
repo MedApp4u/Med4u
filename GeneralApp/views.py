@@ -15,6 +15,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 from ProfileApp.models import Profile
 from MyHealthApp.models import Symptom, Bodypart
+import os
 
 # Create your views here.
 
@@ -177,7 +178,15 @@ def procedures(request):
     if request.method == 'POST':
         form = ProcedureForm(request.POST)
         bp = request.POST['bodypart']
-        return HttpResponse(bp)
+        queryset = Symptom.objects.all()
+        slist = []
+        f = open(os.path.join('GeneralApp/', 'choices.py'), 'w')
+        f.write('SYMPTOMS = (')
+        for item in queryset:
+            f.write("('" + str(item) + "', '" + str(item) + "'), ")
+        f.write(')')
+        f.close()
+        return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
 
     # if request.method == 'POST':
     #     form = ProfileForm(request.POST, instance=profile)

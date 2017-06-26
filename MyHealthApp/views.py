@@ -54,8 +54,7 @@ class Appointment_list(generics.ListCreateAPIView):
     queryset = Appointment.objects.all()
     serializer_class=AppointmentSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
-    filter_fields=('date',)
-    
+ 
 
 
 class Symptom_list(generics.ListCreateAPIView):
@@ -63,8 +62,7 @@ class Symptom_list(generics.ListCreateAPIView):
     queryset = Symptom.objects.all()
     serializer_class=SymptomSerializer
     filter_backends=(DjangoFilterBackend,SearchFilter)
-    filter_fields=('date',)
-    
+   
 
 
 class Bodypart_list(generics.ListCreateAPIView):

@@ -1,9 +1,11 @@
 from django import forms
 from django.conf import settings
 from ProfileApp.models import Profile
-from MyHealthApp.models import Procedure
+from MyHealthApp.models import Procedure, Symptom, Bodypart
 from MyHealthApp.choices import *
 from django.contrib.auth.forms import PasswordResetForm
+from django.forms import inlineformset_factory
+from GeneralApp.choices import *
 
 
 FIELD_NAME_MAPPING = {
@@ -41,7 +43,9 @@ class MyPasswordResetForm(PasswordResetForm):
 
 class ProcedureForm(forms.ModelForm):
 	bodypart = forms.ChoiceField(choices=BODYPART,required=False, label='Procedure-Bodypart',initial='Select', widget=forms.Select(attrs={'class': 'procedure-form-field', 'id': 'procedure-form-bodypart', 'onchange': 'this.form.submit()'}))
-	symptom = forms.ChoiceField(required=False, label='Procedure-Symptom',initial='Select', widget=forms.Select(attrs={'class': 'procedure-form-field', 'id': 'procedure-form-symptom'}))
+	# queryset = Symptom.objects.all()
+	symptom = forms.ChoiceField(choices=SYMPTOMS, required=False, label='Procedure-Symptom',initial='Select', widget=forms.Select(attrs={'class': 'procedure-form-field', 'id': 'procedure-form-symptom'}))
+	# SymptomFormSet = inlineformset_factory(Bodypart, Symptom, )
 
 	class Meta:
 		model = Procedure

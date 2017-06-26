@@ -2,7 +2,9 @@ from django import forms
 from django.conf import settings
 from ProfileApp.models import Profile
 from MyHealthApp.models import Procedure
+from MyHealthApp.choices import *
 from django.contrib.auth.forms import PasswordResetForm
+
 
 FIELD_NAME_MAPPING = {
 	'username': 'username1',
@@ -38,6 +40,8 @@ class MyPasswordResetForm(PasswordResetForm):
 	email = forms.EmailField(widget=forms.TextInput(attrs={'class' : 'rp-form-field', 'id': 'rp-form-field-email'}))
 
 class ProcedureForm(forms.ModelForm):
+	bodypart = forms.ChoiceField(choices=BODYPART,required=False, label='Procedure-Bodypart',initial='Select', widget=forms.Select(attrs={'class': 'procedure-form-field', 'id': 'procedure-form-bodypart', 'onchange': 'this.form.submit()'}))
+	symptom = forms.ChoiceField(required=False, label='Procedure-Symptom',initial='Select', widget=forms.Select(attrs={'class': 'procedure-form-field', 'id': 'procedure-form-symptom'}))
 
 	class Meta:
 		model = Procedure

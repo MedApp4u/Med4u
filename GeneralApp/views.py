@@ -174,6 +174,11 @@ def procedures(request):
         form = ProcedureForm()
         return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
 
+    if request.method == 'POST':
+        form = ProcedureForm(request.POST)
+        bp = request.POST['bodypart']
+        return HttpResponse(bp)
+
     # if request.method == 'POST':
     #     form = ProfileForm(request.POST, instance=profile)
     #     context = ""

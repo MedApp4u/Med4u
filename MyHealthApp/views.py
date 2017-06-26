@@ -172,12 +172,6 @@ class Procedure_Note_list(generics.ListCreateAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter)
 
 
-def ViewInsurance(request):
-    current_user = request.user
-    # all_insurances = current_user.insurance_set.all()
-    return render(request, 'view_insurance.html', {'all_insurances': current_user.insurance_set.all().first()})
-
-
 class Doctor_show(APIView):
     def get_object(self, pk):
         try:

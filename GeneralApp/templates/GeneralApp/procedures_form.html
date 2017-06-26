@@ -36,10 +36,10 @@
 									<form action="" method="post">
 									{% csrf_token %}
 										<p class="form-label" id="username">Body part</p>
-										{{ form.procedure_name }}
+										{{ form.bodypart }}
 										<p class="form-label" id="password">Symptom</p>
-										{{ form.password }}
-										<input type="submit" class="login-btn btn-skin" value="Search" />
+										{{ form.symptom }}
+										<input type="submit" class="login-btn btn-skin" id="procedure-form-submit" value="Search" />
 									</form>
 									{% if context != "" %}
 										<p class="form-label" id="login-error">{{ context }}</p>

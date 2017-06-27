@@ -172,21 +172,27 @@ def procedures(request):
     # profile=Profile.objects.get(username=request.user.username)
 
     if request.method == 'GET':
-        form = ProcedureForm()
+        form = ProcedureForm(None)
         return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
 
     if request.method == 'POST':
-        form = ProcedureForm(request.POST)
         bp = request.POST['bodypart']
-        queryset = Symptom.objects.all()
-        slist = []
-        f = open(os.path.join('GeneralApp/', 'choices.py'), 'w')
+        file_write(bp)
+        form = ProcedureForm(request.POST)
+        return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+
+def file_write(bp):
+    queryset = Symptom.objects.filter(bodypart__bodypart=bp)
+    f = open(os.path.join('GeneralApp/', 'choices.py'), 'w')
+    if queryset is not None:
         f.write('SYMPTOMS = (')
         for item in queryset:
             f.write("('" + str(item) + "', '" + str(item) + "'), ")
         f.write(')')
-        f.close()
-        return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+        
+    else:
+        f.write('SYMPTOMS = (("-","-""),)')
+    f.close()
 
     # if request.method == 'POST':
     #     form = ProfileForm(request.POST, instance=profile)

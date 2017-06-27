@@ -29,7 +29,11 @@
 							<img src="{% static 'ProfileApp/css/img/icons/upload-light.png' %}"></img>
 							<p>Upload image</p>
 						</div>
-						<img src="{{current_user.profile_pic.url}}" class="profile-slider-image" />
+						{% if current_user.profile_pic.url is not None %}
+							<img src="{{current_user.profile_pic.url}}" class="profile-slider-image" />
+						{% else %}
+							<img src="{% static 'ProfileApp\css\img\icons\pikachu.png' %}" class="profile-slider-image" />
+						{% endif %}
 					</div>
 				</div>
 				<div class="profile-slider-bottom">

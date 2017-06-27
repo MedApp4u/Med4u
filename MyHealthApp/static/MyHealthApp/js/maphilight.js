@@ -445,50 +445,50 @@ function myFunction(x){
 // 	$(this).addClass('active');
 // });
 
-$("#tabs ul li a").click(function(){
-	$('#sidebar-wrapper ul li').removeClass('.active');
-	var current_tab = $(this).attr('href');
-	$('#tabs ul li a[href="'+current_tab+'"]').parent().addClass('active');
-	$('#tabs div').hide();
-	$(current_tab).show();
-	return false;
-
-
-});
-
-$(document).ready(function(){
-
-	var current_tab;	
-
-
-
-	$('#tabs ul li a').click(function(){
-// 	$('#tabs ul li').removeClass('.active');
-	current_tab = $(this).attr('href');
+// $("#tabs ul li a").click(function(){
+// 	$('#sidebar-wrapper ul li').removeClass('.active');
+// 	var current_tab = $(this).attr('href');
 // 	$('#tabs ul li a[href="'+current_tab+'"]').parent().addClass('active');
 // 	$('#tabs div').hide();
 // 	$(current_tab).show();
 // 	return false;
-	$('.li-desc').innerHTML = 5;
 
 
-});
+// });
 
-	if(window.location.hash){
-		if($('#tabs ul li a[href="'+window.location.hash+'"]').length > 0){
-			current_tab = window.location.hash;
-		}
-	}
+// $(document).ready(function(){
 
-	console.log(window.location.hash);
+// 	var current_tab;	
 
-	if(current_tab){
-		$('#tabs ul li a[href="'+current_tab+'"]').parent().addClass('active')
-		$(current_tab).show();
-	}
-	else{
-		$('#tabs div:first').show();
-		$('#tabs ul li div:first').addClass('active');	
-	}
-	console.log(current_tab);
-});
+
+
+// 	$('#tabs ul li a').click(function(){
+// // 	$('#tabs ul li').removeClass('.active');
+// 	current_tab = $(this).attr('href');
+// // 	$('#tabs ul li a[href="'+current_tab+'"]').parent().addClass('active');
+// // 	$('#tabs div').hide();
+// // 	$(current_tab).show();
+// // 	return false;
+// 	$('.li-desc').innerHTML = 5;
+
+
+// });
+
+// 	if(window.location.hash){
+// 		if($('#tabs ul li a[href="'+window.location.hash+'"]').length > 0){
+// 			current_tab = window.location.hash;
+// 		}
+// 	}
+
+// 	console.log(window.location.hash);
+
+// 	if(current_tab){
+// 		$('#tabs ul li a[href="'+current_tab+'"]').parent().addClass('active')
+// 		$(current_tab).show();
+// 	}
+// 	else{
+// 		$('#tabs div:first').show();
+// 		$('#tabs ul li div:first').addClass('active');	
+// 	}
+// 	console.log(current_tab);
+// });

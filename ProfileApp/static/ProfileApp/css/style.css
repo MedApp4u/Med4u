@@ -1052,7 +1052,7 @@ hr.bold {
 .vp-form-icon-text {
 	position: relative;
 	top: 50%;
-	left: 13.5%;
+	left: 15.5%;
 	width: 250px;
 	height: 50px;
 	line-height: 50px;
@@ -1061,7 +1061,6 @@ hr.bold {
 	font-size: 35px;
 	/*text-transform: uppercase;*/
 	font-weight: 800;
-	text-align: center;
 	font-variant: small-caps;
 	letter-spacing: 1.5px;
 }
@@ -1256,39 +1255,32 @@ label[for="vp-form-gender_1"] {
 	left: 48.6%;
 }
 
+/*.test {
+	float: right;
+	position: fixed;
+	z-index: 3;
+}*/
+
+
+.vp-form-profile_pic {
+	/*background: black;*/
+	opacity: 0;
+	cursor: pointer;
+	width: 220px;
+	height: 220px;
+	border-radius: 110px;
+	position: fixed;
+	z-index: 10001;
+	top: 108px;
+	left: 95.85%;
+	float: right;
+	margin-left: -220px;
+}
+
 
 /* ----------------------- */
 
 /* ------ Procedures -------- */
-
-#procedure-navbar-logo {
-	margin: 0px;
-}
-
-.container {
-	width: 100%;
-	margin-left: 0px;
-}
-
-
-.procedure-container {
-	padding: 0px;
-	height: 100%;
-}
-
-.procedure-row {
-	margin: 0px;
-	height: 100%;
-	overflow-y: auto;
-}
-
-.row {
-	width: 100%;
-}
-
-/*a.procedure-body-tab:first-child {
-	top: 181px;
-}*/
 
 .procedure-body-scroll {
 	overflow-y: scroll;
@@ -1306,11 +1298,11 @@ a.procedure-body-tab {
 	height: 120px;
 	width: 100%;
 	background: white;
-	border-bottom: 1px solid #ebebeb;
+	border-bottom: 1px solid #f3f3f3;
 }
 
 a.procedure-body-tab:hover {
-	background: #fafafa;
+	background: #f3f3f3;
 	color: #555;
 }
 

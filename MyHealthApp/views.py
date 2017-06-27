@@ -362,6 +362,7 @@ class sidebarView(generic.TemplateView):
     template_name = 'MyHealthApp/sidebar.html'
 
 
+# MyHealthApp views.
 def ViewInsurance(request):
     current_user = request.user
     queryset = Insurance.objects.filter(user_id=current_user.id)
@@ -386,6 +387,19 @@ def ViewDocument(request):
     return render(request, 'MyHealthApp/my-documents.html', {'documnet_list': queryset})
 
 
+def ViewDoctor(request):
+    current_user = request.user
+    queryset = current_user.doctor_set.all()
+    return render(request, 'MyHealthApp/my-doctors.html', {'doctor_list': queryset})
 
 
+def ViewAppointment(request):
+    current_user = request.user
+    queryset = Appointment.objects.filter(user_id=current_user.id)
+    return render(request, 'MyHealthApp/my-appointments.html', {'appointment_list': queryset})
 
+
+def ViewMedicine(request):
+    current_user = request.user
+    queryset = current_user.medicine_set.all()
+    return render(request, 'MyHealthApp/my-medicines.html', {'medicine_list': queryset})

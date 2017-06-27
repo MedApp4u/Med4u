@@ -83,7 +83,7 @@
 									View Profile
 								</p>
 							</div>
-							<form class="vp-form-body" method="post">
+							<form class="vp-form-body" method="post" enctype="multipart/form-data">
 							{% csrf_token %}
 								<p class="vp-form-body-label" id="vp-form-label-username">Username</p>
 								{{ form.username }}

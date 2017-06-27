@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}ProfileApp | View Profile{% endblock %}	
+{% block title %}ProfileApp | Profile{% endblock %}	
 {% load static %}
 
 {% block navbar %}
@@ -51,7 +51,7 @@
 						<div class="profile-slider-icon" id="view_profile">
 							<img src="{% static 'ProfileApp/css/img/icons/document.png' %}" id="padlock" />
 							<div class="profile-slider-icon-separator"></div>
-							<p class="profile-slider-icon-text">View Profile</p>
+							<p class="profile-slider-icon-text">Profile</p>
 						</div>
 					</a>
 					<a href="{% url 'ProfileApp:logout' %}" class="profile-slider-link">
@@ -80,7 +80,7 @@
 								<img src="{% static 'ProfileApp/css/img/icons/document.png' %}" class="vp-form-icon"/>
 								<div class="vp-form-icon-separator"></div>
 								<p class="vp-form-icon-text">
-									View Profile
+									Profile
 								</p>
 							</div>
 							<form class="vp-form-body" method="post" enctype="multipart/form-data">

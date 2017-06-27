@@ -37,11 +37,16 @@
 									Procedures
 								</p>
 							</div>
-							<a href="#" class="procedure-body-tab">
-								<!-- <div class = "procedure-body-label">
-									
-								</div> -->
-							</a>
+							<div class="procedure-body-scroll">
+								{% for procedure in procedures %}
+									<a href="{% url '{{ procedure.id }}" class="procedure-body-tab">
+										<div class = "procedure-body-name">
+											<div class = "procedure-body-separator"></div>
+											<div class = "procedure-body-label">{{ procedure.procedure_name }}</div>
+										</div>
+									</a>
+								{% endfor %}
+							</div>
 						</div>		
 					</div>		
 				<!-- </div> -->	

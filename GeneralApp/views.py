@@ -14,7 +14,7 @@ from django.views import generic
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 from ProfileApp.models import Profile
-from MyHealthApp.models import Symptom, Bodypart
+from MyHealthApp.models import *
 import os
 
 # Create your views here.
@@ -168,11 +168,10 @@ def SymptomShoulder(request):
 
 
 def procedures(request):
-    context = ""
-    form = ProcedureForm()
+    context = Procedure.objects.all()
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/procedures.html', {'form': form, 'context': context, 'current_user': request.user})
+        return render(request, 'GeneralApp/procedures.html', {'procedures': context, 'current_user': request.user})
 
 # def procedures(request):
 #     context = ""

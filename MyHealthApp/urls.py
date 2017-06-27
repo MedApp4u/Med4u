@@ -34,6 +34,6 @@ urlpatterns = [
     url(r'my_diseases/', views.diseasesView.as_view(), name='my_diseases'),
     url(r'my_measurements/', views.measurementsView.as_view(), name='my_measurements'),
     url(r'my_insurance/', views.insuranceView.as_view(), name='my_insurance'),
-  
+    url(r'tokenapi/', views.Tokenapi.as_view(), name='tokenapi'), 
   
 ]

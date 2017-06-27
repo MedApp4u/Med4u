@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from rest_framework import serializers
 from .models import *
+from rest_framework.authtoken.models import Token
 
 class DoctorSerializer(serializers.ModelSerializer):
     user =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
@@ -205,3 +206,9 @@ class Procedure_NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Procedure_Note
         fields=('proc','procedure_note')
+
+class TokenSerializer(serializers.ModelSerializer): 
+    class Meta: 
+        model = Token 
+        # fields = ('key', 'user') 
+        fields= '__all__'

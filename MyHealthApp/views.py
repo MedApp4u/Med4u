@@ -360,26 +360,35 @@ class MyHealthView(generic.TemplateView):
 
 class sidebarView(generic.TemplateView):
     template_name = 'MyHealthApp/sidebar.html'
+
+
 class medicinesView(generic.TemplateView):
     template_name = 'MyHealthApp/my-medicines.html'
+
 
 class appointmentsView(generic.TemplateView):
     template_name = 'MyHealthApp/my-appointments.html'
 
+
 class doctorsView(generic.TemplateView):
     template_name = 'MyHealthApp/my-doctors.html'
+
 
 class documentsView(generic.TemplateView):
     template_name = 'MyHealthApp/my-documents.html'
 
+
 class diseasesView(generic.TemplateView):
     template_name = 'MyHealthApp/my-diseases.html'
+
 
 class insuranceView(generic.TemplateView):
     template_name = 'MyHealthApp/my-insurance.html'
 
+
 class measurementsView(generic.TemplateView):
     template_name = 'MyHealthApp/my-measurements.html'
+
 
 def ViewInsurance(request):
     current_user = request.user
@@ -404,3 +413,20 @@ def ViewDocument(request):
     queryset = Document.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-documents.html', {'documnet_list': queryset})
 
+
+def ViewDoctor(request):
+    current_user = request.user
+    queryset = current_user.doctor_set.all()
+    return render(request, 'MyHealthApp/my-doctors.html', {'doctor_list': queryset})
+
+
+def ViewAppointment(request):
+    current_user = request.user
+    queryset = Appointment.objects.filter(user_id=current_user.id)
+    return render(request, 'MyHealthApp/my-appointments.html', {'appointment_list': queryset})
+
+
+def ViewMedicine(request):
+    current_user = request.user
+    queryset = current_user.medicine_set.all()
+    return render(request, 'MyHealthApp/my-medicines.html', {'medicine_list': queryset})

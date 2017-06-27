@@ -1,11 +1,14 @@
 from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Measurement, Doctor, Doctor_Note, Medicine_Note, Medicine, Bodypart, Appointment, Symptom, \
     Insurance, Procedure
+from django.contrib.auth.decorators import login_required 
 # from .serializers import DoctorSerializer,Doctor_NoteSerializer,Medicine_NoteSerializer,MedicineSerializer,MeasurementSerializer, BodypartSerializer, SymptomSerializer , InsuranceSerializer, ProcedureSerializer, AppointmentSerializer
 from .serializers import *
+from .forms import *
 from rest_framework.views import APIView
 from ProfileApp.models import Profile
 from ProfileApp.serializers import ProfileSerializer
@@ -389,44 +392,59 @@ class insuranceView(generic.TemplateView):
 class measurementsView(generic.TemplateView):
     template_name = 'MyHealthApp/my-measurements.html'
 
-
+@login_required
 def ViewInsurance(request):
     current_user = request.user
     queryset = Insurance.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-insurance.html', {'insurance_list': queryset})
 
-
+@login_required
 def ViewMeasurement(request):
     current_user = request.user
     queryset = Measurement.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-measurements.html', {'measurement_list': queryset})
 
-
+@login_required
 def ViewDisease(request):
     current_user = request.user
     queryset = current_user.disease_set.all()
     return render(request, 'MyHealthApp/my-diseases.html', {'disease_list': queryset})
 
-
+@login_required
 def ViewDocument(request):
     current_user = request.user
     queryset = Document.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-documents.html', {'documnet_list': queryset})
 
-
+@login_required
 def ViewDoctor(request):
     current_user = request.user
     queryset = current_user.doctor_set.all()
     return render(request, 'MyHealthApp/my-doctors.html', {'doctor_list': queryset})
 
-
+@login_required
 def ViewAppointment(request):
     current_user = request.user
     queryset = Appointment.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-appointments.html', {'appointment_list': queryset})
 
-
+@login_required
 def ViewMedicine(request):
     current_user = request.user
     queryset = current_user.medicine_set.all()
     return render(request, 'MyHealthApp/my-medicines.html', {'medicine_list': queryset})
+
+@login_required
+def AddDocument(request):
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            Docu=form.save(commit=False)
+            Docu.user=request.user
+            Docu.save()
+            return HttpResponseRedirect('/my_documents')
+        else:
+            print form.errors
+    else:
+        form = DocumentForm()
+    return render(request, 'MyHealthApp/add_document.html', {'form': form})  

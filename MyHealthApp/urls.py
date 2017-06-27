@@ -26,13 +26,14 @@ urlpatterns = [
     url(r'symptoms/', views.SymptomsView.as_view(), name='symptoms'),
     url(r'MyHealth/', views.MyHealthView.as_view(), name='MyHealth'),
     url(r'sidebar/', views.sidebarView.as_view(), name='sidebar'),
-	  url(r'my_medicines/', views.medicinesView.as_view(), name='medicines'),
-    url(r'my_doctors/', views.doctorsView.as_view(), name='doctors'),
-    url(r'my_appointments/', views.appointmentsView.as_view(), name='appointments'),
-    url(r'my_documents/', views.documentsView.as_view(), name='documents'),
-    url(r'my_diseases/', views.diseasesView.as_view(), name='diseases'),
-    url(r'my_measurements/', views.measurementsView.as_view(), name='measurements'),
-    url(r'my_insurance/', views.insuranceView.as_view(), name='insurance'),
+	  url(r'my_medicines/', views.medicinesView.as_view(), name='my_medicines'),
+    url(r'my_doctors/', views.doctorsView.as_view(), name='my_doctors'),
+    url(r'my_appointments/', views.appointmentsView.as_view(), name='my_appointments'),
+    url(r'my_documents/', views.documentsView.as_view(), name='my_documents'),
+    url(r'add_document/', views.AddDocument, name='add_document'),
+    url(r'my_diseases/', views.diseasesView.as_view(), name='my_diseases'),
+    url(r'my_measurements/', views.measurementsView.as_view(), name='my_measurements'),
+    url(r'my_insurance/', views.insuranceView.as_view(), name='my_insurance'),
   
   
 ]

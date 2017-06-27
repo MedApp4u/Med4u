@@ -173,8 +173,12 @@ class Insurance(models.Model):
     def __str__(self):
         return self.insurance_plan
 
+def user_directory_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
+    return 'documents/user_{0}/{1}'.format(instance.user.id, filename)
 
 class Document(models.Model):
-    doc = models.FileField(upload_to="documents", null=True, blank=True)
+    doc = models.FileField(upload_to=user_directory_path, null=True, blank=True)
     notes = models.TextField(blank=True)
+    uploaded_at = models.DateTimeField(default=datetime.datetime.now)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

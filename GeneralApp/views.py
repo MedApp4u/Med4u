@@ -171,7 +171,7 @@ def procedures(request):
     context = ""
     form = ProcedureForm()
 
-    if request.method == "GET":
+    if request.method == 'GET':
         return render(request, 'GeneralApp/procedures.html', {'form': form, 'context': context, 'current_user': request.user})
 
 # def procedures(request):

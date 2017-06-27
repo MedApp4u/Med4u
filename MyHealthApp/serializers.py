@@ -11,7 +11,7 @@ class DoctorSerializer(serializers.ModelSerializer):
     doctor_pic = serializers.ImageField(max_length = None, use_url=True)
     class Meta:
         model = Doctor
-        fields=('doctor_name','doctor_phone_number','doctor_description','doctor_address','doctor_speciality','doctor_timings','doctor_pic','user')
+        fields=('id','doctor_name','doctor_phone_number','doctor_description','doctor_address','doctor_speciality','doctor_timings','doctor_pic','user')
 
 class Doctor_NoteSerializer(serializers.ModelSerializer):
     user =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
@@ -29,7 +29,7 @@ class MedicineSerializer(serializers.ModelSerializer):
     #doctor = serializers.HyperlinkedRelatedField(many=True,read_only=True,view_name='Doctor-detail')
     class Meta:
         model = Medicine
-        fields=('medicine_name','dosage_amt','method','frequency','medicine_date','doctor','usage_instructions','overdose_instructions','possible_sideeffects','brand_names','user')
+        fields=('id','medicine_name','dosage_amt','method','frequency','medicine_date','doctor','usage_instructions','overdose_instructions','possible_sideeffects','brand_names','user')
 
 class Medicine_NoteSerializer(serializers.ModelSerializer):
     user =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
@@ -50,7 +50,7 @@ class SymptomSerializer(serializers.ModelSerializer):
     bodypart = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Symptom
-        fields=('symptom_name','bodypart','symptom_description','tests')
+        fields=('id','symptom_name','bodypart','symptom_description','tests')
 
 
 
@@ -80,7 +80,7 @@ class ProcedureSerializer(serializers.ModelSerializer):
     #doctor = serializers.HyperlinkedRelatedField(many=True, read-only=True,view_name=Doctor-detail)
     class Meta:
         model = Procedure
-        fields=('procedure_name','procedure_description','possible_complication','doctor','bodypart','symptom','medicine')
+        fields=('id','procedure_name','procedure_description','possible_complication','doctor','bodypart','symptom','medicine')
 
 class Procedure_ImagesSerializer(serializers.ModelSerializer):
     proc =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
@@ -127,7 +127,7 @@ class DiseaseSerializer(serializers.ModelSerializer):
     #user = serializers.HyperlinkedRelatedField(many=True,read_only=True,view_name='Symptom_detail')
     class Meta:
         model = Disease
-        fields=('disease_name','disease_date','symptom','medicine','procedure','user')
+        fields=('id','disease_name','disease_date','symptom','medicine','procedure','user')
 
         
 class Disease_NoteSerializer(serializers.ModelSerializer):

@@ -45,7 +45,7 @@ class ProcedureForm(forms.ModelForm):
 	# bodypart = forms.ChoiceField(choices=BODYPART,required=False, label='Procedure-Bodypart',initial='Select', widget=forms.Select(attrs={'class': 'procedure-form-field', 'id': 'procedure-form-bodypart', 'onchange': 'this.form.submit()'}))
 	# # queryset = Symptom.objects.all()
 	# symptom = forms.ChoiceField(choices=SYMPTOMS, required=False, label='Procedure-Symptom',initial='Select', widget=forms.Select(attrs={'class': 'procedure-form-field', 'id': 'procedure-form-symptom'}))
-	# SymptomFormSet = inlineformset_factory(Bodypart, Symptom, )
+	# # SymptomFormSet = inlineformset_factory(Bodypart, Symptom, )
 
 	class Meta:
 		model = Procedure

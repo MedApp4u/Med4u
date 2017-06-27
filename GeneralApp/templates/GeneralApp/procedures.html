@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}GeneralApp | Procedures{% endblock %}	
+{% load static %}
+
+{% block navbar %}
+	<li><a href="{% url 'MyHealthApp:home' %}">Home</a></li>
+	<li><a href="#service">Service</a></li>
+	<li><a href="#doctor">Doctors</a></li>
+	<li><a id="active" href="{% url 'GeneralApp:procedures' %}">Procedures</a></li>
+	<li><a href="#pricing">Pricing</a></li>
+	<li><a href="{% url 'GeneralApp:login' %}">Sign In</a></li>
+	<li><a href="{% url 'GeneralApp:register' %}">Sign Up</a></li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
+		<ul class="dropdown-menu">
+			<li><a href="index.html">Home CTA</a></li>
+			<li><a href="index-form.html">Home Form</a></li>
+			<li><a href="index-video.html">Home video</a></li>
+		</ul>
+	</li>
+	
+{% endblock %}
+
+{% block content %}
+
+	<!-- Section: intro -->
+	
+	    <section id="intro" class="intro login-intro">
+			<div class="intro-content vp-intro-content ">
+				<!-- <div class="wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.2s"> -->
+					<div class="container">
+						<div class="row">
+							<div class="vp-form-head">
+								<img src="{% static 'ProfileApp/css/img/icons/document.png' %}" class="vp-form-icon"/>
+								<div class="vp-form-icon-separator"></div>
+								<p class="vp-form-icon-text">
+									Procedures
+								</p>
+							</div>
+							<a href="#" class="procedure-body-tab">
+								<div></div>
+							</a>
+						</div>		
+					</div>		
+				<!-- </div> -->	
+			</div>	
+	    </section>
+{% endblock %}

@@ -351,4 +351,23 @@ class MyHealthView(generic.TemplateView):
 
 class sidebarView(generic.TemplateView):
     template_name = 'MyHealthApp/sidebar.html'
+class medicinesView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-medicines.html'
 
+class appointmentsView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-appointments.html'
+
+class doctorsView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-doctors.html'
+
+class documentsView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-documents.html'
+
+class diseasesView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-diseases.html'
+
+class insuranceView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-insurance.html'
+
+class measurementsView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-measurements.html'

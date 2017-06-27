@@ -23,7 +23,7 @@ def ViewProfile(request):
         return render(request, 'view_profile.html', {'form': form, 'context': context, 'current_user': request.user})
 
     if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=profile)
+        form = ProfileForm(request.POST, request.FILES,instance=profile)
         context = ""
         form.save()
         return HttpResponseRedirect('/view_profile/')

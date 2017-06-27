@@ -25,6 +25,9 @@ class Doctor_list(generics.ListCreateAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filter_fields = ('doctor_speciality',)
     search_fields = ('doctor_name',)
+    def perform_create(self, serializer):
+        doctor = serializer.save(owner=self.request.user)
+        doctor.user.add(self.request.user)
 
 
 '''

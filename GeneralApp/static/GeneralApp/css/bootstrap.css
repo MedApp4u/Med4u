@@ -1,8 +1,26 @@
 .container {
 	margin-left: 40px;
 	margin-right: -400px;
+	margin-left: 0px;
+	width: 100%;
+	height: 100%;
+	padding: 0px;
 }
 
-.container > .navbar-collapse {
-	margin-right: -25%;
+div.navbar-header.page-scroll {
+	margin-left: 15px;
+}
+
+div.collapse.navbar-collapse.navbar-right.navbar-main-collapse {
+	margin-right: 15px;
+}
+
+.row {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+	margin-left: 0px;
 }

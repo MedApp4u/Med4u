@@ -15,19 +15,18 @@ urlpatterns = [
     url(r'insurances_api/', views.Insurance_list.as_view(), name='insurances_api'),
     url(r'procedures_api/', views.Procedure_list.as_view(), name='procedures_api'),
     url(r'view_insurance/', views.ViewInsurance, name='view_insurance'),
-    url(r'^profileapi/(?P<pk>[0-9]+)/$',views.Profile_show.as_view(), name='Profile_show'),
-    url(r'^doctorapi/(?P<pk>[0-9]+)/$',views.Doctor_show.as_view(), name='Doctor_show'),
-	url(r'^medicineapi/(?P<pk>[0-9]+)/$',views.Medicine_show.as_view(), name='Medicine_show'),
-	url(r'^diseaseapi/(?P<pk>[0-9]+)/$',views.Disease_show.as_view(), name='Disease_show'),
-	url(r'^procedureapi/(?P<pk>[0-9]+)/$',views.Procedure_show.as_view(), name='Procedure_show'),
-	url(r'^bodypartapi/(?P<pk>[0-9]+)/$',views.Bodypart_show.as_view(), name='Bodypart_show'),
-	url(r'^Symptomapi/(?P<pk>[0-9]+)/$',views.Symptom_show.as_view(), name='Symptom_show'),
+    url(r'^profileapi/(?P<pk>[0-9]+)/$', views.Profile_show.as_view(), name='Profile_show'),
+    url(r'^doctorapi/(?P<pk>[0-9]+)/$', views.Doctor_show.as_view(), name='Doctor_show'),
+    url(r'^medicineapi/(?P<pk>[0-9]+)/$', views.Medicine_show.as_view(), name='Medicine_show'),
+    url(r'^diseaseapi/(?P<pk>[0-9]+)/$', views.Disease_show.as_view(), name='Disease_show'),
+    url(r'^procedureapi/(?P<pk>[0-9]+)/$', views.Procedure_show.as_view(), name='Procedure_show'),
+    url(r'^bodypartapi/(?P<pk>[0-9]+)/$', views.Bodypart_show.as_view(), name='Bodypart_show'),
+    url(r'^Symptomapi/(?P<pk>[0-9]+)/$', views.Symptom_show.as_view(), name='Symptom_show'),
     url(r'home/', views.HomeView.as_view(), name='home'),
     url(r'symptoms/', views.SymptomsView.as_view(), name='symptoms'),
     url(r'MyHealth/', views.MyHealthView.as_view(), name='MyHealth'),
-    # url(r'base/', views.baseView.as_view(), name='base'),
     url(r'sidebar/', views.sidebarView.as_view(), name='sidebar'),
-	url(r'my_medicines/', views.medicinesView.as_view(), name='medicines'),
+	  url(r'my_medicines/', views.medicinesView.as_view(), name='medicines'),
     url(r'my_doctors/', views.doctorsView.as_view(), name='doctors'),
     url(r'my_appointments/', views.appointmentsView.as_view(), name='appointments'),
     url(r'my_documents/', views.documentsView.as_view(), name='documents'),
@@ -37,4 +36,3 @@ urlpatterns = [
   
   
 ]
-

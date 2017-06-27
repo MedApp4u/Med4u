@@ -1,0 +1,1 @@
+SYMPTOMS = (('Spots', 'Spots'), )

@@ -29,7 +29,11 @@
 							<img src="{% static 'ProfileApp/css/img/icons/upload-light.png' %}"></img>
 							<p>Upload image</p>
 						</div>
-						<img src="{% static 'ProfileApp/css/img/icons/pikachu.png' %}" class="profile-slider-image" />
+						{% if current_user.profile_pic.url is not None %}
+							<img src="{{current_user.profile_pic.url}}" class="profile-slider-image" />
+						{% else %}
+							<img src="{% static 'ProfileApp\css\img\icons\pikachu.png' %}" class="profile-slider-image" />
+						{% endif %}
 					</div>
 				</div>
 				<div class="profile-slider-bottom">
@@ -100,6 +104,7 @@
 								{{ form.blood_group}}
 								<p class="vp-form-body-label" id="vp-form-label-gender">Sex: </p>
 								{{ form.gender }}
+								{{ form.profile_pic }}
 								<input type="submit" class="login-btn vp-btn btn-skin" value="Save changes" />
 							</form>
 						</div>		

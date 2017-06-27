@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
@@ -13,14 +13,14 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 class Doctor(models.Model):
-
     doctor_name = models.CharField(max_length=100)
     doctor_phone_number = PhoneNumberField(blank=True)
     doctor_description = models.TextField(blank=True)
     doctor_address = models.TextField(max_length=1000, blank=True)
-    doctor_speciality = models.CharField(max_length=60, choices=SPECIALITY_CHOICE, default="FAMILY MEDICINE PHYSICIAN", blank=True)
+    doctor_speciality = models.CharField(max_length=60, choices=SPECIALITY_CHOICE, default="FAMILY MEDICINE PHYSICIAN",
+                                         blank=True)
     doctor_timings = models.CharField(max_length=30, default="06 AM to 06 PM")
-    doctor_pic= models.ImageField(upload_to="doctors", null=True, blank=True) #Insert upload_to
+    doctor_pic = models.ImageField(upload_to="doctors", null=True, blank=True)  # Insert upload_to
     user = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
     def __str__(self):
@@ -36,7 +36,7 @@ class Doctor(models.Model):
 class Doctor_Note(models.Model):
     doctor_note = models.TextField(blank=True)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE) 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
 class Medicine(models.Model):
@@ -53,14 +53,14 @@ class Medicine(models.Model):
     brand_names = models.TextField(blank=True)
     user = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
-
     def __str__(self):
         return self.medicine_name
+
 
 class Medicine_Note(models.Model):
     medicine_note = models.TextField(blank=True)
     medicine = models.ForeignKey(Medicine, on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
 class Bodypart(models.Model):
@@ -75,11 +75,12 @@ class Symptom(models.Model):
     symptom_description = models.TextField(blank=True)
     tests = models.TextField(blank=True)
     bodypart = models.ManyToManyField(Bodypart)
-    
+
     def __str__(self):
         return self.symptom_name
 
-class Sypmtom_Videos(models.Model): #Multi valued attribute
+
+class Sypmtom_Videos(models.Model):  # Multi valued attribute
     symptom = models.ForeignKey(Symptom, on_delete=models.CASCADE)
     symptom_video = models.URLField(blank=True)
 
@@ -96,27 +97,31 @@ class Procedure(models.Model):
     def __str__(self):
         return self.procedure_name
 
-class Procedure_Images(models.Model): #Multi valued attribute
-    proc = models.ForeignKey(Procedure, on_delete=models.CASCADE)
-    procedure_image=models.ImageField(upload_to="procedures", null=True, blank=True)
 
-class Procedure_Videos(models.Model): #Multi valued attribute
+class Procedure_Images(models.Model):  # Multi valued attribute
+    proc = models.ForeignKey(Procedure, on_delete=models.CASCADE)
+    procedure_image = models.ImageField(upload_to="procedures", null=True, blank=True)
+
+
+class Procedure_Videos(models.Model):  # Multi valued attribute
     proc = models.ForeignKey(Procedure, on_delete=models.CASCADE)
     procedure_video = models.URLField(blank=True)
 
-class Procedure_Helpline(models.Model): #Multi valued attribute
+
+class Procedure_Helpline(models.Model):  # Multi valued attribute
     proc = models.ForeignKey(Procedure, on_delete=models.CASCADE)
     procedure_phone_number = PhoneNumberField(blank=True)
+
 
 class Procedure_Note(models.Model):
     procedure_note = models.TextField(blank=True)
     procedure = models.ForeignKey(Procedure, on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE) 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
 class Disease(models.Model):
-    disease_name=models.CharField(max_length=300)
-    disease_date=models.DateField(help_text='Date the disease was acquired', blank=True)
+    disease_name = models.CharField(max_length=300)
+    disease_date = models.DateField(help_text='Date the disease was acquired', blank=True)
     symptom = models.ManyToManyField(Symptom, blank=True)
     medicine = models.ManyToManyField(Medicine, blank=True)
     procedure = models.ManyToManyField(Procedure, blank=True)
@@ -125,10 +130,11 @@ class Disease(models.Model):
     def __str__(self):
         return self.disease_name
 
+
 class Disease_Note(models.Model):
     disease_note = models.TextField(blank=True)
     disease = models.ForeignKey(Disease, on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
 class Measurement(models.Model):
@@ -140,24 +146,21 @@ class Measurement(models.Model):
     date = models.DateField(default=datetime.date.today)
     notes = models.TextField(null=True, blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    def __iter__(self): 
-        return [ self.blood_pressure, self.blood_sugar, self.cholesterol, self.height, self.weight, self.date, self.notes, self.user ]
+
+    def __iter__(self):
+        return [self.blood_pressure, self.blood_sugar, self.cholesterol, self.height, self.weight, self.date,
+                self.notes, self.user]
 
 
 class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     # mobile = user.(pk=pk).mobile
-    user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
-    """time_start = models.TimeField(blank=True, null=True)
-    time_end = models.TimeField(blank=True, null=True)
-FRONTEND look at this for exit change
-    [[[https://stackoverflow.com/questions/34841008/django-timefield-format]]]
-"""
     reason = models.TextField(blank=True)
     notes = models.TextField(blank=True)
-    
+
 
 class Insurance(models.Model):
     insurance_plan = models.CharField(max_length=500)

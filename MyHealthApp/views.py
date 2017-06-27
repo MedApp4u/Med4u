@@ -360,7 +360,26 @@ class MyHealthView(generic.TemplateView):
 
 class sidebarView(generic.TemplateView):
     template_name = 'MyHealthApp/sidebar.html'
+class medicinesView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-medicines.html'
 
+class appointmentsView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-appointments.html'
+
+class doctorsView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-doctors.html'
+
+class documentsView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-documents.html'
+
+class diseasesView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-diseases.html'
+
+class insuranceView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-insurance.html'
+
+class measurementsView(generic.TemplateView):
+    template_name = 'MyHealthApp/my-measurements.html'
 
 # MyHealthApp views.
 def ViewInsurance(request):
@@ -386,6 +405,7 @@ def ViewDocument(request):
     queryset = Document.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-documents.html', {'documnet_list': queryset})
 
+<<<<<<< HEAD
 
 def ViewDoctor(request):
     current_user = request.user
@@ -403,3 +423,5 @@ def ViewMedicine(request):
     current_user = request.user
     queryset = current_user.medicine_set.all()
     return render(request, 'MyHealthApp/my-medicines.html', {'medicine_list': queryset})
+=======
+>>>>>>> master

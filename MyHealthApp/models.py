@@ -14,7 +14,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 class Doctor(models.Model):
     doctor_name = models.CharField(max_length=100)
-    doctor_phone_number = PhoneNumberField(blank=True)
+    # doctor_phone_number = PhoneNumberField(blank=True)
     doctor_description = models.TextField(blank=True)
     doctor_address = models.TextField(max_length=1000, blank=True)
     doctor_speciality = models.CharField(max_length=60, choices=SPECIALITY_CHOICE, default="FAMILY MEDICINE PHYSICIAN",
@@ -46,7 +46,7 @@ class Medicine(models.Model):
     frequency = models.IntegerField(help_text='No of times a day', blank=True)
     # Frontend please write number per day on the side of the frequency field
     medicine_date = models.DateField(help_text='Start date of the prescription', blank=True)
-    doctor = models.ManyToManyField(Doctor, blank=True)
+    doctor = models.ManyToManyField(Doctor, related_name='prescription', blank=True)
     usage_instructions = models.TextField(blank=True)
     overdose_instructions = models.TextField(blank=True)
     possible_sideeffects = models.TextField(blank=True)

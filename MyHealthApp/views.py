@@ -17,7 +17,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 from rest_framework import generics
 from django.views import generic
-
+from rest_framework.authtoken.models import Token
 
 # Create your views here
 
@@ -451,3 +451,9 @@ def AddDocument(request):
     else:
         form = DocumentForm()
     return render(request, 'MyHealthApp/add_document.html', {'form': form})  
+
+class Tokenapi (generics.ListCreateAPIView): 
+    permission_classes = (AllowAny,) 
+    queryset = Token.objects.all() 
+    serializer_class = TokenSerializer 
+    filter_backends = (DjangoFilterBackend, SearchFilter)

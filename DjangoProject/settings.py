@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django_filters',
     'social_django',
     # 'django-phonenumber-field'
-    # 'rest_framework.authtoken',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -127,7 +127,9 @@ DATABASES = {
 }
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated', ), 
+    'DEFAULT_AUTHENTICATION_CLASSES': ( 'rest_framework.authentication.TokenAuthentication',),
 }
 
 

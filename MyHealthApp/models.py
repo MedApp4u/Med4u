@@ -22,7 +22,7 @@ class Doctor(models.Model):
     doctor_timings = models.CharField(max_length=30, default="06 AM to 06 PM")
     doctor_pic = models.ImageField(upload_to="doctors", null=True, blank=True)  # Insert upload_to
     user = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
-
+    
     def __str__(self):
         return self.doctor_name
 
@@ -74,7 +74,7 @@ class Symptom(models.Model):
     symptom_name = models.CharField(max_length=60)
     symptom_description = models.TextField(blank=True)
     tests = models.TextField(blank=True)
-    bodypart = models.ManyToManyField(Bodypart)
+    bodypart = models.ManyToManyField(Bodypart, related_name= 'BPsymptom')
 
     def __str__(self):
         return self.symptom_name

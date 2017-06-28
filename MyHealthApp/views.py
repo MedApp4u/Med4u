@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Measurement, Doctor, Doctor_Note, Medicine_Note, Medicine, Bodypart, Appointment, Symptom, \
@@ -18,6 +18,7 @@ from rest_framework.filters import SearchFilter
 from rest_framework import generics
 from django.views import generic
 from rest_framework.authtoken.models import Token
+from rest_framework.renderers import JSONRenderer
 
 
 # Create your views here
@@ -27,8 +28,9 @@ class Doctor_list(generics.ListCreateAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('doctor_speciality',)
+    filter_fields = ('id',)
     search_fields = ('doctor_name',)
+    renderer_classes=(JSONRenderer,)
 
     def perform_create(self, serializer):
         doctor = serializer.save(owner=self.request.user)
@@ -59,6 +61,7 @@ class Medicine_list(generics.ListCreateAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filter_fields = ('method',)
     search_fields = ('medicine_name',)
+    renderer_classes=(JSONRenderer,)
 
 class Disease_list(generics.ListCreateAPIView):
     permission_classes = (AllowAny,)
@@ -66,6 +69,7 @@ class Disease_list(generics.ListCreateAPIView):
     serializer_class = DiseaseSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
     search_fields = ('Disease_name',)
+    renderer_classes=(JSONRenderer,)
 
 class Appointment_list(generics.ListCreateAPIView):
     permission_classes = (AllowAny,)
@@ -73,6 +77,7 @@ class Appointment_list(generics.ListCreateAPIView):
     serializer_class = AppointmentSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filter_fields = ('date',)
+    renderer_classes=(JSONRenderer,)
 
 
 class Symptom_list(generics.ListCreateAPIView):
@@ -80,6 +85,7 @@ class Symptom_list(generics.ListCreateAPIView):
     queryset = Symptom.objects.all()
     serializer_class = SymptomSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
+    renderer_classes=(JSONRenderer,)
 
 
 class Bodypart_list(generics.ListCreateAPIView):
@@ -89,6 +95,7 @@ class Bodypart_list(generics.ListCreateAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filter_fields = ('bodypart',)
     search_fields = ('bodypart',)
+    renderer_classes=(JSONRenderer,)
 
 
 class Measurement_list(generics.ListCreateAPIView):
@@ -97,6 +104,7 @@ class Measurement_list(generics.ListCreateAPIView):
     serializer_class = MeasurementSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filter_fields = ('weight',)
+    renderer_classes=(JSONRenderer,)
 
 
 class Insurance_list(generics.ListCreateAPIView):
@@ -106,6 +114,7 @@ class Insurance_list(generics.ListCreateAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filter_fields = ('expiry_date',)
     search_fields = ('insurance_plan',)
+    renderer_classes=(JSONRenderer,)
 
 
 class Procedure_list(generics.ListCreateAPIView):
@@ -115,6 +124,7 @@ class Procedure_list(generics.ListCreateAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filter_fields = ('bodypart',)
     search_fields = ('procedure_name',)
+    renderer_classes=(JSONRenderer,)
 
 
 class Doctor_Note_list(generics.ListCreateAPIView):
@@ -122,6 +132,7 @@ class Doctor_Note_list(generics.ListCreateAPIView):
     queryset = Doctor_Note.objects.all()
     serializer_class = Doctor_NoteSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
+    renderer_classes=(JSONRenderer,)
 
 
 class Medicine_Note_list(generics.ListCreateAPIView):
@@ -129,6 +140,7 @@ class Medicine_Note_list(generics.ListCreateAPIView):
     queryset = Medicine_Note.objects.all()
     serializer_class = Medicine_NoteSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
+    renderer_classes=(JSONRenderer,)
 
 
 class Profile_show(APIView):
@@ -163,6 +175,7 @@ class Procedure_Images_list(generics.ListCreateAPIView):
     queryset = Procedure_Images.objects.all()
     serializer_class = Procedure_ImagesSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
+    renderer_classes=(JSONRenderer,)
 
 
 class Procedure_Videos_list(generics.ListCreateAPIView):
@@ -170,6 +183,7 @@ class Procedure_Videos_list(generics.ListCreateAPIView):
     queryset = Procedure_Videos.objects.all()
     serializer_class = Procedure_VideosSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
+    renderer_classes=(JSONRenderer,)
 
 
 class Procedure_Helpline_list(generics.ListCreateAPIView):
@@ -177,6 +191,7 @@ class Procedure_Helpline_list(generics.ListCreateAPIView):
     queryset = Procedure_Helpline.objects.all()
     serializer_class = Procedure_HelplineSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
+    renderer_classes=(JSONRenderer,)
 
 
 class Procedure_Note_list(generics.ListCreateAPIView):
@@ -184,6 +199,7 @@ class Procedure_Note_list(generics.ListCreateAPIView):
     queryset = Procedure_Note.objects.all()
     serializer_class = Procedure_NoteSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
+    renderer_classes=(JSONRenderer,)
 
 
 class Doctor_show(APIView):

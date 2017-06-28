@@ -39,9 +39,10 @@ class Medicine_NoteSerializer(serializers.ModelSerializer):
        
  
 class BodypartSerializer(serializers.ModelSerializer):
+    BPsymptom = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Bodypart
-        fields=('bodypart',)
+        fields=('bodypart','BPsymptom',)
 
         
 class SymptomSerializer(serializers.ModelSerializer):

@@ -456,9 +456,9 @@ def AddDocument(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
+            temp_instance = form.save(commit=False)
+            temp_instance.user = request.user
+            temp_instance.save()
             return HttpResponseRedirect('/my_documents')
         else:
             print form.errors
@@ -472,9 +472,9 @@ def AddInsurance(request):
     if request.method == 'POST':
         form = InsuranceForm(request.POST, request.FILES)
         if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
+            temp_instance = form.save(commit=False)
+            temp_instance.user = request.user
+            temp_instance.save()
             return HttpResponseRedirect('/my_insurances')
         else:
             print form.errors
@@ -488,9 +488,9 @@ def AddMeasurement(request):
     if request.method == 'POST':
         form = MeasurementForm(request.POST, request.FILES)
         if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
+            temp_instance = form.save(commit=False)
+            temp_instance.user = request.user
+            temp_instance.save()
             return HttpResponseRedirect('/my_measurements')
         else:
             print form.errors

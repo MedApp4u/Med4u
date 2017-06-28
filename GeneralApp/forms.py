@@ -42,10 +42,10 @@ class MyPasswordResetForm(PasswordResetForm):
 	email = forms.EmailField(widget=forms.TextInput(attrs={'class' : 'rp-form-field', 'id': 'rp-form-field-email'}))
 
 class ProcedureForm(forms.ModelForm):
-	bodypart = forms.ChoiceField(choices=BODYPART,required=False, label='Procedure-Bodypart',initial='Select', widget=forms.Select(attrs={'class': 'procedure-form-field', 'id': 'procedure-form-bodypart', 'onchange': 'this.form.submit()'}))
-	# queryset = Symptom.objects.all()
-	symptom = forms.ChoiceField(choices=SYMPTOMS, required=False, label='Procedure-Symptom',initial='Select', widget=forms.Select(attrs={'class': 'procedure-form-field', 'id': 'procedure-form-symptom'}))
-	# SymptomFormSet = inlineformset_factory(Bodypart, Symptom, )
+	# bodypart = forms.ChoiceField(choices=BODYPART,required=False, label='Procedure-Bodypart',initial='Select', widget=forms.Select(attrs={'class': 'procedure-form-field', 'id': 'procedure-form-bodypart', 'onchange': 'this.form.submit()'}))
+	# # queryset = Symptom.objects.all()
+	# symptom = forms.ChoiceField(choices=SYMPTOMS, required=False, label='Procedure-Symptom',initial='Select', widget=forms.Select(attrs={'class': 'procedure-form-field', 'id': 'procedure-form-symptom'}))
+	# # SymptomFormSet = inlineformset_factory(Bodypart, Symptom, )
 
 	class Meta:
 		model = Procedure

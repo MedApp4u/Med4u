@@ -1,0 +1,60 @@
+{% extends dashboard.html %}
+{% load static %}
+
+{% block profile %}
+
+	<!-- {% if current.user != "" %} -->
+
+		<li class="user_icon_item">
+			<img src="{% static 'ProfileApp/css/img/icons/user.png' %}" class="user_icon" />
+		</li>
+		<li class="dropdown">
+			<a href="#" id="user_icon_name" class="dropdown-toggle" data-toggle="dropdown">{{ current_user }} <b class="caret"></b></a>
+			<ul class="dropdown-menu profile-slider-body">
+				<li class="list-item">
+					<div class="profile-slider-top">
+						<div class="profile-slider-circle" id="circle">
+							<div class="profile-slider-image-cover">
+								<img src="{% static 'ProfileApp/css/img/icons/upload-light.png' %}" />
+								<p>Upload image</p>
+							</div>
+							{% if current_user.profile_pic.url is not None %}
+								<img src="{{current_user.profile_pic.url}}" class="profile-slider-image" />
+							{% else %}
+								<img src="{% static 'ProfileApp\css\img\icons\avatar.jpg' %}" class="profile-slider-image" />
+							{% endif %}
+						</div>
+					</div>
+					<div class="profile-slider-bottom">
+						<p class="profile-slider-username">Welcome, {{ current_user}}</p>
+						<div class="profile-slider-rectangle" id="long"></div>
+						<div class="profile-slider-rectangle" id="short"></div>
+						<a href="{% url 'ProfileApp:change_password' %}" class="profile-slider-link">
+							<div class="profile-slider-icon" id="change_password">
+								<img src="{% static 'ProfileApp/css/img/icons/padlock.png' %}" id="padlock" />
+								<div class="profile-slider-icon-separator"></div>
+								<p class="profile-slider-icon-text">Change password</p>
+							</div>
+						</a>
+						<a href="{% url 'ProfileApp:view_profile' %}" class="profile-slider-link">
+							<div class="profile-slider-icon" id="view_profile">
+								<img src="{% static 'ProfileApp/css/img/icons/document.png' %}" id="padlock" />
+								<div class="profile-slider-icon-separator"></div>
+								<p class="profile-slider-icon-text">Profile</p>
+							</div>
+						</a>
+						<a href="{% url 'ProfileApp:logout' %}" class="profile-slider-link">
+							<div class="profile-slider-icon" id="logout">
+								<img src="{% static 'ProfileApp/css/img/icons/logout.png' %}" id="padlock" />
+								<div class="profile-slider-icon-separator"></div>
+								<p class="profile-slider-icon-text">Logout</p>
+							</div>
+						</a>
+					</div>
+				</li>
+			</ul>
+		</li>
+
+	<!-- {% endif %} -->
+
+{% endblock %}

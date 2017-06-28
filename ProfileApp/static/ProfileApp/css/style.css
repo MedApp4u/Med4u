@@ -1023,7 +1023,7 @@ hr.bold {
 	top: 81px;
 	width: 100%;
 	height: 100px;
-	margin-left: -40px;
+	/*margin-left: -40px;*/
 }
 
 .vp-form-icon, .vp-form-icon-separator, .vp-form-icon-text {
@@ -1033,7 +1033,7 @@ hr.bold {
 .vp-form-icon {
 	position: relative;
 	top: 50%;
-	left: 5%;
+	left: 4%;
 	width: 50px;
 	height: 50px;
 	margin: -25px 0 0 -25px;
@@ -1042,7 +1042,7 @@ hr.bold {
 .vp-form-icon-separator {
 	position: relative;
 	bottom: -50%;
-	right: -6.5%;
+	right: -5.5%;
 	width: 2.5px;
 	height: 64px;
 	margin: -32px 0 0 -1.25px;
@@ -1061,7 +1061,6 @@ hr.bold {
 	font-size: 35px;
 	/*text-transform: uppercase;*/
 	font-weight: 800;
-	text-align: center;
 	font-variant: small-caps;
 	letter-spacing: 1.5px;
 }
@@ -1256,8 +1255,89 @@ label[for="vp-form-gender_1"] {
 	left: 48.6%;
 }
 
+/*.test {
+	float: right;
+	position: fixed;
+	z-index: 3;
+}*/
+
+
+.vp-form-profile_pic {
+	/*background: black;*/
+	opacity: 0;
+	cursor: pointer;
+	width: 220px;
+	height: 220px;
+	border-radius: 110px;
+	position: fixed;
+	z-index: 10001;
+	top: 108px;
+	left: 95.85%;
+	float: right;
+	margin-left: -220px;
+}
+
 
 /* ----------------------- */
+
+/* ------ Procedures -------- */
+
+.procedure-body-scroll {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	position: absolute;
+	top: 181px;
+	width: 40%;
+	height: 76.18%;
+}
+
+a.procedure-body-tab {
+	display: block;
+	position: relative;
+	/*top: 181px;*/
+	height: 120px;
+	width: 100%;
+	background: white;
+	border-bottom: 1px solid #f3f3f3;
+}
+
+a.procedure-body-tab:hover {
+	background: #f3f3f3;
+	color: #555;
+}
+
+a.procedure-body-tab:hover .procedure-body-separator {
+	background: #555;
+}
+
+.procedure-body-name {
+	position: relative;
+	top: 38%;
+	left: 10%;
+	height: 100%;
+	width: 100%;
+	left: 10%;
+}
+
+.procedure-body-separator {
+	background: #666;
+	width: 0.6%;
+	height: 30%;
+	float: left;
+}
+
+.procedure-body-label {
+	position: relative;
+	left: 10px;
+	font-size: 22px;
+	font-weight: 700;
+	float: left;
+	height: 35.7px;
+	line-height: 35.7px;
+}
+
+
+/* -------------------------- */
 
 .intro-content.intro-nobg {
 	background:#fff;

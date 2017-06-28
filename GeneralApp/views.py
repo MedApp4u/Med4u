@@ -14,7 +14,7 @@ from django.views import generic
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 from ProfileApp.models import Profile
-from MyHealthApp.models import Symptom, Bodypart
+from MyHealthApp.models import *
 import os
 
 # Create your views here.
@@ -168,31 +168,37 @@ def SymptomShoulder(request):
 
 
 def procedures(request):
-    context = ""
-    # profile=Profile.objects.get(username=request.user.username)
+    context = Procedure.objects.all()
 
     if request.method == 'GET':
-        form = ProcedureForm(None)
-        return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+        return render(request, 'GeneralApp/procedures.html', {'procedures': context, 'current_user': request.user})
 
-    if request.method == 'POST':
-        bp = request.POST['bodypart']
-        file_write(bp)
-        form = ProcedureForm(request.POST)
-        return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+# def procedures(request):
+#     context = ""
+#     # profile=Profile.objects.get(username=request.user.username)
 
-def file_write(bp):
-    queryset = Symptom.objects.filter(bodypart__bodypart=bp)
-    f = open(os.path.join('GeneralApp/', 'choices.py'), 'w')
-    if queryset is not None:
-        f.write('SYMPTOMS = (')
-        for item in queryset:
-            f.write("('" + str(item) + "', '" + str(item) + "'), ")
-        f.write(')')
+#     if request.method == 'GET':
+#         form = ProcedureForm(None)
+#         return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+
+#     if request.method == 'POST':
+#         bp = request.POST['bodypart']
+#         file_write(bp)
+#         form = ProcedureForm(request.POST)
+#         return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+
+# def file_write(bp):
+#     queryset = Symptom.objects.filter(bodypart__bodypart=bp)
+#     f = open(os.path.join('GeneralApp/', 'choices.py'), 'w')
+#     if queryset is not None:
+#         f.write('SYMPTOMS = (')
+#         for item in queryset:
+#             f.write("('" + str(item) + "', '" + str(item) + "'), ")
+#         f.write(')')
         
-    else:
-        f.write('SYMPTOMS = (("-","-""),)')
-    f.close()
+#     else:
+#         f.write('SYMPTOMS = (("-","-""),)')
+#     f.close()
 
     # if request.method == 'POST':
     #     form = ProfileForm(request.POST, instance=profile)

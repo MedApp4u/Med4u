@@ -1,11 +1,14 @@
 from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Measurement, Doctor, Doctor_Note, Medicine_Note, Medicine, Bodypart, Appointment, Symptom, \
     Insurance, Procedure
+from django.contrib.auth.decorators import login_required
 # from .serializers import DoctorSerializer,Doctor_NoteSerializer,Medicine_NoteSerializer,MedicineSerializer,MeasurementSerializer, BodypartSerializer, SymptomSerializer , InsuranceSerializer, ProcedureSerializer, AppointmentSerializer
 from .serializers import *
+from .forms import *
 from rest_framework.views import APIView
 from ProfileApp.models import Profile
 from ProfileApp.serializers import ProfileSerializer
@@ -14,6 +17,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 from rest_framework import generics
 from django.views import generic
+from rest_framework.authtoken.models import Token
 
 
 # Create your views here
@@ -25,6 +29,10 @@ class Doctor_list(generics.ListCreateAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filter_fields = ('doctor_speciality',)
     search_fields = ('doctor_name',)
+
+    def perform_create(self, serializer):
+        doctor = serializer.save(owner=self.request.user)
+        doctor.user.add(self.request.user)
 
 
 '''
@@ -52,6 +60,12 @@ class Medicine_list(generics.ListCreateAPIView):
     filter_fields = ('method',)
     search_fields = ('medicine_name',)
 
+class Disease_list(generics.ListCreateAPIView):
+    permission_classes = (AllowAny,)
+    queryset = Disease.objects.all()
+    serializer_class = DiseaseSerializer
+    filter_backends = (DjangoFilterBackend, SearchFilter)
+    search_fields = ('Disease_name',)
 
 class Appointment_list(generics.ListCreateAPIView):
     permission_classes = (AllowAny,)
@@ -334,14 +348,12 @@ class Symptom_show(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-# def get(self, request, *args, **kwargs):
-# return self.retrieve(request, *args, **kwargs)
+class Tokenapi(generics.ListCreateAPIView):
+    permission_classes = (AllowAny,)
+    queryset = Token.objects.all()
+    serializer_class = TokenSerializer
+    filter_backends = (DjangoFilterBackend, SearchFilter)
 
-# def put(self, request, *args, **kwargs):
-#     return self.update(request, *args, **kwargs)
-
-# def delete(self, request, *args, **kwargs):
-#     return self.destroy(request, *args, **kwargs)
 
 class HomeView(generic.TemplateView):
     template_name = 'MyHealthApp/home.html'
@@ -362,71 +374,126 @@ class sidebarView(generic.TemplateView):
     template_name = 'MyHealthApp/sidebar.html'
 
 
-class medicinesView(generic.TemplateView):
-    template_name = 'MyHealthApp/my-medicines.html'
+# class medicinesView(generic.TemplateView):
+#     template_name = 'MyHealthApp/my-medicines.html'
 
 
-class appointmentsView(generic.TemplateView):
-    template_name = 'MyHealthApp/my-appointments.html'
+# class appointmentsView(generic.TemplateView):
+#     template_name = 'MyHealthApp/my-appointments.html'
 
 
-class doctorsView(generic.TemplateView):
-    template_name = 'MyHealthApp/my-doctors.html'
+# class doctorsView(generic.TemplateView):
+#     template_name = 'MyHealthApp/my-doctors.html'
 
 
-class documentsView(generic.TemplateView):
-    template_name = 'MyHealthApp/my-documents.html'
+# class documentsView(generic.TemplateView):
+#     template_name = 'MyHealthApp/my-documents.html'
 
 
-class diseasesView(generic.TemplateView):
-    template_name = 'MyHealthApp/my-diseases.html'
+# class diseasesView(generic.TemplateView):
+#     template_name = 'MyHealthApp/my-diseases.html'
 
 
-class insuranceView(generic.TemplateView):
-    template_name = 'MyHealthApp/my-insurance.html'
+# class insuranceView(generic.TemplateView):
+#     template_name = 'MyHealthApp/my-insurance.html'
 
 
-class measurementsView(generic.TemplateView):
-    template_name = 'MyHealthApp/my-measurements.html'
+# class measurementsView(generic.TemplateView):
+#     template_name = 'MyHealthApp/my-measurements.html'
 
 
+@login_required
 def ViewInsurance(request):
     current_user = request.user
     queryset = Insurance.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-insurance.html', {'insurance_list': queryset})
 
 
+@login_required
 def ViewMeasurement(request):
     current_user = request.user
     queryset = Measurement.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-measurements.html', {'measurement_list': queryset})
 
 
+@login_required
 def ViewDisease(request):
     current_user = request.user
     queryset = current_user.disease_set.all()
     return render(request, 'MyHealthApp/my-diseases.html', {'disease_list': queryset})
 
 
+@login_required
 def ViewDocument(request):
     current_user = request.user
     queryset = Document.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-documents.html', {'documnet_list': queryset})
 
 
+@login_required
 def ViewDoctor(request):
     current_user = request.user
     queryset = current_user.doctor_set.all()
     return render(request, 'MyHealthApp/my-doctors.html', {'doctor_list': queryset})
 
 
+@login_required
 def ViewAppointment(request):
     current_user = request.user
     queryset = Appointment.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-appointments.html', {'appointment_list': queryset})
 
 
+@login_required
 def ViewMedicine(request):
     current_user = request.user
     queryset = current_user.medicine_set.all()
     return render(request, 'MyHealthApp/my-medicines.html', {'medicine_list': queryset})
+
+
+@login_required
+def AddDocument(request):
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.user = request.user
+            temp_instance.save()
+            return HttpResponseRedirect('/my_documents')
+        else:
+            print form.errors
+    else:
+        form = DocumentForm()
+    return render(request, 'MyHealthApp/add_document.html', {'form': form})
+
+
+@login_required
+def AddInsurance(request):
+    if request.method == 'POST':
+        form = InsuranceForm(request.POST, request.FILES)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.user = request.user
+            temp_instance.save()
+            return HttpResponseRedirect('/my_insurances')
+        else:
+            print form.errors
+    else:
+        form = InsuranceForm()
+    return render(request, 'MyHealthApp/add_insurance.html', {'form': form})
+
+
+@login_required
+def AddMeasurement(request):
+    if request.method == 'POST':
+        form = MeasurementForm(request.POST, request.FILES)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.user = request.user
+            temp_instance.save()
+            return HttpResponseRedirect('/my_measurements')
+        else:
+            print form.errors
+    else:
+        form = MeasurementForm()
+    return render(request, 'MyHealthApp/add_measurement.html', {'form': form})

@@ -17,8 +17,8 @@ class ProfileForm(forms.ModelForm):
 	address=forms.CharField(required=False, label='Address', widget=forms.Textarea(attrs={'class' : 'vp-form-field', 'id': 'vp-form-field-address'}))
 	phone_number=PhoneNumberField(required=False, label='Mobile No.', widget=PhoneNumberPrefixWidget(attrs={'class' : 'vp-form-field', 'id': 'vp-form-field-phone_number'}))
 	blood_group=forms.ChoiceField(choices=BLOOD_GROUP_CHOICES,required=False, label='Blood Group',initial='Select', widget=forms.Select(attrs={'class' : 'vp-form-field', 'id': 'vp-form-field-blood_group'}))
-	# profile_pic=forms.ImageField(required=False)
+	profile_pic=forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'vp-form-profile_pic'}))
 
 	class Meta:
 		model=Profile
-		fields=('username','first_name','last_name','gender','email','dob','address','phone_number','blood_group')
+		fields=('username','first_name','last_name','gender','email','dob','address','phone_number','blood_group','profile_pic')

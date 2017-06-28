@@ -1,4 +1,4 @@
-    # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
@@ -173,9 +173,11 @@ class Insurance(models.Model):
     def __str__(self):
         return self.insurance_plan
 
+
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
     return 'documents/user_{0}/{1}'.format(instance.user.id, filename)
+
 
 class Document(models.Model):
     doc = models.FileField(upload_to=user_directory_path, null=True, blank=True)

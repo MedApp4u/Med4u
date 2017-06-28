@@ -2614,6 +2614,9 @@ h5{
 }
 
 .ADD:hover{
+	background-color: white;
+	/*border-left: 2px solid grey;
+	color: #3fbbc0;*/
 	background-color: #ffe;
 	border-left: 2px solid grey;
 	color: #3fbbc0;

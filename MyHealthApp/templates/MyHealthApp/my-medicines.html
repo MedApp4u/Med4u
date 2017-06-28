@@ -2,17 +2,31 @@
 
 {% block content %}
 
+	
 	<h1 class="head-med text-center">My Medicines</h1>
 
-<!-- 	<div class="container">
+	<div class="ADD">Add Medicines</div>
+
+	<div class="container">
 		<div class="row">
-			<div class="col-md-3 col-sm-3">
-				<h5 id="med-title">Crocin</h5>
+			{% for i in medicine_list %}
+			<div class="col-md-12 col-sm-12">
+				<div class="med-div">
+				<h5 id="med-title">{{ i.medicine_name }}</h5>
+				<span class="med-desc">3 times a day.</span>
+				</div>
 			</div>
+			{% endfor %}
+			<!-- <div class="col-md-12 col-sm-12">
+				<div class="med-div">
+				<h5 id="med-title">Sinarest</h5>
+				<span class="med-desc">3 times a day.</span>
+				</div>
+				<div class="divider-short"></div>
+			</div>-->
 		</div>
 		
 	</div>
- -->
 
 
 {% endblock %}

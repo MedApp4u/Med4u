@@ -2544,12 +2544,79 @@ h5{
 	color: #3fbbc0;
 }
 
-#content-wrapper{
+/*#content-wrapper{
 	background: white;
-}
+}*/
 
 .active{
 
 	background : rgba(63,187,192,.25);
 }
+
+/*#base_wrapper{
+	background-color: white;
+}*/
+
+
+/*my medicine*/
+.med-desc{
+	float: right;
+	margin-top: -30px;
+	margin-right: 50px;
+}
+
+#med-title{
+	padding-left: 10px;
+	padding-top: 2px;
+	margin-bottom: 0;
+	padding-bottom: 2px;
+	color: grey;
+	font-weight: 500;
+	font-size: 20px;
+}
+
+.med-div{
+	margin-left: 400px;
+	margin-right: 350px;
+	margin-top: 30px;
+	border-left:2px solid #3fbbc0;
+}
+
+.med-div:hover{
+	/*border:1px solid black;*/
+	background-color: white;
+	border-left: 2px solid grey;
+	font-weight: 200;
+
+}
+
+.med-div:hover #med-title{
+	color: #3fbbc0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.divider-short{
+	margin-top: 20px;
+	width: 10%;
+}
+
+.ADD{
+	border-left: 2px solid #3fbbc0;
+	margin-left: 350px;
+	/*margin-right: 838px;*/
+	padding-left: 10px;
+	padding-right: 5px;
+	color: grey;
+	font-weight: 600;
+	font-size: 22px;
+	width: 190px;
+}
+
+.ADD:hover{
+	background-color: white;
+	/*border-left: 2px solid grey;
+	color: #3fbbc0;*/
+}
+
 

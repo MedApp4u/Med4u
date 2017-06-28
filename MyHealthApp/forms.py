@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from .models import *
 from django import forms
+from .choices import *
 
 
 class DocumentForm(forms.ModelForm):
@@ -39,3 +40,18 @@ class MeasurementForm(forms.ModelForm):
     class Meta:
         model = Measurement
         fields = ('blood_pressure', 'blood_sugar', 'cholesterol', 'height', 'weight', 'notes')
+
+
+class DoctorForm(forms.ModelForm):
+    doctor_name = forms.CharField(required=True, label='Name')
+    doctor_description = forms.CharField(required=False, label='Description', widget=forms.Textarea())
+    doctor_address = forms.CharField(required=True, label='Address', widget=forms.Textarea())
+    doctor_speciality = forms.ChoiceField(required=True, choices=SPECIALITY_CHOICE, label='Speciality')
+    doctor_timings = forms.CharField(required=True, label='Timing')
+    doctor_pic = forms.ImageField(required=False, label='Upload Photo')
+
+
+    class Meta:
+        model = Doctor
+        fields = ('doctor_name', 'doctor_description', 'doctor_address', 'doctor_speciality', 'doctor_timings', 'doctor_pic')
+

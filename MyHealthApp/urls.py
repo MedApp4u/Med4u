@@ -38,5 +38,6 @@ urlpatterns = [
     url(r'add_insurance/', views.AddInsurance, name='add_insurance'),
     url(r'add_document/', views.AddDocument, name='add_document'),
     url(r'add_measurement/', views.AddMeasurement, name='add_measurement'),
+    url(r'add_doctor/', views.AddDoctor, name='add_doctor'),
 
 ]

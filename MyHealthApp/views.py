@@ -374,34 +374,6 @@ class sidebarView(generic.TemplateView):
     template_name = 'MyHealthApp/sidebar.html'
 
 
-# class medicinesView(generic.TemplateView):
-#     template_name = 'MyHealthApp/my-medicines.html'
-
-
-# class appointmentsView(generic.TemplateView):
-#     template_name = 'MyHealthApp/my-appointments.html'
-
-
-# class doctorsView(generic.TemplateView):
-#     template_name = 'MyHealthApp/my-doctors.html'
-
-
-# class documentsView(generic.TemplateView):
-#     template_name = 'MyHealthApp/my-documents.html'
-
-
-# class diseasesView(generic.TemplateView):
-#     template_name = 'MyHealthApp/my-diseases.html'
-
-
-# class insuranceView(generic.TemplateView):
-#     template_name = 'MyHealthApp/my-insurance.html'
-
-
-# class measurementsView(generic.TemplateView):
-#     template_name = 'MyHealthApp/my-measurements.html'
-
-
 @login_required
 def ViewInsurance(request):
     current_user = request.user
@@ -497,3 +469,23 @@ def AddMeasurement(request):
     else:
         form = MeasurementForm()
     return render(request, 'MyHealthApp/add_measurement.html', {'form': form})
+
+
+@login_required
+def AddDoctor(request):
+    if request.method == 'POST':
+        form = DoctorForm(request.POST, request.FILES)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()
+            return HttpResponseRedirect('/my_doctors')
+        else:
+            print form.errors
+    else:
+        form = DoctorForm()
+    return render(request, 'MyHealthApp/add_doctor.html', {'form': form})
+
+
+

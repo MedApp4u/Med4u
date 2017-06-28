@@ -83,7 +83,7 @@
 							</div>
 							<div class="procedure-body-scroll">
 								{% for procedure in procedures %}
-									<a href="{% url '{{ procedure.id }}" class="procedure-body-tab">
+									<a href="{% url 'GeneralApp:procedure_details' procedure.id %}" class="procedure-body-tab">
 										<div class = "procedure-body-name">
 											<div class = "procedure-body-separator"></div>
 											<div class = "procedure-body-label">{{ procedure.procedure_name }}</div>
@@ -96,8 +96,14 @@
 									<p class="procedure-desc-label">Name</p>
 								</div>
 								<div class="procedure-desc-right">
-									<!-- <p>Surgery</p> -->
+									<p class="procedure-desc-name">{{ current_procedure.procedure_name }}</p>
 								</div>
+<!-- 								<div class="procedure-desc-left">
+									<p class="procedure-desc-label">Name</p>
+								</div>
+								<div class="procedure-desc-right">
+									<p class="procedure-desc-name">Surgery</p>
+								</div> -->
 							</div>
 						</div>		
 					</div>		

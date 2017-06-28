@@ -19,7 +19,7 @@ def doctor_directory_path(instance, filename):
 
 class Doctor(models.Model):
     doctor_name = models.CharField(max_length=100)
-    # doctor_phone_number = PhoneNumberField(blank=True)
+    doctor_phone_number = PhoneNumberField(blank=True)
     doctor_description = models.TextField(blank=True)
     doctor_address = models.TextField(max_length=1000, blank=True)
     doctor_speciality = models.CharField(max_length=60, choices=SPECIALITY_CHOICE, default="FAMILY MEDICINE PHYSICIAN",

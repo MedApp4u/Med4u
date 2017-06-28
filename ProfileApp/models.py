@@ -14,8 +14,8 @@ from rest_framework.authtoken.models import Token
 # from rest_framework.authtoken.models import Token
 #Create your models here.
 def user_directory_path(instance, filename):
-    # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
-    return 'profile/user_{0}/{1}'.format(instance.id, filename)
+  # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
+  return 'profile/user_{0}/{1}'.format(instance.id, filename)
 
 class Profile(AbstractUser):
   dob=models.DateField(null=True, blank=True)

@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^symptom/pelvis/$', views.SymptomHead,name='pelvis-symptom'),
     url(r'^symptom/shoulder/$', views.SymptomShoulder,name='shoulder-symptom'),
     url(r'^procedures/$', views.procedures, name='procedures'),
-    url(r'^procedures/test$', views.procedures_test, name='procedures-test'),
+    url(r'^procedures/(?P<proc_id>[0-9]+)$', views.procedure_details, name='procedure_details'),
+    # url(r'^procedures/test$', views.procedures_test, name='procedures-test'),
 ]

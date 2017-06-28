@@ -168,16 +168,17 @@ def SymptomShoulder(request):
 
 
 def procedures(request):
-    context = Procedure.objects.all()
+    procedures_list = Procedure.objects.all()
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/procedures.html', {'procedures': context, 'current_user': request.user})
+        return render(request, 'GeneralApp/procedures.html', {'procedures': procedures_list, 'current_user': request.user})
 
-def procedures_test(request):
-    context = Procedure.objects.all()
+def procedure_details(request, proc_id):
+    procedures_list = Procedure.objects.all()
+    current_procedure = Procedure.objects.get(id=proc_id)
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/procedures-test.html', {'procedures': context, 'current_user': request.user})
+        return render(request, 'GeneralApp/procedures-test.html', {'procedures': procedures_list, 'current_user': request.user, 'current_procedure': current_procedure})
 
 # def procedures(request):
 #     context = ""

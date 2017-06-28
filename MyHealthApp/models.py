@@ -12,6 +12,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 # Create your models here.
+def doctor_directory_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
+    return 'doctor/user_{0}/{1}'.format(instance.id, filename)
+
+
 class Doctor(models.Model):
     doctor_name = models.CharField(max_length=100)
     # doctor_phone_number = PhoneNumberField(blank=True)
@@ -20,7 +25,7 @@ class Doctor(models.Model):
     doctor_speciality = models.CharField(max_length=60, choices=SPECIALITY_CHOICE, default="FAMILY MEDICINE PHYSICIAN",
                                          blank=True)
     doctor_timings = models.CharField(max_length=30, default="06 AM to 06 PM")
-    doctor_pic = models.ImageField(upload_to="doctors", null=True, blank=True)  # Insert upload_to
+    doctor_pic = models.ImageField(upload_to=doctor_directory_path, null=True, blank=True)  # Insert upload_to
     user = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
     def __str__(self):
@@ -174,13 +179,13 @@ class Insurance(models.Model):
         return self.insurance_plan
 
 
-def user_directory_path(instance, filename):
+def document_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
     return 'documents/user_{0}/{1}'.format(instance.user.id, filename)
 
 
 class Document(models.Model):
-    doc = models.FileField(upload_to=user_directory_path, null=True, blank=True)
+    doc = models.FileField(upload_to=document_directory_path, null=True, blank=True)
     notes = models.TextField(blank=True)
     uploaded_at = models.DateTimeField(default=datetime.datetime.now)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

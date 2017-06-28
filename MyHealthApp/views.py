@@ -58,6 +58,12 @@ class Medicine_list(generics.ListCreateAPIView):
     filter_fields = ('method',)
     search_fields = ('medicine_name',)
 
+class Disease_list(generics.ListCreateAPIView):
+    permission_classes = (AllowAny,)
+    queryset = Disease.objects.all()
+    serializer_class = DiseaseSerializer
+    filter_backends = (DjangoFilterBackend, SearchFilter)
+    search_fields = ('Disease_name',)
 
 class Appointment_list(generics.ListCreateAPIView):
     permission_classes = (AllowAny,)

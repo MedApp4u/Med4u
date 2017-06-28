@@ -173,6 +173,12 @@ def procedures(request):
     if request.method == 'GET':
         return render(request, 'GeneralApp/procedures.html', {'procedures': context, 'current_user': request.user})
 
+def procedures_test(request):
+    context = Procedure.objects.all()
+
+    if request.method == 'GET':
+        return render(request, 'GeneralApp/procedures-test.html', {'procedures': context, 'current_user': request.user})
+
 # def procedures(request):
 #     context = ""
 #     # profile=Profile.objects.get(username=request.user.username)

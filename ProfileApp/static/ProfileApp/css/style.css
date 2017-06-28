@@ -1336,6 +1336,15 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	line-height: 35.7px;
 }
 
+.procedure-body-desc {
+	background: black;
+	position: relative;
+	z-index: 100001;
+	height: 100px;
+	width: 100px;
+	left: 40%;
+}
+
 
 /* -------------------------- */
 

@@ -83,12 +83,15 @@
 							</div>
 							<div class="procedure-body-scroll">
 								{% for procedure in procedures %}
-									<a href="{% url 'GeneralApp:procedures-test' %}" class="procedure-body-tab">
+									<a href="{% url '{{ procedure.id }}" class="procedure-body-tab">
 										<div class = "procedure-body-name">
 											<div class = "procedure-body-separator"></div>
 											<div class = "procedure-body-label">{{ procedure.procedure_name }}</div>
 										</div>
 									</a>
+									<div class = "procedure-body-desc">
+										
+									</div>
 								{% endfor %}
 							</div>
 						</div>		

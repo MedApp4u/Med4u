@@ -517,3 +517,19 @@ def AddAppointment(request):
     else:
         form = AppointmentForm(user=request.user)
     return render(request, 'MyHealthApp/add_appointment.html', {'form': form})
+
+
+def AddMedicine(request):
+    if request.method == 'POST':
+        form = MedicineForm(request.POST, user=request.user)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()
+            return HttpResponseRedirect('/my_medicines')
+        else:
+            print form.errors
+    else:
+        form = MedicineForm(user=request.user)
+    return render(request, 'MyHealthApp/add_medicine.html', {'form': form})

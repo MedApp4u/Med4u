@@ -52,11 +52,11 @@ class DoctorForm(forms.ModelForm):
     class Meta:
         model = Doctor
         fields = (
-        'doctor_name', 'doctor_description', 'doctor_address', 'doctor_speciality', 'doctor_timings', 'doctor_pic')
+            'doctor_name', 'doctor_description', 'doctor_address', 'doctor_speciality', 'doctor_timings', 'doctor_pic')
 
 
 class AppointmentForm(forms.ModelForm):
-    doctor = forms.ModelChoiceField(queryset=Doctor.objects.none())
+    doctor = forms.ModelChoiceField(queryset=Doctor.objects.none(), label='Doctor')
     date = forms.DateField()
     time = forms.TimeField()
     reason = forms.CharField(required=False, label='Reason', widget=forms.Textarea())
@@ -69,4 +69,28 @@ class AppointmentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
         super(AppointmentForm, self).__init__(*args, **kwargs)
+        self.fields['doctor'].queryset = user.doctor_set.all()
+
+
+class MedicineForm(forms.ModelForm):
+    medicine_name = forms.CharField(required=True, label='Name')
+    method = forms.ChoiceField(required=True, choices=MEDICINE_CHOICES)
+    dosage_amt = forms.CharField(required=True, label='Amount')
+    frequency = forms.IntegerField(help_text='No of times a day', required=True, label='Frequency')
+    medicine_date = forms.DateField(help_text='Start date of the prescription', required=False, label='Start Date')
+    doctor = forms.ModelChoiceField(queryset=Doctor.objects.none(), label='Doctor')
+    usage_instructions = forms.CharField(required=True, label='Usage Instruction')
+    overdose_instructions = forms.CharField(required=False, label='Overdose Instruction', widget=forms.Textarea())
+    possible_sideeffects = forms.CharField(required=False, label='Possible Sideffects', widget=forms.Textarea())
+    brand_names = forms.CharField(required=True, label='Brand Name', widget=forms.Textarea())
+
+    class Meta:
+        model = Medicine
+        fields = (
+            'medicine_name', 'method', 'dosage_amt', 'frequency', 'medicine_date', 'doctor', 'usage_instructions',
+            'overdose_instructions', 'possible_sideeffects', 'brand_names')
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super(MedicineForm, self).__init__(*args, **kwargs)
         self.fields['doctor'].queryset = user.doctor_set.all()

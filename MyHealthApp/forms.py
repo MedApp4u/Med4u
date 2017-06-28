@@ -36,7 +36,6 @@ class MeasurementForm(forms.ModelForm):
     weight = forms.FloatField(required=True, label='Weight')
     notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea())
 
-
     class Meta:
         model = Measurement
         fields = ('blood_pressure', 'blood_sugar', 'cholesterol', 'height', 'weight', 'notes')
@@ -50,8 +49,24 @@ class DoctorForm(forms.ModelForm):
     doctor_timings = forms.CharField(required=True, label='Timing')
     doctor_pic = forms.ImageField(required=False, label='Upload Photo')
 
-
     class Meta:
         model = Doctor
-        fields = ('doctor_name', 'doctor_description', 'doctor_address', 'doctor_speciality', 'doctor_timings', 'doctor_pic')
+        fields = (
+        'doctor_name', 'doctor_description', 'doctor_address', 'doctor_speciality', 'doctor_timings', 'doctor_pic')
 
+
+class AppointmentForm(forms.ModelForm):
+    doctor = forms.ModelChoiceField(queryset=Doctor.objects.none())
+    date = forms.DateField()
+    time = forms.TimeField()
+    reason = forms.CharField(required=False, label='Reason', widget=forms.Textarea())
+    notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea())
+
+    class Meta:
+        model = Appointment
+        fields = ('doctor', 'date', 'time', 'reason', 'notes')
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super(AppointmentForm, self).__init__(*args, **kwargs)
+        self.fields['doctor'].queryset = user.doctor_set.all()

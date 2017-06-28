@@ -14,7 +14,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 def doctor_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
-    return 'doctor/user_{0}/{1}'.format(instance.id, filename)
+    return 'user_doctor/user_{0}/{1}'.format(instance.id, filename)
 
 
 class Doctor(models.Model):

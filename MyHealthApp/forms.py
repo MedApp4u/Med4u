@@ -7,7 +7,7 @@ from django import forms
 
 
 class DocumentForm(forms.ModelForm):
-    doc = forms.ImageField(required=False, label='Upload Document')
+    doc = forms.FileField(required=False, label='Upload Document')
     notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea())
 
     class Meta:
@@ -34,6 +34,7 @@ class MeasurementForm(forms.ModelForm):
     height = forms.FloatField(required=True, label='Height')
     weight = forms.FloatField(required=True, label='Weight')
     notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea())
+
 
     class Meta:
         model = Measurement

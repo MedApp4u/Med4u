@@ -105,6 +105,10 @@ class Tnc(generic.TemplateView):
 
 class AboutUs(generic.TemplateView):
     template_name = 'GeneralApp/about.html'
+
+
+class SymptomsView(generic.TemplateView):
+    template_name = 'GeneralApp/symptoms.html'
     
 
 def SymptomHead(request):

@@ -15,7 +15,6 @@ urlpatterns = [
     url(r'^insurances_api/$', views.Insurance_list.as_view(), name='insurances_api'),
     url(r'^procedures_api/$', views.Procedure_list.as_view(), name='procedures_api'),
     url(r'^diseases_api/$', views.Disease_list.as_view(), name='Diseases_api'),
-
     url(r'^profileapi/(?P<pk>[0-9]+)/$', views.Profile_show.as_view(), name='Profile_show'),
     url(r'^doctorapi/(?P<pk>[0-9]+)/$', views.Doctor_show.as_view(), name='Doctor_show'),
     url(r'^medicineapi/(?P<pk>[0-9]+)/$', views.Medicine_show.as_view(), name='Medicine_show'),
@@ -23,7 +22,6 @@ urlpatterns = [
     url(r'^procedureapi/(?P<pk>[0-9]+)/$', views.Procedure_show.as_view(), name='Procedure_show'),
     url(r'^bodypartapi/(?P<pk>[0-9]+)/$', views.Bodypart_show.as_view(), name='Bodypart_show'),
     url(r'^Symptomapi/(?P<pk>[0-9]+)/$', views.Symptom_show.as_view(), name='Symptom_show'),
-
     url(r'^home/$', views.HomeView.as_view(), name='home'),
     url(r'^symptoms/$', views.SymptomsView.as_view(), name='symptoms'),
     url(r'^MyHealth/$', views.MyHealthView.as_view(), name='MyHealth'),
@@ -41,4 +39,5 @@ urlpatterns = [
     url(r'^add_doctor/$', views.AddDoctor, name='add_doctor'),
     url(r'^add_appointment/$', views.AddAppointment, name='add_appointment'),
     url(r'^add_medicine/$', views.AddMedicine, name='add_medicine'),
+    url(r'^add_disease/$', views.AddDisease, name='add_disease'),
 ]

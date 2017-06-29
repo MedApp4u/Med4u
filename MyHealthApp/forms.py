@@ -94,3 +94,18 @@ class MedicineForm(forms.ModelForm):
         user = kwargs.pop('user', None)
         super(MedicineForm, self).__init__(*args, **kwargs)
         self.fields['doctor'].queryset = user.doctor_set.all()
+
+
+class DiseaseForm(forms.ModelForm):
+    symptom = forms.ModelMultipleChoiceField(required=True, label='Symptom', queryset=Symptom.objects.all())
+    medicine = forms.ModelMultipleChoiceField(required=True, label='Medicine', queryset=Medicine.objects.none())
+    procedure = forms.ModelMultipleChoiceField(required=True, label='Procedure', queryset=Procedure.objects.all())
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super(DiseaseForm, self).__init__(*args, **kwargs)
+        self.fields['medicine'].queryset = user.medicine_set.all()
+
+    class Meta:
+        model = Disease
+        exclude = ['user']

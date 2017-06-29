@@ -91,7 +91,7 @@ class Sypmtom_Videos(models.Model):  # Multi valued attribute
 
 def procedure_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
-    return 'procedures/procedure_{0}/{1}'.format(instance.id, filename)
+    return 'procedures/procedure_{0}/{1}'.format(instance.proc, filename)
 
 class Procedure(models.Model):
     procedure_name = models.CharField(max_length=60)

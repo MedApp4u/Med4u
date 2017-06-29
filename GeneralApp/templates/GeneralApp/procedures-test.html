@@ -130,33 +130,13 @@
 										{% endfor %}
 									</p>
 								</div>
-								<div class="procedure-desc-left" id="desc-label-medc">
-									<p class="procedure-desc-label">Medicines</p>
-								</div>
-								<div class="procedure-desc-right" id="desc-field-medc">
-									<p class="procedure-desc-name">
-										{% for medicine in medicines %}
-											{{ medicine.medicine_name.title }}{% if forloop.last %}{% else %},{% endif %}
-										{% endfor %}
-									</p>
-								</div>
-								<div class="procedure-desc-left" id="desc-label-doc">
-									<p class="procedure-desc-label">Doctors</p>
-								</div>
-								<div class="procedure-desc-right" id="desc-field-doc">
-									<p class="procedure-desc-name">
-										{% for doctor in doctors %}
-											{{ doctor.doctor_name.title }}{% if forloop.last %}{% else %},{% endif %}
-										{% endfor %}
-									</p>
-								</div>
 								<div class="procedure-desc-left" id="desc-label-img">
 									<p class="procedure-desc-label">Images</p>
 								</div>
 								<div class="procedure-desc-right" id="desc-field-img">
 									<p class="procedure-desc-name">
 										{% for image in images %}
-											<a href="{{ image.procedure_image.url }}">
+											<a target="_blank" href="{{ image.procedure_image.url }}">
 												<img src="{{ image.procedure_image.url }}"/>
 											</a>
 										{% endfor %}

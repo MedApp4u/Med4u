@@ -39,9 +39,10 @@ class Medicine_NoteSerializer(serializers.ModelSerializer):
        
  
 class BodypartSerializer(serializers.HyperlinkedModelSerializer):
+    BPsymptom = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta: 
         model = Bodypart 
-        fields=('bodypart',) 
+        fields=('bodypart','BPsymptom',) 
 
 class SymptomSerializer(serializers.ModelSerializer): 
     #bodypart = serializers.HyperlinkedRelatedField(many=True,read_only=True,view_name='Bodypart-detail')

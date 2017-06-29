@@ -1432,10 +1432,14 @@ a.procedure-body-tab:hover .procedure-body-separator {
 }
 
 #desc-field-img {
-	overflow-y: scroll;
+	overflow-y: hidden;
 	overflow-x: hidden;
-	height: 15%;
 	width: 87%;
+}
+
+#desc-field-img img {
+	width: 10%;
+	height: 0.5%;
 }
 
 .procedure-desc-label {

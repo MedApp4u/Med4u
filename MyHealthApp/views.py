@@ -359,6 +359,8 @@ class Tokenapi(generics.ListCreateAPIView):
 class HomeView(generic.TemplateView):
     template_name = 'MyHealthApp/home.html'
 
+def RedirectHomeView(request):
+    return HttpResponseRedirect('/home/')
 
 class MyHealthView(generic.TemplateView):
     template_name = 'MyHealthApp/MyHealthApp.html'

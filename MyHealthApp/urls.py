@@ -16,13 +16,13 @@ urlpatterns = [
     url(r'^api/procedure_list/$', views.Procedure_list.as_view(), name='procedure_list'),
     url(r'^api/disease_list/$', views.Disease_list.as_view(), name='disease_list'),
 
-    url(r'^profileapi/(?P<pk>[0-9]+)/$', views.Profile_show.as_view(), name='Profile_show'),
-    url(r'^doctorapi/(?P<pk>[0-9]+)/$', views.Doctor_show.as_view(), name='Doctor_show'),
-    url(r'^medicineapi/(?P<pk>[0-9]+)/$', views.Medicine_show.as_view(), name='Medicine_show'),
-    url(r'^diseaseapi/(?P<pk>[0-9]+)/$', views.Disease_show.as_view(), name='Disease_show'),
-    url(r'^procedureapi/(?P<pk>[0-9]+)/$', views.Procedure_show.as_view(), name='Procedure_show'),
-    url(r'^bodypartapi/(?P<pk>[0-9]+)/$', views.Bodypart_show.as_view(), name='Bodypart_show'),
-    url(r'^symptomapi/(?P<pk>[0-9]+)/$', views.Symptom_show.as_view(), name='Symptom_show'),
+    url(r'^api/profile/(?P<pk>[0-9]+)/$', views.Profile_show.as_view(), name='Profile_show'),
+    url(r'^api/doctor/(?P<pk>[0-9]+)/$', views.Doctor_show.as_view(), name='Doctor_show'),
+    url(r'^api/medicine/(?P<pk>[0-9]+)/$', views.Medicine_show.as_view(), name='Medicine_show'),
+    url(r'^api/disease/(?P<pk>[0-9]+)/$', views.Disease_show.as_view(), name='Disease_show'),
+    url(r'^api/procedure/(?P<pk>[0-9]+)/$', views.Procedure_show.as_view(), name='Procedure_show'),
+    url(r'^api/bodypart/(?P<pk>[0-9]+)/$', views.Bodypart_show.as_view(), name='Bodypart_show'),
+    url(r'^api/symptom/(?P<pk>[0-9]+)/$', views.Symptom_show.as_view(), name='Symptom_show'),
   
     url(r'^home/$', views.HomeView.as_view(), name='home'),
 

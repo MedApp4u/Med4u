@@ -14,7 +14,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 def doctor_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
-    return 'user_doctor/user_{0}/{1}'.format(instance.id, filename)
+    return 'doctor/doctor_{0}/{1}'.format(instance.id, filename)
 
 
 class Doctor(models.Model):
@@ -89,6 +89,9 @@ class Sypmtom_Videos(models.Model):  # Multi valued attribute
     symptom = models.ForeignKey(Symptom, on_delete=models.CASCADE)
     symptom_video = models.URLField(blank=True)
 
+def procedure_directory_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/documents/user_<id>/<filename>
+    return 'procedures/procedure_{0}/{1}'.format(instance.id, filename)
 
 class Procedure(models.Model):
     procedure_name = models.CharField(max_length=60)
@@ -105,7 +108,7 @@ class Procedure(models.Model):
 
 class Procedure_Images(models.Model):  # Multi valued attribute
     proc = models.ForeignKey(Procedure, on_delete=models.CASCADE)
-    procedure_image = models.ImageField(upload_to="procedures", null=True, blank=True)
+    procedure_image = models.ImageField(upload_to=procedure_directory_path, null=True, blank=True)
 
 
 class Procedure_Videos(models.Model):  # Multi valued attribute

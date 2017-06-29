@@ -38,18 +38,28 @@ class Medicine_NoteSerializer(serializers.ModelSerializer):
         fields=('medicine_note','medicine','user')
        
  
-class BodypartSerializer(serializers.ModelSerializer):
-    BPsymptom = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    class Meta:
-        model = Bodypart
-        fields=('bodypart','BPsymptom',)
+class BodypartSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta: 
+        model = Bodypart 
+        fields=('bodypart',) 
 
-        
-class SymptomSerializer(serializers.ModelSerializer):
+class SymptomSerializer(serializers.ModelSerializer): 
     #bodypart = serializers.HyperlinkedRelatedField(many=True,read_only=True,view_name='Bodypart-detail')
-    bodypart = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    class Meta:
-        model = Symptom
+    bodypart = BodypartSerializer(many=True, ) 
+    
+    def create(self, validated_data): 
+        bodypart_data = validated_data.pop('bodypart')
+        symptom = Symptom.objects.create(**validated_data) 
+        for bodyparts in bodypart_data:
+            bp = Bodypart.objects.create() 
+            bp.bodypart= bodyparts.get("bodypart") 
+            bp.save()
+        symptom.bodypart.add(bp) 
+        symptom.save()
+        return symptom 
+
+    class Meta: 
+        model = Symptom 
         fields=('id','symptom_name','bodypart','symptom_description','tests')
 
 

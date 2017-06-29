@@ -1351,48 +1351,110 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	height: 76.18%;
 	top: 181px;
 	left: 40%;
-/*	padding-top: 4%;
-	padding-left: 4%;*/
 	font-weight: 600;
 }
 
 .procedure-desc-left, .procedure-desc-right {
-	position: absolute;
-	height: 12%;
+	position: relative;
+	float: left;
+	height: 10%;
 	z-index: 0;
 }
 
 .procedure-desc-left {
 	background: #3fbbc0;
 	color: white;
+	border-bottom: 1px solid #37aeb3;
+}
+
+#desc-label-name {
+	width: 12%;
+}
+
+#desc-label-desc {
 	width: 18%;
 }
 
+#desc-label-comp {
+	width: 20%;
+}
+
+#desc-label-bp {
+	width: 16%;
+}
+
+#desc-label-symp {
+	width: 16%;
+}
+
+#desc-label-medc {
+	width: 16%;
+}
+
+#desc-label-doc {
+	width: 14%;
+}
+
+#desc-label-img {
+	width: 13%;
+}
+
 .procedure-desc-right {
-	left: 18%;
-	width: 82%;
 	border-bottom: 1px solid #f3f3f3;
 }
 
+#desc-field-name {
+	width: 88%;
+}
+
+#desc-field-desc {
+	width: 82%;
+}
+
+#desc-field-comp {
+	width: 80%;
+}
+
+#desc-field-bp {
+	width: 84%;
+}
+
+#desc-field-symp {
+	width: 84%;
+}
+
+#desc-field-medc {
+	width: 84%;
+}
+
+#desc-field-doc {
+	width: 86%;
+}
+
+#desc-field-img {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 15%;
+	width: 87%;
+}
+
 .procedure-desc-label {
-	/*vertical-align: center;*/
 	position: relative;
-	top: 32%;
-	/*left: 10%;*/
-	/*margin: -15% 0 0 0;*/
-	/*margin-top: -15%;*/
+	top: 28%;
+	left: 20px;
 	margin-bottom: 0px;
-	font-size: 20.5px;
+	font-size: 19.5px;
 	font-weight: 700;
+	color: white;
 	letter-spacing: 0.7px;
-	text-align: center;
+	/*text-align: center;*/
 }
 
 .procedure-desc-name {
 	position: relative;
-	top: 32%;
+	top: 28%;
 	left: 3%;
-	font-size: 18px;
+	font-size: 17px;
 	font-weight: 300;
 }
 

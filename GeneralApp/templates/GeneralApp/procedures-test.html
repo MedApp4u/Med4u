@@ -92,18 +92,76 @@
 								{% endfor %}
 							</div>
 							<div class="procedure-body-desc">
-								<div class="procedure-desc-left">
+								<div class="procedure-desc-left" id="desc-label-name">
 									<p class="procedure-desc-label">Name</p>
 								</div>
-								<div class="procedure-desc-right">
+								<div class="procedure-desc-right" id="desc-field-name">
 									<p class="procedure-desc-name">{{ current_procedure.procedure_name }}</p>
 								</div>
-<!-- 								<div class="procedure-desc-left">
-									<p class="procedure-desc-label">Name</p>
+								<div class="procedure-desc-left" id="desc-label-desc">
+									<p class="procedure-desc-label">Description</p>
 								</div>
-								<div class="procedure-desc-right">
-									<p class="procedure-desc-name">Surgery</p>
-								</div> -->
+								<div class="procedure-desc-right" id="desc-field-desc">
+									<p class="procedure-desc-name">{{ current_procedure.procedure_description }}</p>
+								</div>
+								<div class="procedure-desc-left" id="desc-label-comp">
+									<p class="procedure-desc-label">Complication</p>
+								</div>
+								<div class="procedure-desc-right" id="desc-field-comp">
+									<p class="procedure-desc-name">{{ current_procedure.possible_complication }}</p>
+								</div>
+								<div class="procedure-desc-left" id="desc-label-bp">
+									<p class="procedure-desc-label">Bodypart</p>
+								</div>
+								<div class="procedure-desc-right" id="desc-field-bp">
+									<p class="procedure-desc-name">
+										{% for bodypart in bodyparts %}
+											{{ bodypart.bodypart.title }}{% if forloop.last %}{% else %},{% endif %}
+										{% endfor %}
+									</p>
+								</div>
+								<div class="procedure-desc-left" id="desc-label-symp">
+									<p class="procedure-desc-label">Symptom</p>
+								</div>
+								<div class="procedure-desc-right" id="desc-field-symp">
+									<p class="procedure-desc-name">
+										{% for symptom in symptoms %}
+											{{ symptom.symptom_name.title }}{% if forloop.last %}{% else %},{% endif %}
+										{% endfor %}
+									</p>
+								</div>
+								<div class="procedure-desc-left" id="desc-label-medc">
+									<p class="procedure-desc-label">Medicines</p>
+								</div>
+								<div class="procedure-desc-right" id="desc-field-medc">
+									<p class="procedure-desc-name">
+										{% for medicine in medicines %}
+											{{ medicine.medicine_name.title }}{% if forloop.last %}{% else %},{% endif %}
+										{% endfor %}
+									</p>
+								</div>
+								<div class="procedure-desc-left" id="desc-label-doc">
+									<p class="procedure-desc-label">Doctors</p>
+								</div>
+								<div class="procedure-desc-right" id="desc-field-doc">
+									<p class="procedure-desc-name">
+										{% for doctor in doctors %}
+											{{ doctor.doctor_name.title }}{% if forloop.last %}{% else %},{% endif %}
+										{% endfor %}
+									</p>
+								</div>
+								<div class="procedure-desc-left" id="desc-label-img">
+									<p class="procedure-desc-label">Images</p>
+								</div>
+								<div class="procedure-desc-right" id="desc-field-img">
+									<p class="procedure-desc-name">
+										{% for image in images %}
+											<a href="{{ image.procedure_image.url }}">
+												<img src="{{ image.procedure_image.url }}"/>
+											</a>
+										{% endfor %}
+									</p>
+								</div>
 							</div>
 						</div>		
 					</div>		

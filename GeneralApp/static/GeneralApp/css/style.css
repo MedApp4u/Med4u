@@ -2758,3 +2758,18 @@ a.btn:focus{
 		padding:250px 0 0;
 	}
 }
+
+.male_front{
+	position: absolute;
+	top: 80px;
+	left: 30px;
+	background-repeat: no-repeat;
+	margin: auto;
+	height: 600px;
+	width: 297px;
+
+}
+
+#image_tab{
+	height:690px;
+}

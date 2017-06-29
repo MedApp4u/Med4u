@@ -360,10 +360,6 @@ class HomeView(generic.TemplateView):
     template_name = 'MyHealthApp/home.html'
 
 
-class SymptomsView(generic.TemplateView):
-    template_name = 'MyHealthApp/symptoms.html'
-
-
 class MyHealthView(generic.TemplateView):
     template_name = 'MyHealthApp/MyHealthApp.html'
 

@@ -522,4 +522,17 @@ def AddMedicine(request):
     return render(request, 'MyHealthApp/add_medicine.html', {'form': form})
 
 
-
+def AddDisease(request):
+    if request.method == 'POST':
+        form = DiseaseForm(request.POST, user=request.user)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()
+            return HttpResponseRedirect('/my_diseases')
+        else:
+            print form.errors
+    else:
+        form = DiseaseForm(user=request.user)
+    return render(request, 'MyHealthApp/add_disease.html', {'form': form})

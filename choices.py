@@ -1,1 +1,0 @@
-SYMPTOMS = (('Spots'), ('Hand Pain'), )

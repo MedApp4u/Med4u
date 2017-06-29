@@ -1357,7 +1357,7 @@ a.procedure-body-tab:hover .procedure-body-separator {
 .procedure-desc-left, .procedure-desc-right {
 	position: relative;
 	float: left;
-	height: 10%;
+	height: 11%;
 	z-index: 0;
 }
 
@@ -1365,6 +1365,7 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	background: #3fbbc0;
 	color: white;
 	border-bottom: 1px solid #37aeb3;
+	border-radius: 0px 5px 0px 0px;
 }
 
 #desc-label-name {
@@ -1385,6 +1386,7 @@ a.procedure-body-tab:hover .procedure-body-separator {
 
 #desc-label-symp {
 	width: 16%;
+	border-radius: 0px;
 }
 
 #desc-label-medc {
@@ -1395,8 +1397,17 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	width: 14%;
 }
 
-#desc-label-img {
+#desc-label-help {
+	width: 14%;
+}
+
+#desc-label-img, #desc-label-vid {
 	width: 13%;
+	height: 17%;
+}
+
+#desc-label-vid {
+	border-radius: 0px;
 }
 
 .procedure-desc-right {
@@ -1431,26 +1442,50 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	width: 86%;
 }
 
+#desc-field-help {
+	width: 86%;
+}
+
 #desc-field-img {
 	overflow-y: hidden;
 	overflow-x: hidden;
+	height: 17%;
 	width: 87%;
+}
+
+#desc-field-img a {
+	margin-right: 5%;
 }
 
 #desc-field-img img {
 	width: 10%;
-	height: 0.5%;
+	height: 80%;
+	/*border: 1px solid black;*/
+}
+
+#desc-field-img p {
+	left: 3%;
+	top: 20.5%;
+	height: 80%;
+	width: 60%;
+}
+
+#desc-label-img .procedure-desc-label {
+	top: 20%;
+	letter-spacing: 0.5px;
 }
 
 .procedure-desc-label {
 	position: relative;
-	top: 28%;
+	top: 30%;
 	left: 20px;
 	margin-bottom: 0px;
-	font-size: 19.5px;
-	font-weight: 700;
+	/*font-family: Roboto;*/
+	font-size: 16px;
+	font-weight: 800;
 	color: white;
-	letter-spacing: 0.7px;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
 	/*text-align: center;*/
 }
 
@@ -1460,6 +1495,7 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	left: 3%;
 	font-size: 17px;
 	font-weight: 300;
+	margin: 0px;
 }
 
 

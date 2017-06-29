@@ -184,13 +184,15 @@ def procedure_details(request, proc_id):
     symptoms = Symptom.objects.filter(procedure__id=proc_id)
     medicines = Medicine.objects.filter(procedure__id=proc_id)
     doctors = Doctor.objects.filter(procedure__id=proc_id)
-    i = Procedure.objects.get(pk=proc_id)
-    images = i.procedure_images_set.all()
+    p = Procedure.objects.get(pk=proc_id)
+    images = p.procedure_images_set.all()
+    videos = p.procedure_videos_set.all()
+    helplines = p.procedure_helpline_set.all()
 
     if request.method == 'GET':
         return render(request, 'GeneralApp/procedures-test.html', {'procedures': procedures_list, 'current_user': request.user, 
             'current_procedure': current_procedure, 'bodyparts': bodyparts, 'symptoms': symptoms, 'medicines': medicines, 'doctors': doctors, 
-            'images': images})
+            'images': images, 'videos': videos, 'helplines': helplines})
 
 # def procedures(request):
 #     context = ""

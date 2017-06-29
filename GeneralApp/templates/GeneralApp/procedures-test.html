@@ -137,8 +137,30 @@
 									<p class="procedure-desc-name">
 										{% for image in images %}
 											<a target="_blank" href="{{ image.procedure_image.url }}">
-												<img src="{{ image.procedure_image.url }}"/>
+												<img src="{% static 'GeneralApp/css/img/icons/image-preview.png' %}"/>
 											</a>
+										{% endfor %}
+									</p>
+								</div>
+								<div class="procedure-desc-left" id="desc-label-vid">
+									<p class="procedure-desc-label">Videos</p>
+								</div>
+								<div class="procedure-desc-right" id="desc-field-img">
+									<p class="procedure-desc-name">
+										{% for video in videos %}
+											<a target="_blank" href="{{ video.procedure_video }}">
+												<img src="{% static 'GeneralApp/css/img/icons/video-preview.png' %}"/>
+											</a>
+										{% endfor %}
+									</p>
+								</div>
+								<div class="procedure-desc-left" id="desc-label-help">
+									<p class="procedure-desc-label">Helpline</p>
+								</div>
+								<div class="procedure-desc-right" id="desc-field-help">
+									<p class="procedure-desc-name">
+										{% for helpline in helplines %}
+											{{ helpline.procedure_phone_number }}{% if forloop.last %}{% else %},{% endif %}
 										{% endfor %}
 									</p>
 								</div>

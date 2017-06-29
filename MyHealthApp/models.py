@@ -126,6 +126,7 @@ class Procedure_Note(models.Model):
 
 class Disease(models.Model):
     disease_name = models.CharField(max_length=300)
+    disease_description = models.TextField(blank=True)
     disease_date = models.DateField(help_text='Date the disease was acquired', blank=True)
     symptom = models.ManyToManyField(Symptom, blank=True)
     medicine = models.ManyToManyField(Medicine, blank=True)

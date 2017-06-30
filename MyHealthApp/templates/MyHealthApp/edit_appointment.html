@@ -4,6 +4,7 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Upload</button>
+    <a href="{% url 'MyHealthApp:delete_appointment' form.instance.id %}">delete</a>
   </form>
 
 {% endblock %}

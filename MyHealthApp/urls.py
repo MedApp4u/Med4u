@@ -50,6 +50,8 @@ urlpatterns = [
     url(r'^my_appointments/(?P<app_id>[0-9]+)/$', views.EditAppointment, name='edit_appointment'),
     url(r'^my_medicines/(?P<med_id>[0-9]+)/$', views.EditMedicine, name='edit_medicine'),
     url(r'^my_diseases/(?P<dis_id>[0-9]+)/$', views.EditDisease, name='edit_disease'),
+    url(r'^my_measurements/(?P<mes_id>[0-9]+)/$', views.EditMeasurement, name='edit_measurement'),
+  
     url(r'^delete_insurance/(?P<ins_id>[0-9]+)/$', views.DeleteInsurance, name='delete_insurance'),
     url(r'^delete_document/(?P<docu_id>[0-9]+)/$', views.DeleteDocument, name='delete_document'),
     url(r'^delete_doctor/(?P<doc_id>[0-9]+)/$', views.DeleteDoctor, name='delete_doctor'),

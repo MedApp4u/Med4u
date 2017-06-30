@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-{% block title %}GeneralApp | Procedures{% endblock %}	
+{% block title %}GeneralApp | Find doctors{% endblock %}	
 {% load static %}
 
 {% block navbar %}
 	<li><a href="{% url 'MyHealthApp:home' %}">Home</a></li>
 	<li><a href="{% url 'ProfileApp:dashboard' %}">Dashboard</a></li>
-	<li><a href="{% url 'GeneralApp:doctors' %}">Doctors</a></li>
-	<li><a id="active" href="{% url 'GeneralApp:procedures' %}">Procedures</a></li>
+	<li><a id="active" href="{% url 'GeneralApp:doctors' %}">Doctors</a></li>
+	<li><a href="{% url 'GeneralApp:procedures' %}">Procedures</a></li>
 	{% if current_user == "" %}
 		<li><a href="{% url 'GeneralApp:login' %}">Sign In</a></li>
 		<li><a href="{% url 'GeneralApp:register' %}">Sign Up</a></li>
@@ -77,18 +77,18 @@
 					<div class="container procedure-container">
 						<div class="row procedure-row">
 							<div class="vp-form-head">
-								<img src="{% static 'ProfileApp/css/img/icons/anesthesia.png' %}" class="vp-form-icon"/>
+								<img src="{% static 'ProfileApp/css/img/icons/doctor.png' %}" class="vp-form-icon" style = "width: 60px; height: 60px; margin: -30px 0 0 -30px" />
 								<div class="vp-form-icon-separator"></div>
 								<p class="vp-form-icon-text">
-									Procedures
-								</p>
+									Doctors
+								</p>								
 							</div>
 							<div class="procedure-body-scroll">
-								{% for procedure in procedures %}
-									<a href="{% url 'GeneralApp:procedure_details' procedure.id %}" class="procedure-body-tab">
+								{% for doctor in doctors %}
+									<a href="{% url 'GeneralApp:doctor_details' doctor.id %}" class="procedure-body-tab">
 										<div class = "procedure-body-name">
 											<div class = "procedure-body-separator"></div>
-											<div class = "procedure-body-label">{{ procedure.procedure_name }}</div>
+											<div class = "procedure-body-label">{{ doctor.doctor_name }}</div>
 										</div>
 									</a>
 								{% endfor %}

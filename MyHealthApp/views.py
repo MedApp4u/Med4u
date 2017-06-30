@@ -617,7 +617,7 @@ def EditAppointment(request,app_id):
             print form.errors
     else:
         form = AppointmentForm(user=request.user,instance=appointment)
-    return render(request, 'MyHealthApp/edit_appointment.html', {'form': form, ,'appointment_list': queryset,'current_appointment':appointment})
+    return render(request, 'MyHealthApp/edit_appointment.html', {'form': form, 'appointment_list': queryset,'current_appointment':appointment})
 
 @login_required
 

@@ -421,6 +421,17 @@ def MyMedicines(request):
     queryset = current_user.medicine_set.all()
     return render(request, 'MyHealthApp/my-medicines.html', {'medicine_list': queryset})
 
+def MedicineDetails(request, med_id):
+    current_user = request.user
+    queryset = current_user.medicine_set.all()
+    current_medicine = Medicine.objects.get(id=med_id)
+    # medicine_list = Medicine.objects.all()
+    # current_medicine = Medicine.objects.get(id=med_id)
+    # query = current_user.medicine_set.get(id=med_id)
+    if request.method == 'GET':
+        return render(request, 'MyHealthApp/medicine-details.html',{'medicine_list': queryset,'current_medicine':current_medicine})
+
+
 
 @login_required
 def AddDocument(request):

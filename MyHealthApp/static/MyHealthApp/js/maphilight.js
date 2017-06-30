@@ -492,3 +492,13 @@ function myFunction(x){
 // 	}
 // 	console.log(current_tab);
 // });
+
+$(document).ready(function(){
+
+	var tab = $("#med").attr('href');
+
+	$("a").click(function(){
+		var current = $(this).attr('href');
+		$("a[href$='current']").child().css("margin-left","0px");
+	})
+});

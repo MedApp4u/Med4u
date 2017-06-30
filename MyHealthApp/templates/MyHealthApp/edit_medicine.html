@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-md-3 col-sm-3">
 				<h1 class="head-medi text-center">My Medicines</h1>
-				<a href="{% url 'MyHealthApp:add_medicine' %}"><div class="ADD">Add Medicines</div></a>
+				<a href="{% url 'MyHealthApp:add_medicine' %}"><div class="add_med">Add Medicines</div></a>
 			
 				{% for medicine in medicine_list %}
 				{% if medicine.id == current_medicine.id %}
@@ -54,6 +54,7 @@
     					{% csrf_token %}
     					{{ form.as_p }}
    					 <button type="submit">Upload</button>
+					<a href="{% url 'MyHealthApp:delete_medicine' form.instance.id %}">delete</a>
 				  </form>
 
 			</div>

@@ -2093,11 +2093,10 @@ a.btn:focus{
 }
 
 .male_front{
-	/*height: 500px;
-	width: 250px;
-	margin: 80px;
-	/*margin-top: 80px;
-	margin-left: 10px;*/
+	position: absolute;
+	top: 80px;
+	left: 30px;
+	background-repeat: no-repeat;
 	margin: auto;
 	height: 600px;
 	width: 297px;
@@ -2107,13 +2106,6 @@ a.btn:focus{
 area{
 	display: inline;
 	cursor: pointer;
-}
-
-.male_front{
-	position: absolute;
-	top: 80px;
-	left: 30px;
-	background-repeat: no-repeat;
 }
 
 #image_tab{

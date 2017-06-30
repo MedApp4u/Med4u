@@ -1402,6 +1402,29 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	height: 17%;
 }
 
+#desc-label-pp {
+	height: 34%;
+}
+
+#desc-label-pp p {
+	top: 10%;
+}
+
+#desc-field-pp {
+	height: 34%;
+}
+
+#desc-field-pp p {
+	top: 8%;
+	height: 100%;
+	width: 100%;
+}
+
+#desc-field-pp img {
+	width: 18%;
+	height: 84%;
+}
+
 /*#desc-label-name {
 	width: 12%;
 }
@@ -1507,6 +1530,53 @@ a.procedure-body-tab:hover .procedure-body-separator {
 #desc-label-img .procedure-desc-label {
 	top: 35%;
 	letter-spacing: 0.5px;
+}
+
+#add-doctor-link {
+	position: relative;
+	float: left;
+	top: 50px;
+	left: 70%;
+	width: 15%;
+	height: 50px;
+}
+
+.add-doctor-btn {
+	position: absolute;
+	background: white;
+	width: 100%;
+	height: 50px;
+	margin-top: -25px;
+	border-radius: 25px;
+	transition: box-shadow 0.2s ease-out;
+}
+
+.add-doctor-btn:hover {
+	box-shadow: 0px 0px 10px #19777b;
+}
+
+.add-doctor-desc {
+	position: absolute;
+	float: left;
+	top: 25%;
+	left: 21%;
+	color: #3fbbc0;
+	font-size: 14px;
+	font-weight: 800;
+	text-transform: uppercase;
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.add-doctor-icon {
+	position: absolute;
+	float: left;
+	left: 12%;
+	top: 50%;
+	width: 14px;
+	height: 14px;
+	margin: -7px 0 0 0;
 }
 
 /* -------------------------- */

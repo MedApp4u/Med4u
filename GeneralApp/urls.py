@@ -25,5 +25,8 @@ urlpatterns = [
     
     url(r'^procedures/$', views.procedures, name='procedures'),
     url(r'^procedures/(?P<proc_id>[0-9]+)$', views.procedure_details, name='procedure_details'),
+
+    url(r'^doctors/$', views.doctors, name='doctors'),
+    url(r'^doctors/(?P<doc_id>[0-9]+)$', views.doctor_details, name='doctor_details'),
     # url(r'^procedures/test$', views.procedures_test, name='procedures-test'),
 ]

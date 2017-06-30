@@ -40,6 +40,14 @@ textarea {
   line-height: inherit;
 }
 
+/* --- Active link --- */
+
+#active {
+	color: #3fbbc0;
+}
+
+/* ------------------ */ 
+
 /* ===========
 layout
 ============= */

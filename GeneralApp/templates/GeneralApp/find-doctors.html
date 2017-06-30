@@ -81,7 +81,13 @@
 								<div class="vp-form-icon-separator"></div>
 								<p class="vp-form-icon-text">
 									Doctors
-								</p>								
+								</p>
+								<a href="#" id="find-doctor-link">
+									<div class="find-doctor-btn">
+										<img class = "find-doctor-icon" src="{% static 'ProfileApp/css/img/icons/placeholder.png' %}" />
+										<p class="find-doctor-desc">Find doctors</p>
+									</div>		
+								</a>																	
 							</div>
 							<div class="procedure-body-scroll">
 								{% for doctor in doctors %}

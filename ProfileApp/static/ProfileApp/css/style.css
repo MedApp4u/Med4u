@@ -1532,7 +1532,7 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	letter-spacing: 0.5px;
 }
 
-#add-doctor-link {
+#add-doctor-link, #find-doctor-link {
 	position: relative;
 	float: left;
 	top: 50px;
@@ -1541,7 +1541,12 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	height: 50px;
 }
 
-.add-doctor-btn {
+#find-doctor-link {
+	left: 73%;
+	width: 12%;
+}
+
+.add-doctor-btn, .find-doctor-btn {
 	position: absolute;
 	background: white;
 	width: 100%;
@@ -1551,15 +1556,15 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	transition: box-shadow 0.2s ease-out;
 }
 
-.add-doctor-btn:hover {
+.add-doctor-btn:hover, .find-doctor-btn:hover {
 	box-shadow: 0px 0px 10px #19777b;
 }
 
-.add-doctor-desc {
+.add-doctor-desc, .find-doctor-desc {
 	position: absolute;
 	float: left;
 	top: 25%;
-	left: 21%;
+	left: 23%;
 	color: #3fbbc0;
 	font-size: 14px;
 	font-weight: 800;
@@ -1569,14 +1574,22 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	height: 100%;
 }
 
-.add-doctor-icon {
+.find-doctor-desc {
+	left: 27%;
+}
+
+.add-doctor-icon, .find-doctor-icon {
 	position: absolute;
 	float: left;
 	left: 12%;
 	top: 50%;
-	width: 14px;
-	height: 14px;
-	margin: -7px 0 0 0;
+	width: 18px;
+	height: 18px;
+	margin: -9px 0 0 0;
+}
+
+.find-doctor-icon {
+	left: 14.5%;
 }
 
 /* -------------------------- */

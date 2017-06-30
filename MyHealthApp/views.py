@@ -519,7 +519,7 @@ def AddMedicine(request):
         form = MedicineForm(user=request.user)
     return render(request, 'MyHealthApp/add_medicine.html', {'form': form})
 
-
+@login_required
 def AddDisease(request):
     if request.method == 'POST':
         form = DiseaseForm(request.POST, user=request.user)
@@ -534,3 +534,103 @@ def AddDisease(request):
     else:
         form = DiseaseForm(user=request.user)
     return render(request, 'MyHealthApp/add_disease.html', {'form': form})
+
+@login_required
+def EditDocument(request,docu_id):
+    document=Document.objects.get(id=docu_id)
+
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES, instance=document)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.user = request.user
+            temp_instance.save()
+            return HttpResponseRedirect('/my_documents')
+        else:
+            print form.errors
+    else:
+        form = DocumentForm(instance=document)
+    return render(request, 'MyHealthApp/edit_document.html', {'form': form})
+
+@login_required
+def EditInsurance(request,ins_id):
+    insurance = Insurance.objects.get(id=ins_id)
+    if request.method == 'POST':
+        form = InsuranceForm(request.POST, request.FILES, instance=insurance)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.user = request.user
+            temp_instance.save()
+            return HttpResponseRedirect('/my_insurances')
+        else:
+            print form.errors
+    else:
+        form = InsuranceForm(instance=insurance)
+    return render(request, 'MyHealthApp/edit_insurance.html', {'form': form})
+
+@login_required
+def EditAppointment(request,app_id):
+    appointment=Appointment.objects.get(id=app_id)
+    if request.method == 'POST':
+        form = AppointmentForm(request.POST, user=request.user, instance=appointment)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.user = request.user
+            temp_instance.save()
+            return HttpResponseRedirect('/my_appointments')
+        else:
+            print form.errors
+    else:
+        form = AppointmentForm(user=request.user,instance=appointment)
+    return render(request, 'MyHealthApp/edit_appointment.html', {'form': form})
+
+@login_required
+def EditDoctor(request,doc_id):
+    doctor=Doctor.objects.get(id=doc_id)
+    if request.method == 'POST':
+        form = DoctorForm(request.POST, request.FILES, instance=doctor)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()
+            return HttpResponseRedirect('/my_doctors')
+        else:
+            print form.errors
+    else:
+        form = DoctorForm(instance=doctor)
+    return render(request, 'MyHealthApp/edit_doctor.html', {'form': form})
+
+@login_required
+def EditMedicine(request,med_id):
+    medicine=Medicine.objects.get(id=med_id)
+    if request.method == 'POST':
+        form = MedicineForm(request.POST, user=request.user,instance=medicine)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()
+            return HttpResponseRedirect('/my_medicines')
+        else:
+            print form.errors
+    else:
+        form = MedicineForm(user=request.user,instance=medicine)
+    return render(request, 'MyHealthApp/edit_medicine.html', {'form': form})
+
+@login_required
+def EditDisease(request,dis_id):
+    disease=Disease.objects.get(id=dis_id)  
+    if request.method == 'POST':
+        form = DiseaseForm(request.POST, user=request.user,instance=disease)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()
+            return HttpResponseRedirect('/my_diseases')
+        else:
+            print form.errors
+    else:
+        form = DiseaseForm(user=request.user,instance=disease)
+    return render(request, 'MyHealthApp/edit_disease.html', {'form': form})

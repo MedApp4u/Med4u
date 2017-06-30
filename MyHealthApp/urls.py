@@ -44,6 +44,14 @@ urlpatterns = [
     url(r'^add_medicine/$', views.AddMedicine, name='add_medicine'),
     url(r'^add_disease/$', views.AddDisease, name='add_disease'),
 
+    url(r'^my_insurances/(?P<ins_id>[0-9]+)/$', views.EditInsurance, name='edit_insurance'),
+    url(r'^my_documents/(?P<docu_id>[0-9]+)/$', views.EditDocument, name='edit_document'),
+    # url(r'^edit_measurement/$', views.EditMeasurement, name='edit_measurement'),
+    url(r'^my_doctors/(?P<doc_id>[0-9]+)/$', views.EditDoctor, name='edit_doctor'),
+    url(r'^my_appointments/(?P<app_id>[0-9]+)/$', views.EditAppointment, name='edit_appointment'),
+    url(r'^my_medicines/(?P<med_id>[0-9]+)/$', views.EditMedicine, name='edit_medicine'),
+    url(r'^my_diseases/(?P<id>[0-9]+)/$', views.EditDisease, name='edit_disease'),
+
     url(r'^tokenapi/$', views.Tokenapi.as_view(), name='tokenapi'),
 
 ]

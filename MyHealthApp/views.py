@@ -19,6 +19,7 @@ from rest_framework import generics
 from django.views import generic
 from rest_framework.authtoken.models import Token
 from rest_framework.renderers import JSONRenderer
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here
@@ -359,8 +360,10 @@ class Tokenapi(generics.ListCreateAPIView):
 class HomeView(generic.TemplateView):
     template_name = 'MyHealthApp/home.html'
 
+
 def RedirectHomeView(request):
     return HttpResponseRedirect('/home/')
+
 
 class MyHealthView(generic.TemplateView):
     template_name = 'MyHealthApp/MyHealthApp.html'
@@ -407,17 +410,20 @@ def MyDoctors(request):
     queryset = current_user.doctor_set.all()
     return render(request, 'MyHealthApp/my-doctors.html', {'doctor_list': queryset})
 
+
 @login_required
 def MyAppointments(request):
     current_user = request.user
     queryset = Appointment.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-appointments.html', {'appointment_list': queryset})
 
+
 @login_required
 def MyMedicines(request):
     current_user = request.user
     queryset = current_user.medicine_set.all()
     return render(request, 'MyHealthApp/my-medicines.html', {'medicine_list': queryset})
+
 
 @login_required
 def AddDocument(request):
@@ -516,6 +522,7 @@ def AddMedicine(request):
         form = MedicineForm(user=request.user)
     return render(request, 'MyHealthApp/add_medicine.html', {'form': form})
 
+
 @login_required
 def AddDisease(request):
     if request.method == 'POST':
@@ -532,9 +539,10 @@ def AddDisease(request):
         form = DiseaseForm(user=request.user)
     return render(request, 'MyHealthApp/add_disease.html', {'form': form})
 
+
 @login_required
-def EditDocument(request,docu_id):
-    document=Document.objects.get(id=docu_id)
+def EditDocument(request, docu_id):
+    document = Document.objects.get(id=docu_id)
 
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES, instance=document)
@@ -549,8 +557,9 @@ def EditDocument(request,docu_id):
         form = DocumentForm(instance=document)
     return render(request, 'MyHealthApp/edit_document.html', {'form': form})
 
+
 @login_required
-def EditInsurance(request,ins_id):
+def EditInsurance(request, ins_id):
     insurance = Insurance.objects.get(id=ins_id)
     if request.method == 'POST':
         form = InsuranceForm(request.POST, request.FILES, instance=insurance)
@@ -565,9 +574,10 @@ def EditInsurance(request,ins_id):
         form = InsuranceForm(instance=insurance)
     return render(request, 'MyHealthApp/edit_insurance.html', {'form': form})
 
+
 @login_required
-def EditAppointment(request,app_id):
-    appointment=Appointment.objects.get(id=app_id)
+def EditAppointment(request, app_id):
+    appointment = Appointment.objects.get(id=app_id)
     if request.method == 'POST':
         form = AppointmentForm(request.POST, user=request.user, instance=appointment)
         if form.is_valid():
@@ -578,12 +588,13 @@ def EditAppointment(request,app_id):
         else:
             print form.errors
     else:
-        form = AppointmentForm(user=request.user,instance=appointment)
+        form = AppointmentForm(user=request.user, instance=appointment)
     return render(request, 'MyHealthApp/edit_appointment.html', {'form': form})
 
+
 @login_required
-def EditDoctor(request,doc_id):
-    doctor=Doctor.objects.get(id=doc_id)
+def EditDoctor(request, doc_id):
+    doctor = Doctor.objects.get(id=doc_id)
     if request.method == 'POST':
         form = DoctorForm(request.POST, request.FILES, instance=doctor)
         if form.is_valid():
@@ -599,12 +610,11 @@ def EditDoctor(request,doc_id):
     return render(request, 'MyHealthApp/edit_doctor.html', {'form': form})
 
 
-
 @login_required
-def EditDisease(request,dis_id):
-    disease=Disease.objects.get(id=dis_id)  
+def EditDisease(request, dis_id):
+    disease = Disease.objects.get(id=dis_id)
     if request.method == 'POST':
-        form = DiseaseForm(request.POST, user=request.user,instance=disease)
+        form = DiseaseForm(request.POST, user=request.user, instance=disease)
         if form.is_valid():
             temp_instance = form.save(commit=False)
             temp_instance.save()
@@ -614,17 +624,18 @@ def EditDisease(request,dis_id):
         else:
             print form.errors
     else:
-        form = DiseaseForm(user=request.user,instance=disease)
+        form = DiseaseForm(user=request.user, instance=disease)
     return render(request, 'MyHealthApp/edit_disease.html', {'form': form})
 
+
 @login_required
-def EditMedicine(request,med_id):
-    current_user=request.user
-    medicine=Medicine.objects.get(id=med_id)
+def EditMedicine(request, med_id):
+    current_user = request.user
+    medicine = Medicine.objects.get(id=med_id)
     queryset = current_user.medicine_set.all()
 
     if request.method == 'POST':
-        form = MedicineForm(request.POST, user=request.user,instance=medicine)
+        form = MedicineForm(request.POST, user=request.user, instance=medicine)
         if form.is_valid():
             temp_instance = form.save(commit=False)
             temp_instance.save()
@@ -634,5 +645,44 @@ def EditMedicine(request,med_id):
         else:
             print form.errors
     else:
-        form = MedicineForm(user=request.user,instance=medicine)
-    return render(request, 'MyHealthApp/edit_medicine.html', {'form': form,'medicine_list': queryset,'current_medicine':medicine})
+        form = MedicineForm(user=request.user, instance=medicine)
+    return render(request, 'MyHealthApp/edit_medicine.html',
+                  {'form': form, 'medicine_list': queryset, 'current_medicine': medicine})
+
+
+def DeleteInsurance(request, ins_id):
+    get_object_or_404(Insurance, pk=ins_id).delete()
+    return HttpResponseRedirect('/my_insurances')
+
+
+def DeleteDocument(request, docu_id):
+    get_object_or_404(Document, pk=docu_id).delete()
+    return HttpResponseRedirect('/my_documents')
+
+
+def DeleteAppointment(request, app_id):
+    get_object_or_404(Appointment, pk=app_id).delete()
+    return HttpResponseRedirect('/my_appointments')
+
+
+def DeleteMedicine(request, med_id):
+    get_object_or_404(Medicine, pk=med_id).delete()
+    return HttpResponseRedirect('/my_medicines')
+
+
+def DeleteDisease(request, dis_id):
+    get_object_or_404(Disease, pk=dis_id).delete()
+    return HttpResponseRedirect('/my_diseases')
+
+
+def DeleteMeasurement(request, mes_id):
+    get_object_or_404(Measurement, pk=mes_id).delete()
+    return HttpResponseRedirect('/my_measurements')
+
+
+def DeleteDoctor(request, doc_id):
+    get_object_or_404(Doctor, pk=doc_id).delete()
+    return HttpResponseRedirect('/my_doctors')
+
+
+

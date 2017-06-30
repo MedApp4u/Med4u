@@ -50,7 +50,7 @@ urlpatterns = [
     url(r'^my_doctors/(?P<doc_id>[0-9]+)/$', views.EditDoctor, name='edit_doctor'),
     url(r'^my_appointments/(?P<app_id>[0-9]+)/$', views.EditAppointment, name='edit_appointment'),
     url(r'^my_medicines/(?P<med_id>[0-9]+)/$', views.EditMedicine, name='edit_medicine'),
-    url(r'^my_diseases/(?P<id>[0-9]+)/$', views.EditDisease, name='edit_disease'),
+    url(r'^my_diseases/(?P<dis_id>[0-9]+)/$', views.EditDisease, name='edit_disease'),
 
     url(r'^tokenapi/$', views.Tokenapi.as_view(), name='tokenapi'),
 

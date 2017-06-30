@@ -1,4 +1,3 @@
-
 {% extends "MyHealthApp/sidebar.html" %}
 
 {% block div_id %}<div class="content-wrapper" id = "content-medicines">{% endblock %}
@@ -8,11 +7,11 @@
 		<div class="row">
 			<div class="col-md-3 col-sm-3">
 				<h1 class="head-medi text-center">My Medicines</h1>
-				<a href="{% url 'MyHealthApp:add_medicine' %}"><div class="ADD">Add Medicines</div></a>
+				<a href="#"><div class="add_med">Add Medicines</div></a>
 			
 				{% for medicine in medicine_list %}
 				{% if medicine.id == current_medicine.id %}
-					<a href="{% url 'MyHealthApp:edit_medicine' medicine.id %}">
+					<a href="{% url 'MyHealthApp:medicine_details' medicine.id %}">
 					<div class="med-a">
 						<div class="col-md-5 col-sm-5">
 							<div class="medi-div">
@@ -28,7 +27,7 @@
 					</div>
 					{% endif %}
 				{% else %}
-					<a href="{% url 'MyHealthApp:edit_medicine' medicine.id %}">
+					<a href="{% url 'MyHealthApp:medicine_details' medicine.id %}">
 					<div class="med-a">
 						<div class="col-md-5 col-sm-5">
 							<div class="medi-div">
@@ -49,13 +48,6 @@
 			</div>
 
 			<div class="col-sm-9 col-md-9"><h1 class="text-center"> {{  current_medicine.medicine_name.title }} </h1>
-
-  				<form method="post" enctype="multipart/form-data">
-    					{% csrf_token %}
-    					{{ form.as_p }}
-   					 <button type="submit">Upload</button>
-				  </form>
-
 			</div>
 		</div>
 		

@@ -1,18 +1,34 @@
 {% extends "MyHealthApp/sidebar.html" %}
 
+{% block div_id %}<div class="content-wrapper" id = "content-documents">{% endblock %}
+
 {% block content %}
+
 
 	<h1 class="head-med text-center">My Documents</h1>
 
-<!-- 	<div class="container">
+	<a href="{% url 'MyHealthApp:add_document' %}"><div class="ADD">Add Documents</div></a>
+
+	<div class="container">
 		<div class="row">
-			<div class="col-md-3 col-sm-3">
-				<h5 id="med-title">Crocin</h5>
+			{% for documents in doctor_list %}
+			<a href="#"><div class="col-md-12 col-sm-12">
+				<div class="med-div">
+				<h5 id="med-title">{{ documents.documents_name.title }}</h5>
+				<span class="med-desc">Pediatrician.</span>
+				</div>
+			</div></a>
+			{% if forloop.last %}
+			<div class="col-md-12 col-sm-12">
+				<div class="divider-short"></div>
 			</div>
+			{% endif %}
+			{% endfor %}
+	
 		</div>
 		
 	</div>
- -->
+
 
 
 {% endblock %}

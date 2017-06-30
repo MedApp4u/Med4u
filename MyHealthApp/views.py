@@ -407,20 +407,17 @@ def MyDoctors(request):
     queryset = current_user.doctor_set.all()
     return render(request, 'MyHealthApp/my-doctors.html', {'doctor_list': queryset})
 
-
 @login_required
 def MyAppointments(request):
     current_user = request.user
     queryset = Appointment.objects.filter(user_id=current_user.id)
     return render(request, 'MyHealthApp/my-appointments.html', {'appointment_list': queryset})
 
-
 @login_required
 def MyMedicines(request):
     current_user = request.user
     queryset = current_user.medicine_set.all()
     return render(request, 'MyHealthApp/my-medicines.html', {'medicine_list': queryset})
-
 
 @login_required
 def AddDocument(request):
@@ -601,22 +598,7 @@ def EditDoctor(request,doc_id):
         form = DoctorForm(instance=doctor)
     return render(request, 'MyHealthApp/edit_doctor.html', {'form': form})
 
-@login_required
-def EditMedicine(request,med_id):
-    medicine=Medicine.objects.get(id=med_id)
-    if request.method == 'POST':
-        form = MedicineForm(request.POST, user=request.user,instance=medicine)
-        if form.is_valid():
-            temp_instance = form.save(commit=False)
-            temp_instance.save()
-            temp_instance.user.add(request.user)
-            temp_instance.save()
-            return HttpResponseRedirect('/my_medicines')
-        else:
-            print form.errors
-    else:
-        form = MedicineForm(user=request.user,instance=medicine)
-    return render(request, 'MyHealthApp/edit_medicine.html', {'form': form})
+
 
 @login_required
 def EditDisease(request,dis_id):
@@ -634,3 +616,23 @@ def EditDisease(request,dis_id):
     else:
         form = DiseaseForm(user=request.user,instance=disease)
     return render(request, 'MyHealthApp/edit_disease.html', {'form': form})
+
+@login_required
+def EditMedicine(request,med_id):
+    current_user=request.user
+    medicine=Medicine.objects.get(id=med_id)
+    queryset = current_user.medicine_set.all()
+
+    if request.method == 'POST':
+        form = MedicineForm(request.POST, user=request.user,instance=medicine)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()
+            return HttpResponseRedirect('/my_medicines')
+        else:
+            print form.errors
+    else:
+        form = MedicineForm(user=request.user,instance=medicine)
+    return render(request, 'MyHealthApp/edit_medicine.html', {'form': form,'medicine_list': queryset,'current_medicine':medicine})

@@ -2107,7 +2107,11 @@ area{
 	display: inline;
 	cursor: pointer;
 }
-	
+
+#image_tab{
+	height:690px;
+}
+
 #head{
 	position: absolute;
 	top: 22%;
@@ -2273,10 +2277,10 @@ h5{
 
 /*main-content*/
 
-#content-wrapper{
+.content-wrapper{
 	width: 100%;
 	position: absolute;
-	top: 100px;
+	top: 70px;
 	padding: 15px;
 	padding-left: 50px;
 	/*height: 400px;*/
@@ -2299,7 +2303,7 @@ h5{
 
 
 
-#wrapper.menuDisplayed #content-wrapper{
+#wrapper.menuDisplayed .content-wrapper{
 	padding-left: 250px;
 	width: 98%;
 }
@@ -2530,6 +2534,7 @@ h5{
 .head-med{
 	font-family: 'Open Sans', sans-serif;
 	color: #3fbbc0;
+	margin-top: 40px;
 }
 
 /*#content-wrapper{
@@ -2564,6 +2569,7 @@ h5{
 }
 
 .med-div{
+	position: relative;
 	margin-left: 400px;
 	margin-right: 350px;
 	margin-top: 30px;
@@ -2585,29 +2591,101 @@ h5{
 }
 
 .divider-short{
-	margin-top: 20px;
+	position: relative;
 	width: 10%;
+	margin-top: 15px;
 }
 
 .ADD{
-	border-left: 2px solid #3fbbc0;
+	border: 2px solid #3fbbc0;
+	/*border-left: 2px solid #3fbbc0;*/
 	margin-left: 350px;
+	margin-top: 50px;
 	/*margin-right: 838px;*/
-	padding-left: 10px;
-	padding-right: 5px;
+	padding-left: 1%;
+	padding-right: 0px;
 	color: grey;
 	font-weight: 600;
 	font-size: 22px;
 	width: 190px;
+	border-radius: 10px;
 }
 
 .ADD:hover{
 	background-color: white;
-	/*border-left: 2px solid grey;
-	color: #3fbbc0;*/
-	background-color: #ffe;
 	border-left: 2px solid grey;
+	border-right: 2px solid grey;
 	color: #3fbbc0;
 }
 
+#content-medicines{
+	background: url("img/dummy/pills-background4.jpg") no-repeat;
+}
 
+.content-wrapper{
+	height: 100%;
+	margin-top: 0;
+}
+
+.row{
+	margin-top:25px;
+}
+
+.add_med{
+	/*border-right: 2px solid #3fbbc0;*/
+	border: 2px solid #3fbbc0;
+	margin-left: -50px;
+	margin-top: 40px;
+	/*margin-right: 838px;*/
+	padding-left: 5%;
+	padding-right: 0px;
+	color: grey;
+	font-weight: 600;
+	font-size: 22px;
+	width: 190px;
+	border-radius: 10px;
+}
+.add_med:hover{
+	background-color: white;
+	border-left: 2px solid grey;
+	border-right: 2px solid grey;
+	color: #3fbbc0;
+}
+
+#medi-title{
+	padding-left: 10px;
+	padding-top: 2px;
+	margin-bottom: 0;
+	padding-bottom: 2px;
+	margin-left: -420px;
+	color: grey;
+	font-weight: 500;
+	font-size: 20px;
+	border-left: 2px solid #3fbbc0;
+	width: 260px; 
+}
+
+.medi-desc{
+	margin-top: 30px;
+	float: right;
+}
+
+.medi-div{
+	position: relative;
+	margin-left: 400px;
+	margin-right: 0px;
+	margin-top: 30px;
+}
+
+.med-a{
+
+}
+.med-a:hover #medi-title{
+	background-color: white;
+	color: #3fbbc0;	
+	border-left: 2px solid grey;
+}
+.head-medi{
+	color: #3fbbc0;
+	margin-top: 20px;
+}

@@ -532,8 +532,11 @@ def AddDisease(request):
         form = DiseaseForm(user=request.user)
     return render(request, 'MyHealthApp/add_disease.html', {'form': form})
 
+
 @login_required
 def EditDocument(request,docu_id):
+    current_user=request.user
+    queryset = current_user.document_set.all()
     document=Document.objects.get(id=docu_id)
 
     if request.method == 'POST':
@@ -547,11 +550,14 @@ def EditDocument(request,docu_id):
             print form.errors
     else:
         form = DocumentForm(instance=document)
-    return render(request, 'MyHealthApp/edit_document.html', {'form': form})
+    return render(request, 'MyHealthApp/edit_document.html', {'form': form, 'document_list': queryset,'current_document':document})
 
 @login_required
 def EditInsurance(request,ins_id):
+    current_user=request.user
+    queryset = current_user.insurance_set.all()
     insurance = Insurance.objects.get(id=ins_id)
+
     if request.method == 'POST':
         form = InsuranceForm(request.POST, request.FILES, instance=insurance)
         if form.is_valid():
@@ -563,11 +569,34 @@ def EditInsurance(request,ins_id):
             print form.errors
     else:
         form = InsuranceForm(instance=insurance)
-    return render(request, 'MyHealthApp/edit_insurance.html', {'form': form})
+    return render(request, 'MyHealthApp/edit_insurance.html', {'form': form,'insurance_list': queryset,'current_insurance':insurance})
+
+@login_required
+def EditMeasurement(request,mes_id):
+    current_user=request.user
+    queryset = current_user.measurement_set.all()
+    measurement=Measurement.objects.get(id=mes_id)
+
+    if request.method == 'POST':
+        form = MeasurementForm(request.POST, request.FILES, instance=measurement)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.user = request.user
+            temp_instance.save()
+            return HttpResponseRedirect('/my_measurements')
+        else:
+            print form.errors
+    else:
+        form = MeasurementForm(instance=measurement)
+    return render(request, 'MyHealthApp/edit_measurement.html', {'form': form, 'measurement_list': queryset,'current_measurement':measurement})
+
 
 @login_required
 def EditAppointment(request,app_id):
+    current_user=request.user
+    queryset = current_user.appointment_set.all()
     appointment=Appointment.objects.get(id=app_id)
+
     if request.method == 'POST':
         form = AppointmentForm(request.POST, user=request.user, instance=appointment)
         if form.is_valid():
@@ -579,11 +608,14 @@ def EditAppointment(request,app_id):
             print form.errors
     else:
         form = AppointmentForm(user=request.user,instance=appointment)
-    return render(request, 'MyHealthApp/edit_appointment.html', {'form': form})
+    return render(request, 'MyHealthApp/edit_appointment.html', {'form': form, ,'appointment_list': queryset,'current_appointment':appointment})
 
 @login_required
 def EditDoctor(request,doc_id):
+    current_user=request.user
+    queryset = current_user.doctor_set.all()
     doctor=Doctor.objects.get(id=doc_id)
+
     if request.method == 'POST':
         form = DoctorForm(request.POST, request.FILES, instance=doctor)
         if form.is_valid():
@@ -596,13 +628,16 @@ def EditDoctor(request,doc_id):
             print form.errors
     else:
         form = DoctorForm(instance=doctor)
-    return render(request, 'MyHealthApp/edit_doctor.html', {'form': form})
+    return render(request, 'MyHealthApp/edit_doctor.html', {'form': form,'doctor_list': queryset,'current_doctor':doctor})
 
 
 
 @login_required
 def EditDisease(request,dis_id):
+    current_user=request.user
+    queryset = current_user.disease_set.all()
     disease=Disease.objects.get(id=dis_id)  
+
     if request.method == 'POST':
         form = DiseaseForm(request.POST, user=request.user,instance=disease)
         if form.is_valid():
@@ -615,7 +650,7 @@ def EditDisease(request,dis_id):
             print form.errors
     else:
         form = DiseaseForm(user=request.user,instance=disease)
-    return render(request, 'MyHealthApp/edit_disease.html', {'form': form})
+    return render(request, 'MyHealthApp/edit_disease.html', {'form': form,'disease_list': queryset,'current_disease':disease})
 
 @login_required
 def EditMedicine(request,med_id):

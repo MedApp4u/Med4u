@@ -1362,13 +1362,47 @@ a.procedure-body-tab:hover .procedure-body-separator {
 }
 
 .procedure-desc-left {
-	background: #3fbbc0;
+	/*background: #3fbbc0;*/
+	background: linear-gradient(90deg, #3fbbc0, #3fbbc0, #3fbbc0, #3ab3b8);
 	color: white;
 	border-bottom: 1px solid #37aeb3;
-	border-radius: 0px 5px 0px 0px;
+	/*border-radius: 0px 5px 0px 0px;*/
+	width: 21%;
 }
 
-#desc-label-name {
+.procedure-desc-right {
+	border-bottom: 1px solid #f3f3f3;
+	width: 79%;
+}
+
+.procedure-desc-label {
+	position: relative;
+	top: 32%;
+	left: 20px;
+	margin-bottom: 0px;
+	/*font-family: Roboto;*/
+	font-size: 16px;
+	font-weight: 800;
+	color: white;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	/*text-align: center;*/
+}
+
+.procedure-desc-name {
+	position: relative;
+	top: 28%;
+	left: 3%;
+	font-size: 17px;
+	font-weight: 300;
+	margin: 0px;
+}
+
+#desc-label-img, #desc-label-vid {
+	height: 17%;
+}
+
+/*#desc-label-name {
 	width: 12%;
 }
 
@@ -1408,13 +1442,13 @@ a.procedure-body-tab:hover .procedure-body-separator {
 
 #desc-label-vid {
 	border-radius: 0px;
+}*/
+
+#desc-field-img {
+	height: 17%;
 }
 
-.procedure-desc-right {
-	border-bottom: 1px solid #f3f3f3;
-}
-
-#desc-field-name {
+/*#desc-field-name {
 	width: 88%;
 }
 
@@ -1451,7 +1485,7 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	overflow-x: hidden;
 	height: 17%;
 	width: 87%;
-}
+}*/
 
 #desc-field-img a {
 	margin-right: 5%;
@@ -1471,33 +1505,9 @@ a.procedure-body-tab:hover .procedure-body-separator {
 }
 
 #desc-label-img .procedure-desc-label {
-	top: 20%;
+	top: 35%;
 	letter-spacing: 0.5px;
 }
-
-.procedure-desc-label {
-	position: relative;
-	top: 30%;
-	left: 20px;
-	margin-bottom: 0px;
-	/*font-family: Roboto;*/
-	font-size: 16px;
-	font-weight: 800;
-	color: white;
-	letter-spacing: 1.5px;
-	text-transform: uppercase;
-	/*text-align: center;*/
-}
-
-.procedure-desc-name {
-	position: relative;
-	top: 28%;
-	left: 3%;
-	font-size: 17px;
-	font-weight: 300;
-	margin: 0px;
-}
-
 
 /* -------------------------- */
 

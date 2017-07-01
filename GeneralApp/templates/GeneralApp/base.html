@@ -54,7 +54,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{% url 'ProfileApp:dashboard' %}">
                     <img src="{% static 'GeneralApp/css/img/logo.png' %}" alt="" width="150" height="40" />
                 </a>
             </div>
@@ -96,7 +96,7 @@
 							<li><a href="#">Home</a></li>
 							<li><a href="#">Laboratory</a></li>
 							<li><a href="#">Medical treatment</a></li>
-							<li><a href="#">Terms & conditions</a></li>
+							<li><a href="{% url 'GeneralApp:tnc' %}">Terms and Conditions</a></li>
 						</ul>
 					</div>
 					</div>

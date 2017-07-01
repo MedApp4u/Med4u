@@ -4,11 +4,10 @@
 
 {% block navbar %}
 	<li><a href="{% url 'MyHealthApp:home' %}">Home</a></li>
-	<li><a href="{% url 'ProfileApp:dashboard' %}">Dashboard</a></li>	
-	<li><a href="#doctor">Doctors</a></li>
+	<li><a href="{% url 'GeneralApp:about' %}">About Us</a></li>	
+	<li><a href="{% url 'GeneralApp:doctors' %}">Doctors</a></li>
+	<li><a href="{% url 'GeneralApp:medicines' %}">Medicines</a></li>
 	<li><a href="{% url 'GeneralApp:procedures' %}">Procedures</a></li>
-	<li><a href="{% url 'GeneralApp:tnc' %}">T&C</a></li>
-	<li><a href="{% url 'GeneralApp:about' %}">About Us</a></li>
 	<li><a style="margin-right: 15px" href="{% url 'MyHealthApp:MyHealth' %}">My Health Account</a></li>
 	<li class="user_icon_item">
 		<img src="{% static 'ProfileApp/css/img/icons/user.png' %}" class="user_icon" />

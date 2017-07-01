@@ -205,20 +205,23 @@ def doctors(request):
 def doctor_details(request, doc_id):
     doctors_list = Doctor.objects.all()
     current_doctor = Doctor.objects.get(id=doc_id)
-    # bodyparts = Bodypart.objects.filter(procedure__id=proc_id)
-    # symptoms = Symptom.objects.filter(procedure__id=proc_id)
-    # medicines = Medicine.objects.filter(procedure__id=proc_id)
-    # doctors = Doctor.objects.filter(procedure__id=proc_id)
-    # p = Procedure.objects.get(pk=proc_id)
-    # images = p.procedure_images_set.all()
-    # videos = p.procedure_videos_set.all()
-    # helplines = p.procedure_helpline_set.all()
 
     if request.method == 'GET':
         return render(request, 'GeneralApp/doctors-list.html', {'doctors': doctors_list, 'current_user': request.user, 'current_doctor': current_doctor})
-        # return render(request, 'GeneralApp/procedures-test.html', {'procedures': procedures_list, 'current_user': request.user, 
-        #     'current_procedure': current_procedure, 'bodyparts': bodyparts, 'symptoms': symptoms, 'medicines': medicines, 'doctors': doctors, 
-        #     'images': images, 'videos': videos, 'helplines': helplines})
+
+
+def medicines(request):
+    medicines_list = Medicine.objects.all()
+
+    if request.method == 'GET':
+        return render(request, 'GeneralApp/medicines.html', {'medicines': medicines_list, 'current_user': request.user})
+
+def medicine_details(request, med_id):
+    medicines_list = Medicine.objects.all()
+    current_medicine = Medicine.objects.get(id=med_id)
+
+    if request.method == 'GET':
+        return render(request, 'GeneralApp/medicine_details.html', {'medicines': medicines_list, 'current_user': request.user, 'current_medicine': current_medicine})
 
 # def procedures(request):
 #     context = ""

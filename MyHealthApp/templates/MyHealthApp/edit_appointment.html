@@ -1,9 +1,110 @@
+
+{% extends "MyHealthApp/sidebar.html" %}
+
+{% block div_id %}<div class="content-wrapper" id = "content-appointments">{% endblock %}
+
 {% block content %}
-    <a href="{% url 'MyHealthApp:add_doctor' %}">add doctor</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-sm-3">
+				<h1 class="head-medi text-center">My Appointments</h1>
+				<a href="{% url 'MyHealthApp:add_appointment' %}"><div class="add_med">Add Appointments</div></a>
+			
+				{% for appointments in appointment_list %}
+				{% if appointments.id == current_appointment.id %}
+					<a href="{% url 'MyHealthApp:edit_appointment' appointments.id %}">
+					<div class="med-a">
+						<div class="col-md-5 col-sm-5">
+							<div class="medi-div">
+								<h5 id="medi-title" style="background: white; color: #3fbbc0;">{{ appointment.doctor.doctor_name.title }}</h5>
+							</div>
+						</div>
+						<div class="col-md-7 col-sm-7"><span class="medi-desc">3 times a day.</span></div>
+					</div>
+					</a>
+					{% if forloop.last %}
+					<div class="col-md-12 col-sm-12">
+						<div class="divider-short"></div>
+					</div>
+					{% endif %}
+				{% else %}
+					<a href="{% url 'MyHealthApp:edit_appointment' appointment.id %}">
+					<div class="med-a">
+						<div class="col-md-5 col-sm-5">
+							<div class="medi-div">
+								<h5 id="medi-title">{{ appointment.doctor.doctor_name.title }}</h5>
+							</div>
+						</div>
+						<div class="col-md-7 col-sm-7"><span class="medi-desc">3 times a day.</span></div>
+					</div>
+					</a>
+					{% if forloop.last %}
+					<div class="col-md-12 col-sm-12">
+						<div class="divider-short"></div>
+					</div>
+					{% endif %}
+				{% endif %}
+				{% endfor %}
+
+			</div>
+
+			<div class="col-sm-9 col-md-9"><h1 class="text-center"> {{  current_appointment.doctor.doctor_name.title }} </h1>
+
+  				<form method="post" enctype="multipart/form-data">
+    					{% csrf_token %}
+    					<div class="col-sm-6 col-md-6 label-med-left">
+    					<p class="label-med">Doctor</p>
+    					<p class="label-desc">{{ form.doctor }}</p>
+    					<p class="label-med">Date</p>
+    					<p class="label-desc">{{ form.date }}</p>
+    					<p class="label-med">Time</p>
+    					<p class="label-desc" id="label-desc-id">{{ form.time }}</p>
+    					<p class="label-med">Reason</p>
+    					<p class="label-desc">{{ form.reason }} </p>
+    					<!-- <p class="help-text">No. of times a day.</p> -->
+    					<p class="label-med">Notes</p>
+    					<p class="label-desc">{{ form.notes }}</p>
+    					<!-- <p class="help-text">Start date of the Prescription.</p>
+    					<p class="label-med">Doctor</p>
+    					<p class="label-desc">{{ form.doctor }}</p>
+    					<p class="label-med">Usage Instructions</p>
+    					<p class="label-desc">{{ form.usage_instructions }}</p> -->
+    					</div>
+
+    					<!-- <div class="col-sm-6 col-md-6 label-med-right">
+    					<p class="label-med">Overdose Instructions</p><br>
+    					<p class="label-desc">{{ form.overdose_instructions }}</p>
+    					<p class="label-med">Possible Side Effects</p>
+    					<p class="label-desc">{{ form.possible_sideeffects }}</p>
+    					<p class="label-med">Brand Names</p>
+    					<p class="label-desc">{{ form.brand_names }}</p>
+    					
+    					</div> -->
+    					 
+
+
+    					
+   					 <button class="upload-button" type="submit">Upload</button>
+				  </form>
+				 
+			</div>
+		</div>
+		
+	</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+  <!--   <a href="{% url 'MyHealthApp:add_doctor' %}">add doctor</a>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Upload</button>
-  </form>
-
-{% endblock %}
+  </form> -->

@@ -11,10 +11,10 @@
 
 	<div class="container">
 		<div class="row">
-			{% for documents in doctor_list %}
+			{% for documents in document_list %}
 			<a href="#"><div class="col-md-12 col-sm-12">
 				<div class="med-div">
-				<h5 id="med-title">{{ documents.documents_name.title }}</h5>
+				<h5 id="med-title">{{ documents.doc.name.title }}</h5>
 				<span class="med-desc">Pediatrician.</span>
 				</div>
 			</div></a>

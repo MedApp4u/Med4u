@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="row">
 			{% for disease in disease_list %}
-			<a href="#"><div class="col-md-12 col-sm-12">
+			<a href="{% url 'MyHealthApp:edit_disease' disease.id %}"><div class="col-md-12 col-sm-12">
 				<div class="med-div">
 				<h5 id="med-title">{{ disease.disease_name.title }}</h5>
 				<span class="med-desc">10 days ago.</span>

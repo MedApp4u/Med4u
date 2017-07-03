@@ -12,9 +12,9 @@
 	<div class="container">
 		<div class="row">
 			{% for appointments in appointment_list %}
-			<a href="#"><div class="col-md-12 col-sm-12">
+			<a href="{% url 'MyHealthApp:edit_appointment' appointments.id %}"><div class="col-md-12 col-sm-12">
 				<div class="med-div">
-				<h5 id="med-title">{{ appointments.appointment_name.title }}</h5>
+				<h5 id="med-title">{{ appointments.doctor.doctor_name.title }}</h5>
 				<span class="med-desc">Pediatrician.</span>
 				</div>
 			</div></a>

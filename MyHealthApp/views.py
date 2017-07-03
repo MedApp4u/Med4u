@@ -398,7 +398,7 @@ def MyDiseases(request):
 def MyDocuments(request):
     current_user = request.user
     queryset = Document.objects.filter(user_id=current_user.id)
-    return render(request, 'MyHealthApp/my-documents.html', {'documnet_list': queryset})
+    return render(request, 'MyHealthApp/my-documents.html', {'document_list': queryset})
 
 
 @login_required

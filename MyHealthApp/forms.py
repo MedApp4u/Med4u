@@ -73,16 +73,16 @@ class AppointmentForm(forms.ModelForm):
 
 
 class MedicineForm(forms.ModelForm):
-    medicine_name = forms.CharField(required=True, label='Name')
-    method = forms.ChoiceField(required=True, choices=MEDICINE_CHOICES)
-    dosage_amt = forms.CharField(required=True, label='Amount')
-    frequency = forms.IntegerField(help_text='No of times a day', required=True, label='Frequency')
+    medicine_name = forms.CharField(required=True, label='Name', widget=forms.TextInput(attrs={'class' : 'my-label-desc'}))
+    method = forms.ChoiceField(required=True, choices=MEDICINE_CHOICES, widget=forms.Select(attrs={'class' : 'my-label-desc'}))
+    dosage_amt = forms.CharField(required=True, label='Amount', widget=forms.TextInput(attrs={'class' : 'my-label-desc', 'id':'my-label-desc-id'}))
+    frequency = forms.IntegerField(help_text='No of times a day', required=True, label='Frequency', widget=forms.NumberInput(attrs={'class' : 'my-label-desc', 'id':'my-label-desc-id'}))
     medicine_date = forms.DateField(help_text='Start date of the prescription', required=False, label='Start Date')
     doctor = forms.ModelChoiceField(queryset=Doctor.objects.none(), label='Doctor')
     usage_instructions = forms.CharField(required=True, label='Usage Instruction')
-    overdose_instructions = forms.CharField(required=False, label='Overdose Instruction', widget=forms.Textarea())
-    possible_sideeffects = forms.CharField(required=False, label='Possible Sideffects', widget=forms.Textarea())
-    brand_names = forms.CharField(required=True, label='Brand Name', widget=forms.Textarea())
+    overdose_instructions = forms.CharField(required=False, label='Overdose Instruction', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
+    possible_sideeffects = forms.CharField(required=False, label='Possible Sideffects', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
+    brand_names = forms.CharField(required=True, label='Brand Name', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
 
     class Meta:
         model = Medicine

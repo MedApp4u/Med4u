@@ -720,5 +720,3 @@ def DeleteDoctor(request, doc_id):
     get_object_or_404(Doctor, pk=doc_id).delete()
     return HttpResponseRedirect('/my_doctors')
 
-
-

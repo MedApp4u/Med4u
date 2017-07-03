@@ -677,6 +677,17 @@ hr.bold {
 .paddingbot-100{padding-bottom:100px !important;}
 
 /* ===========================
+--- Hidden form to add doctor/medicine to my doctors/medicines from GenApp page
+============================ */
+
+.hidden-div {
+	display: none;
+}
+
+/* ------------------------- */
+
+
+/* ===========================
 --- Profile Slider
 ============================ */
 

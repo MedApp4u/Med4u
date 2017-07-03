@@ -81,7 +81,7 @@
 								<p class="vp-form-icon-text">
 									Doctors
 								</p>
-								<a href="#" id="add-doctor-link">
+								<a href="#" id="add-doctor-link" onClick="submitForm()">
 									<div class="add-doctor-btn">
 										<img class = "add-doctor-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
 										<p class="add-doctor-desc">Add to my doctors</p>
@@ -149,4 +149,12 @@
 				<!-- </div> -->	
 			</div>	
 	    </section>
+
+	    <div class="hidden-div">
+			<form action="{% url 'GeneralApp:add_general_doctor' %}" method="post" id="hidden-doctor-form">
+				{% csrf_token %}
+				<input type="number" value="{{ current_doctor.id }}" name="doc_id" />
+			</form>
+		</div>
+
 {% endblock %}

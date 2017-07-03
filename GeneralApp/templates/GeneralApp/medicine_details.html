@@ -81,12 +81,21 @@
 								<p class="vp-form-icon-text">
 									Medicines
 								</p>
-								<a href="#" id="add-medc-link" onClick="submitForm()">
-									<div class="add-medc-btn">
-										<img class = "add-medc-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
-										<p class="add-medc-desc">Add to my medicines</p>
-									</div>		
-								</a>						
+								{% if 1 == 2 %}
+									<a id="add-medc-link" class="clickable" onClick="submitForm()">
+										<div class="add-medc-btn">
+											<img class = "add-medc-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
+											<p class="add-medc-desc">Add to my medicines</p>
+										</div>		
+									</a>
+								{% else %}
+									<a id="add-medc-link" onClick="submitForm()">
+										<div class="add-medc-btn">
+											<img class = "add-medc-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
+											<p class="add-medc-desc">Add to my medicines</p>
+										</div>		
+									</a>
+								{% endif %}						
 							</div>
 							<div class="procedure-body-scroll">
 								{% for medicine in medicines %}

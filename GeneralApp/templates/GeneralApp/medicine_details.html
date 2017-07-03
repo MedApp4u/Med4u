@@ -81,12 +81,21 @@
 								<p class="vp-form-icon-text">
 									Medicines
 								</p>
-								<a href="#" id="add-medc-link" onClick="submitForm()">
-									<div class="add-medc-btn">
-										<img class = "add-medc-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
-										<p class="add-medc-desc">Add to my medicines</p>
-									</div>		
-								</a>						
+								{% if already_exist %}
+									<a id="add-medc-link" class="medicine-clickable">
+										<div class="add-medc-btn">
+											<img class = "add-medc-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
+											<p class="add-medc-desc">Add to my medicines</p>
+										</div>		
+									</a>
+								{% else %}
+									<a id="add-medc-link" onClick="submitForm()">
+										<div class="add-medc-btn">
+											<img class = "add-medc-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
+											<p class="add-medc-desc">Add to my medicines</p>
+										</div>		
+									</a>
+								{% endif %}						
 							</div>
 							<div class="procedure-body-scroll">
 								{% for medicine in medicines %}
@@ -105,46 +114,28 @@
 								<div class="medicine-desc-right" id="desc-field-name">
 									<p class="procedure-desc-name">{{ current_medicine.medicine_name }}</p>
 								</div>
-								<div class="medicine-desc-left" id="desc-label-desc">
-									<p class="procedure-desc-label">Method</p>
+								<div class="medicine-desc-left" id="desc-label-brand">
+									<p class="procedure-desc-label">Usage<br/>instructions</p>
 								</div>
-								<div class="medicine-desc-right" id="desc-field-desc">
-									<p class="procedure-desc-name">{{ current_medicine.get_method_display }}</p>
-								</div>
-								<div class="medicine-desc-left" id="desc-label-desc">
-									<p class="procedure-desc-label">Dosage amount</p>
-								</div>
-								<div class="medicine-desc-right" id="desc-field-desc">
-									<p class="procedure-desc-name">{{ current_medicine.dosage_amt }}</p>
-								</div>
-								<div class="medicine-desc-left" id="desc-label-desc">
-									<p class="procedure-desc-label">Frequency</p>
-								</div>
-								<div class="medicine-desc-right" id="desc-field-desc">
-									<p class="procedure-desc-name">{{ current_medicine.frequency }} times a day</p>
-								</div>
-								<div class="medicine-desc-left" id="desc-label-desc">
-									<p class="procedure-desc-label">Usage instructions</p>
-								</div>
-								<div class="medicine-desc-right" id="desc-field-desc">
+								<div class="medicine-desc-right" id="desc-label-brand">
 									<p class="procedure-desc-name">{{ current_medicine.usage_instructions }}</p>
 								</div>
-								<div class="medicine-desc-left" id="desc-label-desc">
-									<p class="procedure-desc-label">Overdose instructions</p>
+								<div class="medicine-desc-left" id="desc-label-brand">
+									<p class="procedure-desc-label">Overdose<br/>instructions</p>
 								</div>
-								<div class="medicine-desc-right" id="desc-field-desc">
+								<div class="medicine-desc-right" id="desc-label-brand">
 									<p class="procedure-desc-name">{{ current_medicine.overdose_instructions }}</p>
 								</div>
-								<div class="medicine-desc-left" id="desc-label-desc">
-									<p class="procedure-desc-label">Possible side effects</p>
+								<div class="medicine-desc-left" id="desc-label-brand">
+									<p class="procedure-desc-label">Possible<br/>side effects</p>
 								</div>
-								<div class="medicine-desc-right" id="desc-field-desc">
+								<div class="medicine-desc-right" id="desc-label-brand">
 									<p class="procedure-desc-name">{{ current_medicine.possible_sideeffects }}</p>
 								</div>
 								<div class="medicine-desc-left" id="desc-label-brand">
-									<p class="procedure-desc-label">Associated brands</p>
+									<p class="procedure-desc-label">Associated<br/>brands</p>
 								</div>
-								<div class="medicine-desc-right" id="desc-field-brand">
+								<div class="medicine-desc-right" id="desc-label-brand">
 									<p class="procedure-desc-name">{{ current_medicine.brand_names }}</p>
 								</div>
 							</div>

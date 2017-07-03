@@ -218,7 +218,7 @@ def doctor_details(request, doc_id):
     doctors_list = Doctor.objects.all()
     current_doctor = Doctor.objects.get(id=doc_id)
     current_user = request.user
-    if current_user.medicine_set.get(pk=doc_id).exist():
+    if current_user.doctor_set.filter(pk=doc_id).count() > 0:
         already_exist = True
     else:
         already_exist = False
@@ -239,7 +239,7 @@ def medicine_details(request, med_id):
     medicines_list = Medicine.objects.all()
     current_medicine = Medicine.objects.get(id=med_id)
     current_user = request.user
-    if current_user.medicine_set.get(pk=med_id).exist():
+    if current_user.medicine_set.filter(pk=med_id).count() > 0:
         already_exist = True
     else:
         already_exist = False

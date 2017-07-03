@@ -1324,7 +1324,7 @@ a.procedure-body-tab {
 
 a.procedure-body-tab:hover {
 	background: #f3f3f3;
-	color: #555;
+	color: #3fbbc0;
 }
 
 a.procedure-body-tab:hover .procedure-body-separator {
@@ -1386,11 +1386,11 @@ a.procedure-body-tab:hover .procedure-body-separator {
 }
 
 .medicine-desc-left {
-	width: 31%;
+	width: 25%;
 }
 
 .medicine-desc-right {
-	width: 69%;
+	width: 75%;
 }
 
 .procedure-desc-label {
@@ -1421,7 +1421,7 @@ a.procedure-body-tab:hover .procedure-body-separator {
 }
 
 #desc-label-brand {
-	height: 23%;
+	height: 22.3%;
 }
 
 #desc-label-brand p {

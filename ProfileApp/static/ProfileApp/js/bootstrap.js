@@ -1,12 +1,9 @@
-$(".clickable").click(function(){
-    // $("#div1").load("demo_test.txt", function(responseTxt, statusTxt, xhr){
-    //     if(statusTxt == "success")
-    //         alert("External content loaded successfully!");
-    //     if(statusTxt == "error")
-    //         alert("Error: " + xhr.status + ": " + xhr.statusText);
-    // });
+$(".medicine-clickable").click(function(){
+    alert("Medicine already exists in your medicines!");
+});
 
-    alert("Medicine has already been added to My Medicines!");
+$(".doctor-clickable").click(function(){
+    alert("Doctor already exists in your doctors!");
 });
 
 function submitForm(){

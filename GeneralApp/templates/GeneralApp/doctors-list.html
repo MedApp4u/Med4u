@@ -81,12 +81,21 @@
 								<p class="vp-form-icon-text">
 									Doctors
 								</p>
-								<a href="#" id="add-doctor-link" onClick="submitForm()">
-									<div class="add-doctor-btn">
-										<img class = "add-doctor-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
-										<p class="add-doctor-desc">Add to my doctors</p>
-									</div>		
-								</a>						
+								{% if already_exist %}
+									<a id="add-doctor-link" class="doctor-clickable">
+										<div class="add-doctor-btn">
+											<img class = "add-doctor-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
+											<p class="add-doctor-desc">Add to my doctors</p>
+										</div>		
+									</a>
+								{% else %}
+									<a id="add-doctor-link" onClick="submitForm()">
+										<div class="add-doctor-btn">
+											<img class = "add-doctor-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
+											<p class="add-doctor-desc">Add to my doctors</p>
+										</div>		
+									</a>
+								{% endif %}						
 							</div>
 							<div class="procedure-body-scroll">
 								{% for doctor in doctors %}			

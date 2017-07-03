@@ -13,6 +13,7 @@ from .forms import *
 from django.views import generic
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
+from .models import *
 from ProfileApp.models import Profile
 from MyHealthApp.models import *
 from MyHealthApp.models import Symptom, Procedure, Bodypart, Medicine, Doctor
@@ -247,6 +248,22 @@ def medicine_details(request, med_id):
     if request.method == 'GET':
         return render(request, 'GeneralApp/medicine_details.html',
                       {'already_exist': already_exist, 'medicines': medicines_list, 'current_user': request.user, 'current_medicine': current_medicine})
+
+
+def contacts(request):
+    country_list = Country.objects.all()
+
+    if request.method == 'GET':
+        return render(request, 'GeneralApp/contacts.html', {'countries': country_list, 'current_user': request.user})
+
+def contact_details(request, con_id):
+    country_list = Country.objects.all()
+    current_country = Country.objects.get(id=con_id)
+    contacts_list = current_country.emergencycontact_set.all()
+    print contacts_list[0].contact
+
+    if request.method == 'GET':
+        return render(request, 'GeneralApp/contact_details.html', {'countries': country_list, 'contacts_list': contacts_list,'current_user': request.user})
 
 
 def AddGeneralMedicine(request):

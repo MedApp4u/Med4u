@@ -1,3 +1,4 @@
 *.pyc
 MyHealthApp/migrations/*
 ProfileApp/migrations/*
+GeneralApp/migrations/*

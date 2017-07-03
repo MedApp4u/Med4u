@@ -1075,6 +1075,10 @@ hr.bold {
 	letter-spacing: 1.5px;
 }
 
+.contacts {
+	width: 350px;
+}
+
 .vp-form-body {
 	background: white;
 	position: absolute;
@@ -1357,6 +1361,16 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	line-height: 35.7px;
 }
 
+.procedure-desc-icon {
+	position: absolute;
+	top: 28%;
+	left: 50%;
+	width: 45%;
+	height: 45%;
+	margin-left: -22.5%;
+	/*margin: -22.5% 0 0 -7.5%;*/
+}
+
 .procedure-body-desc {
 	position: relative;
 	width: 60%;
@@ -1366,21 +1380,21 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	font-weight: 600;
 }
 
-.procedure-desc-left, .procedure-desc-right, .medicine-desc-left, .medicine-desc-right {
+.procedure-desc-left, .procedure-desc-right, .medicine-desc-left, .medicine-desc-right, .contacts-desc-left, .contacts-desc-right {
 	position: relative;
 	float: left;
 	height: 11%;
 	z-index: 0;
 }
 
-.procedure-desc-left, .medicine-desc-left {
+.procedure-desc-left, .medicine-desc-left, .contacts-desc-left {
 	background: linear-gradient(90deg, #3fbbc0, #3fbbc0, #3fbbc0, #3ab3b8);
 	color: white;
 	border-bottom: 1px solid #37aeb3;
 	width: 21%;
 }
 
-.procedure-desc-right, .medicine-desc-right {
+.procedure-desc-right, .medicine-desc-right, .contacts-desc-right {
 	border-bottom: 1px solid #f3f3f3;
 	width: 79%;
 }
@@ -1391,6 +1405,14 @@ a.procedure-body-tab:hover .procedure-body-separator {
 
 .medicine-desc-right {
 	width: 75%;
+}
+
+.contacts-desc-left {
+	width: 7%;
+}
+
+.contacts-desc-right {
+	width: 93%;
 }
 
 .procedure-desc-label {

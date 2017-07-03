@@ -81,7 +81,7 @@
 								<p class="vp-form-icon-text">
 									Medicines
 								</p>
-								<a href="#" id="add-medc-link">
+								<a href="#" id="add-medc-link" onClick="submitForm()">
 									<div class="add-medc-btn">
 										<img class = "add-medc-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
 										<p class="add-medc-desc">Add to my medicines</p>
@@ -153,4 +153,12 @@
 				<!-- </div> -->	
 			</div>	
 	    </section>
+
+	    <div class="hidden-div">
+			<form action="{% url 'GeneralApp:add_general_medicine' %}" method="post" id="hidden-medicine-form">
+				{% csrf_token %}
+				<input type="number" value="{{ current_medicine.id }}" name="med_id" />
+			</form>
+		</div>
+
 {% endblock %}

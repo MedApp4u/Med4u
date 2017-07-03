@@ -733,3 +733,4 @@ def DeleteDoctor(request, doc_id):
     current_user = request.user
     current_user.doctor_set.remove(Doctor.objects.get(pk=doc_id))
     return HttpResponseRedirect('/my_doctors')
+

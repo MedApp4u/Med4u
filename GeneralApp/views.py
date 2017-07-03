@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
-from .forms import LoginForm, UserForm, ProcedureForm
+from .forms import *
 from django.views import generic
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
@@ -232,37 +232,59 @@ def medicines(request):
 def medicine_details(request, med_id):
     medicines_list = Medicine.objects.all()
     current_medicine = Medicine.objects.get(id=med_id)
+    # add_medicine_form = AddGeneralMedicineForm()
+    # add_medicine_form.fields['medc_id'] = med_id
+    # print add_medicine_form.fields['medc_id'] 
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/medicine_details.html',
-                      {'medicines': medicines_list, 'current_user': request.user, 'current_medicine': current_medicine})
+        return render(request, 'GeneralApp/medicine_details.html', {'medicines': medicines_list, 'current_user': request.user, 'current_medicine': current_medicine})
 
-    # def procedures(request):
-    #     context = ""
-    #     # profile=Profile.objects.get(username=request.user.username)
 
-    #     if request.method == 'GET':
-    #         form = ProcedureForm(None)
-    #         return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+def AddGeneralMedicine(request):
+    current_user = request.user
 
-    #     if request.method == 'POST':
-    #         bp = request.POST['bodypart']
-    #         file_write(bp)
-    #         form = ProcedureForm(request.POST)
-    #         return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+    if request.method == 'POST':
+        id = request.POST['med_id']
+        current_user.medicine_set.add(Medicine.objects.get(pk=id))
 
-    # def file_write(bp):
-    #     queryset = Symptom.objects.filter(bodypart__bodypart=bp)
-    #     f = open(os.path.join('GeneralApp/', 'choices.py'), 'w')
-    #     if queryset is not None:
-    #         f.write('SYMPTOMS = (')
-    #         for item in queryset:
-    #             f.write("('" + str(item) + "', '" + str(item) + "'), ")
-    #         f.write(')')
+    return HttpResponseRedirect('/my_medicines/' + str(id))
 
-    #     else:
-    #         f.write('SYMPTOMS = (("-","-""),)')
-    #     f.close()
+def AddGeneralDoctor(request):
+    current_user = request.user
+
+    if request.method == 'POST':
+        id = request.POST['doc_id']
+        current_user.doctor_set.add(Doctor.objects.get(pk=id))
+
+    return HttpResponseRedirect('/my_doctors/' + str(id))
+
+# def procedures(request):
+#     context = ""
+#     # profile=Profile.objects.get(username=request.user.username)
+
+#     if request.method == 'GET':
+#         form = ProcedureForm(None)
+#         return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+
+#     if request.method == 'POST':
+#         bp = request.POST['bodypart']
+#         file_write(bp)
+#         form = ProcedureForm(request.POST)
+#         return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+
+# def file_write(bp):
+#     queryset = Symptom.objects.filter(bodypart__bodypart=bp)
+#     f = open(os.path.join('GeneralApp/', 'choices.py'), 'w')
+#     if queryset is not None:
+#         f.write('SYMPTOMS = (')
+#         for item in queryset:
+#             f.write("('" + str(item) + "', '" + str(item) + "'), ")
+#         f.write(')')
+        
+#     else:
+#         f.write('SYMPTOMS = (("-","-""),)')
+#     f.close()
+
 
     # if request.method == 'POST':
     #     form = ProfileForm(request.POST, instance=profile)

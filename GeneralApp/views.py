@@ -6,7 +6,7 @@ from django.contrib.auth.forms import (
 )
 from django.urls import reverse
 from django.shortcuts import render, redirect
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
 from .forms import *
@@ -16,6 +16,7 @@ from django.views.generic.edit import FormView
 from ProfileApp.models import Profile
 from MyHealthApp.models import *
 import os
+
 
 # Create your views here.
 
@@ -109,73 +110,80 @@ class AboutUs(generic.TemplateView):
 
 class SymptomsView(generic.TemplateView):
     template_name = 'GeneralApp/symptoms.html'
-    
+
 
 def SymptomHead(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='head')
-        return  render(request,'GeneralApp/symptomhead.html',{'x': a})
+        return render(request, 'GeneralApp/symptomhead.html', {'x': a})
+
 
 def SymptomAbdomen(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='abdomen')
-        return  render(request,'GeneralApp/symptomabdomen.html',{'x': a})
+        return render(request, 'GeneralApp/symptomabdomen.html', {'x': a})
+
 
 def SymptomArms(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='arms')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
 
 
 def SymptomChest(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='chest')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
+
 
 def SymptomFeet(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='feet')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
 
 
 def SymptomHands(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='hands')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
+
 
 def SymptomHips(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='hips')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
+
 
 def SymptomLegs(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='legs')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
+
 
 def SymptomNeck(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='neck')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
+
 
 def SymptomPelvis(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='pelvis')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
-
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
 
 
 def SymptomShoulder(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='shoulder')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
 
 
 def procedures(request):
     procedures_list = Procedure.objects.all()
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/procedures.html', {'procedures': procedures_list, 'current_user': request.user})
+        return render(request, 'GeneralApp/procedures.html',
+                      {'procedures': procedures_list, 'current_user': request.user})
 
 
 def procedure_details(request, proc_id):
@@ -191,9 +199,11 @@ def procedure_details(request, proc_id):
     helplines = p.procedure_helpline_set.all()
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/procedures-test.html', {'procedures': procedures_list, 'current_user': request.user, 
-            'current_procedure': current_procedure, 'bodyparts': bodyparts, 'symptoms': symptoms, 'medicines': medicines, 'doctors': doctors, 
-            'images': images, 'videos': videos, 'helplines': helplines})
+        return render(request, 'GeneralApp/procedures-test.html',
+                      {'procedures': procedures_list, 'current_user': request.user,
+                       'current_procedure': current_procedure, 'bodyparts': bodyparts, 'symptoms': symptoms,
+                       'medicines': medicines, 'doctors': doctors,
+                       'images': images, 'videos': videos, 'helplines': helplines})
 
 
 def doctors(request):
@@ -202,12 +212,14 @@ def doctors(request):
     if request.method == 'GET':
         return render(request, 'GeneralApp/find-doctors.html', {'doctors': doctors_list, 'current_user': request.user})
 
+
 def doctor_details(request, doc_id):
     doctors_list = Doctor.objects.all()
     current_doctor = Doctor.objects.get(id=doc_id)
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/doctors-list.html', {'doctors': doctors_list, 'current_user': request.user, 'current_doctor': current_doctor})
+        return render(request, 'GeneralApp/doctors-list.html',
+                      {'doctors': doctors_list, 'current_user': request.user, 'current_doctor': current_doctor})
 
 
 def medicines(request):
@@ -215,6 +227,7 @@ def medicines(request):
 
     if request.method == 'GET':
         return render(request, 'GeneralApp/medicines.html', {'medicines': medicines_list, 'current_user': request.user})
+
 
 def medicine_details(request, med_id):
     medicines_list = Medicine.objects.all()
@@ -271,6 +284,7 @@ def AddGeneralDoctor(request):
 #     else:
 #         f.write('SYMPTOMS = (("-","-""),)')
 #     f.close()
+
 
     # if request.method == 'POST':
     #     form = ProfileForm(request.POST, instance=profile)

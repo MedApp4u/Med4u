@@ -541,10 +541,10 @@ def AddDisease(request):
 
 
 @login_required
-def EditDocument(request,docu_id):
-    current_user=request.user
+def EditDocument(request, docu_id):
+    current_user = request.user
     queryset = current_user.document_set.all()
-    document=Document.objects.get(id=docu_id)
+    document = Document.objects.get(id=docu_id)
 
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES, instance=document)
@@ -557,12 +557,13 @@ def EditDocument(request,docu_id):
             print form.errors
     else:
         form = DocumentForm(instance=document)
-    return render(request, 'MyHealthApp/edit_document.html', {'form': form, 'document_list': queryset,'current_document':document})
+    return render(request, 'MyHealthApp/edit_document.html',
+                  {'form': form, 'document_list': queryset, 'current_document': document})
 
 
 @login_required
-def EditInsurance(request,ins_id):
-    current_user=request.user
+def EditInsurance(request, ins_id):
+    current_user = request.user
     queryset = current_user.insurance_set.all()
     insurance = Insurance.objects.get(id=ins_id)
 
@@ -577,13 +578,15 @@ def EditInsurance(request,ins_id):
             print form.errors
     else:
         form = InsuranceForm(instance=insurance)
-    return render(request, 'MyHealthApp/edit_insurance.html', {'form': form,'insurance_list': queryset,'current_insurance':insurance})
+    return render(request, 'MyHealthApp/edit_insurance.html',
+                  {'form': form, 'insurance_list': queryset, 'current_insurance': insurance})
+
 
 @login_required
-def EditMeasurement(request,mes_id):
-    current_user=request.user
+def EditMeasurement(request, mes_id):
+    current_user = request.user
     queryset = current_user.measurement_set.all()
-    measurement=Measurement.objects.get(id=mes_id)
+    measurement = Measurement.objects.get(id=mes_id)
 
     if request.method == 'POST':
         form = MeasurementForm(request.POST, request.FILES, instance=measurement)
@@ -596,15 +599,15 @@ def EditMeasurement(request,mes_id):
             print form.errors
     else:
         form = MeasurementForm(instance=measurement)
-    return render(request, 'MyHealthApp/edit_measurement.html', {'form': form, 'measurement_list': queryset,'current_measurement':measurement})
-
+    return render(request, 'MyHealthApp/edit_measurement.html',
+                  {'form': form, 'measurement_list': queryset, 'current_measurement': measurement})
 
 
 @login_required
-def EditAppointment(request,app_id):
-    current_user=request.user
+def EditAppointment(request, app_id):
+    current_user = request.user
     queryset = current_user.appointment_set.all()
-    appointment=Appointment.objects.get(id=app_id)
+    appointment = Appointment.objects.get(id=app_id)
 
     if request.method == 'POST':
         form = AppointmentForm(request.POST, user=request.user, instance=appointment)
@@ -616,15 +619,16 @@ def EditAppointment(request,app_id):
         else:
             print form.errors
     else:
-        form = AppointmentForm(user=request.user,instance=appointment)
-    return render(request, 'MyHealthApp/edit_appointment.html', {'form': form, 'appointment_list': queryset,'current_appointment':appointment})
+        form = AppointmentForm(user=request.user, instance=appointment)
+    return render(request, 'MyHealthApp/edit_appointment.html',
+                  {'form': form, 'appointment_list': queryset, 'current_appointment': appointment})
+
 
 @login_required
-
-def EditDoctor(request,doc_id):
-    current_user=request.user
+def EditDoctor(request, doc_id):
+    current_user = request.user
     queryset = current_user.doctor_set.all()
-    doctor=Doctor.objects.get(id=doc_id)
+    doctor = Doctor.objects.get(id=doc_id)
 
     if request.method == 'POST':
         form = DoctorForm(request.POST, request.FILES, instance=doctor)
@@ -638,15 +642,15 @@ def EditDoctor(request,doc_id):
             print form.errors
     else:
         form = DoctorForm(instance=doctor)
-    return render(request, 'MyHealthApp/edit_doctor.html', {'form': form,'doctor_list': queryset,'current_doctor':doctor})
+    return render(request, 'MyHealthApp/edit_doctor.html',
+                  {'form': form, 'doctor_list': queryset, 'current_doctor': doctor})
 
 
 @login_required
-
-def EditDisease(request,dis_id):
-    current_user=request.user
+def EditDisease(request, dis_id):
+    current_user = request.user
     queryset = current_user.disease_set.all()
-    disease=Disease.objects.get(id=dis_id)  
+    disease = Disease.objects.get(id=dis_id)
 
     if request.method == 'POST':
         form = DiseaseForm(request.POST, user=request.user, instance=disease)
@@ -659,9 +663,9 @@ def EditDisease(request,dis_id):
         else:
             print form.errors
     else:
-        form = DiseaseForm(user=request.user,instance=disease)
-    return render(request, 'MyHealthApp/edit_disease.html', {'form': form,'disease_list': queryset,'current_disease':disease})
-
+        form = DiseaseForm(user=request.user, instance=disease)
+    return render(request, 'MyHealthApp/edit_disease.html',
+                  {'form': form, 'disease_list': queryset, 'current_disease': disease})
 
 
 @login_required
@@ -686,37 +690,47 @@ def EditMedicine(request, med_id):
                   {'form': form, 'medicine_list': queryset, 'current_medicine': medicine})
 
 
+@login_required
 def DeleteInsurance(request, ins_id):
     get_object_or_404(Insurance, pk=ins_id).delete()
     return HttpResponseRedirect('/my_insurances')
 
 
+@login_required
 def DeleteDocument(request, docu_id):
     get_object_or_404(Document, pk=docu_id).delete()
     return HttpResponseRedirect('/my_documents')
 
 
+@login_required
 def DeleteAppointment(request, app_id):
     get_object_or_404(Appointment, pk=app_id).delete()
     return HttpResponseRedirect('/my_appointments')
 
 
-def DeleteMedicine(request, med_id):
-    get_object_or_404(Medicine, pk=med_id).delete()
-    return HttpResponseRedirect('/my_medicines')
-
-
-def DeleteDisease(request, dis_id):
-    get_object_or_404(Disease, pk=dis_id).delete()
-    return HttpResponseRedirect('/my_diseases')
-
-
+@login_required
 def DeleteMeasurement(request, mes_id):
     get_object_or_404(Measurement, pk=mes_id).delete()
     return HttpResponseRedirect('/my_measurements')
 
 
+@login_required
+def DeleteMedicine(request, med_id):
+    current_user = request.user
+    current_user.medicine_set.remove(Medicine.objects.get(pk=med_id))
+    return HttpResponseRedirect('/my_medicines')
+
+
+@login_required
+def DeleteDisease(request, dis_id):
+    current_user = request.user
+    current_user.disease_set.remove(Disease.objects.get(pk=dis_id))
+    return HttpResponseRedirect('/my_diseases')
+
+
+@login_required
 def DeleteDoctor(request, doc_id):
-    get_object_or_404(Doctor, pk=doc_id).delete()
+    current_user = request.user
+    current_user.doctor_set.remove(Doctor.objects.get(pk=doc_id))
     return HttpResponseRedirect('/my_doctors')
 

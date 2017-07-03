@@ -52,11 +52,46 @@
 
   				<form method="post" enctype="multipart/form-data">
     					{% csrf_token %}
-    					{{ form.as_p }}
-   					 <button type="submit">Upload</button>
-					<a href="{% url 'MyHealthApp:delete_medicine' form.instance.id %}">delete</a>
-				  </form>
 
+    					<div class="col-sm-6 col-md-6 label-med-left">
+    					<p class="label-med">Name</p>
+    					<p class="label-desc">{{ form.medicine_name }}</p>
+    					<p class="label-med">Method</p>
+    					<p class="label-desc">{{ form.method }}</p>
+    					<p class="label-med">Dosage Amount</p>
+    					<p class="label-desc" id="label-desc-id">{{ form.dosage_amt }}</p>
+    					<p class="label-med">Frequency</p>
+    					<p class="label-desc">{{ form.frequency }} </p>
+    					<p class="help-text">No. of times a day.</p>
+    					<p class="label-med">Date</p>
+    					<p class="label-desc">{{ form.medicine_date }}</p>
+    					<p class="help-text">Start date of the Prescription.</p>
+    					<p class="label-med">Doctor</p>
+    					<p class="label-desc">{{ form.doctor }}</p>
+    					<p class="label-med">Usage Instructions</p>
+    					<p class="label-desc">{{ form.usage_instructions }}</p>
+    					</div>
+
+    					<div class="col-sm-6 col-md-6 label-med-right">
+    					<p class="label-med">Overdose Instructions</p><br>
+    					<p class="label-desc">{{ form.overdose_instructions }}</p>
+    					<p class="label-med">Possible Side Effects</p>
+    					<p class="label-desc">{{ form.possible_sideeffects }}</p>
+    					<p class="label-med">Brand Names</p>
+    					<p class="label-desc">{{ form.brand_names }}</p>
+    					
+    					</div>
+    					 
+  
+					<a class="upload-button" href="{% url 'MyHealthApp:delete_medicine' form.instance.id %}">Delete</a>
+				 
+
+
+
+    					
+   					 <button class="upload-button" type="submit">Upload</button>
+				  </form>
+				 
 			</div>
 		</div>
 		

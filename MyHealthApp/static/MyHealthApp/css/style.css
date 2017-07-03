@@ -2627,7 +2627,9 @@ h5{
 }
 
 #content-medicines{
+	position: relative;
 	background: url("img/dummy/pills-background4.jpg") no-repeat;
+	background-position: 20px -50px; 	
 }
 
 .content-wrapper{
@@ -2696,4 +2698,78 @@ h5{
 .head-medi{
 	color: #3fbbc0;
 	margin-top: 20px;
+}
+
+/*edit med*/
+
+.label-med-left .label-med{
+	margin-left: 75px;
+}
+
+.label-med{
+	margin-left:40px;
+	margin-right: 20px;
+	display: inline;
+	color: black;
+	font-weight: 500;
+}
+.label-med-right .label-desc{
+	margin-left: 40px;
+	/*margin-top: -6%;*/
+	color: black;
+	font-weight: 500;
+}
+
+.label-med-left .label-desc{
+	margin-left: 75px;
+	/*margin-top: -6%;*/
+	color: black;
+	font-weight: 500;
+}
+
+.upload-button{
+	background-color: #3fbbc0;
+	color: white;
+	font-weight: 500;
+	border: .5px solid #3fbbc0;
+	border-radius: 5px;
+	margin-left: 535px;
+}
+
+.upload-button:hover{
+	border:1px solid white;
+	outline: 1px solid #3fbbc0;
+}
+.my-label-desc{
+	padding-left: 7px;
+	text-transform: capitalize;
+	color: black;
+	font-weight: 500;
+	border:.5px solid grey;
+	border-radius: 5px;
+	background: rgba(255,255,255,.2);
+}
+
+#label-med-id{
+	margin-left: 300px;
+}
+
+/*pre{
+	background: none;
+	border: none;
+	margin-left: 20px;
+	font-size: 17px;
+	font-family: 'Open Sans', sans-serif;
+}*/
+hr{
+	width: 20%;
+	color: black;
+}
+.label-desc-text-area{
+	height:100px;
+}
+.help-text{
+	font-size: 13px;
+	margin-left: 75px;
+	margin-top: -20px;
 }

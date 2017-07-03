@@ -15,6 +15,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 from ProfileApp.models import Profile
 from MyHealthApp.models import *
+from MyHealthApp.models import Symptom, Procedure, Bodypart, Medicine, Doctor
 import os
 
 
@@ -216,10 +217,15 @@ def doctors(request):
 def doctor_details(request, doc_id):
     doctors_list = Doctor.objects.all()
     current_doctor = Doctor.objects.get(id=doc_id)
+    current_user = request.user
+    if current_user.medicine_set.get(pk=doc_id).exist():
+        already_exist = True
+    else:
+        already_exist = False
 
     if request.method == 'GET':
         return render(request, 'GeneralApp/doctors-list.html',
-                      {'doctors': doctors_list, 'current_user': request.user, 'current_doctor': current_doctor})
+                      {'already_exist': already_exist, 'doctors': doctors_list, 'current_user': request.user, 'current_doctor': current_doctor})
 
 
 def medicines(request):
@@ -232,62 +238,32 @@ def medicines(request):
 def medicine_details(request, med_id):
     medicines_list = Medicine.objects.all()
     current_medicine = Medicine.objects.get(id=med_id)
-    # add_medicine_form = AddGeneralMedicineForm()
-    # add_medicine_form.fields['medc_id'] = med_id
-    # print add_medicine_form.fields['medc_id'] 
+    current_user = request.user
+    if current_user.medicine_set.get(pk=med_id).exist():
+        already_exist = True
+    else:
+        already_exist = False
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/medicine_details.html', {'medicines': medicines_list, 'current_user': request.user, 'current_medicine': current_medicine})
+        return render(request, 'GeneralApp/medicine_details.html',
+                      {'already_exist': already_exist, 'medicines': medicines_list, 'current_user': request.user, 'current_medicine': current_medicine})
 
 
 def AddGeneralMedicine(request):
     current_user = request.user
 
     if request.method == 'POST':
-        id = request.POST['med_id']
-        current_user.medicine_set.add(Medicine.objects.get(pk=id))
+        temp_id = request.POST['med_id']
+        current_user.medicine_set.add(Medicine.objects.get(pk=temp_id))
 
-    return HttpResponseRedirect('/my_medicines/' + str(id))
+    return HttpResponseRedirect('/my_medicines/' + str(temp_id))
+
 
 def AddGeneralDoctor(request):
     current_user = request.user
 
     if request.method == 'POST':
-        id = request.POST['doc_id']
-        current_user.doctor_set.add(Doctor.objects.get(pk=id))
+        temp_id = request.POST['doc_id']
+        current_user.doctor_set.add(Doctor.objects.get(pk=temp_id))
 
-    return HttpResponseRedirect('/my_doctors/' + str(id))
-
-# def procedures(request):
-#     context = ""
-#     # profile=Profile.objects.get(username=request.user.username)
-
-#     if request.method == 'GET':
-#         form = ProcedureForm(None)
-#         return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
-
-#     if request.method == 'POST':
-#         bp = request.POST['bodypart']
-#         file_write(bp)
-#         form = ProcedureForm(request.POST)
-#         return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
-
-# def file_write(bp):
-#     queryset = Symptom.objects.filter(bodypart__bodypart=bp)
-#     f = open(os.path.join('GeneralApp/', 'choices.py'), 'w')
-#     if queryset is not None:
-#         f.write('SYMPTOMS = (')
-#         for item in queryset:
-#             f.write("('" + str(item) + "', '" + str(item) + "'), ")
-#         f.write(')')
-        
-#     else:
-#         f.write('SYMPTOMS = (("-","-""),)')
-#     f.close()
-
-
-    # if request.method == 'POST':
-    #     form = ProfileForm(request.POST, instance=profile)
-    #     context = ""
-    #     form.save()
-    #     return HttpResponseRedirect('/view_profile/')
+    return HttpResponseRedirect('/my_doctors/' + str(temp_id))

@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.contrib import admin
 from ProfileApp.models import Profile
 from MyHealthApp.models import *
+from GeneralApp.models import *
 
 # Register your models here.
 admin.site.register(Profile)
@@ -25,3 +26,6 @@ admin.site.register(Disease)
 admin.site.register(Disease_Note)
 admin.site.register(Document)
 admin.site.register(Measurement)
+admin.site.register(Country)
+admin.site.register(EmergencyContact)
+

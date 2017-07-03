@@ -83,7 +83,7 @@
     					 
 
 
-    					
+					<a class="upload-button" href="{% url 'MyHealthApp:delete_disease' form.instance.id %}">Delete</a>    					
    					 <button class="upload-button" type="submit">Upload</button>
 				  </form>
 				 
@@ -111,4 +111,6 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Upload</button>
+<<<<<<< HEAD
   </form>-->
+ 

@@ -1,7 +1,7 @@
 from django import forms
 from django.conf import settings
 from ProfileApp.models import Profile
-from MyHealthApp.models import Procedure, Symptom, Bodypart
+from MyHealthApp.models import *
 from MyHealthApp.choices import *
 from django.contrib.auth.forms import PasswordResetForm
 from django.forms import inlineformset_factory
@@ -50,3 +50,4 @@ class ProcedureForm(forms.ModelForm):
 	class Meta:
 		model = Procedure
 		fields = ['procedure_name', 'procedure_description', 'possible_complication', 'bodypart', 'symptom', 'medicine', 'doctor']
+

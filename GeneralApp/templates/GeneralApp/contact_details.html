@@ -7,14 +7,14 @@
 	<li><a href="{% url 'GeneralApp:about' %}">About Us</a></li>
 	<li><a href="{% url 'GeneralApp:doctors' %}">Doctors</a></li>
 	<li><a href="{% url 'GeneralApp:medicines' %}">Medicines</a></li>
-	<li><a id="active" href="{% url 'GeneralApp:procedures' %}">Procedures</a></li>
-	<li><a href="{% url 'GeneralApp:contacts' %}">Emergency</a></li>
+	<li><a href="{% url 'GeneralApp:procedures' %}">Procedures</a></li>
+	<li><a id="active" href="{% url 'GeneralApp:contacts' %}">Emergency</a></li>
 	{% if current_user == "" %}
 		<li><a href="{% url 'GeneralApp:login' %}">Sign In</a></li>
 		<li><a href="{% url 'GeneralApp:register' %}">Sign Up</a></li>
 	{% endif %}
 	{% if current_user != "" %}
-		<li><a style="margin-right: 15px" href="{% url 'MyHealthApp:MyHealth' %}">My Health</a></li>	
+		<li><a style="margin-right: 15px" href="{% url 'MyHealthApp:MyHealth' %}">My Health</a></li>
 		<li class="user_icon_item">
 			<img src="{% static 'ProfileApp/css/img/icons/user.png' %}" class="user_icon" />
 		</li>
@@ -77,99 +77,60 @@
 					<div class="container procedure-container">
 						<div class="row procedure-row">
 							<div class="procedure-form-head">
-								<img src="{% static 'ProfileApp/css/img/icons/anesthesia.png' %}" class="vp-form-icon"/>
+								<img src="{% static 'ProfileApp/css/img/icons/globe.png' %}" class="vp-form-icon" />
 								<div class="vp-form-icon-separator"></div>
-								<p class="vp-form-icon-text">
-									Procedures
-								</p>
+								<p class="vp-form-icon-text contacts">
+									Emergency Contacts
+								</p>					
 							</div>
 							<div class="procedure-body-scroll">
-								{% for procedure in procedures %}
-									<a href="{% url 'GeneralApp:procedure_details' procedure.id %}" class="procedure-body-tab">
+								{% for country in countries %}
+									<a href="{% url 'GeneralApp:contact_details' country.id %}" class="procedure-body-tab">
 										<div class = "procedure-body-name">
 											<div class = "procedure-body-separator"></div>
-											<div class = "procedure-body-label">{{ procedure.procedure_name }}</div>
+											<div class = "procedure-body-label">{{ country.country_name }}</div>
 										</div>
 									</a>
 								{% endfor %}
 							</div>
 							<div class="procedure-body-desc">
-								<div class="procedure-desc-left" id="desc-label-name">
-									<p class="procedure-desc-label">Name</p>
+								{% for cont in contacts_list %}						 
+									<div class="contacts-desc-left" id="desc-label-contact">
+										<img src="{% static 'ProfileApp/css/img/icons/call.png' %}" class="procedure-desc-icon" />
+									</div>
+									<div class="contacts-desc-right" id="desc-field-contact">
+										<p class="procedure-desc-name">{{ cont.contact }}</p>
+									</div>
+								{% endfor %}
+<!-- 								<div class="medicine-desc-left" id="desc-label-brand">
+									<p class="procedure-desc-label">Usage<br/>instructions</p>
 								</div>
-								<div class="procedure-desc-right" id="desc-field-name">
-									<p class="procedure-desc-name">{{ current_procedure.procedure_name }}</p>
+								<div class="medicine-desc-right" id="desc-label-brand">
+									<p class="procedure-desc-name">{{ current_medicine.usage_instructions }}</p>
 								</div>
-								<div class="procedure-desc-left" id="desc-label-desc">
-									<p class="procedure-desc-label">Description</p>
+								<div class="medicine-desc-left" id="desc-label-brand">
+									<p class="procedure-desc-label">Overdose<br/>instructions</p>
 								</div>
-								<div class="procedure-desc-right" id="desc-field-desc">
-									<p class="procedure-desc-name">{{ current_procedure.procedure_description }}</p>
+								<div class="medicine-desc-right" id="desc-label-brand">
+									<p class="procedure-desc-name">{{ current_medicine.overdose_instructions }}</p>
 								</div>
-								<div class="procedure-desc-left" id="desc-label-comp">
-									<p class="procedure-desc-label">Complication</p>
+								<div class="medicine-desc-left" id="desc-label-brand">
+									<p class="procedure-desc-label">Possible<br/>side effects</p>
 								</div>
-								<div class="procedure-desc-right" id="desc-field-comp">
-									<p class="procedure-desc-name">{{ current_procedure.possible_complication }}</p>
+								<div class="medicine-desc-right" id="desc-label-brand">
+									<p class="procedure-desc-name">{{ current_medicine.possible_sideeffects }}</p>
 								</div>
-								<div class="procedure-desc-left" id="desc-label-bp">
-									<p class="procedure-desc-label">Bodypart</p>
+								<div class="medicine-desc-left" id="desc-label-brand">
+									<p class="procedure-desc-label">Associated<br/>brands</p>
 								</div>
-								<div class="procedure-desc-right" id="desc-field-bp">
-									<p class="procedure-desc-name">
-										{% for bodypart in bodyparts %}
-											{{ bodypart.bodypart.title }}{% if forloop.last %}{% else %},{% endif %}
-										{% endfor %}
-									</p>
-								</div>
-								<div class="procedure-desc-left" id="desc-label-symp">
-									<p class="procedure-desc-label">Symptom</p>
-								</div>
-								<div class="procedure-desc-right" id="desc-field-symp">
-									<p class="procedure-desc-name">
-										{% for symptom in symptoms %}
-											{{ symptom.symptom_name.title }}{% if forloop.last %}{% else %},{% endif %}
-										{% endfor %}
-									</p>
-								</div>
-								<div class="procedure-desc-left" id="desc-label-img">
-									<p class="procedure-desc-label">Images</p>
-								</div>
-								<div class="procedure-desc-right" id="desc-field-img">
-									<p class="procedure-desc-name">
-										{% for image in images %}
-											<a target="_blank" href="{{ image.procedure_image.url }}">
-												<img src="{% static 'GeneralApp/css/img/icons/image-preview.png' %}"/>
-											</a>
-										{% endfor %}
-									</p>
-								</div>
-								<div class="procedure-desc-left" id="desc-label-vid">
-									<p class="procedure-desc-label">Videos</p>
-								</div>
-								<div class="procedure-desc-right" id="desc-field-img">
-									<p class="procedure-desc-name">
-										{% for video in videos %}
-											<a target="_blank" href="{{ video.procedure_video }}">
-												<img src="{% static 'GeneralApp/css/img/icons/video-preview.png' %}"/>
-											</a>
-										{% endfor %}
-									</p>
-								</div>
-								<div class="procedure-desc-left" id="desc-label-help">
-									<p class="procedure-desc-label">Helpline</p>
-								</div>
-								<div class="procedure-desc-right" id="desc-field-help">
-									<p class="procedure-desc-name">
-										{% for helpline in helplines %}
-											{{ helpline.procedure_phone_number }}{% if forloop.last %}{% else %},{% endif %}
-										{% endfor %}
-									</p>
-								</div>
+								<div class="medicine-desc-right" id="desc-label-brand">
+									<p class="procedure-desc-name">{{ current_medicine.brand_names }}</p>
+								</div> -->
 							</div>
 						</div>		
 					</div>		
 				<!-- </div> -->	
 			</div>	
 	    </section>
+
 {% endblock %}

@@ -46,11 +46,19 @@ urlpatterns = [
 
     url(r'^my_insurances/(?P<ins_id>[0-9]+)/$', views.EditInsurance, name='edit_insurance'),
     url(r'^my_documents/(?P<docu_id>[0-9]+)/$', views.EditDocument, name='edit_document'),
-    # url(r'^edit_measurement/$', views.EditMeasurement, name='edit_measurement'),
     url(r'^my_doctors/(?P<doc_id>[0-9]+)/$', views.EditDoctor, name='edit_doctor'),
     url(r'^my_appointments/(?P<app_id>[0-9]+)/$', views.EditAppointment, name='edit_appointment'),
     url(r'^my_medicines/(?P<med_id>[0-9]+)/$', views.EditMedicine, name='edit_medicine'),
     url(r'^my_diseases/(?P<dis_id>[0-9]+)/$', views.EditDisease, name='edit_disease'),
+    url(r'^my_measurements/(?P<mes_id>[0-9]+)/$', views.EditMeasurement, name='edit_measurement'),
+  
+    url(r'^delete_insurance/(?P<ins_id>[0-9]+)/$', views.DeleteInsurance, name='delete_insurance'),
+    url(r'^delete_document/(?P<docu_id>[0-9]+)/$', views.DeleteDocument, name='delete_document'),
+    url(r'^delete_doctor/(?P<doc_id>[0-9]+)/$', views.DeleteDoctor, name='delete_doctor'),
+    url(r'^delete_appointment/(?P<app_id>[0-9]+)/$', views.DeleteAppointment, name='delete_appointment'),
+    url(r'^delete_medicine/(?P<med_id>[0-9]+)/$', views.DeleteMedicine, name='delete_medicine'),
+    url(r'^delete_disease/(?P<dis_id>[0-9]+)/$', views.DeleteDisease, name='delete_disease'),
+    url(r'^delete_measurement/(?P<mes_id>[0-9]+)/$', views.DeleteMeasurement, name='delete_measurement'),
 
     url(r'^tokenapi/$', views.Tokenapi.as_view(), name='tokenapi'),
 

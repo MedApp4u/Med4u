@@ -28,5 +28,14 @@ urlpatterns = [
 
     url(r'^doctors/$', views.doctors, name='doctors'),
     url(r'^doctors/(?P<doc_id>[0-9]+)$', views.doctor_details, name='doctor_details'),
-    # url(r'^procedures/test$', views.procedures_test, name='procedures-test'),
+
+    url(r'^medicines/$', views.medicines, name='medicines'),
+    url(r'^medicines/(?P<med_id>[0-9]+)$', views.medicine_details, name='medicine_details'),
+
+    url(r'^contacts/$', views.contacts, name='contacts'),
+    url(r'^contacts/(?P<con_id>[0-9]+)$', views.contact_details, name='contact_details'),    
+
+    url(r'^add_general_medicine/', views.AddGeneralMedicine, name='add_general_medicine'),    
+    url(r'^add_general_doctor/', views.AddGeneralDoctor, name='add_general_doctor'),
+
 ]

@@ -677,6 +677,17 @@ hr.bold {
 .paddingbot-100{padding-bottom:100px !important;}
 
 /* ===========================
+--- Hidden form to add doctor/medicine to my doctors/medicines from GenApp page
+============================ */
+
+.hidden-div {
+	display: none;
+}
+
+/* ------------------------- */
+
+
+/* ===========================
 --- Profile Slider
 ============================ */
 
@@ -1064,6 +1075,10 @@ hr.bold {
 	letter-spacing: 1.5px;
 }
 
+.contacts {
+	width: 350px;
+}
+
 .vp-form-body {
 	background: white;
 	position: absolute;
@@ -1308,11 +1323,12 @@ a.procedure-body-tab {
 	width: 100%;
 	background: white;
 	border-bottom: 1px solid #f3f3f3;
+	overflow: hidden;
 }
 
 a.procedure-body-tab:hover {
 	background: #f3f3f3;
-	color: #555;
+	color: #3fbbc0;
 }
 
 a.procedure-body-tab:hover .procedure-body-separator {
@@ -1345,6 +1361,16 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	line-height: 35.7px;
 }
 
+.procedure-desc-icon {
+	position: absolute;
+	top: 28%;
+	left: 50%;
+	width: 45%;
+	height: 45%;
+	margin-left: -22.5%;
+	/*margin: -22.5% 0 0 -7.5%;*/
+}
+
 .procedure-body-desc {
 	position: relative;
 	width: 60%;
@@ -1354,25 +1380,39 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	font-weight: 600;
 }
 
-.procedure-desc-left, .procedure-desc-right {
+.procedure-desc-left, .procedure-desc-right, .medicine-desc-left, .medicine-desc-right, .contacts-desc-left, .contacts-desc-right {
 	position: relative;
 	float: left;
 	height: 11%;
 	z-index: 0;
 }
 
-.procedure-desc-left {
-	/*background: #3fbbc0;*/
+.procedure-desc-left, .medicine-desc-left, .contacts-desc-left {
 	background: linear-gradient(90deg, #3fbbc0, #3fbbc0, #3fbbc0, #3ab3b8);
 	color: white;
 	border-bottom: 1px solid #37aeb3;
-	/*border-radius: 0px 5px 0px 0px;*/
 	width: 21%;
 }
 
-.procedure-desc-right {
+.procedure-desc-right, .medicine-desc-right, .contacts-desc-right {
 	border-bottom: 1px solid #f3f3f3;
 	width: 79%;
+}
+
+.medicine-desc-left {
+	width: 25%;
+}
+
+.medicine-desc-right {
+	width: 75%;
+}
+
+.contacts-desc-left {
+	width: 7%;
+}
+
+.contacts-desc-right {
+	width: 93%;
 }
 
 .procedure-desc-label {
@@ -1402,12 +1442,24 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	height: 17%;
 }
 
+#desc-label-brand {
+	height: 22.3%;
+}
+
+#desc-label-brand p {
+	top: 15%;
+}
+
 #desc-label-pp {
 	height: 34%;
 }
 
 #desc-label-pp p {
 	top: 10%;
+}
+
+#desc-field-brand {
+	border-bottom: 0px
 }
 
 #desc-field-pp {
@@ -1425,90 +1477,9 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	height: 84%;
 }
 
-/*#desc-label-name {
-	width: 12%;
-}
-
-#desc-label-desc {
-	width: 18%;
-}
-
-#desc-label-comp {
-	width: 20%;
-}
-
-#desc-label-bp {
-	width: 16%;
-}
-
-#desc-label-symp {
-	width: 16%;
-	border-radius: 0px;
-}
-
-#desc-label-medc {
-	width: 16%;
-}
-
-#desc-label-doc {
-	width: 14%;
-}
-
-#desc-label-help {
-	width: 14%;
-}
-
-#desc-label-img, #desc-label-vid {
-	width: 13%;
-	height: 17%;
-}
-
-#desc-label-vid {
-	border-radius: 0px;
-}*/
-
 #desc-field-img {
 	height: 17%;
 }
-
-/*#desc-field-name {
-	width: 88%;
-}
-
-#desc-field-desc {
-	width: 82%;
-}
-
-#desc-field-comp {
-	width: 80%;
-}
-
-#desc-field-bp {
-	width: 84%;
-}
-
-#desc-field-symp {
-	width: 84%;
-}
-
-#desc-field-medc {
-	width: 84%;
-}
-
-#desc-field-doc {
-	width: 86%;
-}
-
-#desc-field-help {
-	width: 86%;
-}
-
-#desc-field-img {
-	overflow-y: hidden;
-	overflow-x: hidden;
-	height: 17%;
-	width: 87%;
-}*/
 
 #desc-field-img a {
 	margin-right: 5%;
@@ -1532,7 +1503,7 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	letter-spacing: 0.5px;
 }
 
-#add-doctor-link {
+#add-doctor-link, #find-doctor-link, #add-medc-link {
 	position: relative;
 	float: left;
 	top: 50px;
@@ -1541,7 +1512,12 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	height: 50px;
 }
 
-.add-doctor-btn {
+#find-doctor-link {
+	left: 73%;
+	width: 12%;
+}
+
+.add-doctor-btn, .find-doctor-btn, .add-medc-btn {
 	position: absolute;
 	background: white;
 	width: 100%;
@@ -1551,15 +1527,15 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	transition: box-shadow 0.2s ease-out;
 }
 
-.add-doctor-btn:hover {
-	box-shadow: 0px 0px 10px #19777b;
+.add-doctor-btn:hover, .find-doctor-btn:hover, .add-medc-btn:hover {
+	box-shadow: 0px 0px 10px 5px rgba(25, 119, 123, 0.35);
 }
 
-.add-doctor-desc {
+.add-doctor-desc, .find-doctor-desc, .add-medc-desc {
 	position: absolute;
 	float: left;
 	top: 25%;
-	left: 21%;
+	left: 23%;
 	color: #3fbbc0;
 	font-size: 14px;
 	font-weight: 800;
@@ -1569,14 +1545,33 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	height: 100%;
 }
 
-.add-doctor-icon {
+.add-medc-desc {
+	left: 20%;
+}
+
+.find-doctor-desc {
+	left: 27%;
+}
+
+.add-doctor-icon, .find-doctor-icon, .add-medc-icon {
 	position: absolute;
 	float: left;
 	left: 12%;
+	width: 17px;
+	height: 17px;
+	margin: -8.5px 0 0 0;	
 	top: 50%;
-	width: 14px;
-	height: 14px;
-	margin: -7px 0 0 0;
+}
+
+.add-medc-icon {
+	left: 10%;
+}
+
+.find-doctor-icon {
+	width: 18px;
+	height: 18px;
+	margin: -9px 0 0 0;	
+	left: 14.5%;
 }
 
 /* -------------------------- */

@@ -52,6 +52,7 @@
 
   				<form method="post" enctype="multipart/form-data">
     					{% csrf_token %}
+
     					<div class="col-sm-6 col-md-6 label-med-left">
     					<p class="label-med">Name</p>
     					<p class="label-desc">{{ form.medicine_name }}</p>
@@ -81,6 +82,10 @@
     					
     					</div>
     					 
+  
+					<a class="upload-button" href="{% url 'MyHealthApp:delete_medicine' form.instance.id %}">Delete</a>
+				 
+
 
 
     					

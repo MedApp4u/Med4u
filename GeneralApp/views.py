@@ -6,16 +6,19 @@ from django.contrib.auth.forms import (
 )
 from django.urls import reverse
 from django.shortcuts import render, redirect
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
-from .forms import LoginForm, UserForm, ProcedureForm
+from .forms import *
 from django.views import generic
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
+from .models import *
 from ProfileApp.models import Profile
 from MyHealthApp.models import *
+from MyHealthApp.models import Symptom, Procedure, Bodypart, Medicine, Doctor
 import os
+
 
 # Create your views here.
 
@@ -109,73 +112,80 @@ class AboutUs(generic.TemplateView):
 
 class SymptomsView(generic.TemplateView):
     template_name = 'GeneralApp/symptoms.html'
-    
+
 
 def SymptomHead(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='head')
-        return  render(request,'GeneralApp/symptomhead.html',{'x': a})
+        return render(request, 'GeneralApp/symptomhead.html', {'x': a})
+
 
 def SymptomAbdomen(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='abdomen')
-        return  render(request,'GeneralApp/symptomabdomen.html',{'x': a})
+        return render(request, 'GeneralApp/symptomabdomen.html', {'x': a})
+
 
 def SymptomArms(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='arms')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
 
 
 def SymptomChest(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='chest')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
+
 
 def SymptomFeet(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='feet')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
 
 
 def SymptomHands(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='hands')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
+
 
 def SymptomHips(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='hips')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
+
 
 def SymptomLegs(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='legs')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
+
 
 def SymptomNeck(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='neck')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
+
 
 def SymptomPelvis(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='pelvis')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
-
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
 
 
 def SymptomShoulder(request):
     if request.method == 'GET':
         a = Symptom.objects.filter(bodypart__bodypart='shoulder')
-        return  render(request,'GeneralApp/symptomlist.html',{'x': a})
+        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
 
 
 def procedures(request):
     procedures_list = Procedure.objects.all()
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/procedures.html', {'procedures': procedures_list, 'current_user': request.user})
+        return render(request, 'GeneralApp/procedures.html',
+                      {'procedures': procedures_list, 'current_user': request.user})
 
 
 def procedure_details(request, proc_id):
@@ -191,9 +201,11 @@ def procedure_details(request, proc_id):
     helplines = p.procedure_helpline_set.all()
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/procedures-test.html', {'procedures': procedures_list, 'current_user': request.user, 
-            'current_procedure': current_procedure, 'bodyparts': bodyparts, 'symptoms': symptoms, 'medicines': medicines, 'doctors': doctors, 
-            'images': images, 'videos': videos, 'helplines': helplines})
+        return render(request, 'GeneralApp/procedures-test.html',
+                      {'procedures': procedures_list, 'current_user': request.user,
+                       'current_procedure': current_procedure, 'bodyparts': bodyparts, 'symptoms': symptoms,
+                       'medicines': medicines, 'doctors': doctors,
+                       'images': images, 'videos': videos, 'helplines': helplines})
 
 
 def doctors(request):
@@ -202,53 +214,73 @@ def doctors(request):
     if request.method == 'GET':
         return render(request, 'GeneralApp/find-doctors.html', {'doctors': doctors_list, 'current_user': request.user})
 
+
 def doctor_details(request, doc_id):
     doctors_list = Doctor.objects.all()
     current_doctor = Doctor.objects.get(id=doc_id)
-    # bodyparts = Bodypart.objects.filter(procedure__id=proc_id)
-    # symptoms = Symptom.objects.filter(procedure__id=proc_id)
-    # medicines = Medicine.objects.filter(procedure__id=proc_id)
-    # doctors = Doctor.objects.filter(procedure__id=proc_id)
-    # p = Procedure.objects.get(pk=proc_id)
-    # images = p.procedure_images_set.all()
-    # videos = p.procedure_videos_set.all()
-    # helplines = p.procedure_helpline_set.all()
+    current_user = request.user
+    if current_user.doctor_set.filter(pk=doc_id).count() > 0:
+        already_exist = True
+    else:
+        already_exist = False
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/doctors-list.html', {'doctors': doctors_list, 'current_user': request.user, 'current_doctor': current_doctor})
-        # return render(request, 'GeneralApp/procedures-test.html', {'procedures': procedures_list, 'current_user': request.user, 
-        #     'current_procedure': current_procedure, 'bodyparts': bodyparts, 'symptoms': symptoms, 'medicines': medicines, 'doctors': doctors, 
-        #     'images': images, 'videos': videos, 'helplines': helplines})
+        return render(request, 'GeneralApp/doctors-list.html',
+                      {'already_exist': already_exist, 'doctors': doctors_list, 'current_user': request.user, 'current_doctor': current_doctor})
 
-# def procedures(request):
-#     context = ""
-#     # profile=Profile.objects.get(username=request.user.username)
 
-#     if request.method == 'GET':
-#         form = ProcedureForm(None)
-#         return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+def medicines(request):
+    medicines_list = Medicine.objects.all()
 
-#     if request.method == 'POST':
-#         bp = request.POST['bodypart']
-#         file_write(bp)
-#         form = ProcedureForm(request.POST)
-#         return render(request, 'GeneralApp/procedures_form.html', {'form': form, 'context': context, 'current_user': request.user})
+    if request.method == 'GET':
+        return render(request, 'GeneralApp/medicines.html', {'medicines': medicines_list, 'current_user': request.user})
 
-# def file_write(bp):
-#     queryset = Symptom.objects.filter(bodypart__bodypart=bp)
-#     f = open(os.path.join('GeneralApp/', 'choices.py'), 'w')
-#     if queryset is not None:
-#         f.write('SYMPTOMS = (')
-#         for item in queryset:
-#             f.write("('" + str(item) + "', '" + str(item) + "'), ")
-#         f.write(')')
-        
-#     else:
-#         f.write('SYMPTOMS = (("-","-""),)')
-#     f.close()
 
-    # if request.method == 'POST':
-    #     form = ProfileForm(request.POST, instance=profile)
-    #     context = ""
-    #     form.save()
-    #     return HttpResponseRedirect('/view_profile/')
+def medicine_details(request, med_id):
+    medicines_list = Medicine.objects.all()
+    current_medicine = Medicine.objects.get(id=med_id)
+    current_user = request.user
+    if current_user.medicine_set.filter(pk=med_id).count() > 0:
+        already_exist = True
+    else:
+        already_exist = False
+
+    if request.method == 'GET':
+        return render(request, 'GeneralApp/medicine_details.html',
+                      {'already_exist': already_exist, 'medicines': medicines_list, 'current_user': request.user, 'current_medicine': current_medicine})
+
+
+def contacts(request):
+    country_list = Country.objects.all()
+
+    if request.method == 'GET':
+        return render(request, 'GeneralApp/contacts.html', {'countries': country_list, 'current_user': request.user})
+
+def contact_details(request, con_id):
+    country_list = Country.objects.all()
+    current_country = Country.objects.get(id=con_id)
+    contacts_list = current_country.emergencycontact_set.all()
+    print contacts_list[0].contact
+
+    if request.method == 'GET':
+        return render(request, 'GeneralApp/contact_details.html', {'countries': country_list, 'contacts_list': contacts_list,'current_user': request.user})
+
+
+def AddGeneralMedicine(request):
+    current_user = request.user
+
+    if request.method == 'POST':
+        temp_id = request.POST['med_id']
+        current_user.medicine_set.add(Medicine.objects.get(pk=temp_id))
+
+    return HttpResponseRedirect('/my_medicines/' + str(temp_id))
+
+
+def AddGeneralDoctor(request):
+    current_user = request.user
+
+    if request.method == 'POST':
+        temp_id = request.POST['doc_id']
+        current_user.doctor_set.add(Doctor.objects.get(pk=temp_id))
+
+    return HttpResponseRedirect('/my_doctors/' + str(temp_id))

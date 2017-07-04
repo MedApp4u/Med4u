@@ -2628,8 +2628,9 @@ h5{
 
 #content-medicines{
 	position: relative;
-	background: url("img/dummy/pills-background4.jpg") no-repeat;
-	background-position: 20px -50px; 	
+	background:  url("img/dummy/pills-background4.jpg") no-repeat;
+	background-position: 20px -50px; 
+
 }
 
 .content-wrapper{

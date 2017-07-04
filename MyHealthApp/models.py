@@ -190,8 +190,30 @@ def document_directory_path(instance, filename):
     return 'documents/user_{0}/{1}'.format(instance.user.id, filename)
 
 
+def document_name(x):
+    name = x
+    count = 0
+    string = []
+    for i in name:
+        if count >= 2:
+            string.append(i)
+        if i == '/':
+            count = count + 1;
+    return ''.join(string)
+
+
 class Document(models.Model):
     doc = models.FileField(upload_to=document_directory_path, null=True, blank=True)
     notes = models.TextField(blank=True)
     uploaded_at = models.DateTimeField(default=datetime.datetime.now)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE) 
+    
+
+    def doc_name(self):
+        return document_name(self.doc.name)
+
+    
+
+
+
+

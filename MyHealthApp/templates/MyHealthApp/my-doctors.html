@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="row">
 			{% for doctor in doctor_list %}
-			<a href="#"><div class="col-md-12 col-sm-12">
+			<a href="{% url 'MyHealthApp:edit_doctor' doctor.id %}"><div class="col-md-12 col-sm-12">
 				<div class="med-div">
 				<h5 id="med-title">{{ doctor.doctor_name.title }}</h5>
 				<span class="med-desc">Pediatrician.</span>

@@ -9,11 +9,11 @@
 	<li><a href="{% url 'GeneralApp:medicines' %}">Medicines</a></li>
 	<li><a href="{% url 'GeneralApp:procedures' %}">Procedures</a></li>
 	<li><a id="active" href="{% url 'GeneralApp:contacts' %}">Emergency</a></li>
-	{% if current_user == "" %}
+	{% if current_user.is_anonymous %}
 		<li><a href="{% url 'GeneralApp:login' %}">Sign In</a></li>
 		<li><a href="{% url 'GeneralApp:register' %}">Sign Up</a></li>
 	{% endif %}
-	{% if current_user != "" %}
+	{% if not current_user.is_anonymous %}
 		<li><a style="margin-right: 15px" href="{% url 'MyHealthApp:MyHealth' %}">My Health</a></li>
 		<li class="user_icon_item">
 			<img src="{% static 'ProfileApp/css/img/icons/user.png' %}" class="user_icon" />

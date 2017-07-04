@@ -236,6 +236,13 @@ def doctor_details(request, doc_id):
                       {'user_flag': user_flag, 'already_exist': already_exist, 'doctors': doctors_list, 'current_user': request.user, 'current_doctor': current_doctor})
 
 
+def doctors_map(request):
+
+    if request.method == 'GET':
+        return render(request, 'GeneralApp/find-doctors-map.html', {'current_user': request.user})
+
+
+
 def medicines(request):
     medicines_list = Medicine.objects.all()
 

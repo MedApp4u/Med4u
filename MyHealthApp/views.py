@@ -422,6 +422,16 @@ def MyAppointments(request):
 def MyMedicines(request):
     current_user = request.user
     queryset = current_user.medicine_set.all()
+
+    if not request.user.is_authenticated:
+        context = "Please log in first."
+        return render(request, 'GeneralApp/login.html', {'form': form, 'context': context})
+        # return redirect('/')
+    if request.user.get_username() == '':
+        context = "Please log in first."
+        return render(request, 'GeneralApp/login.html', {'context': context})
+        # Context is not showing up, see if need to import views/urls in ProfileApp
+    # return render(request, 'dashboard.html', {'current_user': current_user})
     return render(request, 'MyHealthApp/my-medicines.html', {'medicine_list': queryset})
 
 

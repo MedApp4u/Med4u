@@ -28,8 +28,7 @@ SECRET_KEY = 'j23onn0g#5+d761e%&sq^h@t-14hr+hjmu3+7-ov@ji)z!r-fa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'192.168.10.15',u'127.0.0.1',u'192.168.1.104',u'192.168.10.16', u'192.168.10.20',u'192.168.10.25']
-
+ALLOWED_HOSTS = [u'med-4-u.appspot.com',u'192.168.10.15',u'127.0.0.1',u'192.168.1.104',u'192.168.10.16', u'192.168.10.20',u'192.168.10.25']
 
 # Application definition
 
@@ -112,19 +111,49 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '3fd7cedb92b1434216c927c14b0efe2b'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'doctors',
-        'USER': 'root',
-        'PASSWORD': '123456',
-        'HOST': '',
-        'PORT': '',
-
-
+if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+    # Running on production App Engine, so connect to Google Cloud SQL using
+    # the unix socket at /cloudsql/<your-cloudsql-connection string>
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/med-4-u:us-central1:med-4-u',
+            'NAME': 'doctors',
+            'USER': 'root',
+            'PASSWORD': '123456',
+        }
     }
+elif os.getenv('SETTINGS_MODE') == 'prod':
+    # Running in development, but want to access the Google Cloud SQL instance
+    # in production.
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': 'static-ip-of-cloudsql-instance',
+            'PORT': '3306',
+            'NAME': 'django_test',
+            'USER': 'username',
+            'PASSWORD': 'password'
+        }
+    }
+else:
+    # Running locally so connect to either a local MySQL instance or connect to
+    # Cloud SQL via the proxy. To start the proxy via command line:
+    #
+    #     $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:8000
+    #
+    # See https://cloud.google.com/sql/docs/mysql-connect-proxy
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '127.0.0.1',
+            'PORT': '',
+            'NAME': 'doctors',
+            'USER': 'root',
+            'PASSWORD': '123456',
+        }
 }
+
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
@@ -172,6 +201,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+
+STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'ProfileApp.Profile'

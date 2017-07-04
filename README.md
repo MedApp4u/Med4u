@@ -21,10 +21,12 @@ The total list of requirements is [here](https://github.com/MedicalAppInfibeam/D
 * Move to your project directory
 * Within your terminal type `python manage.py runserver`
 * The server will be hosted on `http://127.0.0.1:8000/`
+* Our staging server is on `https://med-4-u.appspot.com`
 
 ## Built With
 
 * [Django](https://docs.djangoproject.com/en/1.11/) - The web framework used
+* [Google App Engine](https://cloud.google.com/appengine/) - For deploying to the Staging Server
 
 ## Contributing
 

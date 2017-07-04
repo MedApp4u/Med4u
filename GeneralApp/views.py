@@ -13,6 +13,7 @@ from .forms import *
 from django.views import generic
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
+from django.contrib.auth.decorators import login_required
 from .models import *
 from ProfileApp.models import Profile
 from MyHealthApp.models import *
@@ -219,14 +220,20 @@ def doctor_details(request, doc_id):
     doctors_list = Doctor.objects.all()
     current_doctor = Doctor.objects.get(id=doc_id)
     current_user = request.user
-    if current_user.doctor_set.filter(pk=doc_id).count() > 0:
-        already_exist = True
+    user_flag = True
+    already_exist = True
+
+    if not (current_user.is_anonymous):
+        if current_user.doctor_set.filter(pk=doc_id).count() > 0:
+            already_exist = True
+        else:
+            already_exist = False
     else:
-        already_exist = False
+        user_flag = False
 
     if request.method == 'GET':
         return render(request, 'GeneralApp/doctors-list.html',
-                      {'already_exist': already_exist, 'doctors': doctors_list, 'current_user': request.user, 'current_doctor': current_doctor})
+                      {'user_flag': user_flag, 'already_exist': already_exist, 'doctors': doctors_list, 'current_user': request.user, 'current_doctor': current_doctor})
 
 
 def medicines(request):
@@ -240,14 +247,20 @@ def medicine_details(request, med_id):
     medicines_list = Medicine.objects.all()
     current_medicine = Medicine.objects.get(id=med_id)
     current_user = request.user
-    if current_user.medicine_set.filter(pk=med_id).count() > 0:
-        already_exist = True
+    user_flag = True
+    already_exist = True
+
+    if not (current_user.is_anonymous):
+        if current_user.medicine_set.filter(pk=med_id).count() > 0:
+            already_exist = True
+        else:
+            already_exist = False
     else:
-        already_exist = False
+        user_flag = False
 
     if request.method == 'GET':
         return render(request, 'GeneralApp/medicine_details.html',
-                      {'already_exist': already_exist, 'medicines': medicines_list, 'current_user': request.user, 'current_medicine': current_medicine})
+                      {'user_flag': user_flag, 'already_exist': already_exist, 'medicines': medicines_list, 'current_user': request.user, 'current_medicine': current_medicine})
 
 
 def contacts(request):
@@ -265,7 +278,7 @@ def contact_details(request, con_id):
     if request.method == 'GET':
         return render(request, 'GeneralApp/contact_details.html', {'countries': country_list, 'contacts_list': contacts_list,'current_user': request.user})
 
-
+@login_required
 def AddGeneralMedicine(request):
     current_user = request.user
 
@@ -275,7 +288,7 @@ def AddGeneralMedicine(request):
 
     return HttpResponseRedirect('/my_medicines/' + str(temp_id))
 
-
+@login_required
 def AddGeneralDoctor(request):
     current_user = request.user
 

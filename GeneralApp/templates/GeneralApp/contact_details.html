@@ -13,7 +13,7 @@
 		<li><a href="{% url 'GeneralApp:login' %}">Sign In</a></li>
 		<li><a href="{% url 'GeneralApp:register' %}">Sign Up</a></li>
 	{% endif %}
-	{% if not current_user.is_anonymous %}
+	{% if not wcurrent_user.is_anonymous %}
 		<li><a style="margin-right: 15px" href="{% url 'MyHealthApp:MyHealth' %}">My Health</a></li>
 		<li class="user_icon_item">
 			<img src="{% static 'ProfileApp/css/img/icons/user.png' %}" class="user_icon" />

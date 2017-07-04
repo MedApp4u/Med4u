@@ -1296,13 +1296,22 @@ label[for="vp-form-gender_1"] {
 
 /* ------ Procedures -------- */
 
-.procedure-body-scroll {
+.procedure-body-scroll, .find-doctors-body {
 	overflow-y: scroll;
 	overflow-x: hidden;
 	position: absolute;
 	top: 181px;
 	width: 40%;
 	height: 76.18%;
+}
+
+.find-doctors-body {
+	overflow-y: hidden;
+	width: 100%;
+}
+
+#map {
+	height: 100%;
 }
 
 .procedure-form-head {

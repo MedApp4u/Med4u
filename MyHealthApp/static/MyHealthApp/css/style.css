@@ -2542,7 +2542,7 @@ h5{
 .head-med{
 	font-family: 'Open Sans', sans-serif;
 	color: #3fbbc0;
-	margin-top: 40px;
+	margin-top: 80px;
 }
 
 /*#content-wrapper{
@@ -2621,15 +2621,80 @@ h5{
 
 .ADD:hover{
 	background-color: white;
-	border-left: 2px solid grey;
-	border-right: 2px solid grey;
+	/*border-left: 2px solid grey;*/
+	border: 2px solid grey;
 	color: #3fbbc0;
 }
 
 #content-medicines{
-	position: relative;
+	position: absolute;
 	background:  url("img/dummy/pills-background4.jpg") no-repeat;
-	background-position: 20px -50px; 
+	/*background-position: 400px 0px; */
+	height: 180%;
+	width: 100%;
+
+}
+#wrapper.menuDisplayed #content-medicines{
+	/*background-position: 250px -90px;*/
+	width: 103%;
+}
+
+
+.background-med{
+	position: absolute;
+	background:  rgba(255,255,255,.3);
+	top: -20px;
+	/*background-position: 20px -50px;*/ 
+	height: 103.25%;
+	width: 100%;
+
+}
+
+#content-appointments{
+	position: absolute;
+	top: 80px;
+	background:  url("img/dummy/appointment-background3.jpg") no-repeat;
+	background-position: 50px -90px;
+	height: 190%;
+	width: 100%; 
+
+
+}
+#wrapper.menuDisplayed #content-appointments{
+	/*background-position: 250px -90px;*/
+	width: 103%;
+}
+
+.background-appoint{
+	position: absolute;
+	background:  rgba(255,255,255,.8);
+	top: -20px;
+	height: 92%;
+	width: 100%;
+
+}
+
+#content-diseases{
+	position: absolute;
+	top: 80px;
+	background:  url("img/dummy/disease-background.jpg") no-repeat;
+	background-position: 50px -90px;
+	height: 170%;
+	width: 100%; 
+
+
+}
+#wrapper.menuDisplayed #content-diseases{
+	/*background-position: 250px -90px;*/
+	width: 103%;
+}
+
+.background-disease{
+	position: absolute;
+	background:  rgba(255,255,255,.8);
+	top: -20px;
+	height: 102%;
+	width: 100%;
 
 }
 
@@ -2698,7 +2763,7 @@ h5{
 }
 .head-medi{
 	color: #3fbbc0;
-	margin-top: 20px;
+	margin-top: 80px;
 }
 
 /*edit med*/
@@ -2734,7 +2799,7 @@ h5{
 	font-weight: 500;
 	border: .5px solid #3fbbc0;
 	border-radius: 5px;
-	margin-left: 260px;
+	margin-left: 65%;
 }
 
 .upload-button:hover{

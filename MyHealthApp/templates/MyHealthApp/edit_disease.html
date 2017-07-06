@@ -4,11 +4,12 @@
 {% block div_id %}<div class="content-wrapper" id = "content-diseases">{% endblock %}
 
 {% block content %}
+<div class="background-disease">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 col-sm-3">
 				<h1 class="head-medi text-center">My Diseases</h1>
-				<a href="{% url 'MyHealthApp:add_medicine' %}"><div class="add_med">Add Diseases</div></a>
+				<a href="{% url 'MyHealthApp:add_disease' %}"><div class="add_med">Add Diseases</div></a>
 			
 				{% for disease in disease_list %}
 				{% if disease.id == current_disease.id %}
@@ -92,6 +93,7 @@
 		
 	</div>
 
+</div>
 
 
 {% endblock %}

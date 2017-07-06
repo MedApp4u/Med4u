@@ -1,9 +1,53 @@
+
+{% extends 'MyHealthApp/sidebar.html' %}
+
+{% block div_id %}<div class="content-wrapper" id = "content-appointments">{% endblock %}
+
 {% block content %}
-    <a href="{% url 'MyHealthApp:add_doctor' %}">add doctor</a>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload</button>
-  </form>
+<div class="background-appoint">
+ 
+   <h1 class="head-medi text-center">Add Appointments</h1>
+
+<div class="container">
+<div class="row">   
+
+<form method="post" enctype="multipart/form-data">
+    					{% csrf_token %}
+    					<div class="col-sm-6 col-md-6 label-med-left">
+    					<p class="label-med">Doctor</p>
+    					<p class="label-desc">{{ form.doctor }}</p>
+    					<p class="label-med">Date</p>
+    					<p class="label-desc">{{ form.date }}</p>
+    					<p class="label-med">Time</p>
+    					<p class="label-desc" id="label-desc-id">{{ form.time }}</p>
+    					<p class="label-med">Reason</p>
+    					<p class="label-desc">{{ form.reason }} </p>
+    					<!-- <p class="help-text">No. of times a day.</p> -->
+    					<p class="label-med">Notes</p>
+    					<p class="label-desc">{{ form.notes }}</p>
+
+   					 <button class="upload-button" type="submit">Upload</button>
+    					<!-- <p class="help-text">Start date of the Prescription.</p>
+    					<p class="label-med">Doctor</p>
+    					<p class="label-desc">{{ form.doctor }}</p>
+    					<p class="label-med">Usage Instructions</p>
+    					<p class="label-desc">{{ form.usage_instructions }}</p> -->
+    					</div>
+
+    					<!-- <div class="col-sm-6 col-md-6 label-med-right">
+    					<p class="label-med">Overdose Instructions</p><br>
+    					<p class="label-desc">{{ form.overdose_instructions }}</p>
+    					<p class="label-med">Possible Side Effects</p>
+    					<p class="label-desc">{{ form.possible_sideeffects }}</p>
+p    					< ss="label-desc">{{ form.brand_names }}</p>
+    					class="label-med">Brand Names</p>
+    					<p cla
+    					</div> -->
+    			
+				  </form>
+ </div>
+ </div>
+ </div>
 
 {% endblock %}
+

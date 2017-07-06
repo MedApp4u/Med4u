@@ -39,4 +39,7 @@ urlpatterns = [
     url(r'^add_general_medicine/', views.AddGeneralMedicine, name='add_general_medicine'),    
     url(r'^add_general_doctor/', views.AddGeneralDoctor, name='add_general_doctor'),
 
+    url(r'api/login/', views.Login_api.as_view(), name='login_api'),
+    url(r'api/logout/', views.Logout_api, name='logout_api'),
+
 ]

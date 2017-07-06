@@ -19,6 +19,10 @@ from ProfileApp.models import Profile
 from MyHealthApp.models import *
 from MyHealthApp.models import Symptom, Procedure, Bodypart, Medicine, Doctor
 import os
+from rest_framework.views import APIView
+from GeneralApp.serializers import LoginSerializer
+from rest_framework.response import Response
+from rest_framework import generics
 
 
 # Create your views here.
@@ -304,3 +308,30 @@ def AddGeneralDoctor(request):
         current_user.doctor_set.add(Doctor.objects.get(pk=temp_id))
 
     return HttpResponseRedirect('/my_doctors/' + str(temp_id))
+
+
+class Login_api(APIView):
+    # def get(request):
+    #     profile = Profile.objects.all()
+    #     serializer = ProfileSerializer(profile)
+    #     return Response(serializer.data) 
+
+    def post(self, request):
+        data = request.POST
+        serializer = LoginSerializer(data)
+
+        username = serializer.data['username']
+        password = serializer.data['password']
+        user=authenticate(username=username, password=password)
+        if user == None:
+            return HttpResponse("Wrong Username or Password") 
+
+        if user.is_active:
+                login(request, user)
+                return HttpResponse( user.id )  
+        
+@login_required
+def Logout_api(request):
+    
+    logout(request)
+    return HttpResponse("User Logged out")   

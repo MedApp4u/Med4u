@@ -553,7 +553,7 @@ def AddDisease(request):
 @login_required
 def EditDocument(request, docu_id):
     current_user = request.user
-    queryset = current_user.document_set.all()
+    queryset = Document.objects.filter(user_id=current_user.id)
     document = Document.objects.get(id=docu_id)
 
     if request.method == 'POST':
@@ -616,7 +616,7 @@ def EditMeasurement(request, mes_id):
 @login_required
 def EditAppointment(request, app_id):
     current_user = request.user
-    queryset = current_user.appointment_set.all()
+    queryset = Appointment.objects.filter(user_id=request.user.id)
     appointment = Appointment.objects.get(id=app_id)
 
     if request.method == 'POST':
@@ -631,7 +631,7 @@ def EditAppointment(request, app_id):
     else:
         form = AppointmentForm(user=request.user, instance=appointment)
     return render(request, 'MyHealthApp/edit_appointment.html',
-                  {'form': form, 'appointment_list': queryset, 'current_appointment': appointment})
+                  {'form': form, 'appointment_list':queryset,'current_appointment': appointment})
 
 
 @login_required

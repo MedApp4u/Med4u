@@ -4,6 +4,7 @@
 {% block div_id %}<div class="content-wrapper" id = "content-medicines">{% endblock %}
 
 {% block content %}
+<div class="background-med">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 col-sm-3">
@@ -48,7 +49,7 @@
 
 			</div>
 
-			<div class="col-sm-9 col-md-9"><h1 class="text-center"> {{  current_medicine.medicine_name.title }} </h1>
+			<div class="col-sm-9 col-md-9"><h1 class="head-medi text-center"> {{  current_medicine.medicine_name.title }} </h1>
 
   				<form method="post" enctype="multipart/form-data">
     					{% csrf_token %}
@@ -92,6 +93,8 @@
 		</div>
 		
 	</div>
+
+</div>
 
 
 

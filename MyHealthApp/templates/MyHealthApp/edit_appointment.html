@@ -4,6 +4,7 @@
 {% block div_id %}<div class="content-wrapper" id = "content-appointments">{% endblock %}
 
 {% block content %}
+<div class="background-appoint">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 col-sm-3">
@@ -16,7 +17,7 @@
 					<div class="med-a">
 						<div class="col-md-5 col-sm-5">
 							<div class="medi-div">
-								<h5 id="medi-title" style="background: white; color: #3fbbc0;">{{ appointment.doctor.doctor_name.title }}</h5>
+								<h5 id="medi-title" style="background: white; color: #3fbbc0;">{{ appointments.doctor.doctor_name.title }}</h5>
 							</div>
 						</div>
 						<div class="col-md-7 col-sm-7"><span class="medi-desc">3 times a day.</span></div>
@@ -28,11 +29,11 @@
 					</div>
 					{% endif %}
 				{% else %}
-					<a href="{% url 'MyHealthApp:edit_appointment' appointment.id %}">
+					<a href="{% url 'MyHealthApp:edit_appointment' appointments.id %}">
 					<div class="med-a">
 						<div class="col-md-5 col-sm-5">
 							<div class="medi-div">
-								<h5 id="medi-title">{{ appointment.doctor.doctor_name.title }}</h5>
+								<h5 id="medi-title">{{ appointments.doctor.doctor_name.title }}</h5>
 							</div>
 						</div>
 						<div class="col-md-7 col-sm-7"><span class="medi-desc">3 times a day.</span></div>
@@ -69,6 +70,9 @@
     					<p class="label-desc">{{ form.doctor }}</p>
     					<p class="label-med">Usage Instructions</p>
     					<p class="label-desc">{{ form.usage_instructions }}</p> -->
+    					<button class="upload-button" type="submit">Upload</button>
+
+    				<button class="delete-button" href="{% url 'MyHealthApp:delete_appointment' form.instance.id %}">Delete</button>
     					</div>
 
     					<!-- <div class="col-sm-6 col-md-6 label-med-right">
@@ -81,15 +85,12 @@
     					
     					</div> -->
     					 
-
-
-    				<a class="upload-button" href="{% url 'MyHealthApp:delete_appointment' form.instance.id %}">Delete</a>
-   					 <button class="upload-button" type="submit">Upload</button>
 				  </form>
 				 
 			</div>
 		</div>
 		
+	</div>
 	</div>
 
 

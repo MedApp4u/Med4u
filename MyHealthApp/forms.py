@@ -9,7 +9,7 @@ from .choices import *
 
 class DocumentForm(forms.ModelForm):
     doc = forms.FileField(required=False, label='Upload Document')
-    notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea())
+    notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
 
     class Meta:
         model = Document
@@ -21,7 +21,7 @@ class InsuranceForm(forms.ModelForm):
     expiry_date = forms.DateField(required=True, label='Expiry Date')
     start_date = forms.DateField(required=True, label='Start Date')
     premium = forms.IntegerField(required=True, label='Premium Amount')
-    notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea())
+    notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
 
     class Meta:
         model = Insurance
@@ -34,7 +34,7 @@ class MeasurementForm(forms.ModelForm):
     cholesterol = forms.CharField(required=False, label='Cholesterol')
     height = forms.FloatField(required=True, label='Height')
     weight = forms.FloatField(required=True, label='Weight')
-    notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea())
+    notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
 
     class Meta:
         model = Measurement
@@ -44,7 +44,7 @@ class MeasurementForm(forms.ModelForm):
 class DoctorForm(forms.ModelForm):
     doctor_name = forms.CharField(required=True, label='Name')
     doctor_description = forms.CharField(required=False, label='Description', widget=forms.Textarea())
-    doctor_address = forms.CharField(required=True, label='Address', widget=forms.Textarea())
+    doctor_address = forms.CharField(required=True, label='Address', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
     doctor_speciality = forms.ChoiceField(required=True, choices=SPECIALITY_CHOICE, label='Speciality')
     doctor_timings = forms.CharField(required=True, label='Timing')
     doctor_pic = forms.ImageField(required=False, label='Upload Photo')
@@ -59,8 +59,8 @@ class AppointmentForm(forms.ModelForm):
     doctor = forms.ModelChoiceField(queryset=Doctor.objects.none(), label='Doctor')
     date = forms.DateField()
     time = forms.TimeField()
-    reason = forms.CharField(required=False, label='Reason', widget=forms.Textarea())
-    notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea())
+    reason = forms.CharField(required=False, label='Reason', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
+    notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
 
     class Meta:
         model = Appointment
@@ -100,7 +100,7 @@ class DiseaseForm(forms.ModelForm):
     symptom = forms.ModelMultipleChoiceField(required=True, label='Symptom', queryset=Symptom.objects.all())
     medicine = forms.ModelMultipleChoiceField(required=True, label='Medicine', queryset=Medicine.objects.none())
     procedure = forms.ModelMultipleChoiceField(required=True, label='Procedure', queryset=Procedure.objects.all())
-
+    disease_description = forms.CharField(required=False, label='Description', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
         super(DiseaseForm, self).__init__(*args, **kwargs)

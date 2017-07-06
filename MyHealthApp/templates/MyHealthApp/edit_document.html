@@ -1,9 +1,15 @@
 {% block content %}
-  <form method="post" enctype="multipart/form-data">
+  <!-- <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Upload</button>
     <a href="{% url 'MyHealthApp:delete_document' form.instance.id %}">delete</a>
-  </form>
+  </form> -->
+
+  {% for i in document_list %}
+
+  	{{ i.doc_name }}
+
+  {% endfor %}
 
 {% endblock %}

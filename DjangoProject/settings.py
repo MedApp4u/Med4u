@@ -129,11 +129,11 @@ elif os.getenv('SETTINGS_MODE') == 'prod':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': 'static-ip-of-cloudsql-instance',
-            'PORT': '3306',
-            'NAME': 'django_test',
-            'USER': 'username',
-            'PASSWORD': 'password'
+            'HOST': '35.188.97.205',
+            'PORT': '',
+            'NAME': 'doctors',
+            'USER': 'root',
+            'PASSWORD': '123456'
         }
     }
 else:
@@ -145,6 +145,14 @@ else:
     # See https://cloud.google.com/sql/docs/mysql-connect-proxy
     DATABASES = {
         'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '127.0.0.1',
+            'PORT': '',
+            'NAME': 'doctors',
+            'USER': 'root',
+            'PASSWORD': '123456',
+        },
+        'gcloud': {
             'ENGINE': 'django.db.backends.mysql',
             'HOST': '35.188.97.205',
             'PORT': '',

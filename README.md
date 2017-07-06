@@ -47,7 +47,6 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## Acknowledgments
 
-* Chintan Joshi, DRC Systems Pvt. Ltd, Ahmedabad
-* See also the list of [contributors](https://github.com/MedicalAppInfibeam/DoctorsWebApp/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/MedicalAppInfibeam/DoctorsWebApp/graphs/contributors) who participated in this project.
     
      

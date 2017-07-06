@@ -160,7 +160,7 @@ else:
             'USER': 'root',
             'PASSWORD': '123456',
         }
-}
+    }
 
 
 REST_FRAMEWORK = { 

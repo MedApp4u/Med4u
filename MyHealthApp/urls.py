@@ -60,6 +60,4 @@ urlpatterns = [
     url(r'^delete_disease/(?P<dis_id>[0-9]+)/$', views.DeleteDisease, name='delete_disease'),
     url(r'^delete_measurement/(?P<mes_id>[0-9]+)/$', views.DeleteMeasurement, name='delete_measurement'),
 
-    url(r'^tokenapi/$', views.Tokenapi.as_view(), name='tokenapi'),
-
 ]

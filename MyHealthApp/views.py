@@ -43,7 +43,7 @@ class Medicine_list(generics.ListCreateAPIView):
     queryset = Medicine.objects.all()
     serializer_class = MedicineSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('id',)
+    filter_fields = ('user',)
     search_fields = ('medicine_name',)
     renderer_classes = (JSONRenderer,)
 
@@ -349,13 +349,6 @@ class Symptom_show(APIView):
         symptom = Symptom.get_object(pk)
         symptom.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class Tokenapi(generics.ListCreateAPIView):
-    permission_classes = (AllowAny,)
-    queryset = Token.objects.all()
-    serializer_class = TokenSerializer
-    filter_backends = (DjangoFilterBackend, SearchFilter)
 
 
 class HomeView(generic.TemplateView):

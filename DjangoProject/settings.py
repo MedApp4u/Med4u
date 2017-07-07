@@ -129,11 +129,11 @@ elif os.getenv('SETTINGS_MODE') == 'prod':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': 'static-ip-of-cloudsql-instance',
-            'PORT': '3306',
-            'NAME': 'django_test',
-            'USER': 'username',
-            'PASSWORD': 'password'
+            'HOST': '35.188.97.205',
+            'PORT': '',
+            'NAME': 'doctors',
+            'USER': 'root',
+            'PASSWORD': '123456'
         }
     }
 else:
@@ -151,8 +151,16 @@ else:
             'NAME': 'doctors',
             'USER': 'root',
             'PASSWORD': '123456',
+        },
+        'gcloud': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '35.188.97.205',
+            'PORT': '',
+            'NAME': 'doctors',
+            'USER': 'root',
+            'PASSWORD': '123456',
         }
-}
+    }
 
 
 REST_FRAMEWORK = { 

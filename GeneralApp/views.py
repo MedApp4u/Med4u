@@ -115,74 +115,17 @@ class AboutUs(generic.TemplateView):
     template_name = 'GeneralApp/about.html'
 
 
+
+
 class SymptomsView(generic.TemplateView):
     template_name = 'GeneralApp/symptoms.html'
 
-
-def SymptomHead(request):
+def BodypartSymptomList(request,symptom_part):
     if request.method == 'GET':
-        a = Symptom.objects.filter(bodypart__bodypart='head')
-        return render(request, 'GeneralApp/symptomhead.html', {'x': a})
+        part_symptoms = Symptom.objects.filter(bodypart__bodypart=symptom_part)
+        return render(request, 'GeneralApp/symptomlist.html', {'symptoms' : part_symptoms, 'part' : symptom_part})
 
 
-def SymptomAbdomen(request):
-    if request.method == 'GET':
-        a = Symptom.objects.filter(bodypart__bodypart='abdomen')
-        return render(request, 'GeneralApp/symptomabdomen.html', {'x': a})
-
-
-def SymptomArms(request):
-    if request.method == 'GET':
-        a = Symptom.objects.filter(bodypart__bodypart='arms')
-        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
-
-
-def SymptomChest(request):
-    if request.method == 'GET':
-        a = Symptom.objects.filter(bodypart__bodypart='chest')
-        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
-
-
-def SymptomFeet(request):
-    if request.method == 'GET':
-        a = Symptom.objects.filter(bodypart__bodypart='feet')
-        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
-
-
-def SymptomHands(request):
-    if request.method == 'GET':
-        a = Symptom.objects.filter(bodypart__bodypart='hands')
-        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
-
-
-def SymptomHips(request):
-    if request.method == 'GET':
-        a = Symptom.objects.filter(bodypart__bodypart='hips')
-        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
-
-
-def SymptomLegs(request):
-    if request.method == 'GET':
-        a = Symptom.objects.filter(bodypart__bodypart='legs')
-        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
-
-
-def SymptomNeck(request):
-    if request.method == 'GET':
-        a = Symptom.objects.filter(bodypart__bodypart='neck')
-        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
-
-
-def SymptomPelvis(request):
-    if request.method == 'GET':
-        a = Symptom.objects.filter(bodypart__bodypart='pelvis')
-        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
-
-
-def SymptomShoulder(request):
-    if request.method == 'GET':
-        a = Symptom.objects.filter(bodypart__bodypart='shoulder')
-        return render(request, 'GeneralApp/symptomlist.html', {'x': a})
 
 
 def procedures(request):
@@ -211,6 +154,8 @@ def procedure_details(request, proc_id):
                        'current_procedure': current_procedure, 'bodyparts': bodyparts, 'symptoms': symptoms,
                        'medicines': medicines, 'doctors': doctors,
                        'images': images, 'videos': videos, 'helplines': helplines})
+
+
 
 
 def doctors(request):
@@ -247,6 +192,7 @@ def doctors_map(request):
 
 
 
+
 def medicines(request):
     medicines_list = Medicine.objects.all()
 
@@ -274,6 +220,8 @@ def medicine_details(request, med_id):
                       {'user_flag': user_flag, 'already_exist': already_exist, 'medicines': medicines_list, 'current_user': request.user, 'current_medicine': current_medicine})
 
 
+
+
 def contacts(request):
     country_list = Country.objects.all()
 
@@ -289,6 +237,10 @@ def contact_details(request, con_id):
     if request.method == 'GET':
         return render(request, 'GeneralApp/contact_details.html', {'countries': country_list, 'contacts_list': contacts_list,'current_user': request.user})
 
+
+
+
+
 @login_required
 def AddGeneralMedicine(request):
     current_user = request.user
@@ -299,6 +251,10 @@ def AddGeneralMedicine(request):
 
     return HttpResponseRedirect('/my_medicines/' + str(temp_id))
 
+
+
+
+
 @login_required
 def AddGeneralDoctor(request):
     current_user = request.user
@@ -308,6 +264,9 @@ def AddGeneralDoctor(request):
         current_user.doctor_set.add(Doctor.objects.get(pk=temp_id))
 
     return HttpResponseRedirect('/my_doctors/' + str(temp_id))
+
+
+
 
 
 class Login_api(APIView):
@@ -329,6 +288,8 @@ class Login_api(APIView):
         if user.is_active:
                 login(request, user)
                 return HttpResponse( user.id )  
+
+
         
 @login_required
 def Logout_api(request):

@@ -574,7 +574,7 @@ def EditDocument(request, docu_id):
 @login_required
 def EditInsurance(request, ins_id):
     current_user = request.user
-    queryset = current_user.insurance_set.all()
+    queryset = Insurance.objects.filter(user_id=current_user.id)
     insurance = Insurance.objects.get(id=ins_id)
 
     if request.method == 'POST':
@@ -595,7 +595,7 @@ def EditInsurance(request, ins_id):
 @login_required
 def EditMeasurement(request, mes_id):
     current_user = request.user
-    queryset = current_user.measurement_set.all()
+    queryset = Measurement.objects.filter(user_id=current_user.id)
     measurement = Measurement.objects.get(id=mes_id)
 
     if request.method == 'POST':

@@ -38,7 +38,7 @@ class MeasurementForm(forms.ModelForm):
 
     class Meta:
         model = Measurement
-        fields = ('blood_pressure', 'blood_sugar', 'cholesterol', 'height', 'weight', 'notes')
+        fields = ('blood_pressure', 'blood_sugar', 'cholesterol', 'height', 'weight', 'notes', 'date')
 
 
 class DoctorForm(forms.ModelForm):

@@ -2679,7 +2679,7 @@ h5{
 	top: 80px;
 	background:  url("img/dummy/disease-background.jpg") no-repeat;
 	background-position: 50px -90px;
-	height: 170%;
+	/*height: 170%;*/
 	width: 100%; 
 
 
@@ -2697,6 +2697,31 @@ h5{
 	width: 100%;
 
 }
+
+#content-insurances{
+	position: absolute;
+	top: 80px;
+	background:  url("img/dummy/insurance-background.jpg") no-repeat;
+	background-position: 50px -90px;
+	height: 170%;
+	width: 100%; 
+
+
+}
+#wrapper.menuDisplayed #content-insurances{
+	/*background-position: 250px -90px;*/
+	width: 103%;
+}
+
+.background-insurance{
+	position: absolute;
+	background:  rgba(255,255,255,.7);
+	top: -20px;
+	height: 102%;
+	width: 100%;
+
+}
+
 
 .content-wrapper{
 	height: 100%;

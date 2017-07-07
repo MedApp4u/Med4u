@@ -6,7 +6,14 @@ from .models import *
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
     	model = Profile
-        fields=('id', 'password', 'last_login', 'is_superuser', 'username', 'first_name', 
-        	'last_name', 'email', 'dob', 'address', 'phone_number','blood_group','gender',
-        	'profile_pic')
+        fields=('username','password','email')
+
+        def create(self, validated_data):
+        	password = validated_data.pop('password')
+        	instance = self.Meta.model(**validated_data)
+
+        	if password is not None:
+        		instance.set_password(password)
+        		instance.save()
+        		return instance
 

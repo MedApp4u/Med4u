@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^change_password/$',views.change_password,name='change_password'),
     url(r'^logout/$',views.LogoutProfile,name='logout'),
     # url(r'^api-token-auth/', views.obtain_auth_token),
+    url(r'^api/register/$', views.Profile_register.as_view(), name='api-register')
 
 ]

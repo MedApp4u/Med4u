@@ -338,7 +338,7 @@
 		fill: true,
 		fillColor: '3fbbc0',
 		fillOpacity: 0.5,
-		stroke: false,
+		// stroke: false,
 		strokeColor: 'ff0000',
 		strokeOpacity: 1,
 		strokeWidth: 1,
@@ -366,6 +366,15 @@ $(function(){
 
 
 });
+
+
+// $(document).ready(function(){
+// 	data = $('.Abdomen').attr('data-maphilight');
+// 	if part == abdomen
+// 		data.innerHTML('alwaysOn', 'true');
+		
+// });
+
 
 // $("#menu-toggle").click(function(e){
 

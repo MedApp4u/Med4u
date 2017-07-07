@@ -123,7 +123,8 @@ class SymptomsView(generic.TemplateView):
 def BodypartSymptomList(request,symptom_part):
     if request.method == 'GET':
         part_symptoms = Symptom.objects.filter(bodypart__bodypart=symptom_part)
-        return render(request, 'GeneralApp/symptomlist.html', {'symptoms' : part_symptoms, 'part' : symptom_part})
+        bodypart = Bodypart.objects.get(bodypart=symptom_part)
+        return render(request, 'GeneralApp/symptomlist.html', {'symptoms' : part_symptoms, 'part' : symptom_part, 'part_id' : bodypart.id})
 
 
 

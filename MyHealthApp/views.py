@@ -43,7 +43,7 @@ class Medicine_list(generics.ListCreateAPIView):
     queryset = Medicine.objects.all()
     serializer_class = MedicineSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('method',)
+    filter_fields = ('id',)
     search_fields = ('medicine_name',)
     renderer_classes = (JSONRenderer,)
 
@@ -53,6 +53,7 @@ class Disease_list(generics.ListCreateAPIView):
     queryset = Disease.objects.all()
     serializer_class = DiseaseSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
+    filter_fields = ('id',)
     search_fields = ('Disease_name',)
     renderer_classes = (JSONRenderer,)
 
@@ -62,7 +63,7 @@ class Appointment_list(generics.ListCreateAPIView):
     queryset = Appointment.objects.all()
     serializer_class = AppointmentSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('date',)
+    filter_fields = ('id',)
     renderer_classes = (JSONRenderer,)
 
 
@@ -89,7 +90,7 @@ class Measurement_list(generics.ListCreateAPIView):
     queryset = Measurement.objects.all()
     serializer_class = MeasurementSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('weight',)
+    filter_fields = ('id',)
     renderer_classes = (JSONRenderer,)
 
 
@@ -98,7 +99,7 @@ class Insurance_list(generics.ListCreateAPIView):
     queryset = Insurance.objects.all()
     serializer_class = InsuranceSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('expiry_date',)
+    filter_fields = ('id',)
     search_fields = ('insurance_plan',)
     renderer_classes = (JSONRenderer,)
 

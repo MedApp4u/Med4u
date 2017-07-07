@@ -10,7 +10,13 @@ from GeneralApp.forms import LoginForm
 from .forms import *
 from django.contrib.auth.forms import PasswordChangeForm
 from .models import Profile
-
+from rest_framework.decorators import api_view, renderer_classes
+from .serializers import *
+from ProfileApp.serializers import ProfileSerializer
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics
+from rest_framework.renderers import JSONRenderer
 # Create your views here.
 
 @login_required
@@ -69,16 +75,8 @@ def change_password(request):
         context={'form': form, 'current_user': current_user}
         return render(request,'change-password.html',context)
 
-# def get_auth_token(request):
-    
-#     username = request.POST.get('username')
-#     password = request.POST.get('password')
-    
-#     user = authenticate(username=username, password=password)
-#     if user is not None:
-#         # the password verified for the user
-#         if user.is_active:
-#             token, created = Token.objects.get_or_create(user=user)
-#             request.session['auth'] = token.key
-#             return redirect('/polls/', request)
-#     return redirect(settings.LOGIN_URL, request)
+class Profile_register(generics.ListCreateAPIView):
+    permission_classes = (AllowAny,)
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    renderer_classes = (JSONRenderer,)

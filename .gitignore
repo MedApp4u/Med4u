@@ -2,5 +2,4 @@
 MyHealthApp/migrations/*
 ProfileApp/migrations/*
 GeneralApp/migrations/*
-static
 virtualenv

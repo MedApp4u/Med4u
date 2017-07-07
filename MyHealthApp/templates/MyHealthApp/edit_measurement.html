@@ -1,10 +1,118 @@
+
+{% extends "MyHealthApp/sidebar.html" %}
+
+{% block div_id %}<div class="content-wrapper" id = "content-measurements">{% endblock %}
+
 {% block content %}
+<div class="background-meas">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-sm-3">
+				<h1 class="head-medi text-center">My Measurements</h1>
+				<a href="{% url 'MyHealthApp:add_measurement' %}"><div class="add_med">Add Measurements</div></a>
+			
+				{% for measurement in measurement_list %}
+				{% if measurement.id == current_measurement.id %}
+					<a href="{% url 'MyHealthApp:edit_measurement' measurement.id %}">
+					<div class="med-a">
+						<div class="col-md-5 col-sm-5">
+							<div class="medi-div">
+								<h5 id="medi-title" style="background: white; color: #3fbbc0;">Meas...{{ measurement.id }}</h5>
+							</div>
+						</div>
+						<div class="col-md-7 col-sm-7"><span class="medi-desc">3 times a day.</span></div>
+					</div>
+					</a>
+					{% if forloop.last %}
+					<div class="col-md-12 col-sm-12">
+						<div class="divider-short"></div>
+					</div>
+					{% endif %}
+				{% else %}
+					<a href="{% url 'MyHealthApp:edit_measurement' measurement.id %}">
+					<div class="med-a">
+						<div class="col-md-5 col-sm-5">
+							<div class="medi-div">
+								<h5 id="medi-title">Meas...{{ measurement.id }}</h5>
+							</div>
+						</div>
+						<div class="col-md-7 col-sm-7"><span class="medi-desc">3 times a day.</span></div>
+					</div>
+					</a>
+					{% if forloop.last %}
+					<div class="col-md-12 col-sm-12">
+						<div class="divider-short"></div>
+					</div>
+					{% endif %}
+				{% endif %}
+				{% endfor %}
+
+			</div>
+
+			<div class="col-sm-9 col-md-9"><h1 class="head-medi text-center"> Measurement {{  current_measurement.id }} </h1>
+
+  				<form method="post" enctype="multipart/form-data">
+    					{% csrf_token %}
+
+    					<div class="col-sm-6 col-md-6 label-med-left">
+	    					<p class="label-med">Blood Pressure</p>
+	    					<p class="label-desc">{{ form.blood_pressure }}</p>
+	    					<p class="label-med">Blood Sugar</p>
+	    					<p class="label-desc">{{ form.blood_sugar }}</p>
+	    					<p class="label-med">Cholestrol</p>
+	    					<p class="label-desc" id="label-desc-id">{{ form.cholesterol }}</p>
+	    					<p class="label-med">Height</p>
+	    					<p class="label-desc">{{ form.height }} </p>
+	    		
+	    					<p class="label-med">Weight</p>
+	    					<p class="label-desc">{{ form.weight }}</p>
+	    					<p class="help-text">In Kilo Grams</p>
+	    					<p class="label-med">Date</p>
+	    					<p class="label-desc">{{ form.date }}</p>
+	    					<p class="help-text">Date format: yyyy-mm-dd</p>
+	    					<p class="label-med">Notes</p>
+	    					<p class="label-desc">{{ form.notes }}</p>
+	    					<button class="upload-button" type="submit">Upload</button>
+    						<button class="delete-button" href="{% url 'MyHealthApp:delete_measurement' form.instance.id %}">delete</button>
+    					</div>
+
+    					<!-- <div class="col-sm-6 col-md-6 label-med-right">
+    					<p class="label-med">Overdose Instructions</p><br>
+    					<p class="label-desc">{{ form.overdose_instructions }}</p>
+    					<p class="label-med">Possible Side Effects</p>
+    					<p class="label-desc">{{ form.possible_sideeffects }}</p>
+    					<p class="label-med">Brand Names</p>
+    					<p class="label-desc">{{ form.brand_names }}</p>
+    					<button class="upload-button" type="submit">Upload</button>
+    					<button class="delete-button" href="{% url 'MyHealthApp:delete_medicine' form.instance.id %}">Delete</button>
+    					
+    					</div> -->
+    					 
+  
+					
+				  </form>
+				 
+			</div>
+		</div>
+		
+	</div>
+
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+<!-- 
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Upload</button>
     <a href="{% url 'MyHealthApp:delete_measurement' form.instance.id %}">delete</a>
   </form>
-
-{% endblock %}
-
+ -->

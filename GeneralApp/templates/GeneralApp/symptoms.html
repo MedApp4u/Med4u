@@ -1,12 +1,33 @@
 {% extends "GeneralApp/base.html" %}
 {% load static %}
 
-{% block content %}
-	<div id="image_tab">
-		
-		<img src="{% static 'GeneralApp/img/body-parts/male_front.gif' %}" id="m_front" usemap="#m_front" class="male_front">
+{% block navbar %}
+	<li><a href="{% url 'MyHealthApp:home' %}">Home</a></li>
+	<li><a href="{% url 'GeneralApp:about' %}">About Us</a></li>
+	<li><a href="{% url 'GeneralApp:doctors' %}">Doctors</a></li>
+	<li><a href="{% url 'GeneralApp:medicines' %}">Medicines</a></li>
+	<li><a href="{% url 'GeneralApp:symptoms' %}">Symptoms</a></li>
+	<li><a href="{% url 'GeneralApp:procedures' %}">Procedures</a></li>
+	<li><a href="{% url 'GeneralApp:contacts' %}">Emergency</a></li>
+	<li><a href="{% url 'GeneralApp:login' %}">Sign In</a></li>
+	<li><a href="{% url 'GeneralApp:register' %}">Sign Up</a></li>
+{% endblock %}
 
-		<map name="m_front">
+{% block content %}
+
+	    <section id="intro" class="intro login-intro">
+			<div class="intro-content symptoms-intro-content">
+					<div class="container procedure-container">
+						<div class="row procedure-row">
+							<div id="image_tab">
+								
+								<!-- <div class="male_front"></div> -->
+
+								<img src="{% static 'GeneralApp/img/body-parts/male_front.gif' %}" id="m_front" usemap="#m_front" class="male_front">
+
+								<map name="m_front" class="male_front">
+
+									<area class="Abdomen" shape="poly" coords="91,149,98,155,107,162,113,163,117,165,126,164,133,165,166,165,176,164,188,162,196,158,205,150,205,165,204,176,203,184,200,194,196,205,195,214,195,222,196,231,197,237,198,242,198,247,198,249,195,252,190,254,183,256,177,257,167,258,154,258,144,259,135,259,126,258,116,257,111,256,105,253,101,251,99,249,99,241,100,235,102,227,103,216,100,204,98,197,95,188,93,178,92,169" href="#" alt="Abdomen" data-href="/avatar/male/13/abdomen" data-body_area="13" data-mapster-key="0" data-maphighlight = " { 'stroke':false, 'fillcolor':#0000aa, 'fillOpacity':0.6 } ">
 
 			<area class="Abdomen" shape="poly" coords="91,149,98,155,107,162,113,163,117,165,126,164,133,165,166,165,176,164,188,162,196,158,205,150,205,165,204,176,203,184,200,194,196,205,195,214,195,222,196,231,197,237,198,242,198,247,198,249,195,252,190,254,183,256,177,257,167,258,154,258,144,259,135,259,126,258,116,257,111,256,105,253,101,251,99,249,99,241,100,235,102,227,103,216,100,204,98,197,95,188,93,178,92,169" href="{% url 'GeneralApp:symptom_part' 'abdomen'%}" alt="Abdomen" data-href="/avatar/male/13/abdomen" data-body_area="13" data-mapster-key="0" data-maphighlight = " { 'stroke':false, 'fillcolor':#0000aa, 'fillOpacity':0.6 } ">
 
@@ -30,7 +51,10 @@
 
 			<area class="Shoulder" shape="poly" coords="103,98,95,96,94,97,91,97,89,98,85,100,80,102,77,106,74,109,72,113,69,119,67,125,65,131,65,135,65,140,67,145,67,149,72,146,77,144,82,141,83,140,88,134,92,128,103,98,194,99,203,97,205,97,209,99,212,99,217,103,221,106,224,112,227,117,229,122,230,126,231,130,232,134,231,140,231,144,230,148,226,147,220,143,215,141,211,137,207,132,204,127,194,99" href="{% url 'GeneralApp:symptom_part' 'shoulder'%}" alt="Shoulder" data-href="/avatar/male/10/shoulder" data-body_area="10" data-mapster-key="10">
 
-		</map>
+							</div>
+						</div>		
+					</div>		
+			</div>	
+	    </section>
 
-	</div>
 {% endblock %}

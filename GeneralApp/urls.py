@@ -11,17 +11,7 @@ urlpatterns = [
     url(r'^accounts/profile/$', views.redirect_to_dashboard, name='redirect_to_dashboard'),
     
     url(r'^symptoms/$', views.SymptomsView.as_view(), name='symptoms'),
-    url(r'^symptoms/head/$', views.SymptomHead,name='head-symptom'),
-    url(r'^symptoms/abdomen/$', views.SymptomAbdomen,name='abdomen-symptom'),
-    url(r'^symptoms/arms/$', views.SymptomArms,name='arms-symptom'),
-    url(r'^symptoms/chest/$', views.SymptomChest,name='chest-symptom'),
-    url(r'^symptoms/feet/$', views.SymptomFeet,name='feet-symptom'),
-    url(r'^symptoms/hands/$', views.SymptomHands,name='hands-symptom'),
-    url(r'^symptoms/hips/$', views.SymptomHips,name='hips-symptom'),
-    url(r'^symptoms/legs/$', views.SymptomLegs,name='legs-symptom'),
-    url(r'^symptoms/neck/$', views.SymptomNeck,name='neck-symptom'),
-    url(r'^symptoms/pelvis/$', views.SymptomPelvis,name='pelvis-symptom'),
-    url(r'^symptoms/shoulder/$', views.SymptomShoulder,name='shoulder-symptom'),
+    url(r'^symptoms/(?P<symptom_part>[\w.@+-]+)/$', views.BodypartSymptomList, name='symptom_part'),
     
     url(r'^procedures/$', views.procedures, name='procedures'),
     url(r'^procedures/(?P<proc_id>[0-9]+)$', views.procedure_details, name='procedure_details'),

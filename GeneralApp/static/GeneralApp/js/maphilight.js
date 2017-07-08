@@ -440,6 +440,10 @@ function myFunction(x){
 	x.classList.toggle("change");
 }
 
+// $(document).ready(function(){
+//     $("#image_tab").animate({left: '0px'});
+// });
+
 // $(document).on("click",'ul li', function(){
 // 	$('ul li').removeClass('active');
 // 	$(this).addClass('active');

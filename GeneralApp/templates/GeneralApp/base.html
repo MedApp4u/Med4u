@@ -188,7 +188,10 @@
 </div>
 
 <!-- Core JavaScript Files -->
-    <script src="{% static 'GeneralApp/js/jquery.min.js' %}"></script>	 
+
+    <script src="{% static 'GeneralApp/js/jquery.min.js' %}"></script>
+    <script src="{% static 'GeneralApp/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'GeneralApp/js/jquery.easing.compatibility.js' %}"></script>		 
     <script src="{% static 'GeneralApp/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'ProfileApp/js/bootstrap.js' %}"></script>
     <script src="{% static 'GeneralApp/js/jquery.easing.min.js' %}"></script>
@@ -201,6 +204,7 @@
 	<script src="{% static 'GeneralApp/js/nivo-lightbox.min.js' %}"></script>
     <script src="{% static 'GeneralApp/js/custom.js' %}"></script>
     <script src="{% static 'MyHealthApp/js/maphilight.js' %}"></script>
+    {% block animate_symptom %}{% endblock %}
 
 </body>
 

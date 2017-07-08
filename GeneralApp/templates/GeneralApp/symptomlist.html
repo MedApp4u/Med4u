@@ -7,7 +7,7 @@
 	<li><a href="{% url 'GeneralApp:about' %}">About Us</a></li>
 	<li><a href="{% url 'GeneralApp:doctors' %}">Doctors</a></li>
 	<li><a href="{% url 'GeneralApp:medicines' %}">Medicines</a></li>
-	<li><a href="{% url 'GeneralApp:symptoms' %}">Symptoms</a></li>
+	<li><a id="active" href="{% url 'GeneralApp:symptoms' %}">Symptoms</a></li>
 	<li><a href="{% url 'GeneralApp:procedures' %}">Procedures</a></li>
 	<li><a href="{% url 'GeneralApp:contacts' %}">Emergency</a></li>
 	<li><a href="{% url 'GeneralApp:login' %}">Sign In</a></li>
@@ -20,6 +20,26 @@
 			<div class="intro-content symptoms-intro-content">
 					<div class="container procedure-container">
 						<div class="row procedure-row">
+							<div class="vp-form-head">
+								<img src="{% static 'ProfileApp/css/img/icons/cell.png' %}" class="vp-form-icon" />
+								<div class="vp-form-icon-separator"></div>
+								<p class="vp-form-icon-text">
+									Symptoms - {{ part }}
+								</p>																
+							</div>
+							<div class="procedure-body-scroll">
+								{% for symptom in symptoms %}
+									<a href="{% url 'GeneralApp:medicine_details' symptom.id %}" class="procedure-body-tab">
+										<div class = "procedure-body-name">
+											<div class = "procedure-body-separator"></div>
+											<div class = "procedure-body-label">{{ symptom.symptom_name }}</div>
+										</div>
+									</a>
+								{% endfor %}
+							</div>	
+							<div class="procedure-body-desc">
+
+							</div>													
 							<div id="image_tab">
 								
 								<!-- <div class="male_front"></div> -->
@@ -51,12 +71,17 @@
 
 									<area class="Shoulder" shape="poly" coords="103,98,95,96,94,97,91,97,89,98,85,100,80,102,77,106,74,109,72,113,69,119,67,125,65,131,65,135,65,140,67,145,67,149,72,146,77,144,82,141,83,140,88,134,92,128,103,98,194,99,203,97,205,97,209,99,212,99,217,103,221,106,224,112,227,117,229,122,230,126,231,130,232,134,231,140,231,144,230,148,226,147,220,143,215,141,211,137,207,132,204,127,194,99" href="{% url 'GeneralApp:symptom_part' 'shoulder'%}" alt="Shoulder" data-href="/avatar/male/10/shoulder" data-body_area="10" data-mapster-key="10" data-maphilight= {% if part == "shoulder" %} '{"alwaysOn":"true"}' {% endif %} />
 
-								</map>
-
+								</map>							
 							</div>
 						</div>		
 					</div>		
 			</div>	
 	    </section>
+
+{% endblock %}
+
+{% block animate_symptom %}
+
+	<script src="{% static 'GeneralApp/js/jquery.js' %}"></script>
 
 {% endblock %}

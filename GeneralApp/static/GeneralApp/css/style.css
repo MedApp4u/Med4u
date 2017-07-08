@@ -975,6 +975,126 @@ hr.bold {
 	color: #fff;
 }
 
+/* ===========================
+--- Symptoms Form Head
+============================ */
+
+.vp-form-head {
+	background: #3fbbc0;
+	position: absolute;
+	top: 81px;
+	left: 0%;
+	width: 72%;
+	height: 100px;
+	visibility: hidden;
+}
+
+.vp-form-icon, .vp-form-icon-separator, .vp-form-icon-text {
+	float: left;
+}
+
+.vp-form-icon {
+	position: relative;
+	top: 50%;
+	left: 5.5%;
+	width: 56px;
+	height: 56px;
+	margin: -28px 0 0 -28px;
+}
+
+.vp-form-icon-separator {
+	position: relative;
+	bottom: -50%;
+	right: -7.7%;
+	width: 2.5px;
+	height: 64px;
+	margin: -32px 0 0 -1.25px;
+	background-color: #222;
+}
+
+.vp-form-icon-text {
+	position: relative;
+	top: 50%;
+	left: 27.0%;
+	width: 360px;
+	height: 50px;
+	line-height: 50px;
+	margin: -25px 0 0 -180px;
+	color: white;
+	font-size: 35px;
+	/*text-transform: uppercase;*/
+	font-weight: 800;
+	font-variant: small-caps;
+	letter-spacing: 1.5px;
+}
+
+.procedure-body-scroll, .find-doctors-body {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	position: absolute;
+	top: 181px;
+	left: 0%;
+	width: 40%;
+	height: 76.18%;
+	visibility: hidden;
+}
+
+a.procedure-body-tab {
+	display: block;
+	position: relative;
+	/*top: 181px;*/
+	height: 120px;
+	width: 100%;
+	background: white;
+	border-bottom: 1px solid #f3f3f3;
+	overflow: hidden;
+}
+
+a.procedure-body-tab:hover {
+	background: #f3f3f3;
+	color: #3fbbc0;
+}
+
+a.procedure-body-tab:hover .procedure-body-separator {
+	background: #555;
+}
+
+.procedure-body-name {
+	position: relative;
+	top: 38%;
+	left: 10%;
+	height: 100%;
+	width: 100%;
+	left: 10%;
+}
+
+.procedure-body-separator {
+	background: #666;
+	width: 0.6%;
+	height: 30%;
+	float: left;
+}
+
+.procedure-body-label {
+	position: relative;
+	left: 10px;
+	font-size: 22px;
+	font-weight: 700;
+	float: left;
+	height: 35.7px;
+	line-height: 35.7px;
+}
+
+.procedure-body-desc {
+	position: relative;
+	width: 32%;
+	height: 76.18%;
+	top: 181px;
+	left: 40%;
+	font-weight: 600;
+	border-right: 1px solid #ebebeb;
+	visibility: hidden;
+}
 
 
 /* ===========================
@@ -1518,6 +1638,7 @@ form.lead label,form.lead input {
 /* Active link */
 #active {
 	color: #3fbbc0;
+	border-bottom: 1px solid #3fbbc0;
 }
 
 /* -------------------- */	
@@ -2768,25 +2889,28 @@ a.btn:focus{
 
 .male_front{
 	position: relative !important;
-/*	top: 80px;
-	left: 30px;*/
 	background-repeat: no-repeat !important;
 	top: 50% !important;
 	left: 50% !important;
 	height: 600px !important;
 	width: 297px !important;
-	/*background: black;*/
 	margin-top: -300px !important;
 	margin-left: -148.5px !important;
 }
 
-#image_tab{
+#image_tab, #animate-image_tab{
 	position: absolute;
 	height:690px;
 	width: 400px;
 	top: 81px;
 }
 
-.useless-class {
+#image_tab {
+	left: 50%;
+	margin-left: -200px;
+}
+
+#animate-image_tab {
 	
 }
+

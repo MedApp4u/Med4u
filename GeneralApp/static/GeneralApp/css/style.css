@@ -1138,6 +1138,13 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	padding: 0px;
 }
 
+.intro-content-404 {
+	height: 100%;
+	background: url(img/dummy/404.jpg);
+	background-repeat: no-repeat;
+	background-size: 1550px 1000px;
+}
+
 .intro-content.intro-nobg {
 	background:#fff;
 	position:relative;
@@ -1418,6 +1425,12 @@ form.lead label,form.lead input {
 	margin-left: -30%;
 }
 
+.form-head-404 {
+	top: 30px;
+	width: 40%;
+	margin-left: -20%;
+}
+
 .sign-up-form-head {
 	top: -40px;
 	left: 68%;
@@ -1456,6 +1469,12 @@ form.lead label,form.lead input {
 	margin-left: -30%;
 }
 
+.form-body-404 {
+	height: 350px;
+	width: 40%;
+	margin-left: -20%;
+}
+
 .rp-confirm-p {
 	font-weight: 500;
 	font-size: 13px;
@@ -1472,7 +1491,7 @@ form.lead label,form.lead input {
 	top: 129px;
 }
 
-.rp-sent-form-separator {
+.rp-sent-form-separator, .separator-404 {
 	position: absolute;
 	top: 220px;
 	left: 50%;
@@ -1482,6 +1501,10 @@ form.lead label,form.lead input {
 	background-color: #ebebeb;
 }
 
+.separator-404 {
+	top: 255px;
+}
+
 .rp-complete-form-separator {
 	top: 200px;
 }
@@ -1489,6 +1512,16 @@ form.lead label,form.lead input {
 #p2 {
 	position: absolute;
 	top: 255px;
+}
+
+#p3 {
+	position: absolute;
+	top: 150px;
+}
+
+#p4 {
+	position: absolute;
+	top: 190px;
 }
 
 .sign-up-form-body {

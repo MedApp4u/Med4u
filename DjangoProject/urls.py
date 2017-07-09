@@ -21,6 +21,8 @@ from GeneralApp.forms import MyPasswordResetForm
 from django.conf.urls.static import static
 from django.conf import settings
 
+handler404 = 'GeneralApp.views.page_not_found_view'
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^oauth/', include('social_django.urls', namespace='social')),

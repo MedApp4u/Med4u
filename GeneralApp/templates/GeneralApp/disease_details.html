@@ -8,6 +8,7 @@
 	<li><a href="{% url 'GeneralApp:doctors' %}">Doctors</a></li>
 	<li><a href="{% url 'GeneralApp:medicines' %}">Medicines</a></li>
 	<li><a href="{% url 'GeneralApp:symptoms' %}">Symptoms</a></li>
+	<li><a id="active" href="{% url 'GeneralApp:diseases' %}">Diseases</a></li>
 	<li><a href="{% url 'GeneralApp:procedures' %}">Procedures</a></li>
 	<li><a href="{% url 'GeneralApp:contacts' %}">Emergency</a></li>
 	{% if current_user.is_anonymous %}
@@ -92,7 +93,7 @@
 											</div>		
 										</a>
 									{% else %}
-										<a href="" id="add-medc-link" onClick="submitForm()">
+										<a href="#" id="add-medc-link" onClick="submitForm()">
 											<div class="add-medc-btn">
 												<img class = "add-dis-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
 												<p class="add-dis-desc">Add to my diseases</p>
@@ -150,7 +151,17 @@
 											{{ medicine.medicine_name.title }}{% if forloop.last %}{% else %},{% endif %}
 										{% endfor %}
 									</p>
-								</div>								
+								</div>	
+								<div class="diseases-desc-left">
+									<p class="diseases-desc-label">Procedure(s)</p>
+								</div>
+								<div class="diseases-desc-right">
+									<p class="diseases-desc-text">
+										{% for procedure in procedures %}
+											{{ procedure.procedure_name.title }}{% if forloop.last %}{% else %},{% endif %}
+										{% endfor %}
+									</p>
+								</div>																
 <!-- 								<div class="diseases-desc-left" id="desc-label-comp">
 									<p class="diseases-desc-label">Complication</p>
 								</div>
@@ -163,6 +174,7 @@
 				<!-- </div> -->	
 			</div>	
 	    </section>
+	    {{already_exist}}
 
 	    <div class="hidden-div">
 			<form action="{% url 'GeneralApp:add_general_disease' %}" method="post" id="hidden-disease-form">

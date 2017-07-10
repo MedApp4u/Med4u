@@ -143,8 +143,8 @@ def SymptomDetails(request, symptom_part, symp_id):
 
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/symptom_details1.html',
-                      {'symptoms': symptoms_list, 'current_user': request.user, 'current_part':current_part,
+        return render(request, 'GeneralApp/symptom_details.html',
+                      {'symptoms': symptoms_list, 'current_user': request.user, 'part':current_part,
                        'current_symptom': current_symptom, 'bodyparts': bodyparts, 
                        'videos': videos, 'diseases': diseases ,'current_user':request.user})
 

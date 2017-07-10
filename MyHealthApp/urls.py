@@ -32,9 +32,9 @@ urlpatterns = [
     url(r'^api/mymeasurements/(?P<id1>[0-9]+)/$', views.MyMeasurementsapi.as_view(), name='MyMeasurementsapi'),
 
 
-    url(r'^home/$', views.HomeView.as_view(), name='home'),
+    url(r'^home/$', views.HomeView, name='home'),
 
-    url(r'^MyHealth/$', views.MyHealthView.as_view(), name='MyHealth'),
+    url(r'^MyHealth/$', views.MyHealthView, name='MyHealth'),
     
     url(r'^my_medicines/$', views.MyMedicines, name='my_medicines'),
     url(r'^my_doctors/$', views.MyDoctors, name='my_doctors'),

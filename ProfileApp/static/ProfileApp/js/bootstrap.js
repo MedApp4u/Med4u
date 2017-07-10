@@ -6,6 +6,10 @@ $(".doctor-clickable").click(function(){
     alert("Doctor already exists in your doctors!");
 });
 
+$(".disease-clickable").click(function(){
+    alert("Disease already exists in your diseases!");
+});
+
 $(".user-not-found").click(function(){
     alert("You need to be logged in to access this feature!");
 });
@@ -13,5 +17,6 @@ $(".user-not-found").click(function(){
 
 function submitForm(){
 	$('#hidden-medicine-form').submit();
+	$('#hidden-disease-form').submit();
 	$('#hidden-doctor-form').submit();
 }

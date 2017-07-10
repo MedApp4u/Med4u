@@ -301,6 +301,19 @@ def AddGeneralDoctor(request):
 
 
 
+@login_required
+def AddGeneralDisease(request):
+    current_user = request.user
+
+    if request.method == 'POST':
+        temp_id = request.POST['dis_id']
+        current_user.disease_set.add(Disease.objects.get(pk=temp_id))
+
+    return HttpResponseRedirect('/my_diseases/' + str(temp_id))    
+
+
+
+
 
 class Login_api(APIView):
     # def get(request):

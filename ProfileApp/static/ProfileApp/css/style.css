@@ -1386,7 +1386,7 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	/*margin: -22.5% 0 0 -7.5%;*/
 }
 
-.procedure-body-desc {
+.procedure-body-desc, .diseases-body-desc {
 	position: relative;
 	width: 60%;
 	height: 76.18%;
@@ -1395,21 +1395,21 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	font-weight: 600;
 }
 
-.procedure-desc-left, .procedure-desc-right, .medicine-desc-left, .medicine-desc-right, .contacts-desc-left, .contacts-desc-right {
+.procedure-desc-left, .procedure-desc-right, .medicine-desc-left, .medicine-desc-right, .contacts-desc-left, .contacts-desc-right, .diseases-desc-left, .diseases-desc-right {
 	position: relative;
 	float: left;
 	height: 11%;
 	z-index: 0;
 }
 
-.procedure-desc-left, .medicine-desc-left, .contacts-desc-left {
+.procedure-desc-left, .medicine-desc-left, .contacts-desc-left, .diseases-desc-left {
 	background: linear-gradient(90deg, #3fbbc0, #3fbbc0, #3fbbc0, #3ab3b8);
 	color: white;
 	border-bottom: 1px solid #37aeb3;
 	width: 21%;
 }
 
-.procedure-desc-right, .medicine-desc-right, .contacts-desc-right {
+.procedure-desc-right, .medicine-desc-right, .contacts-desc-right, .diseases-desc-right {
 	border-bottom: 1px solid #f3f3f3;
 	width: 79%;
 }
@@ -1430,7 +1430,16 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	width: 93%;
 }
 
-.procedure-desc-label {
+#disease-desc {
+	height: 34%;
+}
+
+#disease-desc p{
+	top: 12%;
+	width: 95%;
+}
+
+.procedure-desc-label, .diseases-desc-label {
 	position: relative;
 	top: 32%;
 	left: 20px;
@@ -1444,7 +1453,7 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	/*text-align: center;*/
 }
 
-.procedure-desc-name {
+.procedure-desc-name, .diseases-desc-text {
 	position: relative;
 	top: 28%;
 	left: 3%;
@@ -1546,7 +1555,7 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	box-shadow: 0px 0px 10px 5px rgba(25, 119, 123, 0.35);
 }
 
-.add-doctor-desc, .find-doctor-desc, .add-medc-desc {
+.add-doctor-desc, .find-doctor-desc, .add-medc-desc, .add-dis-desc {
 	position: absolute;
 	float: left;
 	top: 25%;
@@ -1564,11 +1573,15 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	left: 20%;
 }
 
+.add-dis-desc {
+	left: 24%;
+}
+
 .find-doctor-desc {
 	left: 27%;
 }
 
-.add-doctor-icon, .find-doctor-icon, .add-medc-icon {
+.add-doctor-icon, .find-doctor-icon, .add-medc-icon, .add-dis-icon {
 	position: absolute;
 	float: left;
 	left: 12%;
@@ -1580,6 +1593,10 @@ a.procedure-body-tab:hover .procedure-body-separator {
 
 .add-medc-icon {
 	left: 10%;
+}
+
+.add-dis-icon {
+	left: 12%;
 }
 
 .find-doctor-icon {

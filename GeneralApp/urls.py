@@ -12,6 +12,7 @@ urlpatterns = [
     
     url(r'^symptoms/$', views.SymptomsView.as_view(), name='symptoms'),
     url(r'^symptoms/(?P<symptom_part>[\w.@+-]+)/$', views.BodypartSymptomList, name='symptom_part'),
+    url(r'^symptoms/(?P<symp_id>[0-9]+)$', views.SymptomDetails, name='symptom_details'),
     
     url(r'^procedures/$', views.procedures, name='procedures'),
     url(r'^procedures/(?P<proc_id>[0-9]+)$', views.procedure_details, name='procedure_details'),

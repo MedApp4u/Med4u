@@ -10,7 +10,7 @@ from .serializers import *
 from .forms import *
 from rest_framework.views import APIView
 from ProfileApp.models import Profile
-from ProfileApp.serializers import ProfileSerializer , FullProfileSeriailizer
+from ProfileApp.serializers import ProfileSerializer, FullProfileSeriailizer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter

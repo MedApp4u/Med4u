@@ -588,14 +588,12 @@ def AddMedicine(request):
         note_form = MedicineNoteForm(request.POST)
         if form.is_valid():
             temp_instance = form.save(commit=False)
-            temp_instance.save()
             temp_instance.user.add(request.user)
             temp_instance.save()
         else:
             print form.errors
         if note_form.is_valid():
             temp_instance = note_form.save(commit=False)
-            temp_instance.save()
             temp_instance.user.add(request.user)
             temp_instance.save()
             return HttpResponseRedirect('/my_medicines')

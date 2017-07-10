@@ -135,6 +135,16 @@
 										{% endfor %}
 									</p>
 								</div>
+								<div class="procedure-desc-left" id="desc-label-help">
+									<p class="procedure-desc-label">Diseases</p>
+								</div>
+								<div class="procedure-desc-right" id="desc-field-help">
+									<p class="procedure-desc-name">
+										{% for disease in diseases %}
+											{{ disease.disease_name }}{% if forloop.last %}{% else %},{% endif %}
+										{% endfor %}
+									</p>
+								</div>
 								
 							</div>
 						</div>		

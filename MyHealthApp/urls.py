@@ -17,13 +17,21 @@ urlpatterns = [
     url(r'^api/disease_list/$', views.Disease_list.as_view(), name='disease_list'),
 
     url(r'^api/profile/(?P<pk>[0-9]+)/$', views.Profile_show.as_view(), name='Profile_show'),
-    url(r'^api/doctor/(?P<pk>[0-9]+)/$', views.Doctor_show.as_view(), name='Doctor_show'),
-    url(r'^api/medicine/(?P<pk>[0-9]+)/$', views.Medicine_show.as_view(), name='Medicine_show'),
-    url(r'^api/disease/(?P<pk>[0-9]+)/$', views.Disease_show.as_view(), name='Disease_show'),
-    url(r'^api/procedure/(?P<pk>[0-9]+)/$', views.Procedure_show.as_view(), name='Procedure_show'),
-    url(r'^api/bodypart/(?P<pk>[0-9]+)/$', views.Bodypart_show.as_view(), name='Bodypart_show'),
-    url(r'^api/symptom/(?P<pk>[0-9]+)/$', views.Symptom_show.as_view(), name='Symptom_show'),
-  
+    url(r'^api/mydoctors/(?P<id1>[0-9]+)/$', views.MyDoctorsapi.as_view(), name='MyDoctorsapi'),
+    url(r'^api/mydoctornotes/(?P<id1>[0-9]+)/(?P<id2>[0-9]+)/$', views.MyDoctorNotesapi.as_view(), name='MyDoctorNotesapi'),
+
+    url(r'^api/mymedicines/(?P<id1>[0-9]+)/$', views.MyMedicineapi.as_view(), name='MyMedicineapi'),
+    url(r'^api/mymedicinenotes/(?P<id1>[0-9]+)/(?P<id2>[0-9]+)/$', views.MyMedicineNotesapi.as_view(), name='MyMedicineNotesapi'),
+    url(r'^api/mydiseases/(?P<id1>[0-9]+)/$', views.MyDiseasesapi.as_view(), name='MyDiseasesapi'),
+    url(r'^api/mydiseasenotes/(?P<id1>[0-9]+)/(?P<id2>[0-9]+)/$', views.MyDiseaseNotesapi.as_view(), name='MyDiseaseNotesapi'),
+    # url(r'^api/myprocedures/(?P<id1>[0-9]+)/$', views.MyProceduresapi.as_view(), name='MyProceduresapi'),
+    # url(r'^api/bodypart/(?P<pk>[0-9]+)/$', views.Bodypart_show.as_view(), name='Bodypart_show'),
+    # url(r'^api/mysymptoms/(?P<pk>[0-9]+)/$', views.MySymptomsapi.as_view(), name='Symptom_show'),
+    url(r'^api/myappointments/(?P<id1>[0-9]+)/$', views.MyAppointmentsapi.as_view(), name='MyAppointmentsapi'),
+    url(r'^api/myinsurances/(?P<id1>[0-9]+)/$', views.MyInsurancesapi.as_view(), name='MyInsurancesapi'),
+    url(r'^api/mymeasurements/(?P<id1>[0-9]+)/$', views.MyMeasurementsapi.as_view(), name='MyMeasurementsapi'),
+
+
     url(r'^home/$', views.HomeView.as_view(), name='home'),
 
     url(r'^MyHealth/$', views.MyHealthView.as_view(), name='MyHealth'),

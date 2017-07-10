@@ -123,14 +123,14 @@ class AboutUs(generic.TemplateView):
 
 
 
-class SymptomsView(generic.TemplateView):
-    template_name = 'GeneralApp/symptoms.html'
+def SymptomsView(request):
+    return render(request,'GeneralApp/symptoms.html',{'current_user':request.user})
 
 def BodypartSymptomList(request,symptom_part):
     if request.method == 'GET':
         part_symptoms = Symptom.objects.filter(bodypart__bodypart=symptom_part)
         bodypart = Bodypart.objects.get(bodypart=symptom_part)
-        return render(request, 'GeneralApp/symptomlist.html', {'symptoms' : part_symptoms, 'part' : symptom_part, 'part_id' : bodypart.id})
+        return render(request, 'GeneralApp/symptomlist.html', {'symptoms' : part_symptoms, 'part' : symptom_part, 'part_id' : bodypart.id, 'current_user':request.user})
 
 def SymptomDetails(request, symp_id):
     symptoms_list = Symptom.objects.all()
@@ -145,7 +145,7 @@ def SymptomDetails(request, symp_id):
         return render(request, 'GeneralApp/symptom_details.html',
                       {'symptoms': symptoms_list, 'current_user': request.user,
                        'current_symptom': current_symptom, 'bodyparts': bodyparts, 
-                       'videos': videos, 'diseases':diseases, })
+                       'videos': videos, 'diseases':diseases, 'current_user':request.user})
 
 
 

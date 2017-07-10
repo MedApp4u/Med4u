@@ -135,17 +135,17 @@ def BodypartSymptomList(request,symptom_part):
 def SymptomDetails(request, symp_id):
     symptoms_list = Symptom.objects.all()
     current_symptom = Symptom.objects.get(id=symp_id)
-    bodyparts = Bodypart.objects.filter(symptom__id=symp_id)
+    bodyparts = Bodypart.objects.filter(id=symp_id)
     s = Symptom.objects.get(id=symp_id)
     videos = s.symptom_videos_set.all()
-    diseases = s.disease_set.all()
+    diseases = Disease.objects.filter(symptom=symp_id)
 
 
     if request.method == 'GET':
-        return render(request, 'GeneralApp/symptom_details.html',
+        return render(request, 'GeneralApp/symptom_details1.html',
                       {'symptoms': symptoms_list, 'current_user': request.user,
                        'current_symptom': current_symptom, 'bodyparts': bodyparts, 
-                       'videos': videos, 'diseases':diseases, 'current_user':request.user})
+                       'videos': videos, 'diseases': diseases ,'current_user':request.user})
 
 
 
@@ -252,7 +252,7 @@ def diseases(request):
 def disease_details(request, dis_id):
     disease_list = Disease.objects.all()
     current_disease = Disease.objects.get(id=dis_id)
-    symptoms = Symptom.objects.filter(disease__id=dis_id)
+    symptoms = Symptom.objects.filter(id=dis_id)
     medicines = Medicine.objects.filter(disease__id=dis_id)
     procedures = Procedure.objects.filter(disease__id=dis_id)
     current_user = request.user

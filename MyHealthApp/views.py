@@ -500,6 +500,7 @@ def MyMedicines(request):
 
 @login_required
 def AddDocument(request):
+    
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():

@@ -4,17 +4,17 @@
 
 {% block content %}
 
-
-	<h1 class="head-med text-center">My Documents</h1>
+<div class="background-docu">
+		<h1 class="head-med text-center">My Documents</h1>
 
 	<a href="{% url 'MyHealthApp:add_document' %}"><div class="ADD">Add Documents</div></a>
 
 	<div class="container">
 		<div class="row">
 			{% for documents in document_list %}
-			<a href="{{ documents.doc.url }}" download><div class="col-md-12 col-sm-12">
+			<a href="{% url 'MyHealthApp:edit_document' documents.id %}"><div class="col-md-12 col-sm-12">
 				<div class="med-div">
-				<h5 id="med-title">{{ documents.doc_name }}</h5>
+				<h5 id="med-title">{{ documents.doc_half_name }}</h5>
 				<span class="med-desc">Pediatrician.</span>
 				</div>
 			</div></a>
@@ -30,6 +30,8 @@
 		</div>
 		
 	</div>
+
+</div>
 
 
 

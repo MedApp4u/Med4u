@@ -449,6 +449,20 @@ function myFunction(x){
 	x.classList.toggle("change");
 }
 
+function name(x){
+ 	var name = x;
+  	var count =0;
+   	var string = [];
+   	for(i=0;i<name.length;i++){
+   		if (name[i] == "\\"){
+   			count = count + 1;
+   		}
+   		if (count >= 2){
+   			string.push(name[i]);
+   		}
+   	}
+   	return string.join('');
+}
 // $(document).on("click",'ul li', function(){
 // 	$('ul li').removeClass('active');
 // 	$(this).addClass('active');
@@ -511,3 +525,27 @@ $(document).ready(function(){
 		$("a[href$='current']").child().css("margin-left","0px");
 	})
 });
+
+jQuery(function($) {
+  $('input[type="file"]').change(function() {
+    if ($(this).val()) {
+    	var filename = $(this).val();
+   
+       	var name_file = name(filename);
+       	console.log(name_file);
+     
+        $(this).closest('.file-upload').find('.file-name').html(name_file);
+    }
+  });
+});
+
+// def document_name(x):
+//     name = x
+//     count = 0
+//     string = []
+//     for i in name:
+//         if count >= 2:
+//             string.append(i)
+//         if i == '/':
+//             count = count + 1;
+//     return ''.join(string)

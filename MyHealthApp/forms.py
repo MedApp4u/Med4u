@@ -5,10 +5,12 @@ from django.db import models
 from .models import *
 from django import forms
 from .choices import *
+from phonenumber_field.formfields import PhoneNumberField
+from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 
 class DocumentForm(forms.ModelForm):
-    doc = forms.FileField(required=False, label='Upload Document')
+    doc = forms.FileField(required=True, label='Upload Document', widget=forms.FileInput(attrs={'class':'choose-button'}))
     notes = forms.CharField(required=False, label='Notes', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
 
     class Meta:
@@ -43,16 +45,17 @@ class MeasurementForm(forms.ModelForm):
 
 class DoctorForm(forms.ModelForm):
     doctor_name = forms.CharField(required=True, label='Name')
-    doctor_description = forms.CharField(required=False, label='Description', widget=forms.Textarea())
+    doctor_description = forms.CharField(required=False, label='Description', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
     doctor_address = forms.CharField(required=True, label='Address', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
     doctor_speciality = forms.ChoiceField(required=True, choices=SPECIALITY_CHOICE, label='Speciality')
     doctor_timings = forms.CharField(required=True, label='Timing')
     doctor_pic = forms.ImageField(required=False, label='Upload Photo')
+    doctor_phone_number = PhoneNumberField(required=False, label='Contact No.',widget=PhoneNumberPrefixWidget(attrs={'class':'my-label-phone'}))
 
     class Meta:
         model = Doctor
         fields = (
-            'doctor_name', 'doctor_description', 'doctor_address', 'doctor_speciality', 'doctor_timings', 'doctor_pic')
+            'doctor_name', 'doctor_description', 'doctor_address', 'doctor_speciality', 'doctor_timings', 'doctor_pic','doctor_phone_number')
 
 
 class AppointmentForm(forms.ModelForm):

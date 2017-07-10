@@ -1036,17 +1036,23 @@ hr.bold {
 	height: 100px;
 }
 
-.vp-form-icon, .vp-form-icon-separator, .vp-form-icon-text {
+.vp-form-icon, .vp-form-icon-separator, .vp-form-icon-text, .diseases-form-icon {
 	float: left;
 }
 
-.vp-form-icon {
+.vp-form-icon, .diseases-form-icon {
 	position: relative;
 	top: 50%;
 	left: 4%;
 	width: 50px;
 	height: 50px;
 	margin: -25px 0 0 -25px;
+}
+
+.diseases-form-icon {
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
 }
 
 .vp-form-icon-separator {

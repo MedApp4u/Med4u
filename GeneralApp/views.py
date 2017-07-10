@@ -228,6 +228,32 @@ def medicine_details(request, med_id):
 
 
 
+def diseases(request):
+    disease_list = Disease.objects.all()
+
+    if request.method == 'GET':
+        return render(request, 'GeneralApp/diseases.html', {'diseases': disease_list, 'current_user': request.user})
+
+
+def disease_details(request, dis_id):
+    disease_list = Disease.objects.all()
+    current_disease = Disease.objects.get(id=dis_id)
+    current_user = request.user
+    user_flag = True
+    already_exist = True
+
+    if not (current_user.is_anonymous):
+        if current_user.disease_set.filter(pk=dis_id).count() > 0:
+            already_exist = True
+        else:
+            already_exist = False
+    else:
+        user_flag = False
+
+    if request.method == 'GET':
+        return render(request, 'GeneralApp/disease_details.html',
+                      {'user_flag': user_flag, 'already_exist': already_exist, 'diseases': disease_list, 'current_user': request.user, 'current_disease': current_disease})        
+
 
 def contacts(request):
     country_list = Country.objects.all()

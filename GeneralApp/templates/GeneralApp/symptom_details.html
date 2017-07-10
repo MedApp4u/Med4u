@@ -82,12 +82,12 @@
 								<img src="{% static 'ProfileApp/css/img/icons/anesthesia.png' %}" class="vp-form-icon"/>
 								<div class="vp-form-icon-separator"></div>
 								<p class="vp-form-icon-text">
-									Symptom
+									Symptom {{ current_part }}
 								</p>
 							</div>
 							<div class="procedure-body-scroll">
 								{% for symptom in symptoms %}
-									<a href="{% url 'GeneralApp:symptom_details' symptom.id %}" class="procedure-body-tab">
+									<a href="{% url 'GeneralApp:symptom_details' current_part symptom.id %}" class="procedure-body-tab">
 										<div class = "procedure-body-name">
 											<div class = "procedure-body-separator"></div>
 											<div class = "procedure-body-label">{{ symptom.symptom_name }}</div>

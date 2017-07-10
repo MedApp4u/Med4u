@@ -26,7 +26,10 @@ MEDIA_URL = '/images/'
 SECRET_KEY = 'j23onn0g#5+d761e%&sq^h@t-14hr+hjmu3+7-ov@ji)z!r-fa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = [u'med-4-u.appspot.com',u'192.168.10.15',u'127.0.0.1',u'192.168.1.104',u'192.168.10.16', u'192.168.10.20',u'192.168.10.25', u'192.168.43.46']
 

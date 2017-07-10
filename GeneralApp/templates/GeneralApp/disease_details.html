@@ -85,14 +85,14 @@
 								</p>
 								{% if user_flag %}
 									{% if already_exist %}
-										<a href="#" id="add-medc-link" class="disease-clickable">
+										<a href="" id="add-medc-link" class="disease-clickable">
 											<div class="add-medc-btn">
 												<img class = "add-dis-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
 												<p class="add-dis-desc">Add to my diseases</p>
 											</div>		
 										</a>
 									{% else %}
-										<a href="#" id="add-medc-link" onClick="submitForm()">
+										<a href="" id="add-medc-link" onClick="submitForm()">
 											<div class="add-medc-btn">
 												<img class = "add-dis-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
 												<p class="add-dis-desc">Add to my diseases</p>
@@ -100,7 +100,7 @@
 										</a>
 									{% endif %}	
 								{% else %}
-									<a href="#" id="add-medc-link" class="user-not-found">
+									<a href="" id="add-medc-link" class="user-not-found">
 										<div class="add-medc-btn">
 											<img class = "add-dis-icon" src="{% static 'ProfileApp/css/img/icons/add.png' %}" />
 											<p class="add-dis-desc">Add to my diseases</p>
@@ -131,6 +131,26 @@
 								<div class="diseases-desc-right" id="disease-desc">
 									<p class="diseases-desc-text">{{ current_disease.disease_description }}</p>
 								</div>
+								<div class="diseases-desc-left">
+									<p class="diseases-desc-label">Symptom(s)</p>
+								</div>
+								<div class="diseases-desc-right">
+									<p class="diseases-desc-text">
+										{% for symptom in symptoms %}
+											{{ symptom.symptom_name.title }}{% if forloop.last %}{% else %},{% endif %}
+										{% endfor %}
+									</p>
+								</div>
+								<div class="diseases-desc-left">
+									<p class="diseases-desc-label">Medicine(s)</p>
+								</div>
+								<div class="diseases-desc-right">
+									<p class="diseases-desc-text">
+										{% for medicine in medicines %}
+											{{ medicine.medicine_name.title }}{% if forloop.last %}{% else %},{% endif %}
+										{% endfor %}
+									</p>
+								</div>								
 <!-- 								<div class="diseases-desc-left" id="desc-label-comp">
 									<p class="diseases-desc-label">Complication</p>
 								</div>

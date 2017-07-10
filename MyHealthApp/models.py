@@ -123,11 +123,6 @@ class Procedure_Helpline(models.Model):  # Multi valued attribute
     procedure_phone_number = PhoneNumberField(blank=True)
 
 
-class Procedure_Note(models.Model):
-    procedure_note = models.TextField(blank=True)
-    procedure = models.ForeignKey(Procedure, on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-
 
 class Disease(models.Model):
     disease_name = models.CharField(max_length=300)

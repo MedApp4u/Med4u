@@ -3,3 +3,4 @@ MyHealthApp/migrations/*
 ProfileApp/migrations/*
 GeneralApp/migrations/*
 virtualenv
+DoctorsWebApp/static/*

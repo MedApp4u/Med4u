@@ -23,6 +23,9 @@ urlpatterns = [
     url(r'^medicines/$', views.medicines, name='medicines'),
     url(r'^medicines/(?P<med_id>[0-9]+)$', views.medicine_details, name='medicine_details'),
 
+    url(r'^diseases/$', views.diseases, name='diseases'),
+    url(r'^diseases/(?P<dis_id>[0-9]+)$', views.disease_details, name='disease_details'),
+
     url(r'^contacts/$', views.contacts, name='contacts'),
     url(r'^contacts/(?P<con_id>[0-9]+)$', views.contact_details, name='contact_details'),    
 

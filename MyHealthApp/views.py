@@ -190,10 +190,11 @@ class Procedure_Note_list(generics.ListCreateAPIView):
 
 
 class MyDoctorsapi(APIView):
+    renderer_classes=(JSONRenderer,)
     # def get_object(self, pk):
     #     try:
     #         return Doctor.objects.get(pk=pk)
-
+    
     #     except Doctor.DoesNotExist:
     #         raise Http404
 
@@ -288,7 +289,7 @@ class MyDiseasesapi(APIView):
         return Response(serializer.data)
 
 class MyDiseaseNotesapi(APIView):
-    permission_classes=(IsAuthenticated,)
+    #permission_classes=(IsAuthenticated,)
     renderer_classes=(JSONRenderer,)
 #     def get_object(self, pk):
 #         try:

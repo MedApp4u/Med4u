@@ -1,12 +1,14 @@
 
 {% extends 'MyHealthApp/sidebar.html' %}
 
-{% block div_id %}<div class="content-wrapper" id = "content-measurements">{% endblock %}
+{% block title %} Add Documents {% endblock %}
+
+{% block div_id %}<div class="content-wrapper" id = "content-documents">{% endblock %}
 
 {% block content %}
-<div class="background-meas">
+<div class="background-docu">
  
-   <h1 class="head-medi text-center">Add Measurements</h1>
+   <h1 class="head-medi text-center">Add Documents</h1>
 
 <div class="container">
 <div class="row">   
@@ -15,11 +17,23 @@
     {% csrf_token %}
 
    <div class="col-sm-6 col-md-6 label-med-left">
-	    					<p class="label-med">Blood Pressure</p>
-	    					<p class="label-desc">{{ form.blood_pressure }}</p>
-	    					<p class="label-med">Blood Sugar</p>
-	    					<p class="label-desc">{{ form.blood_sugar }}</p>
-	    					<p class="label-med">Cholestrol</p>
+	    					<div class="file-upload">
+	    					<!-- <p class="label-desc file-name">Please select a file.</p> -->
+	    					<p>{{ form.doc }}</p>
+	    					<p class="label-desc file-name">Please select a file.</p> 
+
+	    					</div>
+	    					
+							<a class="fake-button">Choose File</a>		    					
+	    					
+	    					<!-- <p class="help-text">No file Chosen</p> -->	    					
+	    					
+	    				<!-- 	<p class="help-text">{{ form.doc }}</p> -->
+	    					
+	    					<!-- <p class="label-desc">{{ form.blood_pressure }}</p> -->
+	    					<p class="label-med">Notes</p>
+	    					<p class="label-desc">{{ form.notes }}</p>
+	    					<!-- <p class="label-med">Cholestrol</p>
 	    					<p class="label-desc" id="label-desc-id">{{ form.cholesterol }}</p>
 	    					<p class="label-med">Height</p>
 	    					<p class="label-desc">{{ form.height }} </p>
@@ -31,7 +45,7 @@
 	    					<p class="label-desc">{{ form.date }}</p>
 	    					<p class="help-text">Date format: yyyy-mm-dd</p>
 	    					<p class="label-med">Notes</p>
-	    					<p class="label-desc">{{ form.notes }}</p>
+	    					<p class="label-desc">{{ form.notes }}</p> -->
 	    					<button class="upload-button" type="submit">Upload</button>
     					</div>
 
@@ -45,12 +59,9 @@
 
 
 
-
-{% block content %}
+<!-- 
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Upload</button>
-  </form>
-
-{% endblock %}
+  </form> -->

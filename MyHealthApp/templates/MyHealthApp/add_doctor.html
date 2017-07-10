@@ -1,8 +1,57 @@
+
+{% extends 'MyHealthApp/sidebar.html' %}
+
+{% block title %} Add Doctors {% endblock %}
+
+{% block div_id %}<div class="content-wrapper" id = "content-doctors">{% endblock %}
+
 {% block content %}
+<div class="background-doc">
+ 
+   <h1 class="head-medi text-center">Add Doctors</h1>
+
+<div class="container">
+<div class="row">   
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+   <div class="col-sm-6 col-md-6 label-med-left">
+	    				<p class="label-med">Name</p>
+    					<p class="label-desc">{{ form.doctor_name }}</p>
+    					<p class="label-med">Phone Number</p>
+    					<p class="label-desc">{{ form.doctor_phone_number }}</p>
+    					<p class="label-med">Doctor Description</p>
+    					<p class="label-desc" id="label-desc-id">{{ form.doctor_description }}</p>
+    					<p class="label-med">Address</p>
+    					<p class="label-desc">{{ form.doctor_address }} </p>
+    					<!-- <p class="help-text">No. of times a day.</p> -->
+    					<p class="label-med">Speciality</p>
+    					<p class="label-desc">{{ form.doctor_speciality }}</p>
+    					<!-- <p class="help-text">Start date of the Prescription.</p> -->
+    					<p class="label-med">Timings</p>
+    					<p class="label-desc">{{ form.doctor_timings }}</p>
+	    				<!-- <p class="label-desc">{{ form.weight }}</p>
+	    				<p class="help-text">In Kilo Grams</p>
+	    				<p class="label-med">Date</p>
+	    				<p class="label-desc">{{ form.date }}</p>
+	    				<p class="help-text">Date format: yyyy-mm-dd</p>
+	   					<p class="label-med">Notes</p>
+	   					<p class="label-desc">{{ form.notes }}</p> --> 
+	   					<button class="upload-button" type="submit">Upload</button>
+    					</div>
+
+  </form> 
+ </div>
+ </div>
+ </div>
+
+{% endblock %}
+ 
+<!-- 
+
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Upload</button>
-  </form>
-
-{% endblock %}
+  </form> -->

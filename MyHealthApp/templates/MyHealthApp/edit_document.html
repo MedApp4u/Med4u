@@ -1,4 +1,125 @@
+{% extends "MyHealthApp/sidebar.html" %}
+
+{% block title %} Edit Documents {% endblock %}
+
+
+{% block div_id %}<div class="content-wrapper" id = "content-documents">{% endblock %}
+
 {% block content %}
+<div class="background-docu">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-sm-3">
+				<h1 class="head-medi text-center">My Documents</h1>
+				<a href="{% url 'MyHealthApp:add_document' %}"><div class="add_med">Add Documents</div></a>
+			
+				{% for document in document_list %}
+				{% if document.id == current_document.id %}
+					<a href="{% url 'MyHealthApp:edit_document' document.id %}">
+					<div class="med-a">
+						<div class="col-md-5 col-sm-5">
+							<div class="medi-div">
+								<h5 id="medi-title" style="background: white; color: #3fbbc0;">File{{ document.id }}</h5>
+							</div>
+						</div>
+						<div class="col-md-7 col-sm-7"><span class="medi-desc">3 times a day.</span></div>
+					</div>
+					</a>
+					{% if forloop.last %}
+					<div class="col-md-12 col-sm-12">
+						<div class="divider-short"></div>
+					</div>
+					{% endif %}
+				{% else %}
+					<a href="{% url 'MyHealthApp:edit_document' document.id %}">
+					<div class="med-a">
+						<div class="col-md-5 col-sm-5">
+							<div class="medi-div">
+								<h5 id="medi-title">File{{ document.id }}</h5>
+							</div>
+						</div>
+						<div class="col-md-7 col-sm-7"><span class="medi-desc">3 times a day.</span></div>
+					</div>
+					</a>
+					{% if forloop.last %}
+					<div class="col-md-12 col-sm-12">
+						<div class="divider-short"></div>
+					</div>
+					{% endif %}
+				{% endif %}
+				{% endfor %}
+
+			</div>
+
+			<div class="col-sm-9 col-md-9"><!-- <h1 class="head-medi text-center"> {{  current_document.doc_name }} </h1> -->
+
+  				<form method="post" enctype="multipart/form-data">
+    					{% csrf_token %}
+
+    					<div class="col-sm-6 col-md-6 label-med-center label-med-left">
+	    					<p class="label-med">Name</p>
+	    					<a href="{ document.doc.url }" download>
+	    					<p class="label-desc">{{ current_document.doc_name }}</p>
+	    					<p class="help-text">Click to Download.</p>
+	    					</a>
+	    					<p class="label-med">Notes</p>
+	    					<p class="label-desc">{{ form.notes }}</p>
+	    					<button class="upload-button" type="submit">Upload</button>
+	    					<a class="delete-button" href="{% url 'MyHealthApp:delete_document' form.instance.id %}">Delete</a>
+    					
+	    					<!-- <p class="label-med">Dosage Amount</p>
+	    					<p class="label-desc" id="label-desc-id">{{ form.dosage_amt }}</p>
+	    					<p class="label-med">Frequency</p>
+	    					<p class="label-desc">{{ form.frequency }} </p>
+	    					
+	    					<p class="label-med">Date</p>
+	    					<p class="label-desc">{{ form.medicine_date }}</p>
+	    					<p class="help-text">Start date of the Prescription.</p>
+	    					<p class="label-med">Doctor</p>
+	    					<p class="label-desc">{{ form.doctor }}</p>
+	    					<p class="label-med">Usage Instructions</p>
+	    					<p class="label-desc">{{ form.usage_instructions }}</p> -->
+    					</div>
+<!-- 
+    					<div class="col-sm-6 col-md-6 label-med-right">
+    					<p class="label-med">Overdose Instructions</p><br>
+    					<p class="label-desc">{{ form.overdose_instructions }}</p>
+    					<p class="label-med">Possible Side Effects</p>
+    					<p class="label-desc">{{ form.possible_sideeffects }}</p>
+    					<p class="label-med">Brand Names</p>
+    					<p class="label-desc">{{ form.brand_names }}</p>
+    					<button class="upload-button" type="submit">Upload</button>
+    					<button class="delete-button" href="{% url 'MyHealthApp:delete_medicine' form.instance.id %}">Delete</button>
+    					
+    					</div> -->
+    					   
+
+					
+				  </form>
+				 
+			</div>
+		</div>
+		
+	</div>
+
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
@@ -6,10 +127,10 @@
     <a href="{% url 'MyHealthApp:delete_document' form.instance.id %}">delete</a>
   </form> -->
 
-  {% for i in document_list %}
 
-  	{{ i.doc_name }}
 
-  {% endfor %}
-
-{% endblock %}
+  <!-- 	<a href="{{ document.doc.url }}" download><p>{{ document.doc_name }} Click to download</p></a>
+  	<p> Notes</p>
+  	<p>{{ form.notes }}</p>
+  	<button class="upload-button" type="submit">Upload</button>
+ -->

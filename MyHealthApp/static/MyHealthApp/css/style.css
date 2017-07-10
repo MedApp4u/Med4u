@@ -271,6 +271,25 @@ Top area
 Navigation
 ============= */
 
+.user_icon_item {
+	width: 34.4px;
+	position: relative;
+	top: 7px;
+}
+
+.user_icon {
+	width: 34.4px;
+	height: 34.4px;
+	/*padding-bottom: 15px;*/
+	position: relative;
+	left: 50%;
+	margin-left: -17.2px;
+}
+
+#user_icon_name {
+	padding-left: 9px;
+}
+
 .navbar-brand {
   padding-top: 15px;
   margin-top: 5px;
@@ -386,7 +405,7 @@ Navigation
 }
 
 .navbar-custom ul.nav ul.dropdown-menu li a {
-	padding: 10px 20px;
+	/*padding: 10px 20px;*/
 	font-size: 13px;
 	text-transform: uppercase;
 }
@@ -662,6 +681,218 @@ hr.bold {
 .paddingbot-80{padding-bottom:80px !important;}
 .paddingbot-90{padding-bottom:90px !important;}
 .paddingbot-100{padding-bottom:100px !important;}
+
+
+
+
+/* ===========================
+--- Hidden form to add doctor/medicine to my doctors/medicines from GenApp page
+============================ */
+
+.hidden-div {
+	display: none;
+}
+
+/* ------------------------- */
+
+
+
+/* ===========================
+--- Profile Slider
+============================ */
+
+
+.profile-slider-body {
+	/*display: inline-block;*/
+	width: 400px;
+	height: 800px;
+	padding: 0px;
+	margin: -40%;
+	border: none;
+}
+
+.list-item {
+	height: 100%;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+
+.profile-slider-top {
+	background-color: #3fbbc0;
+	width: 100%;
+	height: 34%;
+}
+
+.profile-slider-bottom {
+	background-color: white;
+	width: 100%;
+	height: 62%;
+}
+
+.profile-slider-circle {
+	border: 9px solid white;
+	width: 220px;
+	height: 220px;
+	-moz-border-radius: 110px;
+	-webkit-border-radius: 110px;
+	border-radius: 110px;
+	position: relative;
+	left: 50%;
+	top: 27px;
+	margin-left: -110px;
+	overflow: hidden;
+}
+
+.profile-slider-image {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	height: 220px;
+	width: 220px;
+	margin: -110px 0 0 -110px;
+	z-index: 1;
+}
+
+.profile-slider-image-cover {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	transition: background-color 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.profile-slider-image-cover p {
+	position: absolute;
+	width: 120px;
+	height: 30px;
+	top: 53%;
+	left: 62%;
+	margin: -15px 0 0 -60px;
+	color: #ebebeb;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.profile-slider-image-cover img {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	top: 50%;
+	left: 22%;
+	margin: -12px 0 0 -12px;
+}
+
+#circle .profile-slider-image-cover {
+	visibility: hidden;
+}
+
+#circle:hover .profile-slider-image-cover {
+	visibility: visible;
+	background-color: rgba(0, 0, 0, 0.85);
+	cursor: pointer;
+}
+
+.profile-slider-username {
+	position: relative;
+	top: 10px;
+	height: 60px;
+	line-height: 60px;
+	width: 100%;
+	text-align: center;
+	margin: 0px;
+	font-size: 22px;
+	font-weight: 600;
+	color: #222;
+}
+
+.profile-slider-rectangle {
+	position: relative;
+	background-color: #444;
+	height: 1.6px;
+	margin: auto;
+}
+
+#long {
+	top: 12px;
+	width: 27%;
+}
+
+#short {
+	top: 16px;
+	width: 10%;
+}
+
+.profile-slider-link {
+	all: initial;
+	font-family: inherit;
+	cursor: default;
+}
+
+
+.profile-slider-icon {
+	position: relative;
+	height: 70px;
+	width: 100%;
+	padding-left: 20px;
+	transition: background-color 0.2s ease-in-out;
+}
+
+#change_password{
+	top: 58px;
+}
+
+#view_profile {
+	top: 78px;
+}
+
+#logout {
+	top: 98px;
+}
+
+.profile-slider-icon:hover {
+	background-color: #f1f1f1;
+	cursor: pointer;
+}
+
+.profile-slider-icon-separator, .profile-slider-icon-text, #padlock {
+	float: left;
+}
+
+#padlock {
+	position: relative;
+	width: 34px;
+	height: 34px;
+	top: 50%;
+	margin-top: -17px;
+}
+
+.profile-slider-icon-separator {
+	position: relative;
+	left: 15px;
+	width: 1.6px;
+	height: 50px;
+	top: 50%;
+	margin-top: -25px;
+	background-color: #444;
+}
+
+.profile-slider-icon-text {
+	position: relative;
+	left: 32px;
+	height: 50px;
+	line-height: 50px;
+	top: 50%;
+	margin: -25px 0 0 0;
+	width: 200px;
+	color: #222;
+	font-size: 19px;
+	font-weight: 400;
+	letter-spacing: -1px;
+	text-transform: none;
+}
+
+/* ========================= */
 
 
 /* ===========================

@@ -14,6 +14,7 @@
     </title>
     <!-- css -->
     <link href="{% static 'MyHealthApp/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'MyHealthApp/css/bootstrap.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'MyHealthApp/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
 	<link href="{% static 'MyHealthApp/plugins/cubeportfolio/css/cubeportfolio.min.css' %}" rel="stylesheet" />
 	<link href="{% static 'MyHealthApp/css/nivo-lightbox.css' %}" rel="stylesheet" />
@@ -68,9 +69,70 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
-				{% block navbar %}
-					Navbar content
-				{% endblock %}
+				<li><a href="{% url 'MyHealthApp:home' %}">Home</a></li>
+				<li><a href="{% url 'GeneralApp:about' %}">About Us</a></li>
+				<li><a href="{% url 'GeneralApp:doctors' %}">Doctors</a></li>
+				<li><a href="{% url 'GeneralApp:medicines' %}">Medicines</a></li>
+				<li><a href="{% url 'GeneralApp:symptoms' %}">Symptoms</a></li>
+				<li><a href="{% url 'GeneralApp:diseases' %}">Diseases</a></li>	
+				<li><a href="{% url 'GeneralApp:procedures' %}">Procedures</a></li>
+				<li><a href="{% url 'GeneralApp:contacts' %}">Emergency</a></li>
+				{% if current_user.is_anonymous %}
+					<li><a href="{% url 'GeneralApp:login' %}">Sign In</a></li>
+					<li><a href="{% url 'GeneralApp:register' %}">Sign Up</a></li>
+				{% endif %}
+				{% if not current_user.is_anonymous %}
+					<li><a style="margin-right: 15px" href="{% url 'MyHealthApp:MyHealth' %}" id="active" >My Health</a></li>
+					<li class="user_icon_item">
+						<img src="{% static 'ProfileApp/css/img/icons/user.png' %}" class="user_icon" />
+					</li>
+					<li class="dropdown">
+						<a href="#" id="user_icon_name" class="dropdown-toggle" data-toggle="dropdown">{{ current_user }} <b class="caret"></b></a>
+						<ul class="dropdown-menu profile-slider-body">
+							<li class="list-item">
+								<div class="profile-slider-top">
+									<div class="profile-slider-circle" id="circle">
+										<div class="profile-slider-image-cover">
+											<img src="{% static 'ProfileApp/css/img/icons/upload-light.png' %}"></img>
+											<p>Upload image</p>
+										</div>
+										{% if current_user.profile_pic.url is not None %}
+											<img src="{{current_user.profile_pic.url}}" class="profile-slider-image" />
+										{% else %}
+											<img src="{% static 'ProfileApp\css\img\icons\avatar.jpg' %}" class="profile-slider-image" />
+										{% endif %}
+									</div>
+								</div>
+								<div class="profile-slider-bottom">
+									<p class="profile-slider-username">Welcome, {{ current_user}}</p>
+									<div class="profile-slider-rectangle" id="long"></div>
+									<div class="profile-slider-rectangle" id="short"></div>
+									<a href="{% url 'ProfileApp:change_password' %}" class="profile-slider-link">
+										<div class="profile-slider-icon" id="change_password">
+											<img src="{% static 'ProfileApp/css/img/icons/padlock.png' %}" id="padlock" />
+											<div class="profile-slider-icon-separator"></div>
+											<p class="profile-slider-icon-text">Change password</p>
+										</div>
+									</a>
+									<a href="{% url 'ProfileApp:view_profile' %}" class="profile-slider-link">
+										<div class="profile-slider-icon" id="view_profile">
+											<img src="{% static 'ProfileApp/css/img/icons/document.png' %}" id="padlock" />
+											<div class="profile-slider-icon-separator"></div>
+											<p class="profile-slider-icon-text">Profile</p>
+										</div>
+									</a>
+									<a href="{% url 'ProfileApp:logout' %}" class="profile-slider-link">
+										<div class="profile-slider-icon" id="logout">
+											<img src="{% static 'ProfileApp/css/img/icons/logout.png' %}" id="padlock" />
+											<div class="profile-slider-icon-separator"></div>
+											<p class="profile-slider-icon-text">Logout</p>
+										</div>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</li>	
+				{% endif %}
 			  </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -124,7 +124,7 @@ class AboutUs(generic.TemplateView):
 
 
 def SymptomsView(request):
-    return render(request,'GeneralApp/symptoms.html',{'current_user':request.user})
+    return render(request,'GeneralApp/symptoms.html', {'current_user': request.user}) 
 
 def BodypartSymptomList(request,symptom_part):
     if request.method == 'GET':
@@ -252,6 +252,9 @@ def diseases(request):
 def disease_details(request, dis_id):
     disease_list = Disease.objects.all()
     current_disease = Disease.objects.get(id=dis_id)
+    symptoms = Symptom.objects.filter(disease__id=dis_id)
+    medicines = Medicine.objects.filter(disease__id=dis_id)
+    procedures = Procedure.objects.filter(disease__id=dis_id)
     current_user = request.user
     user_flag = True
     already_exist = True
@@ -266,7 +269,7 @@ def disease_details(request, dis_id):
 
     if request.method == 'GET':
         return render(request, 'GeneralApp/disease_details.html',
-                      {'user_flag': user_flag, 'already_exist': already_exist, 'diseases': disease_list, 'current_user': request.user, 'current_disease': current_disease})        
+                      {'user_flag': user_flag, 'already_exist': already_exist, 'symptoms': symptoms, 'medicines': medicines, 'procedures': procedures ,'diseases': disease_list, 'current_user': request.user, 'current_disease': current_disease})        
 
 
 def contacts(request):

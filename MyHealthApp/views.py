@@ -751,7 +751,10 @@ def EditAppointment(request, app_id):
 def EditDisease(request, dis_id):
     current_user = request.user
     disease = Disease.objects.get(id=dis_id)
-    disease_note = Disease_Note.objects.get(disease__id=dis_id)
+    try:
+        disease_note = Disease_Note.objects.get(disease__id=dis_id)
+    except Disease_Note.DoesNotExist:
+        disease_note = None
     queryset = current_user.disease_set.all()
     
     if request.method == 'POST':
@@ -785,7 +788,10 @@ def EditDisease(request, dis_id):
 def EditDoctor(request, doc_id):
     current_user = request.user
     doctor = Doctor.objects.get(id=doc_id)
-    doctor_note = Doctor_Note.objects.get(doctor__id=doc_id)
+    try:
+        doctor_note = Doctor_Note.objects.get(doctor__id=doc_id)
+    except Doctor_Note.DoesNotExist:
+        doctor_note = None
     queryset = current_user.doctor_set.all()
     
     if request.method == 'POST':
@@ -819,7 +825,10 @@ def EditDoctor(request, doc_id):
 def EditMedicine(request, med_id):
     current_user = request.user
     medicine = Medicine.objects.get(id=med_id)
-    medicine_note = Medicine_Note.objects.get(medicine__id=med_id)
+    try:
+        medicine_note = Medicine_Note.objects.get(medicine__id=med_id)
+    except Medicine_Note.DoesNotExist:
+        medicine_note = None
     queryset = current_user.medicine_set.all()
     
     if request.method == 'POST':

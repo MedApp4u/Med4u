@@ -25,7 +25,7 @@ class Doctor(models.Model):
     doctor_speciality = models.CharField(max_length=60, choices=SPECIALITY_CHOICE, default="FAMILY MEDICINE PHYSICIAN",
                                          blank=True)
     doctor_timings = models.CharField(max_length=30, default="06 AM to 06 PM")
-    doctor_pic = models.ImageField(upload_to=doctor_directory_path, null=True, blank=True)  # Insert upload_to
+    doctor_pic = models.ImageField(upload_to=doctor_directory_path, null=True, blank=True, default=None)  # Insert upload_to
     user = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
     def __str__(self):

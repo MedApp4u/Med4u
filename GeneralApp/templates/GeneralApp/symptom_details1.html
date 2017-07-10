@@ -84,7 +84,7 @@
 							</div>
 							<div class="symptom-body-scroll">
 								{% for symptom in symptoms %}
-									<a href="{% url 'GeneralApp:symptom_details' part symptom.id %}" class="procedure-body-tab">
+									<a href="{% url 'GeneralApp:symptom_details' symptom.id %}" class="procedure-body-tab">
 										<div class = "procedure-body-name">
 											<div class = "procedure-body-separator"></div>
 											<div class = "procedure-body-label">{{ symptom.symptom_name }}</div>
@@ -93,7 +93,56 @@
 								{% endfor %}
 							</div>	
 							<div class="symptoms-body-desc">
-
+								<div class="symptoms-desc-left">
+									<p class="symptoms-desc-label">Name</p>
+								</div>
+								<div class="symptoms-desc-right">
+									<p class="symptoms-desc-text">{{ current_symptom.symptom_name }}</p>
+								</div>
+								<div class="symptoms-desc-left" id="symptom-description-label">
+									<p class="symptoms-desc-label">Description</p>
+								</div>
+								<div class="symptoms-desc-right" id="symptom-description-field">
+									<p class="symptoms-desc-text">{{ current_symptom.symptom_description }}</p>
+								</div>		
+								<div class="symptoms-desc-left">
+									<p class="symptoms-desc-label">Tests</p>
+								</div>
+								<div class="symptoms-desc-right">
+									<p class="symptoms-desc-text">{{ current_symptom.tests }}</p>
+								</div>	
+								<div class="symptoms-desc-left">
+									<p class="symptoms-desc-label">Diseases</p>
+								</div>								
+								<div class="symptoms-desc-right">
+									<p class="symptoms-desc-text">
+										{% for disease in diseases %}
+											{{ disease.disease_name.title }}{% if forloop.last %}{% else %},{% endif %}
+										{% endfor %}
+									</p>
+								</div>
+								<div class="symptoms-desc-left">
+									<p class="symptoms-desc-label">Bodyparts</p>
+								</div>								
+								<div class="symptoms-desc-right">
+									<p class="symptoms-desc-text">
+										{% for bodypart in bodyparts %}
+											{{ bodypart.bodypart.title }}{% if forloop.last %}{% else %},{% endif %}
+										{% endfor %}
+									</p>
+								</div>								
+								<div class="symptoms-desc-left" id="desc-label-vid">
+									<p class="symptoms-desc-label">Videos</p>
+								</div>
+								<div class="symptoms-desc-right" id="desc-field-vid">
+									<p class="symptoms-desc-name">
+										{% for video in videos %}
+											<a target="_blank" href="{{ video.symptom_video }}">
+												<img src="{% static 'GeneralApp/css/img/icons/video-preview.png' %}"/>
+											</a>
+										{% endfor %}
+									</p>
+								</div>																															
 							</div>												
 							<div id="image_tab">
 								

@@ -83,6 +83,9 @@
     					<p class="label-desc">{{ form.possible_sideeffects }}</p>
     					<p class="label-med">Brand Names</p>
     					<p class="label-desc">{{ form.brand_names }}</p>
+    					<p class="label-med">Notes</p>
+    					<p class="label-desc">{{ note_form.medicine_note }}</p>
+
     					<button class="upload-button" type="submit">Upload</button>
     					<a class="delete-button" href="{% url 'MyHealthApp:delete_medicine' form.instance.id %}">Delete</a>
     					

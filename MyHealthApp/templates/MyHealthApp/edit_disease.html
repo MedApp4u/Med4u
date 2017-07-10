@@ -23,7 +23,7 @@
 								<h5 id="medi-title" style="background: white; color: #3fbbc0;">{{ disease.disease_name.title }}</h5>
 							</div>
 						</div>
-						<div class="col-md-7 col-sm-7"><span class="medi-desc">3 times a day.</span></div>
+						<div class="col-md-7 col-sm-7" ><span class="medi-desc">3 times a day.</span></div>
 					</div>
 					</a>
 					{% if forloop.last %}
@@ -52,7 +52,7 @@
 
 			</div>
 
-			<div class="col-sm-9 col-md-9"><h1 class="text-center"> {{  current_disease.disease_name.title }} </h1>
+			<div class="col-sm-9 col-md-9"><h1 class="head-medi text-center"> {{  current_disease.disease_name.title }} </h1>
 
   				<form method="post" enctype="multipart/form-data">
     					{% csrf_token %}
@@ -71,26 +71,25 @@
     					<!-- <p class="help-text">Start date of the Prescription.</p> -->
     					<p class="label-med">Procedure</p>
     					<p class="label-desc">{{ form.procedure }}</p>
-    					<p>Notes</p>
-                        <p>{{ note_form.disease_note}}</p>
     					<!-- <p class="label-med">Usage Instructions</p>
     					<p class="label-desc">{{ form.usage_instructions }}</p> -->
     					</div>
 
-    					<!-- <div class="col-sm-6 col-md-6 label-med-right">
-    					<p class="label-med">Overdose Instructions</p><br>
-    					<p class="label-desc">{{ form.overdose_instructions }}</p>
-    					<p class="label-med">Possible Side Effects</p>
+    					<div class="col-sm-6 col-md-6 label-med-right">
+    					<p class="label-med">Notes</p><br>
+    					<p class="label-desc">{{ note_form.disease_note }}</p>
+    					<!-- <p class="label-med">Possible Side Effects</p>
     					<p class="label-desc">{{ form.possible_sideeffects }}</p>
     					<p class="label-med">Brand Names</p>
-    					<p class="label-desc">{{ form.brand_names }}</p>
-    					
-    					</div> -->
+    					<p class="label-desc">{{ form.brand_names }}</p> -->
+
+				
+   					 <button class="upload-button" type="submit">Upload</button>
+    				<a class="delete-button" href="{% url 'MyHealthApp:delete_disease' form.instance.id %}">Delete</a>    							
+    					</div>
     					 
 
 
-					<a class="delete-button" href="{% url 'MyHealthApp:delete_disease' form.instance.id %}">Delete</a>    					
-   					 <button class="upload-button" type="submit">Upload</button>
 				  </form>
 				 
 			</div>

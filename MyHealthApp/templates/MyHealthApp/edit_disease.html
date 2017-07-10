@@ -77,20 +77,21 @@
     					<p class="label-desc">{{ form.usage_instructions }}</p> -->
     					</div>
 
-    					<!-- <div class="col-sm-6 col-md-6 label-med-right">
-    					<p class="label-med">Overdose Instructions</p><br>
-    					<p class="label-desc">{{ form.overdose_instructions }}</p>
-    					<p class="label-med">Possible Side Effects</p>
+    					<div class="col-sm-6 col-md-6 label-med-right">
+    					<p class="label-med">Notes</p><br>
+    					<p class="label-desc">{{ note_form.disease_note }}</p>
+    					<!-- <p class="label-med">Possible Side Effects</p>
     					<p class="label-desc">{{ form.possible_sideeffects }}</p>
     					<p class="label-med">Brand Names</p>
-    					<p class="label-desc">{{ form.brand_names }}</p>
+    					<p class="label-desc">{{ form.brand_names }}</p> -->
     					
-    					</div> -->
+					<a class="delete-button" href="{% url 'MyHealthApp:delete_disease' form.instance.id %}">Delete</a>    					
+   					 <button class="upload-button" type="submit">Upload</button>
+    					
+    					</div>
     					 
 
 
-					<a class="delete-button" href="{% url 'MyHealthApp:delete_disease' form.instance.id %}">Delete</a>    					
-   					 <button class="upload-button" type="submit">Upload</button>
 				  </form>
 				 
 			</div>

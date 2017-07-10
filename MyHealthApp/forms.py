@@ -109,7 +109,7 @@ class MedicineForm(forms.ModelForm):
         self.fields['doctor'].queryset = user.doctor_set.all()
 
 class MedicineNoteForm(forms.ModelForm):
-    medicine_note = forms.CharField(required=False, label='Notes', widget=forms.Textarea())
+    medicine_note = forms.CharField(required=False, label='Notes', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
 
     class Meta:
         model = Medicine_Note

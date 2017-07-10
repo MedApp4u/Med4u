@@ -190,17 +190,40 @@ def document_directory_path(instance, filename):
     return 'documents/user_{0}/{1}'.format(instance.user.id, filename)
 
 
-def document_name(x):
+def doc_half_name(x):
+    name = x
+    count = 0
+    cnt=0
+    j = 13
+    string = []
+    for i in name:
+        if i == '/':
+            count = count + 1;
+        if count >= 2 and j >= 0:
+            j = j - 1
+            string.append(i)
+    if len(string) >= 14:
+
+        string = string + ['.','.','.']
+
+        for i in name:
+            if i == '.':
+                cnt = cnt+1
+            if cnt >= 1:
+                string.append(i)
+       
+    return ''.join(string)
+
+def doc_full_name(x):
     name = x
     count = 0
     string = []
     for i in name:
-        if count >= 2:
-            string.append(i)
         if i == '/':
             count = count + 1;
+        if count >= 2 :
+            string.append(i)
     return ''.join(string)
-
 
 class Document(models.Model):
     doc = models.FileField(upload_to=document_directory_path, null=True, blank=True)
@@ -209,8 +232,11 @@ class Document(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE) 
     
 
+    def doc_half_name(self):
+        return doc_half_name(self.doc.name)
+
     def doc_name(self):
-        return document_name(self.doc.name)
+        return doc_full_name(self.doc.name)
 
     
 

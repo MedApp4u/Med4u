@@ -66,6 +66,9 @@
     					<!-- <p class="help-text">No. of times a day.</p> -->
     					<p class="label-med">Notes</p>
     					<p class="label-desc">{{ form.notes }}</p>
+
+    				 <a class="delete-button" href="{% url 'MyHealthApp:delete_insurance' form.instance.id %}">Delete</a>	
+   					 <button class="upload-button" type="submit">Upload</button>
     					<!-- <p class="help-text">Start date of the Prescription.</p>
     					<p class="label-med">Doctor</p>
     					<p class="label-desc">{{ form.doctor }}</p>
@@ -85,8 +88,6 @@
     					 
 
 
-    				 <a class="upload-button" href="{% url 'MyHealthApp:delete_insurance' form.instance.id %}">Delete</a>	
-   					 <button class="upload-button" type="submit">Upload</button>
 				  </form>
 				 
 			</div>

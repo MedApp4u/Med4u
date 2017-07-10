@@ -682,7 +682,7 @@ hr.bold {
 
 
 .profile-slider-body {
-	display: inline-block;
+	/*display: inline-block;*/
 	width: 400px;
 	height: 800px;
 	padding: 0px;
@@ -818,19 +818,15 @@ hr.bold {
 }
 
 #change_password{
-	top: 38px;
+	top: 58px;
 }
 
 #view_profile {
-	top: 46px;
-}
-
-#edit_profile {
-	top: 54px;
+	top: 78px;
 }
 
 #logout {
-	top: 62px;
+	top: 98px;
 }
 
 .profile-slider-icon:hover {

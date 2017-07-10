@@ -421,65 +421,65 @@ class MyInsurancesapi(APIView):
 #         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class HomeView(generic.TemplateView):
-    template_name = 'MyHealthApp/home.html'
+def HomeView(request):
+    return render(request, 'MyHealthApp/home.html', {'current_user': request.user}) 
 
 
 def RedirectHomeView(request):
     return HttpResponseRedirect('/home/')
 
 
-class MyHealthView(generic.TemplateView):
-    template_name = 'MyHealthApp/MyHealthApp.html'
+def MyHealthView(request):
+    return render(request, 'MyHealthApp/MyHealthApp.html', {'current_user': request.user})
 
 
 # class baseView(generic.TemplateView):
 #   template_name = 'HealthApp/MyHealthBase.html'
 
-class sidebarView(generic.TemplateView):
-    template_name = 'MyHealthApp/sidebar.html'
+def sidebarView(request):
+    render(request, 'MyHealthApp/sidebar.html', {'current_user': request.user})
 
 
 @login_required
 def MyInsurances(request):
     current_user = request.user
     queryset = Insurance.objects.filter(user_id=current_user.id)
-    return render(request, 'MyHealthApp/my-insurance.html', {'insurance_list': queryset})
+    return render(request, 'MyHealthApp/my-insurance.html', {'insurance_list': queryset, 'current_user': request.user})
 
 
 @login_required
 def MyMeasurements(request):
     current_user = request.user
     queryset = Measurement.objects.filter(user_id=current_user.id)
-    return render(request, 'MyHealthApp/my-measurements.html', {'measurement_list': queryset})
+    return render(request, 'MyHealthApp/my-measurements.html', {'measurement_list': queryset, 'current_user': request.user})
 
 
 @login_required
 def MyDiseases(request):
     current_user = request.user
     queryset = current_user.disease_set.all()
-    return render(request, 'MyHealthApp/my-diseases.html', {'disease_list': queryset})
+    return render(request, 'MyHealthApp/my-diseases.html', {'disease_list': queryset, 'current_user': request.user})
 
 
 @login_required
 def MyDocuments(request):
     current_user = request.user
     queryset = Document.objects.filter(user_id=current_user.id)
-    return render(request, 'MyHealthApp/my-documents.html', {'document_list': queryset})
+    return render(request, 'MyHealthApp/my-documents.html', {'document_list': queryset, 'current_user': request.user})
 
 
 @login_required
 def MyDoctors(request):
     current_user = request.user
     queryset = current_user.doctor_set.all()
-    return render(request, 'MyHealthApp/my-doctors.html', {'doctor_list': queryset})
+    return render(request, 'MyHealthApp/my-doctors.html', {'doctor_list': queryset, 'current_user': request.user})
 
 
 @login_required
 def MyAppointments(request):
     current_user = request.user
     queryset = Appointment.objects.filter(user_id=current_user.id)
-    return render(request, 'MyHealthApp/my-appointments.html', {'appointment_list': queryset})
+    return render(request, 'MyHealthApp/my-appointments.html', {'appointment_list': queryset, 'current_user': request.user})
 
 
 @login_required
@@ -496,7 +496,7 @@ def MyMedicines(request):
         return render(request, 'GeneralApp/login.html', {'context': context})
         # Context is not showing up, see if need to import views/urls in ProfileApp
     # return render(request, 'dashboard.html', {'current_user': current_user})
-    return render(request, 'MyHealthApp/my-medicines.html', {'medicine_list': queryset})
+    return render(request, 'MyHealthApp/my-medicines.html', {'medicine_list': queryset, 'current_user': request.user})
 
 
 @login_required
@@ -513,7 +513,7 @@ def AddDocument(request):
             print form.errors
     else:
         form = DocumentForm()
-    return render(request, 'MyHealthApp/add_document.html', {'form': form})
+    return render(request, 'MyHealthApp/add_document.html', {'form': form, 'current_user': request.user})
 
 
 @login_required
@@ -529,7 +529,7 @@ def AddInsurance(request):
             print form.errors
     else:
         form = InsuranceForm()
-    return render(request, 'MyHealthApp/add_insurance.html', {'form': form})
+    return render(request, 'MyHealthApp/add_insurance.html', {'form': form, 'current_user': request.user})
 
 
 @login_required
@@ -545,7 +545,7 @@ def AddMeasurement(request):
             print form.errors
     else:
         form = MeasurementForm()
-    return render(request, 'MyHealthApp/add_measurement.html', {'form': form})
+    return render(request, 'MyHealthApp/add_measurement.html', {'form': form, 'current_user': request.user})
 
 
 @login_required
@@ -562,7 +562,7 @@ def AddDoctor(request):
             print form.errors
     else:
         form = DoctorForm()
-    return render(request, 'MyHealthApp/add_doctor.html', {'form': form})
+    return render(request, 'MyHealthApp/add_doctor.html', {'form': form, 'current_user': request.user})
 
 
 @login_required
@@ -578,7 +578,7 @@ def AddAppointment(request):
             print form.errors
     else:
         form = AppointmentForm(user=request.user)
-    return render(request, 'MyHealthApp/add_appointment.html', {'form': form})
+    return render(request, 'MyHealthApp/add_appointment.html', {'form': form, 'current_user': request.user})
 
 
 @login_required
@@ -595,7 +595,7 @@ def AddMedicine(request):
             print form.errors
     else:
         form = MedicineForm(user=request.user)
-    return render(request, 'MyHealthApp/add_medicine.html', {'form': form})
+    return render(request, 'MyHealthApp/add_medicine.html', {'form': form, 'current_user': request.user})
 
 
 @login_required
@@ -612,7 +612,7 @@ def AddDisease(request):
             print form.errors
     else:
         form = DiseaseForm(user=request.user)
-    return render(request, 'MyHealthApp/add_disease.html', {'form': form})
+    return render(request, 'MyHealthApp/add_disease.html', {'form': form, 'current_user': request.user})
 
 
 @login_required
@@ -633,7 +633,7 @@ def EditDocument(request, docu_id):
     else:
         form = DocumentForm(instance=document)
     return render(request, 'MyHealthApp/edit_document.html',
-                  {'form': form, 'document_list': queryset, 'current_document': document})
+                  {'form': form, 'document_list': queryset, 'current_document': document, 'current_user': request.user})
 
 
 @login_required
@@ -654,7 +654,7 @@ def EditInsurance(request, ins_id):
     else:
         form = InsuranceForm(instance=insurance)
     return render(request, 'MyHealthApp/edit_insurance.html',
-                  {'form': form, 'insurance_list': queryset, 'current_insurance': insurance})
+                  {'form': form, 'insurance_list': queryset, 'current_insurance': insurance, 'current_user': request.user})
 
 
 @login_required
@@ -675,7 +675,7 @@ def EditMeasurement(request, mes_id):
     else:
         form = MeasurementForm(instance=measurement)
     return render(request, 'MyHealthApp/edit_measurement.html',
-                  {'form': form, 'measurement_list': queryset, 'current_measurement': measurement})
+                  {'form': form, 'measurement_list': queryset, 'current_measurement': measurement, 'current_user': request.user})
 
 
 @login_required
@@ -696,7 +696,7 @@ def EditAppointment(request, app_id):
     else:
         form = AppointmentForm(user=request.user, instance=appointment)
     return render(request, 'MyHealthApp/edit_appointment.html',
-                  {'form': form, 'appointment_list':queryset,'current_appointment': appointment})
+                  {'form': form, 'appointment_list':queryset,'current_appointment': appointment, 'current_user': request.user})
 
 
 @login_required
@@ -718,7 +718,7 @@ def EditDoctor(request, doc_id):
     else:
         form = DoctorForm(instance=doctor)
     return render(request, 'MyHealthApp/edit_doctor.html',
-                  {'form': form, 'doctor_list': queryset, 'current_doctor': doctor})
+                  {'form': form, 'doctor_list': queryset, 'current_doctor': doctor, 'current_user': request.user})
 
 
 @login_required
@@ -740,7 +740,7 @@ def EditDisease(request, dis_id):
     else:
         form = DiseaseForm(user=request.user, instance=disease)
     return render(request, 'MyHealthApp/edit_disease.html',
-                  {'form': form, 'disease_list': queryset, 'current_disease': disease})
+                  {'form': form, 'disease_list': queryset, 'current_disease': disease, 'current_user': request.user})
 
 
 @login_required
@@ -762,7 +762,7 @@ def EditMedicine(request, med_id):
     else:
         form = MedicineForm(user=request.user, instance=medicine)
     return render(request, 'MyHealthApp/edit_medicine.html',
-                  {'form': form, 'medicine_list': queryset, 'current_medicine': medicine})
+                  {'form': form, 'medicine_list': queryset, 'current_medicine': medicine, 'current_user': request.user})
 
 
 @login_required

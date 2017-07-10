@@ -124,7 +124,7 @@ class AboutUs(generic.TemplateView):
 
 
 def SymptomsView(request):
-    return render(request,'GeneralApp/symptoms.html',{'current_user':request.user})
+    return render(request,'GeneralApp/symptoms.html', {'current_user': request.user}) 
 
 def BodypartSymptomList(request,symptom_part):
     if request.method == 'GET':

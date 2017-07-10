@@ -31,7 +31,7 @@ if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = [u'med-4-u.appspot.com',u'192.168.10.15',u'127.0.0.1',u'192.168.1.104',u'192.168.10.16', u'192.168.10.20',u'192.168.10.25', u'192.168.43.46']
+ALLOWED_HOSTS = [u'med-4-u.appspot.com',u'192.168.10.15',u'127.0.0.1',u'192.168.1.104',u'192.168.10.16', u'192.168.10.20',u'192.168.10.25', u'192.168.43.46',u'192.168.10.11']
 
 # Application definition
 
@@ -170,7 +170,9 @@ REST_FRAMEWORK = {
 'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',), 
 'DEFAULT_RENDERER_CLASSES': ( 'rest_framework.renderers.JSONRenderer', 
                               'rest_framework.renderers.BrowsableAPIRenderer', ), 
-'DEFAULT_AUTHENTICATION_CLASSES': ( 'rest_framework.authentication.TokenAuthentication', ), 
+'DEFAULT_AUTHENTICATION_CLASSES': ( 'rest_framework.authentication.TokenAuthentication',
+'rest_framework.authentication.BasicAuthentication',
+'rest_framework.authentication.SessionAuthentication', ), 
 'DEFAULT_PERMISSION_CLASSES': ( 'rest_framework.permissions.AllowAny', ), 
 }
 

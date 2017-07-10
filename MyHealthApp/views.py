@@ -189,166 +189,235 @@ class Procedure_Note_list(generics.ListCreateAPIView):
     renderer_classes = (JSONRenderer,)
 
 
-class Doctor_show(APIView):
-    def get_object(self, pk):
-        try:
-            return Doctor.objects.get(pk=pk)
+class MyDoctorsapi(APIView):
+    # def get_object(self, pk):
+    #     try:
+    #         return Doctor.objects.get(pk=pk)
 
-        except Doctor.DoesNotExist:
-            raise Http404
+    #     except Doctor.DoesNotExist:
+    #         raise Http404
 
-    def get(self, request, pk, format=None):
-        doctor = Doctor.objects.get(pk=pk)
-        serializer = DoctorSerializer(doctor)
+    def get(self, request, id1, format=None):
+        doctor = Doctor.objects.filter(user__id=id1)
+        serializer = DoctorSerializer(doctor, many = True)
         return Response(serializer.data)
 
-    def post(self, request, pk, format=None):
-        doctor = self.get_object(pk)
-        serializer = DoctorSerializer(doctor, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    # def post(self, request, pk, format=None):
+    #     doctor = self.get_object(pk)
+    #     serializer = DoctorSerializer(doctor, data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data)
+    #     return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk):
-        doctor = Doctor.get_object(pk)
-        doctor.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    # def delete(self, request, pk):
+    #     doctor = Doctor.get_object(pk)
+    #     doctor.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
 
+class MyDoctorNotesapi(APIView):
+    permission_classes=(IsAuthenticated,)
+    renderer_classes=(JSONRenderer,)
+#     def get_object(self, pk):
+#         try:
+#             return Disease.objects.get(pk=pk)
 
-class Medicine_show(APIView):
-    def get_object(self, pk):
-        try:
-            return Medicine.objects.get(pk=pk)
+#         except Disease.DoesNotExist:
+#             raise Http404
 
-        except Medicine.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        medicine = Medicine.objects.get(pk=pk)
-        serializer = MedicineSerializer(medicine)
+    def get(self, request, id1,id2, format=None):
+        doctor_note =Doctor_Note.objects.filter(user__id=id1).filter(doctor__id=id2)
+        serializer = Doctor_NoteSerializer(doctor_note,many = True)
         return Response(serializer.data)
 
-    def post(self, request, pk, format=None):
-        doctor = self.get_object(pk)
-        serializer = MedicineSerializer(medicine, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+class MyMedicineapi(APIView):
+    # def get_object(self, pk):
+    #     try:
+    #         return Medicine.objects.get(pk=pk)
 
-    def delete(self, request, pk):
-        medicine = Medicine.get_object(pk)
-        medicine.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    #     except Medicine.DoesNotExist:
+    #         raise Http404
 
-
-class Disease_show(APIView):
-    def get_object(self, pk):
-        try:
-            return Disease.objects.get(pk=pk)
-
-        except Disease.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        disease = Disease.objects.get(pk=pk)
-        serializer = DiseaseSerializer(disease)
+    def get(self, request, id1, format=None):
+        medicine = Medicine.objects.filter(user__id=id1)
+        serializer = MedicineSerializer(medicine,many=True)
         return Response(serializer.data)
 
-    def post(self, request, pk, format=None):
-        disease = self.get_object(pk)
-        serializer = DiseaseSerializer(disease, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    # def post(self, request, pk, format=None):
+    #     doctor = self.get_object(pk)
+    #     serializer = MedicineSerializer(medicine, data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data)
+    #     return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk):
-        disease = Disease.get_object(pk)
-        disease.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    # def delete(self, request, pk):
+    #     medicine = Medicine.get_object(pk)
+    #     medicine.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class Procedure_show(APIView):
-    def get_object(self, pk):
-        try:
-            return Procedure.objects.get(pk=pk)
+class MyMedicineNotesapi(APIView):
+    permission_classes=(IsAuthenticated,)
+    renderer_classes=(JSONRenderer,)
+#     def get_object(self, pk):
+#         try:
+#             return Disease.objects.get(pk=pk)
 
-        except Procedure.DoesNotExist:
-            raise Http404
+#         except Disease.DoesNotExist:
+#             raise Http404
 
-    def get(self, request, pk, format=None):
-        procedure = Procedure.objects.get(pk=pk)
-        serializer = ProcedureSerializer(procedure)
+    def get(self, request, id1,id2, format=None):
+        medicine_note =Medicine_Note.objects.filter(user__id=id1).filter(medicine__id=id2)
+        serializer = Medicine_NoteSerializer(medicine_note,many = True)
         return Response(serializer.data)
 
-    def post(self, request, pk, format=None):
-        procedure = self.get_object(pk)
-        serializer = ProcedureSerializer(Procedure, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+class MyDiseasesapi(APIView):
+    permission_classes=(IsAuthenticated,)
+    renderer_classes=(JSONRenderer,)
+#     def get_object(self, pk):
+#         try:
+#             return Disease.objects.get(pk=pk)
 
-    def delete(self, request, pk):
-        procedure = Procedure.get_object(pk)
-        procedure.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+#         except Disease.DoesNotExist:
+#             raise Http404
 
-
-class Bodypart_show(APIView):
-    def get_object(self, pk):
-        try:
-            return Bodypart.objects.get(pk=pk)
-
-        except Bodypart.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        bodypart = Bodypart.objects.get(pk=pk)
-        serializer = BodypartSerializer(bodypart)
+    def get(self, request, id1, format=None):
+        disease = Disease.objects.filter(user__id=id1)
+        serializer = DiseaseSerializer(disease,many = True)
         return Response(serializer.data)
 
-    def post(self, request, pk, format=None):
-        bodypart = self.get_object(pk)
-        serializer = BodypartSerializer(Bodypart, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+class MyDiseaseNotesapi(APIView):
+    permission_classes=(IsAuthenticated,)
+    renderer_classes=(JSONRenderer,)
+#     def get_object(self, pk):
+#         try:
+#             return Disease.objects.get(pk=pk)
 
-    def delete(self, request, pk):
-        bodypart = Bodypart.get_object(pk)
-        bodypart.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+#         except Disease.DoesNotExist:
+#             raise Http404
 
-
-class Symptom_show(APIView):
-    def get_object(self, pk):
-        try:
-            return Symptom.objects.get(pk=pk)
-
-        except Symptom.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        symptom = Symptom.objects.get(pk=pk)
-        serializer = SymptomSerializer(bodypart)
+    def get(self, request, id1,id2, format=None):
+        disease_note =Disease_Note.objects.filter(user__id=id1).filter(disease__id=id2)
+        serializer = Disease_NoteSerializer(disease_note,many = True)
         return Response(serializer.data)
 
-    def post(self, request, pk, format=None):
-        symptom = self.get_object(pk)
-        serializer = SymptomSerializer(Symptom, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk):
-        symptom = Symptom.get_object(pk)
-        symptom.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+class MyAppointmentsapi(APIView):
+    permission_classes=(IsAuthenticated,)
+    renderer_classes=(JSONRenderer,)
+#     def get_object(self, pk):
+#         try:
+#             return Disease.objects.get(pk=pk)
+
+#         except Disease.DoesNotExist:
+#             raise Http404
+
+    def get(self, request, id1, format=None):
+        appointment =Appointment.objects.filter(user__id=id1)
+        serializer = AppointmentSerializer(appointment,many = True)
+        return Response(serializer.data)
+
+
+class MyMeasurementsapi(APIView):
+    permission_classes=(IsAuthenticated,)
+    renderer_classes=(JSONRenderer,)
+#     def get_object(self, pk):
+#         try:
+#             return Disease.objects.get(pk=pk)
+
+#         except Disease.DoesNotExist:
+#             raise Http404
+
+    def get(self, request, id1, format=None):
+        measurement =Measurement.objects.filter(user__id=id1)
+        serializer = MeasurementSerializer(measurement,many = True)
+        return Response(serializer.data)
+    # def post(self, request, pk, format=None):
+    #     disease = self.get_object(pk)
+    #     serializer = DiseaseSerializer(disease, data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data)
+    #     return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # def delete(self, request, pk):
+    #     disease = Disease.get_object(pk)
+    #     disease.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
+
+class MyInsurancesapi(APIView):
+    permission_classes=(IsAuthenticated,)
+    renderer_classes=(JSONRenderer,)
+#     def get_object(self, pk):
+#         try:
+#             return Disease.objects.get(pk=pk)
+
+#         except Disease.DoesNotExist:
+#             raise Http404
+
+    def get(self, request, id1, format=None):
+        insurance =Insurance.objects.filter(user__id=id1)
+        serializer = InsuranceSerializer(insurance,many = True)
+        return Response(serializer.data)
+
+
+# class MyProceduresapi(APIView):
+#     permission_classes=(IsAuthenticated,)
+#     renderer_classes=(JSONRenderer,)
+#     # def get_object(self, pk):
+#     #     try:
+#     #         return Procedure.objects.get(pk=pk)
+
+#     #     except Procedure.DoesNotExist:
+#     #         raise Http404
+
+#     def get(self, request, id1, format=None):
+#         procedure = Procedure.objects.filter(user__id=id1)
+#         serializer = ProcedureSerializer(procedure,many=True)
+#         return Response(serializer.data)
+
+    # def post(self, request, pk, format=None):
+    #     procedure = self.get_object(pk)
+    #     serializer = ProcedureSerializer(Procedure, data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data)
+    #     return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # def delete(self, request, pk):
+    #     procedure = Procedure.get_object(pk)
+    #     procedure.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+# class Symptom_show(APIView):
+#     def get_object(self, pk):
+#         try:
+#             return Symptom.objects.get(pk=pk)
+
+#         except Symptom.DoesNotExist:
+#             raise Http404
+
+#     def get(self, request, pk, format=None):
+#         symptom = Symptom.objects.get(pk=pk)
+#         serializer = SymptomSerializer(bodypart)
+#         return Response(serializer.data)
+
+#     def post(self, request, pk, format=None):
+#         symptom = self.get_object(pk)
+#         serializer = SymptomSerializer(Symptom, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#     def delete(self, request, pk):
+#         symptom = Symptom.get_object(pk)
+#         symptom.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class HomeView(generic.TemplateView):

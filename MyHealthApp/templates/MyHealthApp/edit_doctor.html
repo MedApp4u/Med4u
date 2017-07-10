@@ -1,9 +1,14 @@
 
 {% extends "MyHealthApp/sidebar.html" %}
 
+{% block title %} Edit Doctors {% endblock %}
+
+
 {% block div_id %}<div class="content-wrapper" id = "content-doctors">{% endblock %}
 
 {% block content %}
+
+<div class="background-doc">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 col-sm-3">
@@ -68,6 +73,10 @@
     					<!-- <p class="help-text">Start date of the Prescription.</p> -->
     					<p class="label-med">Timings</p>
     					<p class="label-desc">{{ form.doctor_timings }}</p>
+
+ 					
+   					 <button class="upload-button" type="submit">Upload</button>
+   					 	<a class="delete-button" href="{% url 'MyHealthApp:delete_medicine' form.instance.id %}">Delete</a>
     					<!-- <p class="label-med">Usage Instructions</p>
     					<p class="label-desc">{{ form.usage_instructions }}</p> -->
     					</div>
@@ -83,13 +92,7 @@
     					</div> -->
     					 
   
-					<a class="upload-button" href="{% url 'MyHealthApp:delete_medicine' form.instance.id %}">Delete</a>
-				 
-
-
-
-    					
-   					 <button class="upload-button" type="submit">Upload</button>
+				
 				  </form>
 				 
 			</div>
@@ -97,6 +100,8 @@
 		
 	</div>
 
+</div>
+	
 
 
 {% endblock %}

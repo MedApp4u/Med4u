@@ -1,6 +1,8 @@
 
 {% extends 'MyHealthApp/sidebar.html' %}
 
+{% block title %} Add Medicine {% endblock %}
+
 {% block div_id %}<div class="content-wrapper" id = "content-medicines">{% endblock %}
 
 {% block content %}
@@ -26,6 +28,7 @@
   		<p class="help-text">No. of times a day.</p>
    		<p class="label-med">Date</p>
     	<p class="label-desc">{{ form.medicine_date }}</p>
+    	<p class="help-text">Date Format: YYYY-MM-DD</p>
     	<p class="help-text">Start date of the Prescription.</p>
     	<p class="label-med">Doctor</p>
     	<p class="label-desc">{{ form.doctor }} <a href="{% url 'MyHealthApp:add_doctor' %}">Add Doctor</a> </p>

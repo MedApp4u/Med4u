@@ -1,6 +1,9 @@
 
 {% extends "MyHealthApp/sidebar.html" %}
 
+{% block title %} Edit Measurements {% endblock %}
+
+
 {% block div_id %}<div class="content-wrapper" id = "content-measurements">{% endblock %}
 
 {% block content %}
@@ -73,7 +76,7 @@
 	    					<p class="label-med">Notes</p>
 	    					<p class="label-desc">{{ form.notes }}</p>
 	    					<button class="upload-button" type="submit">Upload</button>
-    						<button class="delete-button" href="{% url 'MyHealthApp:delete_measurement' form.instance.id %}">delete</button>
+    						<a class="delete-button" href="{% url 'MyHealthApp:delete_measurement' form.instance.id %}">delete</a>
     					</div>
 
     					<!-- <div class="col-sm-6 col-md-6 label-med-right">

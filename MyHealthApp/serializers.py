@@ -61,7 +61,7 @@ class SymptomSerializer(serializers.ModelSerializer):
 
     class Meta: 
         model = Symptom 
-        fields=('id','symptom_name','bodypart','symptom_description','tests')
+        fields=('id','symptom_name','bodypart','symptom_description','tests','dis_symptom')
 
 
 

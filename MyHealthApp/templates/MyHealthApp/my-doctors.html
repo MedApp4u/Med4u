@@ -1,11 +1,13 @@
 {% extends "MyHealthApp/sidebar.html" %}
 
+{% block title %} My Doctors {% endblock %}
+
 {% block div_id %}<div class="content-wrapper" id = "content-doctors">{% endblock %}
 
 {% block content %}
 
-
-	<h1 class="head-med text-center">My Doctors</h1>
+<div class="background-doc">
+		<h1 class="head-med text-center">My Doctors</h1>
 
 	<a href="{% url 'MyHealthApp:add_doctor' %}"><div class="ADD">Add Doctors</div></a>
 
@@ -28,6 +30,8 @@
 		</div>
 		
 	</div>
+
+</div>
 
 
 

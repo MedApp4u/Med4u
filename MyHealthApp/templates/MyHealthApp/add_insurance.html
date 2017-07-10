@@ -1,6 +1,8 @@
 
 {% extends 'MyHealthApp/sidebar.html' %}
 
+{% block title %} Add Insurance {% endblock %}
+
 {% block div_id %}<div class="content-wrapper" id = "content-insurances">{% endblock %}
 
 {% block content %}
@@ -18,8 +20,10 @@
     					<p class="label-desc">{{ form.insurance_plan }}</p>
     					<p class="label-med">Expiry Date</p>
     					<p class="label-desc">{{ form.expiry_date }}</p>
+                        <p class="help-text">Date Format: YYYY-MM-DD</p>
     					<p class="label-med">Start Date</p>
     					<p class="label-desc" id="label-desc-id">{{ form.start_date }}</p>
+                        <p class="help-text">Date Format: YYYY-MM-DD</p>
     					<p class="label-med">Premium</p>
     					<p class="label-desc">{{ form.premium }} </p>
     					<!-- <p class="help-text">No. of times a day.</p> -->

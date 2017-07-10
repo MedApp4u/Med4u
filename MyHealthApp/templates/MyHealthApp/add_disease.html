@@ -22,6 +22,7 @@
     					<p class="label-desc">{{ form.disease_description }}</p>
     					<p class="label-med">Date</p>
     					<p class="label-desc" id="label-desc-id">{{ form.disease_date }}</p>
+                        <p class="help-text">Date Format: YYYY-MM-DD</p>
     					<p class="label-med">Symptom</p>
     					<p class="label-desc">{{ form.symptom }} </p>
     					<!-- <p class="help-text">No. of times a day.</p> -->
@@ -32,6 +33,8 @@
     					<p class="label-desc">{{ form.procedure }}</p>
     					<!-- <p class="label-med">Usage Instructions</p>
     					<p class="label-desc">{{ form.usage_instructions }}</p> -->
+                        <p>Notes</p>
+                        <p>{{ note_form.disease_note}}</p>
     					 <button class="upload-button" type="submit">Upload</button>
     					</div>
 

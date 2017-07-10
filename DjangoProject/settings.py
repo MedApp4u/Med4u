@@ -27,7 +27,7 @@ SECRET_KEY = 'j23onn0g#5+d761e%&sq^h@t-14hr+hjmu3+7-ov@ji)z!r-fa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
-    DEBUG = False
+    DEBUG = True
 else:
     DEBUG = True
 

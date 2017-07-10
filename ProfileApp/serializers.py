@@ -17,3 +17,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         	instance.save()
         	return instance
 
+class FullProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields='__all__'

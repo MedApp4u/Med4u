@@ -80,7 +80,7 @@ class Symptom(models.Model):
     symptom_description = models.TextField(blank=True)
     tests = models.TextField(blank=True)
     bodypart = models.ManyToManyField(Bodypart, related_name='BPsymptom')
-    bodypart = models.ManyToManyField(Bodypart)
+    
     def __str__(self):
         return self.symptom_name
 
@@ -123,17 +123,12 @@ class Procedure_Helpline(models.Model):  # Multi valued attribute
     procedure_phone_number = PhoneNumberField(blank=True)
 
 
-class Procedure_Note(models.Model):
-    procedure_note = models.TextField(blank=True)
-    procedure = models.ForeignKey(Procedure, on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-
 
 class Disease(models.Model):
     disease_name = models.CharField(max_length=300)
     disease_description = models.TextField(blank=True)
     disease_date = models.DateField(help_text='Date the disease was acquired', blank=True)
-    symptom = models.ManyToManyField(Symptom, blank=True)
+    symptom = models.ManyToManyField(Symptom, related_name='dis_symptom', blank=True)
     medicine = models.ManyToManyField(Medicine, blank=True)
     procedure = models.ManyToManyField(Procedure, blank=True)
     user = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)

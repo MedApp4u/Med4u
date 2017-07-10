@@ -6,12 +6,11 @@ from rest_framework import status
 from .models import Measurement, Doctor, Doctor_Note, Medicine_Note, Medicine, Bodypart, Appointment, Symptom, \
     Insurance, Procedure
 from django.contrib.auth.decorators import login_required
-# from .serializers import DoctorSerializer,Doctor_NoteSerializer,Medicine_NoteSerializer,MedicineSerializer,MeasurementSerializer, BodypartSerializer, SymptomSerializer , InsuranceSerializer, ProcedureSerializer, AppointmentSerializer
 from .serializers import *
 from .forms import *
 from rest_framework.views import APIView
 from ProfileApp.models import Profile
-from ProfileApp.serializers import ProfileSerializer
+from ProfileApp.serializers import ProfileSerializer, FullProfileSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
@@ -140,7 +139,7 @@ class Profile_show(APIView):
 
     def get(self, request, pk, format=None):
         profile = Profile.objects.get(pk=pk)
-        serializer = ProfileSerializer(profile)
+        serializer = FullProfileSerializer(profile)
         return Response(serializer.data)
 
     def post(self, request, pk, format=None):
@@ -177,14 +176,6 @@ class Procedure_Helpline_list(generics.ListCreateAPIView):
     permission_classes = (AllowAny,)
     queryset = Procedure_Helpline.objects.all()
     serializer_class = Procedure_HelplineSerializer
-    filter_backends = (DjangoFilterBackend, SearchFilter)
-    renderer_classes = (JSONRenderer,)
-
-
-class Procedure_Note_list(generics.ListCreateAPIView):
-    permission_classes = (AllowAny,)
-    queryset = Procedure_Note.objects.all()
-    serializer_class = Procedure_NoteSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
     renderer_classes = (JSONRenderer,)
 
@@ -274,7 +265,7 @@ class MyMedicineNotesapi(APIView):
         return Response(serializer.data)
 
 class MyDiseasesapi(APIView):
-    permission_classes=(IsAuthenticated,)
+    #permission_classes=(IsAuthenticated,)
     renderer_classes=(JSONRenderer,)
 #     def get_object(self, pk):
 #         try:
@@ -551,18 +542,27 @@ def AddMeasurement(request):
 @login_required
 def AddDoctor(request):
     if request.method == 'POST':
-        form = DoctorForm(request.POST, request.FILES)
+        form = DoctorForm(request.POST, request.FILES, user=request.user)
+        note_form = DoctorNoteForm(request.POST)
         if form.is_valid():
             temp_instance = form.save(commit=False)
             temp_instance.save()
             temp_instance.user.add(request.user)
             temp_instance.save()
-            return HttpResponseRedirect('/my_doctors')
         else:
             print form.errors
+        if note_form.is_valid():
+            temp_instance = note_form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()
+            return HttpResponseRedirect('/my_doctors')
+        else:
+            print note_form.errors
     else:
         form = DoctorForm()
-    return render(request, 'MyHealthApp/add_doctor.html', {'form': form, 'current_user': request.user})
+        note_form = DoctorNoteForm()
+    return render(request, 'MyHealthApp/add_doctor.html', {'form': form, 'note_form':note_form, 'current_user': request.user})
 
 
 @login_required
@@ -585,8 +585,16 @@ def AddAppointment(request):
 def AddMedicine(request):
     if request.method == 'POST':
         form = MedicineForm(request.POST, user=request.user)
+        note_form = MedicineNoteForm(request.POST)
         if form.is_valid():
             temp_instance = form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()
+        else:
+            print form.errors
+        if note_form.is_valid():
+            temp_instance = note_form.save(commit=False)
             temp_instance.save()
             temp_instance.user.add(request.user)
             temp_instance.save()
@@ -595,13 +603,22 @@ def AddMedicine(request):
             print form.errors
     else:
         form = MedicineForm(user=request.user)
-    return render(request, 'MyHealthApp/add_medicine.html', {'form': form, 'current_user': request.user})
+        note_form = MedicineNoteForm()
+    return render(request, 'MyHealthApp/add_medicine.html', {'form': form, 'note_form':note_form, 'current_user': request.user})
 
 
 @login_required
 def AddDisease(request):
     if request.method == 'POST':
         form = DiseaseForm(request.POST, user=request.user)
+        note_form = DiseaseNoteForm(request.POST)
+        if form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()
+        else:
+            print form.errors
         if form.is_valid():
             temp_instance = form.save(commit=False)
             temp_instance.save()
@@ -612,7 +629,8 @@ def AddDisease(request):
             print form.errors
     else:
         form = DiseaseForm(user=request.user)
-    return render(request, 'MyHealthApp/add_disease.html', {'form': form, 'current_user': request.user})
+        note_form = DiseaseNoteForm()
+        return render(request, 'MyHealthApp/add_disease.html', {'form': form, 'note_form':note_form, 'current_user': request.user})
 
 
 @login_required
@@ -707,8 +725,16 @@ def EditDoctor(request, doc_id):
 
     if request.method == 'POST':
         form = DoctorForm(request.POST, request.FILES, instance=doctor)
+        note_form = DoctorNoteForm(request.POST, instance=doctor)
         if form.is_valid():
             temp_instance = form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()
+        else:
+            print form.errors
+        if note_form.is_valid():
+            temp_instance = note_form.save(commit=False)
             temp_instance.save()
             temp_instance.user.add(request.user)
             temp_instance.save()
@@ -717,8 +743,9 @@ def EditDoctor(request, doc_id):
             print form.errors
     else:
         form = DoctorForm(instance=doctor)
+        note_form = DoctorNoteForm(instance=doctor)
     return render(request, 'MyHealthApp/edit_doctor.html',
-                  {'form': form, 'doctor_list': queryset, 'current_doctor': doctor, 'current_user': request.user})
+                  {'form': form,'note_form':note_form, 'doctor_list': queryset, 'current_doctor': doctor, 'current_user': request.user})
 
 
 @login_required
@@ -729,8 +756,16 @@ def EditDisease(request, dis_id):
 
     if request.method == 'POST':
         form = DiseaseForm(request.POST, user=request.user, instance=disease)
+        note_form = DiseaseNoteForm(request.POST, instance=disease)
         if form.is_valid():
             temp_instance = form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()
+        else:
+            print form.errors
+        if note_form.is_valid():
+            temp_instance = note_form.save(commit=False)
             temp_instance.save()
             temp_instance.user.add(request.user)
             temp_instance.save()
@@ -738,9 +773,10 @@ def EditDisease(request, dis_id):
         else:
             print form.errors
     else:
-        form = DiseaseForm(user=request.user, instance=disease)
+        form = DiseaseForm(user=request.user,instance=disease)
+        note_form = DiseaseNoteForm(instance=disease)
     return render(request, 'MyHealthApp/edit_disease.html',
-                  {'form': form, 'disease_list': queryset, 'current_disease': disease, 'current_user': request.user})
+                  {'form': form,'note_form':note_form, 'disease_list': queryset, 'current_disease': disease, 'current_user': request.user})
 
 
 @login_required
@@ -751,18 +787,27 @@ def EditMedicine(request, med_id):
 
     if request.method == 'POST':
         form = MedicineForm(request.POST, user=request.user, instance=medicine)
+        note_form = MedicineNoteForm(request.POST, instance=medicine)
         if form.is_valid():
             temp_instance = form.save(commit=False)
             temp_instance.save()
             temp_instance.user.add(request.user)
             temp_instance.save()
+        else:
+            print form.errors
+        if note_form.is_valid():
+            temp_instance = form.save(commit=False)
+            temp_instance.save()
+            temp_instance.user.add(request.user)
+            temp_instance.save()   
             return HttpResponseRedirect('/my_medicines')
         else:
             print form.errors
     else:
         form = MedicineForm(user=request.user, instance=medicine)
+        note_form = MedicineNoteForm(instance=medicine)
     return render(request, 'MyHealthApp/edit_medicine.html',
-                  {'form': form, 'medicine_list': queryset, 'current_medicine': medicine, 'current_user': request.user})
+                  {'form': form,'note_form':note_form, 'medicine_list': queryset, 'current_medicine': medicine, 'current_user': request.user})
 
 
 @login_required

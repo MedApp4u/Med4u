@@ -61,7 +61,7 @@ class SymptomSerializer(serializers.ModelSerializer):
 
     class Meta: 
         model = Symptom 
-        fields=('id','symptom_name','bodypart','symptom_description','tests')
+        fields=('id','symptom_name','bodypart','symptom_description','tests','dis_symptom')
 
 
 
@@ -117,15 +117,6 @@ class Procedure_HelplineSerializer(serializers.ModelSerializer):
         model = Procedure_Helpline
         fields=('procedure_phone_number','proc')
 
-
-class Procedure_NoteSerializer(serializers.ModelSerializer):
-    proc =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
-    user =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
-    #proc = serializers.HyperlinkedRelatedField(many=True, read-only=True,view_name=Procedure-detail)
-    #user = serializers.HyperlinkedRelatedField(many=True, read-only=True,view_name=Profile-detail)
-    class Meta:
-        model = Procedure_Note
-        fields=('procedure_note','procedure','user')
         
 class DiseaseSerializer(serializers.ModelSerializer):
     symptom=  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
@@ -211,13 +202,6 @@ class Procedure_HelplineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Procedure_Helpline
         fields=('proc','procedure_phone_number')
-
-class Procedure_NoteSerializer(serializers.ModelSerializer):
-    proc = serializers.PrimaryKeyRelatedField(many=True, read_only = True)
-    #proc= serializers.HyperlinkedRelatedField(many=True,read_only=True,view_name='Procedure-detail')
-    class Meta:
-        model = Procedure_Note
-        fields=('proc','procedure_note')
 
 class TokenSerializer(serializers.ModelSerializer): 
     class Meta: 

@@ -49,10 +49,18 @@ class DoctorForm(forms.ModelForm):
     doctor_timings = forms.CharField(required=True, label='Timing')
     doctor_pic = forms.ImageField(required=False, label='Upload Photo')
 
+
     class Meta:
         model = Doctor
         fields = (
-            'doctor_name', 'doctor_description', 'doctor_address', 'doctor_speciality', 'doctor_timings', 'doctor_pic')
+             'doctor_name', 'doctor_description', 'doctor_address', 'doctor_speciality', 'doctor_timings', 'doctor_pic')
+
+class DoctorNoteForm(forms.ModelForm):
+    doctor_note = forms.CharField(required=False, label='Notes', widget=forms.Textarea())
+
+    class Meta:
+        model = Doctor_Note
+        fields = ('doctor_note',)
 
 
 class AppointmentForm(forms.ModelForm):
@@ -84,6 +92,7 @@ class MedicineForm(forms.ModelForm):
     possible_sideeffects = forms.CharField(required=False, label='Possible Sideffects', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
     brand_names = forms.CharField(required=True, label='Brand Name', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
 
+
     class Meta:
         model = Medicine
         fields = (
@@ -95,12 +104,20 @@ class MedicineForm(forms.ModelForm):
         super(MedicineForm, self).__init__(*args, **kwargs)
         self.fields['doctor'].queryset = user.doctor_set.all()
 
+class MedicineNoteForm(forms.ModelForm):
+    medicine_note = forms.CharField(required=False, label='Notes', widget=forms.Textarea())
+
+    class Meta:
+        model = Medicine_Note
+        fields = ('medicine_note',)
+
 
 class DiseaseForm(forms.ModelForm):
     symptom = forms.ModelMultipleChoiceField(required=True, label='Symptom', queryset=Symptom.objects.all())
     medicine = forms.ModelMultipleChoiceField(required=True, label='Medicine', queryset=Medicine.objects.none())
     procedure = forms.ModelMultipleChoiceField(required=True, label='Procedure', queryset=Procedure.objects.all())
     disease_description = forms.CharField(required=False, label='Description', widget=forms.Textarea(attrs={'class':'my-label-desc label-desc-text-area'}))
+
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
         super(DiseaseForm, self).__init__(*args, **kwargs)
@@ -109,3 +126,10 @@ class DiseaseForm(forms.ModelForm):
     class Meta:
         model = Disease
         exclude = ['user']
+
+class DiseaseNoteForm(forms.ModelForm):
+    disease_note = forms.CharField(required=False, label='Notes', widget=forms.Textarea())
+
+    class Meta:
+        model = Disease_Note
+        fields = ('disease_note',)

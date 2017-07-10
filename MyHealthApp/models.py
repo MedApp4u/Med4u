@@ -80,12 +80,12 @@ class Symptom(models.Model):
     symptom_description = models.TextField(blank=True)
     tests = models.TextField(blank=True)
     bodypart = models.ManyToManyField(Bodypart, related_name='BPsymptom')
-
+    bodypart = models.ManyToManyField(Bodypart)
     def __str__(self):
         return self.symptom_name
 
 
-class Sypmtom_Videos(models.Model):  # Multi valued attribute
+class Symptom_Videos(models.Model):  # Multi valued attribute
     symptom = models.ForeignKey(Symptom, on_delete=models.CASCADE)
     symptom_video = models.URLField(blank=True)
 

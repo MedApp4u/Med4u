@@ -69,7 +69,7 @@ class Symptom_VideosSerializer(serializers.ModelSerializer):
     bodypart =  serializers.PrimaryKeyRelatedField(many =True,read_only=True)
     #bodypart = serializers.HyperlinkedRelatedField(many=True,read_only=True,view_name='Bodypart-detail')
     class Meta:
-        model = Sypmtom_Videos
+        model = Symptom_Videos
         fields=('symptom','symptom_video')
 
 class InsuranceSerializer(serializers.ModelSerializer):

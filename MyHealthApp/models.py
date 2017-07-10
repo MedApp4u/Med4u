@@ -80,7 +80,7 @@ class Symptom(models.Model):
     symptom_description = models.TextField(blank=True)
     tests = models.TextField(blank=True)
     bodypart = models.ManyToManyField(Bodypart, related_name='BPsymptom')
-    bodypart = models.ManyToManyField(Bodypart)
+    
     def __str__(self):
         return self.symptom_name
 

@@ -274,7 +274,7 @@ class MyMedicineNotesapi(APIView):
         return Response(serializer.data)
 
 class MyDiseasesapi(APIView):
-    permission_classes=(IsAuthenticated,)
+    #permission_classes=(IsAuthenticated,)
     renderer_classes=(JSONRenderer,)
 #     def get_object(self, pk):
 #         try:

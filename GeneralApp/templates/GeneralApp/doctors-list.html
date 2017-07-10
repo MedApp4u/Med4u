@@ -125,7 +125,12 @@
 								</div>
 								<div class="procedure-desc-right" id="desc-field-pp">
 									<p class="procedure-desc-name">
-										<img src="{{ current_doctor.doctor_pic.url }}" />
+										{% if current_doctor.doctor_pic.url is not None %}
+											<img src="{{ current_doctor.doctor_pic.url }}" />
+										{% else %}
+											<img src="{% static 'ProfileApp\css\img\icons\avatar.jpg' %}" />
+										{% endif %}
+										
 									</p>
 								</div>
 								<div class="procedure-desc-left" id="desc-label-name">

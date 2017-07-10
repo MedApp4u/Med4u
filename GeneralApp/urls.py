@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^about/$', views.AboutUs.as_view(), name='about'),
     url(r'^accounts/profile/$', views.redirect_to_dashboard, name='redirect_to_dashboard'),
     
-    url(r'^symptoms/$', views.SymptomsView.as_view(), name='symptoms'),
+    url(r'^symptoms/$', views.SymptomsView, name='symptoms'),
     url(r'^symptoms/(?P<symptom_part>[\w.@+-]+)/$', views.BodypartSymptomList, name='symptom_part'),
     url(r'^symptoms/(?P<symp_id>[0-9]+)$', views.SymptomDetails, name='symptom_details'),
     

@@ -6,12 +6,11 @@ from rest_framework import status
 from .models import Measurement, Doctor, Doctor_Note, Medicine_Note, Medicine, Bodypart, Appointment, Symptom, \
     Insurance, Procedure
 from django.contrib.auth.decorators import login_required
-# from .serializers import DoctorSerializer,Doctor_NoteSerializer,Medicine_NoteSerializer,MedicineSerializer,MeasurementSerializer, BodypartSerializer, SymptomSerializer , InsuranceSerializer, ProcedureSerializer, AppointmentSerializer
 from .serializers import *
 from .forms import *
 from rest_framework.views import APIView
 from ProfileApp.models import Profile
-from ProfileApp.serializers import ProfileSerializer
+from ProfileApp.serializers import ProfileSerializer , FullProfileSeriailizer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
@@ -140,7 +139,7 @@ class Profile_show(APIView):
 
     def get(self, request, pk, format=None):
         profile = Profile.objects.get(pk=pk)
-        serializer = ProfileSerializer(profile)
+        serializer = FullProfileSerializer(profile)
         return Response(serializer.data)
 
     def post(self, request, pk, format=None):

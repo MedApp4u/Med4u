@@ -216,7 +216,7 @@ class MyDoctorsapi(APIView):
     #     return Response(status=status.HTTP_204_NO_CONTENT)
 
 class MyDoctorNotesapi(APIView):
-    permission_classes=(IsAuthenticated,)
+#     permission_classes=(IsAuthenticated,)
     renderer_classes=(JSONRenderer,)
 #     def get_object(self, pk):
 #         try:
@@ -258,7 +258,7 @@ class MyMedicineapi(APIView):
 
 
 class MyMedicineNotesapi(APIView):
-    permission_classes=(IsAuthenticated,)
+#     permission_classes=(IsAuthenticated,)
     renderer_classes=(JSONRenderer,)
 #     def get_object(self, pk):
 #         try:
@@ -304,7 +304,7 @@ class MyDiseaseNotesapi(APIView):
 
 
 class MyAppointmentsapi(APIView):
-    permission_classes=(IsAuthenticated,)
+#     permission_classes=(IsAuthenticated,)
     renderer_classes=(JSONRenderer,)
 #     def get_object(self, pk):
 #         try:
@@ -320,7 +320,7 @@ class MyAppointmentsapi(APIView):
 
 
 class MyMeasurementsapi(APIView):
-    permission_classes=(IsAuthenticated,)
+#     permission_classes=(IsAuthenticated,)
     renderer_classes=(JSONRenderer,)
 #     def get_object(self, pk):
 #         try:
@@ -347,7 +347,7 @@ class MyMeasurementsapi(APIView):
     #     return Response(status=status.HTTP_204_NO_CONTENT)
 
 class MyInsurancesapi(APIView):
-    permission_classes=(IsAuthenticated,)
+#     permission_classes=(IsAuthenticated,)
     renderer_classes=(JSONRenderer,)
 #     def get_object(self, pk):
 #         try:

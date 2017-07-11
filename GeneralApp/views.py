@@ -136,7 +136,7 @@ def SymptomDetails(request, symptom_part, symp_id):
     symptoms_list = Symptom.objects.filter(bodypart__bodypart=symptom_part)
     current_part = Bodypart.objects.get(bodypart=symptom_part)
     current_symptom = Symptom.objects.get(id=symp_id)
-    bodyparts = Bodypart.objects.filter(id=symp_id)
+    bodyparts = Bodypart.objects.filter(BPsymptom__id=symp_id)
     s = Symptom.objects.get(id=symp_id)
     videos = s.symptom_videos_set.all()
     diseases = Disease.objects.filter(symptom=symp_id)

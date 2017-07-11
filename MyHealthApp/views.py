@@ -551,7 +551,7 @@ def AddDoctor(request):
             except Doctor.DoesNotExist:
                 doctorid = None
             if doctorid is not None:
-                form = DoctorForm(user=request.user)
+                form = DoctorForm()
                 note_form = DoctorNoteForm()
                 return render(request, 'MyHealthApp/add_doctor.html', {'form': form, 'note_form':note_form, 'current_user': request.user})
             temp_instance = form.save(commit=False)

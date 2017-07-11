@@ -593,6 +593,8 @@ def AddAppointment(request):
 
 @login_required
 def AddMedicine(request):
+    exists = True
+
     if request.method == 'POST':
         form = MedicineForm(request.POST, user=request.user)
         note_form = MedicineNoteForm(request.POST)
@@ -605,7 +607,7 @@ def AddMedicine(request):
             if medicineid is not None:
                 form = MedicineForm(user=request.user)
                 note_form = MedicineNoteForm()
-                return render(request, 'MyHealthApp/add_medicine.html', {'form': form, 'note_form':note_form, 'current_user': request.user})
+                return render(request, 'MyHealthApp/add_medicine.html', {'form': form, 'note_form':note_form, 'current_user': request.user, 'exists': exists})
             temp_instance = form.save(commit=False)
             temp_instance.save()
             temp_instance.user.add(request.user)
@@ -622,9 +624,11 @@ def AddMedicine(request):
         else:
             print form.errors
     else:
+        exists = False
         form = MedicineForm(user=request.user)
         note_form = MedicineNoteForm()
-    return render(request, 'MyHealthApp/add_medicine.html', {'form': form, 'note_form':note_form, 'current_user': request.user})
+    exists = False
+    return render(request, 'MyHealthApp/add_medicine.html', {'form': form, 'note_form':note_form, 'current_user': request.user, 'exists': exists})
 
 
 @login_required

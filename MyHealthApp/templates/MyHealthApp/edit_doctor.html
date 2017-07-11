@@ -87,6 +87,13 @@
     					<!-- <p class="help-text">Start date of the Prescription.</p> -->
     					<p class="label-med">Timings</p>
     					<p class="label-desc">{{ form.doctor_timings }}</p>
+                
+    					<!-- <p class="label-med">Usage Instructions</p>
+    					<p class="label-desc">{{ form.usage_instructions }}</p> -->
+    					</div>
+
+    					<div class="col-sm-6 col-md-6 label-med-right">
+
     					<p class="label-med">Notes</p><br>
     					<p class="label-desc">{{ note_form.doctor_note }}</p>
     				<!-- 	<p class="label-med">Possible Side Effects</p>
@@ -94,7 +101,7 @@
     					<p class="label-med">Brand Names</p>
     					<p class="label-desc">{{ form.brand_names }}</p> -->
     					 <button class="upload-button" type="submit">Upload</button>
-   					 	<a class="delete-button" href="{% url 'MyHealthApp:delete_medicine' form.instance.id %}">Delete</a>
+   					 	<a class="delete-button" href="{% url 'MyHealthApp:delete_doctor' form.instance.id %}">Delete</a>
     					</div>
     					 
   

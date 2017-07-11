@@ -983,6 +983,8 @@ hr.bold {
 	width: 72%;
 	height: 100px;
 	visibility: hidden;
+	box-shadow: 0 1px 6px rgba(0,0,0,.2);
+	z-index: 1;
 }
 
 .vp-form-icon, .vp-form-icon-separator, .vp-form-icon-text {
@@ -1024,7 +1026,7 @@ hr.bold {
 	letter-spacing: 1.5px;
 }
 
-.procedure-body-scroll, .find-doctors-body {
+.procedure-body-scroll, .symptom-body-scroll ,.find-doctors-body {
 	overflow-y: scroll;
 	overflow-x: hidden;
 	position: absolute;
@@ -1033,6 +1035,10 @@ hr.bold {
 	width: 40%;
 	height: 76.18%;
 	visibility: hidden;
+}
+
+.symptom-body-scroll {
+	width: 36%;
 }
 
 a.procedure-body-tab {
@@ -1081,7 +1087,7 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	line-height: 35.7px;
 }
 
-.procedure-body-desc {
+.procedure-body-desc, .symptoms-body-desc {
 	position: relative;
 	width: 32%;
 	height: 76.18%;
@@ -1090,6 +1096,91 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	font-weight: 600;
 	border-right: 1px solid #ebebeb;
 	visibility: hidden;
+}
+
+.symptoms-body-desc {
+	left: 36%;
+	width: 36%;
+}
+
+.symptoms-desc-left, .symptoms-desc-right {
+	position: relative;
+	float: left;
+	height: 11%;
+	z-index: 0;
+}
+
+.symptoms-desc-left {
+	background: linear-gradient(90deg, #3fbbc0, #3fbbc0, #3fbbc0, #3ab3b8);
+	color: white;
+	border-bottom: 1px solid #37aeb3;
+	width: 33%;	
+}
+
+.symptoms-desc-right {
+	border-bottom: 1px solid #f3f3f3;
+	width: 67%;
+}
+
+.symptoms-desc-label {
+	position: relative;
+	top: 32%;
+	left: 20px;
+	margin-bottom: 0px;
+	font-size: 16px;
+	font-weight: 800;
+	color: white;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;	
+}
+
+.symptoms-desc-text {
+	position: relative;
+	top: 28%;
+	left: 5%;
+	font-size: 17px;
+	font-weight: 300;
+	margin: 0px;	
+}
+
+#desc-label-vid {
+	height: 17%;
+}
+
+#desc-field-vid {
+	height: 17%;
+}
+
+#desc-field-vid a {
+	margin-right: 5%;
+}
+
+#desc-field-vid img {
+	width: 20%;
+	height: 80%;
+	/*border: 1px solid black;*/
+}
+
+#desc-field-vid p {
+	position: relative;
+	left: 5%;
+	top: 19.5%;
+	height: 80%;
+	width: 60%;
+	margin-bottom: 0px;
+}
+
+#desc-label-vid .symptoms-desc-label {
+	top: 20%;
+	letter-spacing: 0.5px;
+}
+
+#symptom-description-label, #symptom-description-field {
+	height: 39%;
+}
+
+#symptom-description-label p, #symptom-description-field p{
+	top: 12%;
 }
 
 

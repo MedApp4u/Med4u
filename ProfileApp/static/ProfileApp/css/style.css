@@ -1290,9 +1290,9 @@ label[for="vp-form-gender_1"] {
 	height: 220px;
 	border-radius: 110px;
 	position: fixed;
-	z-index: 10001;
+	z-index: 1001;
 	top: 108px;
-	left: 95.85%;
+	left: 96.3%;
 	float: right;
 	margin-left: -220px;
 }

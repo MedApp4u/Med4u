@@ -26,10 +26,10 @@
 				<li class="list-item">
 					<div class="profile-slider-top">
 						<div class="profile-slider-circle" id="circle">
-							<div class="profile-slider-image-cover">
+							<!-- <div class="profile-slider-image-cover">
 								<img src="{% static 'ProfileApp/css/img/icons/upload-light.png' %}"></img>
 								<p>Upload image</p>
-							</div>
+							</div> -->
 							{% if current_user.profile_pic.url is not None %}
 								<img src="{{current_user.profile_pic.url}}" class="profile-slider-image" />
 							{% else %}
@@ -82,9 +82,9 @@
 									Symptoms - {{ part }}
 								</p>																
 							</div>
-							<div class="procedure-body-scroll">
+							<div class="symptom-body-scroll">
 								{% for symptom in symptoms %}
-									<a href="{% url 'GeneralApp:symptom_details' symptom.id %}" class="procedure-body-tab">
+									<a href="{% url 'GeneralApp:symptom_details' part symptom.id %}" class="procedure-body-tab">
 										<div class = "procedure-body-name">
 											<div class = "procedure-body-separator"></div>
 											<div class = "procedure-body-label">{{ symptom.symptom_name }}</div>
@@ -92,9 +92,9 @@
 									</a>
 								{% endfor %}
 							</div>	
-							<div class="procedure-body-desc">
+							<div class="symptoms-body-desc">
 
-							</div>													
+							</div>												
 							<div id="image_tab">
 								
 								<!-- <div class="male_front"></div> -->

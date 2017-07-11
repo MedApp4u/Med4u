@@ -26,10 +26,10 @@
 				<li class="list-item">
 					<div class="profile-slider-top">
 						<div class="profile-slider-circle" id="circle">
-							<div class="profile-slider-image-cover">
+							<!-- <div class="profile-slider-image-cover">
 								<img src="{% static 'ProfileApp/css/img/icons/upload-light.png' %}"></img>
 								<p>Upload image</p>
-							</div>
+							</div> -->
 							{% if current_user.profile_pic.url is not None %}
 								<img src="{{current_user.profile_pic.url}}" class="profile-slider-image" />
 							{% else %}
@@ -125,7 +125,12 @@
 								</div>
 								<div class="procedure-desc-right" id="desc-field-pp">
 									<p class="procedure-desc-name">
-										<img src="{{ current_doctor.doctor_pic.url }}" />
+										{% if current_doctor.doctor_pic.url is not None %}
+											<img src="{{ current_doctor.doctor_pic.url }}" />
+										{% else %}
+											<img src="{% static 'ProfileApp\css\img\icons\avatar.jpg' %}" />
+										{% endif %}
+										
 									</p>
 								</div>
 								<div class="procedure-desc-left" id="desc-label-name">

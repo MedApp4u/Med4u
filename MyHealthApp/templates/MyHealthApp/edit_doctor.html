@@ -1,5 +1,6 @@
-
 {% extends "MyHealthApp/sidebar.html" %}
+
+{% load static %}
 
 {% block title %} Edit Doctors {% endblock %}
 
@@ -59,6 +60,19 @@
     					{% csrf_token %}
 
     					<div class="col-sm-6 col-md-6 label-med-left">
+    					{% if current_doctor.doctor_pic.url is not None %}
+
+    					<img src="{{ current_doctor.doctor_pic.url }}" />
+    					{% else %}
+
+    					<img src="{% static 'ProfileApp/css/img/icons/avatar.jpg' %}">
+    					{% endif %}
+
+    					<!-- <p class="label-med">Usage Instructions</p>
+    					<p class="label-desc">{{ form.usage_instructions }}</p> -->
+    					</div>
+
+    					<div class="col-sm-6 col-md-6 label-med-right">
     					<p class="label-med">Name</p>
     					<p class="label-desc">{{ form.doctor_name }}</p>
     					<p class="label-med">Phone Number</p>
@@ -73,12 +87,6 @@
     					<!-- <p class="help-text">Start date of the Prescription.</p> -->
     					<p class="label-med">Timings</p>
     					<p class="label-desc">{{ form.doctor_timings }}</p>
-
-    					<!-- <p class="label-med">Usage Instructions</p>
-    					<p class="label-desc">{{ form.usage_instructions }}</p> -->
-    					</div>
-
-    					<div class="col-sm-6 col-md-6 label-med-right">
     					<p class="label-med">Notes</p><br>
     					<p class="label-desc">{{ note_form.doctor_note }}</p>
     				<!-- 	<p class="label-med">Possible Side Effects</p>

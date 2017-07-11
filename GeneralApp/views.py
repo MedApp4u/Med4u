@@ -129,7 +129,7 @@ def SymptomsView(request):
 def BodypartSymptomList(request,symptom_part):
     if request.method == 'GET':
         part_symptoms = Symptom.objects.filter(bodypart__bodypart=symptom_part)
-        bodypart = Bodypart.objects.get(bodypart=symptom_part)
+        bodypart = Bodypart.objects.filter(bodypart=symptom_part).first()
         return render(request, 'GeneralApp/symptomlist.html', {'symptoms' : part_symptoms, 'part' : symptom_part, 'part_id' : bodypart.id, 'current_user':request.user})
 
 def SymptomDetails(request, symptom_part, symp_id):
@@ -144,7 +144,7 @@ def SymptomDetails(request, symptom_part, symp_id):
 
     if request.method == 'GET':
         return render(request, 'GeneralApp/symptom_details.html',
-                      {'symptoms': symptoms_list, 'current_user': request.user, 'part':current_part,
+                      {'symptoms': symptoms_list, 'current_user': request.user, 'part':symptom_part,
                        'current_symptom': current_symptom, 'bodyparts': bodyparts, 
                        'videos': videos, 'diseases': diseases ,'current_user':request.user})
 

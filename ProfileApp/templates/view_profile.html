@@ -20,7 +20,7 @@
 		<ul class="dropdown-menu profile-slider-body" style="display: inline-block;">
 			<li class="list-item">
 				<div class="profile-slider-top">
-					<div class="profile-slider-circle" id="circle">
+					<div class="profile-slider-circle" id="circle" onClick="uploadPicture()">
 						<div class="profile-slider-image-cover">
 							<img src="{% static 'ProfileApp/css/img/icons/upload-light.png' %}"></img>
 							<p>Upload image</p>
@@ -109,4 +109,8 @@
 			</div>	
 	    </section>
 
+{% endblock %}
+
+{% block script %}
+	<script src="{% static 'ProfileApp/js/uploadPicture.js' %}"></script>
 {% endblock %}

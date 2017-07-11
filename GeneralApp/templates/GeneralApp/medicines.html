@@ -26,10 +26,10 @@
 				<li class="list-item">
 					<div class="profile-slider-top">
 						<div class="profile-slider-circle" id="circle">
-							<div class="profile-slider-image-cover">
+							<!-- <div class="profile-slider-image-cover"> -->
 								<img src="{% static 'ProfileApp/css/img/icons/upload-light.png' %}"></img>
 								<p>Upload image</p>
-							</div>
+							<!-- </div> -->
 							{% if current_user.profile_pic.url is not None %}
 								<img src="{{current_user.profile_pic.url}}" class="profile-slider-image" />
 							{% else %}

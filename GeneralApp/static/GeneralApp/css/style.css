@@ -1183,6 +1183,10 @@ a.procedure-body-tab:hover .procedure-body-separator {
 	top: 12%;
 }
 
+#symptom-description-field p{
+	width: 90%;
+}
+
 
 /* ===========================
 --- Intro

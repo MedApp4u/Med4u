@@ -2,6 +2,7 @@
 {% extends 'MyHealthApp/sidebar.html' %}
 
 {% block title %} Add Medicine {% endblock %}
+{% load static %}
 
 {% block div_id %}<div class="content-wrapper" id = "content-medicines">{% endblock %}
 
@@ -46,8 +47,8 @@
    		<p class="label-desc">{{ form.brand_names }}</p>
    		<p class="label-med">Notes</p>
    		<p class="label-desc">{{ note_form.medicine_note }}</p>
-   		<button class="upload-button" type="submit">Upload</button>
-    		
+    	<button class="upload-button" type="submit">Upload</button>
+
   	</div>
 
   </form> 
@@ -55,4 +56,12 @@
  </div>
  </div>
 
+
 {% endblock %}
+
+
+<!-- 
+    {% if exists %}
+      <script src="{% static 'MyHealthApp/js/alert.js' %}"></script>
+    {% endif %}
+ -->

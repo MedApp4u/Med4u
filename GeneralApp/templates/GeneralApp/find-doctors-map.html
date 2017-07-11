@@ -121,7 +121,7 @@
       var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -24.397, lng: 150.644},
+          center: {lat: 23.036, lng:  72.512},
           zoom: 15
         });
         infoWindow = new google.maps.InfoWindow;
@@ -141,7 +141,7 @@
             var service = new google.maps.places.PlacesService(map);
         service.nearbySearch({
           location: pos,
-          radius: 10000,
+          radius: 1000000,
           type: ['doctor']
         }, callback);
 
@@ -158,7 +158,7 @@
         var marker = new google.maps.Marker({
           map: map,
           position: place.geometry.location,
-
+          title : place.name
 
         });
 

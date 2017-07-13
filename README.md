@@ -28,8 +28,8 @@ The total list of requirements is [here](https://github.com/MedicalAppInfibeam/D
 
 * You must first go through the [docs](https://cloud.google.com/python/django/appengine). We have  most of the required files here in this repo. Other than these you must have a static folder and a virtualenv folder in the root directory.
 * Download and install the Google Cloud SDK.
-* Move straight to 'Run the app on your local computer'. The second point is very important as it uploads the Third-Party APIs to the App Engine. However, don't forget to replace 'lib' with 'virtualenv' and 'requirements-vendor.txt' to simply 'requirements.txt'.
-* Now to the 'Deploy the app to the App Engine standard environment' point. Once you finish with this you will have the Django App up and running on your registered URL.
+* Move straight to 'Run the app on your local computer'. The second point is very important as it uploads the Third-Party APIs to the App Engine. However, don't forget to replace 'lib' with 'virtualenv' and 'requirements-vendor.txt' to 'requirements.txt'.
+* Move on to 'Deploy the app to the App Engine standard environment'. Once you finish with this point you will have the Django App up and running on your registered URL.
 * Our staging server is on [https://med-4-u.appspot.com](https://med-4-u.appspot.com)
 
 ## Built With

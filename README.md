@@ -1,6 +1,6 @@
 # DoctorsWebApp
 
-An Easy-to-Use but useful Web Application where end-users can register free of charge and have thier Medical Records sorted. Other functionalites include Finding Doctors by Location, Speciality and booking appointments without having to make a ring!
+An Easy-to-Use but useful Web Application where end-users can register free of charge and have their Medical Records sorted. Other functionalites include Finding Doctors by location, speciality and booking appointments without having to make a ring!
 
 ## Getting Started
 

@@ -1,4 +1,4 @@
-# med4u
+# Med4u
 
 An Easy-to-Use but useful Web Application where end-users can register free of charge and have their Medical Records sorted. Other functionalites include Finding Doctors by location, speciality and booking appointments without having to make a ring!
 

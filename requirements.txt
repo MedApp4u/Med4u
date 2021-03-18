@@ -15,7 +15,7 @@ oauthlib==2.0.2
 olefile==0.44
 packaging==16.8
 phonenumberslite==8.5.1
-Pillow==4.1.1
+Pillow==8.1.1
 psutil==5.2.2
 Pygments==2.2.0
 PyJWT==1.5.0
